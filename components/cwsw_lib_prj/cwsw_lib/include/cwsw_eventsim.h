@@ -38,6 +38,34 @@ extern "C" {
 // ============================================================================
 #define CWSW_EVENTSIM_H__REVSTRING "$Revision: 0123 $"
 
+
+// ============================================================================
+// ----	Type Definitions ------------------------------------------------------
+// ============================================================================
+
+/**	In the absence of a real event system, this is the payload for our simulated
+ *	event.
+ *	The 1st field, as I envision it, is reserved for the event ID, but the way I've implemented this
+ *	pseudo-system, that is redundant, as the name of the event handler itself is unique to the
+ *	event; also, it's very difficult to create a field of enumerated constants before that
+ *	enumeration has been defined (one way or the other, there needs to be a forward reference).
+ *	Therefore, do with the 1st field what you will.
+ *
+ *	One suggestion: if you want a generic event handler, you can then put a unique identifier
+ *	(as in, the event, cause, reason, etc. code) into the evId field.
+ */
+typedef struct {
+	uint16_t	evId;	// for unit test, i need to know the event id. this is super-simplistic pseudo-eventing system anyway, solely for purpose of illustrating possibilities
+	uint32_t	evInt;
+} tEventPayload;
+
+/**	In the absence of a real event system, this is the prototype for an event
+ *	handler. Normal instantiation would be for an array of handlers, each of
+ *	which "subscribes" to said event.
+ */
+typedef void (*pEventHandler)(tEventPayload EventData);
+
+
 // -----------------------------------------------------------------------------
 // ---- experimental simulation of event posting -------------------------------
 // -----------------------------------------------------------------------------
@@ -47,38 +75,8 @@ extern "C" {
  * 	the actual values, but for the names themselves. See the PostEvent
  * 	definition to see how that's done.
  */
-typedef enum  {
-	evNoEvent,				//!< reserved value, used for initialization
-	evNotInit,
-	evSinInputInvalidLow,	//!< sin input newly transitioned to stuck low
-	evSinInputInvalidHi,	//!< sin input newly transitioned to stuck hi
-	evCosInputInvalidLow,	//!< cos input newly transitioned to stuck low
-	evCosInputInvalidHi,	//!< cos input newly transitioned to stuck hi
-	evOutputForcedFailsafe,
-	evSwitchActivationZoneChanged,
-	evOutputStateChanged,
-	evNoisyDirectionChanges	//!< seemingly unexpected changes from moving-towards-open and moving-towards-closed and back
-
-} tSqspEvents;
-
-
-// ============================================================================
-// ----	Type Definitions ------------------------------------------------------
-// ============================================================================
-
-/**	In the absence of a real event system, this is the payload for our simulated
- *	event.
- */
-typedef struct {
-	tSqspEvents	evId;	// for unit test, i need to know the event id. this is super-simplistic pseudo-eventing system anyway, solely for purpose of illustrating possibilities
-	int			evInt;
-} tEventPayload;
-
-/**	In the absence of a real event system, this is the prototype for an event
- *	handler. Normal instantiation would be for an array of handlers, each of
- *	which "subscribes" to said event.
- */
-typedef void (*pEventHandler)(tEventPayload EventData);
+#include "projevtnames.h"
+typedef enum eProjectEvents tProjectEvents;
 
 
 // ============================================================================

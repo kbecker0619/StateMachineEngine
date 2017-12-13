@@ -14,6 +14,7 @@
 #include "cwsw_lib.h"
 #include "cwsw_clock.h"
 #include "cwsw_smengine.h"
+#include "cwsw_eventsim.h"
 
 #include "coinvend.h"
 
@@ -33,4 +34,20 @@ int main(void)
 		Task(Csws_Sme_Ut);
 	}
 	return EXIT_SUCCESS;
+}
+
+void
+EventHandler__evNotInit(tEventPayload EventData)
+{
+	UNUSED(EventData);
+	dprintf("\t%s\n", "Application Not Initialized Correctly, Terminating");
+	terminate_requested = true;
+}
+
+void
+EventHandler__evTerminateRequested	(tEventPayload EventData)
+{
+	UNUSED(EventData);
+	dprintf("\n\t%s\n", "End of demonstration\n");
+	terminate_requested = true;
 }
