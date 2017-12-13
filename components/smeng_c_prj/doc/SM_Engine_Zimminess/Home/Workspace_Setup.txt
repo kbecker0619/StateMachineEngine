@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-12-13T06:44:31-05:00
+
+====== Workspace Setup ======
+Created Wednesday 13 December 2017
+
+===== GIT =====
+[[+GIT Setup|git setup]]
+
+===== SVN =====
+svn setup
+
+===== CYGWIN =====
+[[Cygwin Setup|cygwin setup]]
+env-var:
+{{{code: lang="sh" linenumbers="True"
+HOME=%HOMEDRIVE%%HOMEPATH%
+
+CYGWIN=winsymlinks:native
+}}}
+
+symlinks: http://bit.ly/2ABHFo0
+
+===== GIT BASH =====
+git bash setup
+env-var:
+{{{code: lang="sh" linenumbers="True"
+MSYS=winsymlinks:native
+}}}
+

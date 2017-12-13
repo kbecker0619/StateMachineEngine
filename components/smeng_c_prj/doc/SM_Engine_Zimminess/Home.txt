@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-12-13T06:30:40-05:00
+
+====== Home ======
+Created Wednesday 13 December 2017
+
+This documentation package is created by the [[http://www.zim-wiki.org|Zim personal wiki]]. It is eminently usable in both Linux and Windows incarnations.
+
+===== Workplace Setup =====
+[[+Workspace Setup|Workspace Setup]]
+
+===== GIT Repo Setup =====
+[[+GIT Repo Setup|GIT Repo Setup]]
+
+===== Design of State Machine Engine =====
+
+===== Design of Unit Test sample code. =====
+* not really a UT environment, per se, but more of a simple sample application to support developer testing.
+* uses Eclipse symlinks to achieve component reuse. for a **real** application, you should use [[+Workspace Setup|real symlinks]].
+* {{../state_machine-1.jpg}}
