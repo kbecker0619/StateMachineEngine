@@ -89,7 +89,9 @@ Csws_Sme_Ut__Task(void)
 	if(!initialized)
 	{
 		PostEvent(evNotInit, ev);
+		return;
 	}
+
 	if(TM(task_end_time))
 	{
 		ev.evId = evTerminateRequested;

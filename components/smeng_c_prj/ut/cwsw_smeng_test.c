@@ -27,6 +27,9 @@ int main(void)
 
 	(void) Init(Cwsw_Lib);
 	(void) Init(Cwsw_Clock);
+
+	/* error handling check - execute task before initialized */
+	Task(Csws_Sme_Ut);
 	(void) Init(Cwsw_Sme_Ut);
 
 	while(!terminate_requested)

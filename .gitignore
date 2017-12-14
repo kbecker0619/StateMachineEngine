@@ -52,3 +52,9 @@ Mkfile.old
 dkms.conf
 *.bak
 *.old
+
+cwsw_clock.7z
+cwsw_extensions.7z
+components/cwsw_clock_prj/.settings/com.processorexpert.core.ide.newprojectwizard.prefs
+components/cwsw_lib_prj/.settings/com.processorexpert.core.ide.newprojectwizard.prefs
+components/cwsw_smeng_c_prj/.settings/com.processorexpert.core.ide.newprojectwizard.prefs
