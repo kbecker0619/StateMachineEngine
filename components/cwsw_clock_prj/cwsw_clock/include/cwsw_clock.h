@@ -26,12 +26,14 @@ extern "C" {
 // ============================================================================
 
 // ----	System Headers --------------------------
-#if defined(XPRJ_Debug_Win_MinGW)
+#if (XPRJ_Debug_Win_MinGW)
 // defer to MinGW on Windows. Their clock interface returns units of ms.
 #include <time.h>
 
+#elif (XPRJ_DEBUG_MSC)
+#include <time.h>
+
 #else
-#error no
 
 #endif
 
@@ -54,7 +56,7 @@ extern "C" {
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
-#if defined(XPRJ_Debug_Win_MinGW)
+#if (XPRJ_Debug_Win_MinGW)
 /*	building on windows, for windows, we can take advantage of MinGW's
  *	time.h...
  */
@@ -64,7 +66,7 @@ typedef clock_t tCwswClockTics;
 /*	... else we'll have to create our own.
  */
 typedef long tCwswClockTics;
-#error no
+
 #endif
 
 
@@ -81,7 +83,7 @@ typedef long tCwswClockTics;
  */
 extern uint16_t Cwsw_Clock__Init(void);
 
-#if defined(XPRJ_Debug_Win_MinGW)
+#if (XPRJ_Debug_Win_MinGW)
 #define Cwsw__Clock()	(tCwswClockTics)(clock())
 
 #else

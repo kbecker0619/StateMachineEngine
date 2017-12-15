@@ -29,3 +29,29 @@ env-var:
 MSYS=winsymlinks:native
 }}}
 
+
+===== Eclipse =====
+Neon / s32ds / 
+
+===== MPLab / NetBeans =====
+NB 8.01, even when 8.2 was available
+
+===== Visual Studio =====
+VS2008, simply because ...
+
+1st problem, errors out on ''#include <stdint.h>''
+https://stackoverflow.com/questions/126279/c99-stdint-h-header-and-ms-visual-studio ⇒ https://github.com/mattn/gntp-send/blob/master/include/msinttypes/stdint.h
+copied to my install folder, which was ''E:\_Programs\Microsoft Visual Studio 9.0\VC\include'' 
+
+2. next problem: no <stdbool.h>
+that same location didn't have a version of <stdbool.h>. found some other version somewhere
+
+3. because the C compiler for VS2008 is definitely not up to C11 standards, had to change a few of the macros that i normally use. (e.g., dprintf)
+
+
+
+
+===== LabWindows/CVI =====
+v7.1 (very, very old - 11 years @ this writing in Dec 2017)
+
+

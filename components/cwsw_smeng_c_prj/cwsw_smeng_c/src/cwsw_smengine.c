@@ -69,7 +69,17 @@ static char const * const stateengine_RevString = "$Revision: 0123 $";
 void Fsm_InitStateMachine(tFsmStateControl *pStateCtrl)
 {
 	void	( *func_ptr )( void );
+
+	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wpedantic"
+	#endif
+
 	dprintf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, "Dummy Revision String", __FUNCTION__);
+
+	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+	#pragma GCC diagnostic pop
+	#endif
 
 	if(pStateCtrl)
 	{
