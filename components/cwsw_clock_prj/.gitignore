@@ -1,1 +1,3 @@
 /Debug/
+*.cdb
+cvibuild.cwsw_clock

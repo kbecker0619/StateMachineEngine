@@ -1,9 +1,9 @@
 /** @file projcfg.h
- *	@brief	One-sentence short description of file.
+ *	@brief	Project Configuraton for CWSW State Machine Engine Unit test environment
  *
  *	Description:
  *
- *	Copyright (c) Kevin L. Becker. All rights reserved.
+ *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
  *	Created on: Sep 4, 2016
@@ -27,7 +27,6 @@ extern "C" {
 
 // ----	System Headers --------------------------
 #include <stdbool.h>	/* true, false - for preprocessor usage */
-#include <stdio.h>		/* __FILE__, etc. */
 
 // ----	Project Headers -------------------------
 #include "ctassert.h"
@@ -39,73 +38,6 @@ extern "C" {
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
 #define PROJCFG_H__REVSTRING "$Revision: 09042016 $"
-
-
-#if !defined(XPRJ_PC_Windows_Debug)
-#define	XPRJ_PC_Windows_Debug	(false)
-#endif
-
-
-/*	Allow for the possibility that USE_SIMULATED_EVENTS might be a command-line
- *	define. Pick reasonable defaults if not defined.
- */
-#if !defined(USE_SIMULATED_EVENTS)
-#define USE_SIMULATED_EVENTS			(true)
-
-#else
-#endif
-
-
-/*	Allow for the possibility that BUILD_FOR_UNIT_TEST might be a command-line
- *	define. Pick reasonable defaults if not defined.
- */
-#if !defined(BUILD_FOR_UNIT_TEST)
-	#if defined(XPRJ_Debug_Linux) || defined(XPRJ_Debug_Win_MinGW) || defined(XPRJ_DEBUG_MSC)
-		#define BUILD_FOR_UNIT_TEST		(true)
-
-	#else
-		#define BUILD_FOR_UNIT_TEST		(false)
-
-	#endif
-#endif
-
-
-// ============================================================================
-// ----	Type Definitions ------------------------------------------------------
-// ============================================================================
-
-// ============================================================================
-// ----	Public Variables ------------------------------------------------------
-// ============================================================================
-
-// ============================================================================
-// ----	Public API ------------------------------------------------------------
-// ============================================================================
-
-/* Define WEAK attribute */
-/**	Macro to designate a function as weakly bound.
- *	This allows a project to define a default function that can be overridden by
- *	a specific implementation. Note not all compilers support this, so on projects
- *	that rely on this, you'll need to figure out a work-around.
- */
-#if !defined(WEAK)
-#if defined (__GNUC__)		/* GCC CS3 2009q3-68 */
-#define WEAK __attribute__ ((weak))
-
-#elif defined (__CC_ARM  )	/* Keil µVision 4 */
-#define WEAK __attribute__ ((weak))
-
-#elif defined (__ICCARM__)	/* IAR Ewarm 5.41+ */
-#define WEAK __weak
-
-#elif defined(_MSC_VER)		/* visual studio 8 */
-/* WEAK not available */
-
-#else
-#error Unrecognized or unsupported compiler
-
-#endif
-#endif
 
 
 /* ==== A WORD ABOUT BUILD TARGETS ============================================
@@ -146,46 +78,116 @@ extern "C" {
  * ========================================================================= */
 /* Configuration Check */
 #if defined(XPRJ_Debug)
-/* This configuration is created by Eclipse; we do not want it used, unless ... */
-#if (XPRJ_Debug == 99)
-#pragma message "Building Within Atmel Studio"
+	/* This configuration is created by Eclipse; we do not want it used, unless ... */
+	#if (XPRJ_Debug == 99)
+		#pragma message "Building Within Atmel Studio"
 
-#else
-#error This configuration reserved for Atmel Studio
-#endif
+	#else
+		#error This configuration reserved for Atmel Studio
+	#endif
 
 #elif defined(XPRJ_Release)
-/* This configuration is created by Eclipse; we do not want it used */
-#error For now, do not build with the "Release" build target active
+	/* This configuration is created by Eclipse; we do not want it used */
+	#error For now, do not build with the "Release" build target active
 
 #elif defined(XPRJ_Debug_Linux) || defined(XPRJ_Debug_Linux_Desktop)
-/* This is the configuration intended for development & debugging in a Linux VM */
-/* The 1st is intended to debug on a PowerPC Target from a Linux development environment */
-/* The 2nd (Desktop) is intended for building within S32DS on Linux for a Linux debugging session */
+	/* This is the configuration intended for development & debugging in a Linux VM */
+	/* The 1st is intended to debug on a PowerPC Target from a Linux development environment */
+	/* The 2nd (Desktop) is intended for building within S32DS on Linux for a Linux debugging session */
 
 #elif defined(XPRJ_Debug_Win_MinGW)
-/* This is the configuration intended for development on Windows, using the MinGW tool suite */
-#define XPRJ_DEBUG_MSC			false
+	/* This is the configuration intended for development on Windows, using the MinGW tool suite */
+	#define XPRJ_DEBUG_MSC			false
+	#define	XPRJ_DEBUG_CVI			false
 
 #elif defined(XPRJ_Debug_Cx_AtmelSamv71)
-/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
+	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
 
 #elif (XPRJ_DEBUG_MSC)
-/* Visual Studio 8, which is decidedly shy of C11 */
-/* NOTE: VS8 does not ship w/ headers <stdint.h> or <stdbool.h>, so i found alternate versions
- * and copied them into my install directory. i happened to find some web sites w/ versions
- * that claimed to work w/ VS8 or VS10, but you could also probably pull them from any other
- * compiler you may have installed
- */
-#define XPRJ_Debug_Win_MinGW	false
+	/* Visual Studio 8, which is decidedly shy of C11 */
+	/* NOTE: VS8 does not ship w/ headers <stdint.h> or <stdbool.h>, so i found alternate versions
+	 * and copied them into my install directory. i happened to find some web sites w/ versions
+	 * that claimed to work w/ VS8 or VS10, but you could also probably pull them from any other
+	 * compiler you may have installed
+	 */
+	#define XPRJ_Debug_Win_MinGW	false
+	#define	XPRJ_DEBUG_CVI			false
 
+#elif (_CVI_)
+	#define	XPRJ_DEBUG_CVI			1
+	#define	XPRJ_DEBUG_MSC			0
+	#define	XPRJ_Debug_Win_MinGW 	0
+	#define XPRJ_Debug_Linux		0
+	
 #else
 #error Must define Eclipse symbol XPRJ_${ConfigName}
 
 #endif
 
 
-	//	=== dev-on-PC API =========================================================
+/*	Allow for the possibility that USE_SIMULATED_EVENTS might be a command-line
+ *	define. Pick reasonable defaults if not defined.
+ */
+#if !defined(USE_SIMULATED_EVENTS)
+#define USE_SIMULATED_EVENTS			(true)
+
+#else
+#endif
+
+
+/*	Allow for the possibility that BUILD_FOR_UNIT_TEST might be a command-line
+ *	define. Pick reasonable defaults if not defined.
+ */
+#if !defined(BUILD_FOR_UNIT_TEST)
+	#if (XPRJ_Debug_Linux) || (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
+		#define BUILD_FOR_UNIT_TEST		(true)
+
+	#else
+		#define BUILD_FOR_UNIT_TEST		(false)
+
+	#endif
+#endif
+
+
+// ============================================================================
+// ----	Type Definitions ------------------------------------------------------
+// ============================================================================
+
+// ============================================================================
+// ----	Public Variables ------------------------------------------------------
+// ============================================================================
+
+// ============================================================================
+// ----	Public API ------------------------------------------------------------
+// ============================================================================
+
+/* Define WEAK attribute */
+/**	Macro to designate a function as weakly bound.
+ *	This allows a project to define a default function that can be overridden by
+ *	a specific implementation. Note not all compilers support this, so on projects
+ *	that rely on this, you'll need to figure out a work-around.
+ */
+#if !defined(WEAK)
+#if defined (__GNUC__)					/* GCC CS3 2009q3-68 */
+#define WEAK __attribute__ ((weak))
+
+#elif defined (__CC_ARM  )				/* Keil ï¿½Vision 4 */
+#define WEAK __attribute__ ((weak))
+
+#elif defined (__ICCARM__)				/* IAR Ewarm 5.41+ */
+#define WEAK __weak
+
+#elif defined(_MSC_VER) || defined(_CVI_)	/* visual studio 8 and LabWindows/CVI v7.1 */
+/* WEAK not available */
+
+#else
+#error Unrecognized or unsupported compiler
+
+#endif
+#endif
+
+
+//	=== dev-on-PC API =========================================================
 
 
 

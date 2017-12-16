@@ -28,6 +28,7 @@ extern "C" {
 // ----	System Headers --------------------------
 #include <stdint.h>		/* standard integer type definitions */
 #include <stdbool.h>	/* bool */
+#include <stdio.h>		/* __FILE__, printf(), etc. */
 
 // ----	Project Headers -------------------------
 #include "projcfg.h"
@@ -179,11 +180,11 @@ typedef void (*fpTask)(void);
 
 #endif
 
-#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC)
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
 /*	per https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html, variadics used
  *	as i'm using them here, will break on a non-GNU compiler. buyer beware.
  */
-#if (XPRJ_DEBUG_MSC)
+#if (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
 #define dprintf						printf
 #else
 #if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */

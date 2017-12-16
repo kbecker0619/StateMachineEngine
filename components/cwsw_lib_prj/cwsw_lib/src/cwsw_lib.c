@@ -70,7 +70,7 @@ uint16_t
 Cwsw_Lib__Init(void)
 {
 	UNUSED(cwsw_lib_RevString);
-	if((XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC))
+	if( (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI) )
 	{
 		disable_console_buffering();
 

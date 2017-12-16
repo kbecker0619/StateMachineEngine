@@ -25,12 +25,11 @@ extern "C" {
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
-// ----	System Headers --------------------------
-#if (XPRJ_Debug_Win_MinGW)
-// defer to MinGW on Windows. Their clock interface returns units of ms.
-#include <time.h>
+#include "projcfg.h"
 
-#elif (XPRJ_DEBUG_MSC)
+// ----	System Headers --------------------------
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
+// defer to Windows. Their clock interface returns units of ms.
 #include <time.h>
 
 #else
@@ -51,12 +50,15 @@ extern "C" {
 #define CWSW_CLOCK_H__REVSTRING "$Revision: 09052016 $"
 #endif
 
+/** Unique ID for each and every module */
+enum { kModuleiId_Clock = 1 };
+
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
-#if (XPRJ_Debug_Win_MinGW)
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
 /*	building on windows, for windows, we can take advantage of MinGW's
  *	time.h...
  */
@@ -83,7 +85,7 @@ typedef long tCwswClockTics;
  */
 extern uint16_t Cwsw_Clock__Init(void);
 
-#if (XPRJ_Debug_Win_MinGW)
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
 #define Cwsw__Clock()	(tCwswClockTics)(clock())
 
 #else

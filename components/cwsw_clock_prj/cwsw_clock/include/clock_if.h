@@ -30,7 +30,7 @@ extern "C" {
 // ----	Project Headers -------------------------
 
 // ----	Module Headers --------------------------
-#include "cwsw_clock.h"	/* user calibration: select the CWSW clock module */
+#include "cwsw_clock.h"
 
 
 // ============================================================================

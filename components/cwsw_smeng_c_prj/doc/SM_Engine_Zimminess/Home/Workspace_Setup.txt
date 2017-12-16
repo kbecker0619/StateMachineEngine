@@ -39,7 +39,7 @@ NB 8.01, even when 8.2 was available
 ===== Visual Studio =====
 VS2008, simply because ...
 
-1st problem, errors out on ''#include <stdint.h>''
+1. 1st problem, errors out on ''#include <stdint.h>''
 https://stackoverflow.com/questions/126279/c99-stdint-h-header-and-ms-visual-studio ⇒ https://github.com/mattn/gntp-send/blob/master/include/msinttypes/stdint.h
 copied to my install folder, which was ''E:\_Programs\Microsoft Visual Studio 9.0\VC\include'' 
 
@@ -53,5 +53,9 @@ that same location didn't have a version of <stdbool.h>. found some other versio
 
 ===== LabWindows/CVI =====
 v7.1 (very, very old - 11 years @ this writing in Dec 2017)
-
+1. 1st problem, no'' <stdint.h>''
+copied from my VS2008 install (E:\_Programs\Microsoft Visual Studio 9.0\VC\include), to my LW71 install (E:\_Programs\National Instruments\CVI71\include)
+2. no <wchar.h>					: ditto
+3. next problem: no <stdbool.h>	: remediation: ditto
+4. the stdint.h file i copied over, had checks specifically for MSVC. remediation: edit the heck out of it. it is MOST DEFINITELY not compliant!! this removed the "need" for wchar.h
 

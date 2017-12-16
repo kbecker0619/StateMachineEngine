@@ -1,0 +1,258 @@
+[Workspace Header]
+Version = 710
+Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw_smeng_c.cws"
+CVI Dir = "/e/_programs/national instruments/cvi71"
+IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
+VXIplug&play Framework Dir = "/c/vxipnp/winnt"
+Number of Projects = 1
+Active Project = 1
+Project 0001 = "cwsw_smeng_c.prj"
+Drag Bar Left = 205
+Window Top = 56
+Window Left = 6
+Window Bottom = 905
+Window Right = 1213
+Maximized = False
+Maximized Children = True
+Max Number Of Errors = 20
+Track Include File Dependencies = True
+Prompt For Missing Includes = True
+Stop On First Error File = False
+Bring Up Err Win For Warnings = True
+Show Build Dialog = False
+Save Changes Before Running = "Always"
+Hide Windows = False
+Global Hot Key = False
+Break At First Statement = True
+Sort Type = "File Name"
+Number of Opened Files = 2
+Window Confinement Region Enabled = True
+MainColumnWidth = 186
+FileDateColumnWidth = 70
+FileSizeColumnWidth = 70
+StatusColumnWidth = 70
+
+[Project Header 0001]
+Version = 710
+Platform Code = 4
+Build Configuration = "Debug"
+Warn User If Debugging Release = 1
+Batch Build Release = False
+Batch Build Debug = False
+
+[File 0001]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/c"
+Path Line0002 = "oinvend.h"
+File Type = "Include"
+Disk Date = 3596119671
+In Projects = "1,"
+Window Top = 86
+Window Left = 38
+Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
+
+[File 0002]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/c"
+Path Line0002 = "wsw_smeng_test.c"
+File Type = "CSource"
+Disk Date = 3596126325
+In Projects = "1,"
+Window Top = 114
+Window Left = 53
+Window Z-Order = 1
+Source Window State = "1,0,0,0,0,0,0,0,0,135,0,0,0,0,0,31,12,0,39,0,311,595,1,0,"
+
+[File 0003]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw_smeng_c/src/c"
+Path Line0002 = "wsw_smengine.c"
+File Type = "CSource"
+Disk Date = 3596228852
+In Projects = "1,"
+Window Top = 86
+Window Left = 38
+Window Z-Order = 2
+Source Window State = "1,71,72,71,4,4,4,0,0,80,0,0,0,0,0,19,61,0,77,36,311,623,1,0,"
+
+[File 0004]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/include/ptype"
+Path Line0002 = "s.h"
+File Type = "Include"
+Disk Date = 3596119671
+In Projects = "1,"
+Window Top = 114
+Window Left = 53
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0005]
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/readme.md"
+File Type = "Unknown"
+Disk Date = 3596119671
+In Projects = "1,"
+
+[File 0006]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/p"
+Path Line0002 = "rojcfg.h"
+File Type = "Include"
+Disk Date = 3596210299
+In Projects = "1,"
+Window Top = 142
+Window Left = 68
+Source Window State = "1,1,1,1,62,70,62,0,0,80,0,0,0,0,0,19,0,0,6,63,311,623,1,0,"
+
+[File 0007]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/p"
+Path Line0002 = "rojevtnames.h"
+File Type = "Include"
+Disk Date = 3596119671
+In Projects = "1,"
+Window Top = 170
+Window Left = 83
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0008]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_clock/include/clock_if.h"
+File Type = "Include"
+Disk Date = 3596208899
+In Projects = "1,"
+Window Top = 142
+Window Left = 68
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0009]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_clock/include/cwsw_clock.h"
+File Type = "Include"
+Disk Date = 3596199612
+In Projects = "1,"
+Window Top = 170
+Window Left = 83
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0010]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_clock/src/cwsw_clock.c"
+File Type = "CSource"
+Disk Date = 3596199513
+In Projects = "1,"
+Window Top = 30
+Window Left = 8
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0011]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_lib/include/ctassert.h"
+File Type = "Include"
+Disk Date = 3596119671
+In Projects = "1,"
+Window Top = 58
+Window Left = 23
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0012]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_lib/include/cwsw_eventsim.h"
+File Type = "Include"
+Disk Date = 3596119671
+In Projects = "1,"
+Window Top = 86
+Window Left = 38
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0013]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_lib/include/cwsw_lib.h"
+File Type = "Include"
+Disk Date = 3596198913
+In Projects = "1,"
+Window Top = 114
+Window Left = 53
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0014]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_lib/src/cwsw_lib.c"
+File Type = "CSource"
+Disk Date = 3596192916
+In Projects = "1,"
+Window Top = 170
+Window Left = 83
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0015]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_smeng_c/include/cwsw_smengine.h"
+File Type = "Include"
+Disk Date = 3596119671
+In Projects = "1,"
+Window Top = 30
+Window Left = 8
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0016]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_smeng_c/include/fsm_extensions.h"
+File Type = "Include"
+Disk Date = 3596119671
+In Projects = "1,"
+Window Top = 58
+Window Left = 23
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[File 0017]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_smeng_c/src/cwsw_smengine_prv.h"
+File Type = "Include"
+Disk Date = 3596119671
+In Projects = "1,"
+Window Top = 86
+Window Left = 38
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,19,20,311,623,1,0,"
+
+[File 0018]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/c"
+Path Line0002 = "oinvend.c"
+File Type = "CSource"
+Disk Date = 3596126410
+In Projects = "1,"
+Window Top = 114
+Window Left = 53
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,19,0,0,0,0,311,623,1,0,"
+
+[Build Options 0001]
+Generate Browse Info = True
+Enable Uninitialized Locals Runtime Warning = True
+Debugging Level = "Standard"
+Break On Library Errors = True
+Break On First Chance Exceptions = False
+Enable Remote Debugging = False
+Remote Debugger Address = "localhost"
+Remote Target Address = ""
+Remote Debugging Port = 3291
+
+[SCC Options 0001]
+Use global settings = True
+SCC Provider = ""
+SCC Project = ""
+Local Path = ""
+Auxiliary Path = ""
+Perform Same Action For .h File As For .uir File = "Ask"
+Username = ""
+Comment = ""
+Use Default Username = False
+Use Default Comment = True
+Suppress CVI Error Messages = False
+
+[DLL Debugging Support 0001]
+External Process Path = ""
+
+[Command Line Args 0001]
+Command Line Args = ""
+
+[Watch Point 1]
+Watch Expression = "false"
+Update Display Continuously = True
+Break When Value Changes = False
+Scope = "Global To Project"
+DllName = "cwsw_smeng_c_dbg.exe"
+Project = 1
+

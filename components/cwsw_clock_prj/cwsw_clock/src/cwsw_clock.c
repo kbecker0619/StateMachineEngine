@@ -55,7 +55,7 @@ static bool initialized = false;
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
 
-#if (XPRJ_Debug_Win_MinGW)
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
 /*	when run on MinGW within Windows, the clock tick is #defined to be the same as the system
  *	clock() function.
  */
@@ -81,7 +81,7 @@ uint16_t Cwsw_Clock__Init(void)
 {
 	UNUSED(cwsw_clock_RevString);
 	cwsw_assert(Get(Cwsw_Lib, Initialized));
-	if((XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC))
+	if( (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI) )
 	{
 		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 		#pragma GCC diagnostic push

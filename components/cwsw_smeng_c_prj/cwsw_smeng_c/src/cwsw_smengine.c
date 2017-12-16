@@ -66,10 +66,12 @@ static char const * const stateengine_RevString = "$Revision: 0123 $";
  *
  *  @param		control_ptr = pointer to the current state control structure
  */
+typedef void (*pfp)(void);
 void Fsm_InitStateMachine(tFsmStateControl *pStateCtrl)
 {
-	void	( *func_ptr )( void );
-
+	pfp func_ptr = NULL;
+	UNUSED(stateengine_RevString);
+	
 	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wpedantic"
