@@ -97,3 +97,8 @@ uint16_t Cwsw_Clock__Init(void)
 	initialized = true;
 	return 0;
 }
+
+bool Cwsw_Clock__Get_Initialized(void)
+{
+	return initialized;
+}

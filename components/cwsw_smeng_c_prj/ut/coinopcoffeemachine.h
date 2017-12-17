@@ -14,8 +14,8 @@
  *	$Date: $
  */
 
-#ifndef UT_COINVEND_H_
-#define UT_COINVEND_H_
+#ifndef UT_COINOPCOFFEEMACHINE_H_
+#define UT_COINOPCOFFEEMACHINE_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -60,4 +60,4 @@ extern void Csws_Sme_Ut__Task(void);
 }
 #endif
 
-#endif /* UT_COINVEND_H_ */
+#endif /* UT_COINOPCOFFEEMACHINE_H_ */

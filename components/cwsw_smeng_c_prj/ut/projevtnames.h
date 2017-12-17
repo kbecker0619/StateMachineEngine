@@ -48,6 +48,9 @@ extern "C" {
 enum eProjectEvents {
 	evNoEvent,				//!< reserved value, used for initialization
 	evNotInit,              //!< evNotInit
+	evCoinInsertionSensed,
+	evCoinAccepted,
+	evUpdateUi,
 	evTerminateRequested
 };
 
@@ -66,6 +69,8 @@ enum eProjectEvents {
 
 extern void EventHandler__evNotInit				(tEventPayload EventData);
 extern void EventHandler__evTerminateRequested	(tEventPayload EventData);
+extern void EventHandler__evCoinAccepted		(tEventPayload EventData);
+extern void EventHandler__evUpdateUi			(tEventPayload EventData);
 
 
 #ifdef	__cplusplus

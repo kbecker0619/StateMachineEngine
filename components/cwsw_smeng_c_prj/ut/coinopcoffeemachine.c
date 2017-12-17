@@ -18,15 +18,24 @@
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
+#include "projcfg.h"
+
 // ----	System Headers --------------------------
 #include <stdbool.h>
+#if (XPRJ_DEBUG_CVI)
+#include <userint.h>
+#endif
 
 // ----	Project Headers -------------------------
 #include "clock_if.h"	/* tCwswClockTics */
 #include "cwsw_eventsim.h"
+#if (XPRJ_DEBUG_CVI)
+#include "lw_coinopcoffeemachine.h"
+#endif
 
 // ----	Module Headers --------------------------
-#include "coinvend.h"
+#include "coinopcoffeemachine.h"
+#include "coinsensor.h"
 
 
 // ============================================================================
@@ -61,7 +70,16 @@ static tCwswClockTics task_end_time = 0;
 uint16_t Cwsw_Sme_Ut__Init(void)
 {
 	UNUSED(coinvend_RevString);
+
+	/* Check for initialization of modules upon which we depend.
+	 * Note that in this simple demonstration / unit test, we don't actually depend upon the order
+	 * of initialization, so in one sense it imposes a false restriction to require these other
+	 * modules to have already been initialized here; however, it's convenient in this environment
+	 * and shows a method to do an init check.
+	 */
 	cwsw_assert(Get(Cwsw_Lib, Initialized));
+	cwsw_assert(Get(Cwsw_Clock, Initialized));
+
 	if(XPRJ_Debug_Win_MinGW)
 	{
 		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
@@ -77,7 +95,9 @@ uint16_t Cwsw_Sme_Ut__Init(void)
 	}
 
 	// after some time, just end.
-	task_end_time = GET(SYSTEM_TIME) + 50;	/* 50 ms to start */
+	Init(CoinSensor);
+
+	Cwsw_SetTimerVal(&task_end_time, 30000);	/* after 30 s, just quit */
 	initialized = true;
 	return 0;
 }
@@ -86,11 +106,27 @@ void
 Csws_Sme_Ut__Task(void)
 {
 	tEventPayload ev = {evNotInit, 0};
+
+	/* This illustrates one method of confirming the module init function has been called before
+	 * 1st execution of functions that depend on that initialization. Another method is illustrated
+	 * in this module's Init function, where we assert that modules upon which we depend have
+	 * already been initialized.
+	 */
 	if(!initialized)
 	{
 		PostEvent(evNotInit, ev);
 		return;
 	}
+
+	Task(CoinSensor);
+
+	/* for now, we won't dedicate a task to updating the UI; we'll just notify the UI of time left */
+	do {
+		int32_t tmp = Cwsw_GetTimeLeft(task_end_time);
+		ev.evId = evUpdateUi;
+		ev.evInt = TO_U32(tmp);
+		PostEvent(evUpdateUi, ev);
+	} while(0);
 
 	if(TM(task_end_time))
 	{

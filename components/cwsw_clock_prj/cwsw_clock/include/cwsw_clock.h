@@ -83,22 +83,31 @@ typedef long tCwswClockTics;
 /**	Clock library init function. Only needs to be called once, probably by main
  *	application (rather than all components which use this core library).
  */
-extern uint16_t Cwsw_Clock__Init(void);
+extern uint16_t				Cwsw_Clock__Init(void);
+
+/** Target symbol for Get(Cwsw_Clock, xxx) interface */
+#define Get__Cwsw_Clock(a)	Cwsw_Clock__Get_ ## a()
+
+/** Target for Get(Cwsw_Clock, Initialized) interface */
+extern bool 				Cwsw_Clock__Get_Initialized(void);
+
 
 #if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
 #define Cwsw__Clock()	(tCwswClockTics)(clock())
 
 #else
-extern tCwswClockTics Cwsw__Clock(void);
+extern tCwswClockTics	Cwsw__Clock(void);
 
 #endif
 
 /**	Return the number of ms between start and stop times.
+ *	Because we're being simpler than we need to, we're always casting the result to a 
+ *  signed long.
  * 	@note We are assuming here that there is 1 clock tic per ms; this is what is
  * 	true for MinGW and so of course that means the whole world does it the same
  * 	way.
  */
-#define Cwsw_ElapsedTimeMs(start, stop)	(tCwswClockTics)(stop - start)
+#define Cwsw_ElapsedTimeMs(start, stop)			(int32_t)(stop - start)
 
 /**	@returns the time left in said timer.
  *	Negative values indicate expiration of timer.
@@ -107,7 +116,7 @@ extern tCwswClockTics Cwsw__Clock(void);
  *	Doing this will not properly handle timer tic rollover.
  *	Instead, subtract one time from another, and compare the result to zero.
  */
-#define Cwsw_GetTimeLeft(timer)		Cwsw_ElapsedTimeMs(Cwsw__Clock(), timer)
+#define Cwsw_GetTimeLeft(timer)					Cwsw_ElapsedTimeMs(Cwsw__Clock(), timer)
 
 
 /**	Set the duration of a timer.
@@ -115,23 +124,6 @@ extern tCwswClockTics Cwsw__Clock(void);
  *	@param duration - the duration of the timer. Negative values are not possible.
  */
 #define Cwsw_SetTimerVal(ptimer, duration)		do { *ptimer = Cwsw__Clock() + (duration); } while(0)
-
-
-/**	Determine if timer "a" has expired (i.e., matured) or not.
- *	@param   a - name of timer
- *	@return  Boolean where TRUE indicates the timer has indeed expired.
- */
-//  Expansion of HAS_TIMER_EXPIRED(TIMER_NAME)
-//! @{
-#define HAS_TIMER_EXPIRED(a)            _HAS_TIMER_EXPIRED(a)
-#define _HAS_TIMER_EXPIRED(a)           (Cwsw_GetTimeLeft(a) <= 0)
-//! @}
-
-/**
- * Has a timer expired?
- * This definition provided to accommodate UML notation.
- */
-#define TM(tmr)                         HAS_TIMER_EXPIRED(tmr)
 
 
 #ifdef	__cplusplus

@@ -1,12 +1,12 @@
-/** @file clock_if.h
+/** @file coinsensor.h
  *	@brief	One-sentence short description of file.
  *
  *	Description:
  *
- *	Copyright (c) 2017 Kevin L. Becker. All rights reserved.
+ *	Copyright (c) 2017 Ford Motor Co. All rights reserved.
  *
  *	Original:
- *	Created on: Jan 26, 2017
+ *	Created on: Dec 15, 2017
  *	Author: kbecker
  *
  *	Current:
@@ -14,8 +14,8 @@
  *	$Date: $
  */
 
-#ifndef INCLUDE_CLOCK_IF_H_
-#define INCLUDE_CLOCK_IF_H_
+#ifndef UT_COINSENSOR_H_
+#define UT_COINSENSOR_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -25,18 +25,21 @@ extern "C" {
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
+#include "projcfg.h"
+
 // ----	System Headers --------------------------
+#include <stdint.h>
 
 // ----	Project Headers -------------------------
+#include "cwsw_lib.h"
 
 // ----	Module Headers --------------------------
-#include "cwsw_clock.h"
 
 
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
-#define INCLUDE_CLOCK_IF_H__REVSTRING "$Revision: 0123 $"
+#define UT_COINSENSOR_H__REVSTRING "$Revision: 0123 $"
 
 
 // ============================================================================
@@ -51,31 +54,14 @@ extern "C" {
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-/**	Get the current system time, in ms.
- */
-//  Expansion of GET(SYSTEM_TIME)
-#define GET_SYSTEM_TIME()               (Cwsw__Clock())
+extern uint16_t	CoinSensor__Init(void);
+extern void		CoinSensor__Task(void);
 
-
-/**	Determine if timer "a" has expired (i.e., matured) or not.
- *	@param   a - name of timer
- *	@return  Boolean where TRUE indicates the timer has indeed expired.
- */
-//  Expansion of HAS_TIMER_EXPIRED(TIMER_NAME)
-//! @{
-#define HAS_TIMER_EXPIRED(a)            _HAS_TIMER_EXPIRED(a)
-#define _HAS_TIMER_EXPIRED(a)           (Cwsw_GetTimeLeft(a) <= 0)
-//! @}
-
-/**
- * Has a timer expired?
- * This definition provided to accommodate UML notation.
- */
-#define TM(tmr)                         HAS_TIMER_EXPIRED(tmr)
+extern void		EventHandler__evCoinInsertionSensed(tEventPayload EventData);
 
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif /* INCLUDE_CLOCK_IF_H_ */
+#endif /* UT_COINSENSOR_H_ */

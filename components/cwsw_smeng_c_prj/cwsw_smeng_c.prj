@@ -1,17 +1,20 @@
 [Project Header]
 Version = 710
-Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw_smeng_c.prj"
+Pathname Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Pathname Line0002 = "_smeng_c.prj"
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
-Number of Files = 18
+Number of Files = 22
 Target Type = "Executable"
 Flags = 16
 
 [File 0001]
 File Type = "Include"
 Res Id = 1
-Path Is Rel = False
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_clock/include/clock_if.h"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_clock/include/clock_if.h"
 Exclude = False
@@ -21,38 +24,59 @@ Folder = "Include Files"
 [File 0002]
 File Type = "CSource"
 Res Id = 2
-Path Is Rel = False
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/coinopcoffeemachine.c"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/c"
-Path Line0002 = "oinvend.c"
+Path Line0002 = "oinopcoffeemachine.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
 [File 0003]
-File Type = "Include"
+File Type = "CSource"
 Res Id = 3
-Path Is Rel = False
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/coinsensor.c"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/c"
-Path Line0002 = "oinvend.h"
+Path Line0002 = "oinsensor.c"
 Exclude = False
+Compile Into Object File = False
 Project Flags = 0
-Folder = "Include Files"
+Folder = "Source Files"
 
 [File 0004]
 File Type = "Include"
 Res Id = 4
-Path Is Rel = False
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/coinsensor.h"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/c"
+Path Line0002 = "oinsensor.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0005]
+File Type = "Include"
+Res Id = 5
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_lib/include/ctassert.h"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_lib/include/ctassert.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0005]
+[File 0006]
 File Type = "CSource"
-Res Id = 5
-Path Is Rel = False
+Res Id = 6
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_clock/src/cwsw_clock.c"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_clock/src/cwsw_clock.c"
 Exclude = False
@@ -60,30 +84,36 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0006]
+[File 0007]
 File Type = "Include"
-Res Id = 6
-Path Is Rel = False
+Res Id = 7
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_clock/include/cwsw_clock.h"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_clock/include/cwsw_clock.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0007]
+[File 0008]
 File Type = "Include"
-Res Id = 7
-Path Is Rel = False
+Res Id = 8
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_lib/include/cwsw_eventsim.h"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_lib/include/cwsw_eventsim.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0008]
+[File 0009]
 File Type = "CSource"
-Res Id = 8
-Path Is Rel = False
+Res Id = 9
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_lib/src/cwsw_lib.c"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_lib/src/cwsw_lib.c"
 Exclude = False
@@ -91,20 +121,24 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0009]
+[File 0010]
 File Type = "Include"
-Res Id = 9
-Path Is Rel = False
+Res Id = 10
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_lib/include/cwsw_lib.h"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_lib/include/cwsw_lib.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0010]
+[File 0011]
 File Type = "CSource"
-Res Id = 10
-Path Is Rel = False
+Res Id = 11
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/cwsw_smeng_test.c"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/c"
 Path Line0002 = "wsw_smeng_test.c"
 Exclude = False
@@ -112,35 +146,27 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0011]
+[File 0012]
 File Type = "CSource"
-Res Id = 11
+Res Id = 12
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "cwsw_smeng_c/src/cwsw_smengine.c"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw_smeng_c/src/c"
-Path Line0002 = "wsw_smengine.c"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_smeng_c/src/cwsw_smengine.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0012]
-File Type = "Include"
-Res Id = 12
-Path Is Rel = False
-Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_smeng_c/include/cwsw_smengine.h"
-Exclude = False
-Project Flags = 0
-Folder = "Include Files"
-
 [File 0013]
 File Type = "Include"
 Res Id = 13
-Path Is Rel = False
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_smeng_c/include/cwsw_smengine.h"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_smeng_c/src/cwsw_smengine_prv.h"
+Path Line0002 = "_smeng_c/include/cwsw_smengine.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -148,9 +174,11 @@ Folder = "Include Files"
 [File 0014]
 File Type = "Include"
 Res Id = 14
-Path Is Rel = False
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_smeng_c/src/cwsw_smengine_prv.h"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_smeng_c/include/fsm_extensions.h"
+Path Line0002 = "_smeng_c/src/cwsw_smengine_prv.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -158,51 +186,105 @@ Folder = "Include Files"
 [File 0015]
 File Type = "Include"
 Res Id = 15
-Path Is Rel = False
-Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/p"
-Path Line0002 = "rojcfg.h"
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_smeng_c/include/fsm_extensions.h"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Path Line0002 = "_smeng_c/include/fsm_extensions.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
 [File 0016]
-File Type = "Include"
+File Type = "CSource"
 Res Id = 16
-Path Is Rel = False
-Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/p"
-Path Line0002 = "rojevtnames.h"
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/lw_coinopcoffeemachine.c"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/l"
+Path Line0002 = "w_coinopcoffeemachine.c"
 Exclude = False
+Compile Into Object File = False
 Project Flags = 0
-Folder = "Include Files"
+Folder = "Source Files"
 
 [File 0017]
 File Type = "Include"
 Res Id = 17
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "../cwsw_lib_prj/cwsw_lib/include/ptypes.h"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/include/ptype"
-Path Line0002 = "s.h"
+Path Rel Path = "ut/lw_coinopcoffeemachine.h"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/l"
+Path Line0002 = "w_coinopcoffeemachine.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
 [File 0018]
-File Type = "Unknown"
+File Type = "User Interface Resource"
 Res Id = 18
 Path Is Rel = True
 Path Rel To = "Project"
+Path Rel Path = "ut/lw_coinopcoffeemachine.uir"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/l"
+Path Line0002 = "w_coinopcoffeemachine.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+
+[File 0019]
+File Type = "Include"
+Res Id = 19
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/projcfg.h"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/p"
+Path Line0002 = "rojcfg.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0020]
+File Type = "Include"
+Res Id = 20
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/projevtnames.h"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/p"
+Path Line0002 = "rojevtnames.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0021]
+File Type = "Include"
+Res Id = 21
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "../cwsw_lib_prj/cwsw_lib/include/ptypes.h"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib"
+Path Line0002 = "/include/ptypes.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0022]
+File Type = "Unknown"
+Res Id = 22
+Path Is Rel = True
+Path Rel To = "Project"
 Path Rel Path = "ut/readme.md"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/readme.md"
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/r"
+Path Line0002 = "eadme.md"
 Exclude = False
 Project Flags = 0
 Folder = "Not In A Folder"
 
 [Folders]
-User Interface Files Folder Not Added Yet = True
 Instrument Files Folder Not Added Yet = True
 Folder 0 = "Source Files"
 Folder 1 = "Include Files"
+Folder 2 = "User Interface Files"
 
 [Compiler Options]
 Default Calling Convention = "cdecl"
@@ -226,18 +308,19 @@ Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
 Include Path 1 Is Rel = True
 Include Path 1 Rel To = "Project"
 Include Path 1 Rel Path = "ut"
-Include Path 1 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut"
+Include Path 1 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut"
 
 [Create Executable]
 Executable File_Debug Is Rel = True
 Executable File_Debug Rel To = "Project"
 Executable File_Debug Rel Path = "cwsw_smeng_c_dbg.exe"
-Executable File_Debug Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw_smeng_c_dbg.e"
-Executable File_Debug Line0002 = "xe"
+Executable File_Debug Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Executable File_Debug Line0002 = "_smeng_c_dbg.exe"
 Executable File_Release Is Rel = True
 Executable File_Release Rel To = "Project"
 Executable File_Release Rel Path = "cwsw_smeng_c.exe"
-Executable File_Release = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw_smeng_c.exe"
+Executable File_Release Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
+Executable File_Release Line0002 = "_smeng_c.exe"
 Icon File Is Rel = False
 Icon File = ""
 Application Title = ""

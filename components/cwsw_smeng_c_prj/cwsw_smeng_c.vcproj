@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_smeng_c_prj\ut;E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_smeng_c_prj\cwsw_smeng_c\include;E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_lib_prj\cwsw_lib\include;E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_clock_prj\cwsw_clock\include"
+				AdditionalIncludeDirectories="E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_smeng_c_prj\ut;E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_smeng_c_prj\cwsw_smeng_c\include;E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_smeng_c_prj\cwsw_lib\include;E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_smeng_c_prj\cwsw_clock\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;XPRJ_DEBUG_MSC=1"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -173,6 +173,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ut\coinopcoffeemachine.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ut\coinsensor.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ut\coinvend.h"
 				>
 			</File>
@@ -229,7 +237,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\ut\coinvend.c"
+				RelativePath=".\ut\coinopcoffeemachine.c"
+				>
+			</File>
+			<File
+				RelativePath=".\ut\coinsensor.c"
 				>
 			</File>
 			<File

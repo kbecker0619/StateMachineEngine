@@ -70,18 +70,31 @@ enum { kModuleiId_Lib = 0 };
 /**	Extract the high-order byte out of a 16-bit word. */
 #define MSB_16(word16)	(uint8_t)(((uint16_t)word16 / 256U) & (uint8_t)0xFF)
 
+/** Coerce var to a U8. Usage of this indicates you intend to convert incompatible types. */
+#define TO_U8(a)		(uint8_t)(a)
+/** Coerce var to a S8. Usage of this indicates you intend to convert incompatible types. */
+#define TO_S8(a)		(int8_t)(a)
+/** Coerce var to a U16. Usage of this indicates you intend to convert incompatible types. */
+#define TO_U16(a)		(uint16_t)(a)
+/** Coerce var to a S16. Usage of this indicates you intend to convert incompatible types. */
+#define TO_S16(a)		(int16_t)(a)
+/** Coerce var to a U32. Usage of this indicates you intend to convert incompatible types. */
+#define TO_U32(a)		(uint32_t)(a)
+/** Coerce var to a S32. Usage of this indicates you intend to convert incompatible types. */
+#define TO_S32(a)		(int32_t)(a)
 
-/**	Determine if "a" is in between values "low" and "hi", inclusive.
+
+/**	Determine if "val" is in between values "low" and "hi", inclusive.
  *	@note This macro is not safe, in that it evaluates one or more arguments
  *	more than once.
  */
 #define IN_RANGE(val, low, hi)	(((val) <= (low)) && ((val) >= (hi)))
 
 
-#define BIT_TEST(mem, bit)		((mem)&(1<<(bit)))
-#define BIT_SET(mem, bit)		((mem)|=(1<<(bit)))
-#define BIT_CLR(mem, bit)		((mem)&=~(1<<(bit)))
-#define BIT_TOGGLE(mem, bit)	((mem)^=(1<<(bit)))
+#define BIT_TEST(mem, bit)		((mem)&(1U<<(bit)))
+#define BIT_SET(mem, bit)		((mem)|=(1U<<(bit)))
+#define BIT_CLR(mem, bit)		((mem)&=~(1U<<(bit)))
+#define BIT_TOGGLE(mem, bit)	((mem)^=(1U<<(bit)))
 
 
 /** Determine the number of elements in a table */
@@ -116,7 +129,7 @@ enum { kModuleiId_Lib = 0 };
 
 
 /**	Eliminate compiler and static-checker warnings about an unused function
- *	parameter.
+ *	parameter. Note for C89 code, any invocation must follow your variables definitions.
  */
 #if !defined(UNUSED)
 #define UNUSED(x) (void)x
@@ -240,7 +253,11 @@ extern uint16_t Cwsw_Lib__Init(void);
 
 #include <assert.h>
 #define cwsw_assert(a)		assert(a)
+
+/** Target symbol for Get(Cwsw_Lib, xxx) interface */
 #define Get__Cwsw_Lib(a)	Cwsw_Lib__Get_ ## a()
+
+/** Target for Get(Cwsw_Lib, Initialized) interface */
 extern bool Cwsw_Lib__Get_Initialized(void);
 
 

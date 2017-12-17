@@ -33,11 +33,19 @@ MSYS=winsymlinks:native
 ===== Eclipse =====
 Neon / s32ds / 
 
+To all configurations, add command-line define ''XPRJ_${ConfigName}''
+
+
 ===== MPLab / NetBeans =====
-NB 8.01, even when 8.2 was available
+NB 8.1, even when 8.2 was available
+
+Out of the box, defines command-line define of ''XPRJ_<config>''
+
 
 ===== Visual Studio =====
-VS2008, simply because ...
+VS2008, simply because I want [[LabWindows]] compatibility.
+
+Because this isn't my main dev environment, and because this is a very old version of VS, I didn't spend a lot of time searching the predefined macros to discover the one that tells you the current configuration. I just added the XPRJ_xxx macro to the project configuration dialog.
 
 1. 1st problem, errors out on ''#include <stdint.h>''
 https://stackoverflow.com/questions/126279/c99-stdint-h-header-and-ms-visual-studio ⇒ https://github.com/mattn/gntp-send/blob/master/include/msinttypes/stdint.h
@@ -53,6 +61,9 @@ that same location didn't have a version of <stdbool.h>. found some other versio
 
 ===== LabWindows/CVI =====
 v7.1 (very, very old - 11 years @ this writing in Dec 2017)
+
+Environment really only understands Debug and Release modes, isn't easy (at least I haven't found it to be so) to add new or change names of those two build targets. To compensate, in my project configuration header (''projcfg.h''), I manually add XPRJ  defines.
+
 1. 1st problem, no'' <stdint.h>''
 copied from my VS2008 install (E:\_Programs\Microsoft Visual Studio 9.0\VC\include), to my LW71 install (E:\_Programs\National Instruments\CVI71\include)
 2. no <wchar.h>					: ditto
