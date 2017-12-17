@@ -50,7 +50,7 @@
 // ============================================================================
 static char const * const CoinVendSensors_RevString = "$Revision: 0123 $";
 
-PRIVATE tCVendSnsr_EvQueue CVendSnsr_EvQueue;
+PRIVATE tCoffeeMachine_Sm_EventQueue CVendSnsr_EvQueue;
 
 //! Position Sensor State Machine Control structure.
 PRIVATE tFsmStateControl CVendSnsr_SmControl;
@@ -93,32 +93,32 @@ PRIVATE void        Wffe_EndOfRotationActions(void);
 /**
  * State transition table for the StartupDelay state.
  */
-PRIVATE STATE_EVENT_TYPE STATE_STARTUP_DELAY_EVENTS[] =
+PRIVATE tFsmStateEvent STATE_STARTUP_DELAY_EVENTS[] =
 {   // exit event           exit guard                  transition action           destination state
-    {EV_PS_FALLING_EDGE,    NULL_GUARD_FUNC,            Wffe_EndOfRotationActions,  PS_STATE_WAIT_FOR_RISING_EDGE},
-    {EV_PS_NO_EVENT,        NULL_GUARD_FUNC,            NULL_TRANSITION_ACTION,     kCVendSnsr_State_Uninit}                    // End of list
+    {evSmeCoffeeMachineSelectionMade,    NULL_GUARD_FUNC,            Wffe_EndOfRotationActions,  kCoffeeMachineStateCoinInserted},
+    {evSmeCoffeeMachineNoEvent,        NULL_GUARD_FUNC,            NULL_TRANSITION_ACTION,     kCoffeeMachineStateUninit}                    // End of list
 };
 
 /**
  * State transition table for the WaitForRisingEdge state.
  */
-PRIVATE STATE_EVENT_TYPE STATE_WAIT_FOR_RISING_EDGE_EVENTS[] =
+PRIVATE tFsmStateEvent STATE_WAIT_FOR_RISING_EDGE_EVENTS[] =
 {   // exit event           exit guard                  transition action               destination state
-    {EV_PS_RISING_EDGE,     Wfre_QualifyRisingEdge_Not, NULL_TRANSITION_ACTION,         PS_STATE_WAIT_FOR_RISING_EDGE}, // re-enter
-    {EV_PS_FALLING_EDGE,    NULL_GUARD_FUNC,            Wfre_CalcExpectedRisingEdge,    PS_STATE_WAIT_FOR_RISING_EDGE}, // re-enter
-    {EV_PS_RISING_EDGE,     Wfre_QualifyRisingEdge,     CalcExpectedFallingEdge,        PS_STATE_WAIT_FOR_FALLING_EDGE},
-    {EV_PS_NO_EVENT,        NULL_GUARD_FUNC,            NULL_TRANSITION_ACTION,         kCVendSnsr_State_Uninit}                // End of list
+    {evSmeCoffeeMachineCoinDropped,     Wfre_QualifyRisingEdge_Not, NULL_TRANSITION_ACTION,         kCoffeeMachineStateCoinInserted}, // re-enter
+    {evSmeCoffeeMachineSelectionMade,    NULL_GUARD_FUNC,            Wfre_CalcExpectedRisingEdge,    kCoffeeMachineStateCoinInserted}, // re-enter
+    {evSmeCoffeeMachineCoinDropped,     Wfre_QualifyRisingEdge,     CalcExpectedFallingEdge,        kCoffeeMachineStateOptionSelected},
+    {evSmeCoffeeMachineNoEvent,        NULL_GUARD_FUNC,            NULL_TRANSITION_ACTION,         kCoffeeMachineStateUninit}                // End of list
 };
 
 /**
  * State transition table for the WaitForFallingEdge state.
  */
-PRIVATE STATE_EVENT_TYPE STATE_WAIT_FOR_FALLING_EDGE_EVENTS[] =
+PRIVATE tFsmStateEvent STATE_WAIT_FOR_FALLING_EDGE_EVENTS[] =
 {   // exit event           exit guard                      transition action           destination state
-    {EV_PS_FALLING_EDGE,    Wffe_QualifyFallingEdge_Not,    NULL_TRANSITION_ACTION,     PS_STATE_WAIT_FOR_FALLING_EDGE}, // re-enter
-    {EV_PS_RISING_EDGE,     NULL_GUARD_FUNC,                CalcExpectedFallingEdge,    PS_STATE_WAIT_FOR_FALLING_EDGE}, // re-enter
-    {EV_PS_FALLING_EDGE,    Wffe_QualifyFallingEdge,        Wffe_EndOfRotationActions,  PS_STATE_WAIT_FOR_RISING_EDGE},
-    {EV_PS_NO_EVENT,        NULL_GUARD_FUNC,                NULL_TRANSITION_ACTION,     kCVendSnsr_State_Uninit}                // End of list
+    {evSmeCoffeeMachineSelectionMade,    Wffe_QualifyFallingEdge_Not,    NULL_TRANSITION_ACTION,     kCoffeeMachineStateOptionSelected}, // re-enter
+    {evSmeCoffeeMachineCoinDropped,     NULL_GUARD_FUNC,                CalcExpectedFallingEdge,    kCoffeeMachineStateOptionSelected}, // re-enter
+    {evSmeCoffeeMachineSelectionMade,    Wffe_QualifyFallingEdge,        Wffe_EndOfRotationActions,  kCoffeeMachineStateCoinInserted},
+    {evSmeCoffeeMachineNoEvent,        NULL_GUARD_FUNC,                NULL_TRANSITION_ACTION,     kCoffeeMachineStateUninit}                // End of list
 };
 
 /**	Main Position Sensor state machine state table.
@@ -127,11 +127,11 @@ PRIVATE STATE_EVENT_TYPE STATE_WAIT_FOR_FALLING_EDGE_EVENTS[] =
  *	reference (i.e., a prototype or declaration) to a const table; const tables
  *	(such as the Exit Event Arrays) must be initialized at point of definition.
  */
-PRIVATE tFsmStateTable Clsa_Ps_States[PS_NUM_OP_STATES] =
+PRIVATE tFsmStateTable Clsa_Ps_States[kCoffeeMachineNumOpStates] =
 {   //{State,                           {Entry,                             Do,                             Exit},                          Exit_Events_Array}
-    {kCVendSnsr_State_StartupDelay,		{State_StartupDelay_Entry,          State_StartupDelay_Do,          State_StartupDelay_Exit},       STATE_STARTUP_DELAY_EVENTS},
-    {PS_STATE_WAIT_FOR_RISING_EDGE,     {State_WaitRisingEdge_Entry,        State_WaitRisingEdge_Do,        State_WaitRisingEdge_Exit},     STATE_WAIT_FOR_RISING_EDGE_EVENTS},
-    {PS_STATE_WAIT_FOR_FALLING_EDGE,    {State_WaitForFallingEdge_Entry,    State_WaitForFallingEdge_Do,    State_WaitFallingEdge_Exit},    STATE_WAIT_FOR_FALLING_EDGE_EVENTS}
+    {kCoffeeMachineStateIdle,		{State_StartupDelay_Entry,          State_StartupDelay_Do,          State_StartupDelay_Exit},       STATE_STARTUP_DELAY_EVENTS},
+    {kCoffeeMachineStateCoinInserted,     {State_WaitRisingEdge_Entry,        State_WaitRisingEdge_Do,        State_WaitRisingEdge_Exit},     STATE_WAIT_FOR_RISING_EDGE_EVENTS},
+    {kCoffeeMachineStateOptionSelected,    {State_WaitForFallingEdge_Entry,    State_WaitForFallingEdge_Do,    State_WaitFallingEdge_Exit},    STATE_WAIT_FOR_FALLING_EDGE_EVENTS}
 };
 
 
@@ -151,15 +151,15 @@ PRIVATE tFsmStateTable *GetSensorStateTable(void)
 
 void CoinVendSensors_Init(void)
 {
-	if(NUM_ARRAY_ELEMENTS(CVendSnsr_EvQueue.event_queue) >= kCVendSnsr_Sc_EventQueueSize)
+	if(NUM_ARRAY_ELEMENTS(CVendSnsr_EvQueue.event_queue) >= kCoffeeMachine_Sm_EventQueueSize)
 	{
 	    (void)memset(&CVendSnsr_EvQueue, 0, sizeof(CVendSnsr_EvQueue));
 
-	    CVendSnsr_SmControl.Last_State        = kCVendSnsr_State_Uninit;
-	    CVendSnsr_SmControl.Cur_State         = kCVendSnsr_State_StartupDelay;
+	    CVendSnsr_SmControl.Last_State        = kCoffeeMachineStateUninit;
+	    CVendSnsr_SmControl.Cur_State         = kCoffeeMachineStateIdle;
 	    CVendSnsr_SmControl.Tables_Ptr        = (tFsmStateTable *)GetSensorStateTable();    // cast away const-ness for sake of StateEngine
 	    CVendSnsr_SmControl.Event_Queue_Ptr   = CVendSnsr_EvQueue.event_queue;
-	    CVendSnsr_SmControl.Queue_Size        = kCVendSnsr_Sc_EventQueueSize;
+	    CVendSnsr_SmControl.Queue_Size        = kCoffeeMachine_Sm_EventQueueSize;
 
 	    FSM_INIT(CVendSnsr_SmControl);                                    // Init the state machine
 
@@ -280,9 +280,9 @@ PRIVATE void Wffe_EndOfRotationActions(void)
 PRIVATE void State_WaitForFallingEdge_Entry(void)
 {
     // tell the (UT) controller where we are
-    NOTIFY(EV_STATE_TRANSITION, MAKE_STATE_ENTRY_ACTION_ID(PS_STATE_WAIT_FOR_FALLING_EDGE), 0);
+    NOTIFY(EV_STATE_TRANSITION, MAKE_STATE_ENTRY_ACTION_ID(kCoffeeMachineStateOptionSelected), 0);
 
     // provoke entry into do()
-    GEN(evCVendSnsr_GoToDoAction);
+    GEN(evSmeCoffeeMachineProductDispensed);
 }
 

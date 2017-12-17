@@ -43,32 +43,32 @@ extern "C" {
  * Position Sensor operating states per design documents.
  * The names of these elements should correlate directly to those found in the state chart diagram.
  */
-enum eCoinVendSnsrOpStates {
-    kCVendSnsr_State_Uninit,                //!< Uninitialized, doesn't actually exist and is not seen in design documents.
+enum eCoffeeMachineOpStates {
+    kCoffeeMachineStateUninit,                //!< Uninitialized, doesn't actually exist and is not seen in design documents.
 
-    kCVendSnsr_State_StartupDelay,
-    PS_STATE_WAIT_FOR_RISING_EDGE,
-    PS_STATE_WAIT_FOR_FALLING_EDGE,
+    kCoffeeMachineStateIdle,
+    kCoffeeMachineStateCoinInserted,
+    kCoffeeMachineStateOptionSelected,
 
-    PS_NUM_OP_STATES                //!< Number of states in the Position Sensor state machine.
+    kCoffeeMachineNumOpStates                //!< Number of states in the Position Sensor state machine.
 };
 
 
 /**	Events for the Position Sensor state machine.
  */
-enum eCoinVendSnsrEvents {
-    EV_PS_NO_EVENT,                 //!< Position Sensor "No Event" event, needed by this version of StateEngine
+enum eCoffeeMachineEvents {
+    evSmeCoffeeMachineNoEvent,                 //!< Position Sensor "No Event" event, needed by this version of StateEngine
 
-    EV_PS_RISING_EDGE,              //!< Transition-provoking event, we have seen a (generic) Rising Edge of the Position Sensor input.
-    EV_PS_FALLING_EDGE,             //!< Transition-provoking event, we have seen a (generic) Falling Edge of the Position Sensor input.
-    evCVendSnsr_GoToDoAction,       //!< Special event, specific to this version of the StateEngine and our usage of it, designed to transition from a state's Entry action to the same state's Do action within the same instance of the background task.
+    evSmeCoffeeMachineCoinDropped,              //!< Transition-provoking event, we have seen a (generic) Rising Edge of the Position Sensor input.
+    evSmeCoffeeMachineSelectionMade,             //!< Transition-provoking event, we have seen a (generic) Falling Edge of the Position Sensor input.
+    evSmeCoffeeMachineProductDispensed,       //!< Special event, specific to this version of the StateEngine and our usage of it, designed to transition from a state's Entry action to the same state's Do action within the same instance of the background task.
 
     kCVendSnsr_NumStateChartEvents	//!< Number of Position Sensor state chart events.
 };
 
 
 //!  Size of event queue for the Coin Vendor Sensor state machine.
-enum { kCVendSnsr_Sc_EventQueueSize = 5 };
+enum { kCoffeeMachine_Sm_EventQueueSize = 5 };
 
 
 // ============================================================================
@@ -83,14 +83,14 @@ typedef struct {
 #if (XPRJ_Debug)
     unsigned short  lowguard;
 #endif
-    tFsmEvent      event_queue[kCVendSnsr_Sc_EventQueueSize];
+    tFsmEvent      event_queue[kCoffeeMachine_Sm_EventQueueSize];
 #if (XPRJ_Debug)
     unsigned short  higuard;
 #endif
-} tCVendSnsr_EvQueue;
+} tCoffeeMachine_Sm_EventQueue;
 
-typedef enum eCoinVendSnsrOpStates CLSAPS_SC_TYPE;
-typedef enum eCoinVendSnsrEvents tCVendSnsr_Event;
+typedef enum eCoffeeMachineOpStates tCoffeeMachineOpStates;
+typedef enum eCoffeeMachineEvents tCoffeeMachineEvents;
 
 
 // ============================================================================

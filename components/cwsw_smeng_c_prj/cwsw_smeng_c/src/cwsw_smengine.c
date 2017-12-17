@@ -66,18 +66,18 @@ static char const * const stateengine_RevString = "$Revision: 0123 $";
  *
  *  @param		control_ptr = pointer to the current state control structure
  */
-typedef void (*pfp)(void);
-void Fsm_InitStateMachine(tFsmStateControl *pStateCtrl)
+void
+Fsm_InitStateMachine(tFsmStateControl *pStateCtrl)
 {
-	pfp func_ptr = NULL;
+	void (*func_ptr)(void) = NULL;
 	UNUSED(stateengine_RevString);
-	
+
 	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wpedantic"
 	#endif
 
-	dprintf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, "Dummy Revision String", __FUNCTION__);
+	dprintf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, stateengine_RevString, __FUNCTION__);
 
 	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 	#pragma GCC diagnostic pop
@@ -111,7 +111,8 @@ void Fsm_InitStateMachine(tFsmStateControl *pStateCtrl)
 /**	Flushes all events from the queue.
  *  @param		control_ptr = pointer to the current state control structure
  */
-void Fsm_FlushEvents( tFsmStateControl *pStateControl )
+void
+Fsm_FlushEvents( tFsmStateControl *pStateControl )
 {
 	if(pStateControl)
 	{
