@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-12-21T08:54:38-05:00
+
+====== Thursday 21 Dec 2017 ======
+
+===== mplabx, cont =====
+ok, haven't had much appetite for computer-related stuff over the last few days.
+
+started a new throw-away harmony project, to map out what MHC does with various options. See various tarballs with name beginning "MZ_Buildup"
+
+wanted to get back to example for my EZ board that blinks LEDs. Found it at http://microchipdeveloper.com/harmony:example-tmr-sys-mz-ef-sk
+	[[http://microchip.wikidot.com/local--files/32bit:mx-osc/PIC32_OSC_CONFIG_v1.1.xlsx|cool clock configuration spreadsheet]] (from [[http://microchipdeveloper.com/32bit:mz-osc|this page]], from step 3 of the the [[http://microchipdeveloper.com/harmony:example-tmr-sys-mz-ef-sk|tutorial]] referenced just above)
+
+@ end of day, got bored w/ side tracks & went back to main project, which was the clock library, but getting the main clock callback working as if it were the LED / blinky project, but with a 1ms tic rate, not a 500ms core tic rate.
+
+Because of the way Harmony is structured, the differentiation between CPU architecture, the Board-specific features, and the System/os is kind of muddled, compared to the way Linux and AUTOSAR break it apart. For now, I guess I'll create a BSP folder to kind of fuzz the differences; maybe, the thing I should do immediately after getting the MZ EZ going would be to add the Calypso and the SAMV71 Xplained working also. This might help clarify things a bit.
+
+

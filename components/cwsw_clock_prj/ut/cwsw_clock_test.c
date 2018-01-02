@@ -12,6 +12,7 @@
 #include <stdlib.h>
 
 #include "cwsw_lib.h"
+#include "cwsw_bsp.h"
 #include "cwsw_clock.h"		/* hmmm, in LabWindows/CVI, the nesting seems to cause breakage. need to directly include the main API */
 #include "clock_if.h"
 
@@ -19,7 +20,8 @@ int main(void)
 {
 	tCwswClockTics start, stop, et;
 	tCwswClockTics tmr;
-	
+
+	(void) Init(BSP);
 	(void) Init(Cwsw_Lib);
 	(void) Init(Cwsw_Clock);
 
@@ -30,7 +32,7 @@ int main(void)
 	stop = GET(SYSTEM_TIME);
 	et = Cwsw_ElapsedTimeMs(start, stop);
 	(void)printf("%i\n", (unsigned)et);
-	
+
 	Cwsw_SetTimerVal(&tmr, 5);
 	do
 	{

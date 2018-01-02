@@ -82,7 +82,7 @@ enum { kModuleiId_Lib = 0 };
 #define TO_U32(a)		(uint32_t)(a)
 /** Coerce var to a S32. Usage of this indicates you intend to convert incompatible types. */
 #define TO_S32(a)		(int32_t)(a)
-
+#define TO_INT(a)		(int)(a)
 
 /**	Determine if "val" is in between values "low" and "hi", inclusive.
  *	@note This macro is not safe, in that it evaluates one or more arguments

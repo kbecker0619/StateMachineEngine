@@ -12,7 +12,7 @@ Created Wednesday 13 December 2017
 svn setup
 
 ===== CYGWIN =====
-[[Cygwin Setup|cygwin setup]]
+[[+Cygwin Setup|cygwin setup]]
 env-var:
 {{{code: lang="sh" linenumbers="True"
 HOME=%HOMEDRIVE%%HOMEPATH%
@@ -38,9 +38,12 @@ To all configurations, add command-line define ''XPRJ_${ConfigName}''
 
 ===== MPLab / NetBeans =====
 NB 8.1, even when 8.2 was available
+MPLAB X 4.05, w/ Harmony v2.04 + the current version of the free XC gcc compiler
 
-Out of the box, defines command-line define of ''XPRJ_<config>''
+Out of the box, MPLAB (not NB) defines command-line define of ''XPRJ_<config>''
+MPLAB's Harmony has a requirement that the Harmony install must reside on the same drive letter as your project, which to me makes little sense, and didn't match my install. so, i created a symlink on my projects drive that pointed to my actual installation.
 
+* [[file:///G:/_Programs/Microchip/harmony/v2_04/doc/html/frames.html%3Ffrmname%3Dtopic%26frmfile%3Dindex.html|MPLAB Mutexes:]] MPLAB Harmony Help:  Volume IV: MPLAB Harmony Development > MPLAB Harmony Compatibility Guide > 3: Modularity Guidelines > 3.3: Protect Owned Resources > 3.3.2: Protect Owned Resources From Accesses by Multiple Threads
 
 ===== Visual Studio =====
 VS2008, simply because I want [[LabWindows]] compatibility.

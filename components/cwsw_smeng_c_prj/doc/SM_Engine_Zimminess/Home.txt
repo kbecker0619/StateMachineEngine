@@ -10,8 +10,27 @@ This documentation package is created by the [[http://www.zim-wiki.org|Zim perso
 ===== Workplace Setup =====
 [[+Workspace Setup|Workspace Setup]]
 
+===== Architecture Setup =====
+[[+Architecture Setup|Architecture Setup]]
+
+
 ===== GIT Repo Setup =====
 [[+GIT Repo Setup|GIT Repo Setup]]
+
+===== Supporting Libraries =====
+
+==== Lib ====
+[ ] very little actual behavior; 
+[ ] provides the basis of our pseudo-event-posting system, but UT environ doesn't test nor does it demonstrate.
+
+
+==== GPIO ====
+[ ] UT is apps-level code, showing abstractions from app ↔ driver, with tasking services
+
+
+==== Clock ====
+[ ] uses Lib, GPIO support libs
+
 
 ===== Design of State Machine Engine =====
 For each state, you define that state's properties by

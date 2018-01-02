@@ -68,8 +68,8 @@ extern "C" {
  *	to the console.
  * ========================================================================= */
 
-/*	==== A FOLLOW-UP WORD ABOUT BUILD TARGETS ==================================
- * ANSI/ISO C says that the preprocesser evaluates and undefined symbol as having
+/* ==== A FOLLOW-UP WORD ABOUT BUILD TARGETS ==================================
+ * ANSI/ISO C says that the preprocesser evaluates an undefined symbol as having
  * the value '0' - however, many of the environments i'm targeting, and also many
  * of the static analysis tools, emit warnings about usage of undefined symbols.
  * in normal C code - and i have a rather strong aversion to using #if defined(x)
@@ -97,11 +97,31 @@ extern "C" {
 
 #elif defined(XPRJ_Debug_Win_MinGW)
 	/* This is the configuration intended for development on Windows, using the MinGW tool suite */
-	#define XPRJ_DEBUG_MSC			false
-	#define	XPRJ_DEBUG_CVI			false
+	#define XPRJ_DEBUG_MSC				false
+	#define	XPRJ_DEBUG_CVI				false
+	#define XPRJ_Debug_Win_MZ2048EFM	false
+
+	#define __PIC32MZ__					/* TODO: ABSTRACT AWAY PIC32MZ STUFF. this, for plib_ports.h */
+	#define __32MZ2048EFM144__			/* and this, for ports_p32xxx.h */
 
 #elif defined(XPRJ_Debug_Cx_AtmelSamv71)
 	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
+
+#elif defined(XPRJ_Debug_Win_MZ2048EFM)
+	#define Debug_MZ2048EFM				true
+	#define XPRJ_Debug_Win_MinGW		false
+	#define XPRJ_DEBUG_MSC				false
+	#define	XPRJ_DEBUG_CVI				false
+
+	/* define stuff that MPLAB defines on the command line */
+	#if !defined(__PIC32M)
+		#define __PIC32M
+		#define __PIC32MZ__		/* TODO: ABSTRACT AWAY PIC32MZ STUFF */
+		#define __32MZ2048EFM144__
+		#define __LANGUAGE_ASSEMBLY__
+		#define __DEBUG
+		#define Simulator=1
+	#endif
 
 #elif (XPRJ_DEBUG_MSC)
 	/* Visual Studio 8, which is decidedly shy of C11 */
@@ -118,7 +138,7 @@ extern "C" {
 	#define	XPRJ_DEBUG_MSC			0
 	#define	XPRJ_Debug_Win_MinGW 	0
 	#define XPRJ_Debug_Linux		0
-	
+
 #else
 #error Must define Eclipse symbol XPRJ_${ConfigName}
 

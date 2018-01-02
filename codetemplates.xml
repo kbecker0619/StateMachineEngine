@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="false" context="org.eclipse.cdt.ui.text.codetemplates.filecomment_context" deleted="false" description="Comment for created C/C++ files" enabled="true" id="org.eclipse.cdt.ui.text.codetemplates.filecomment" name="filecomment">/** @file ${file_name}
+ *	@brief	One-sentence short description of file.
+ *	
+ *	Description: 
+ *	
+ *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
+ *	
+ *	Original:
+ *	Created on: ${date}
+ *	Author: ${user}
+ *
+ *	Current:
+ *	$$Revision: $$
+ *	$$Date: $$
+ */</template></templates>
