@@ -90,7 +90,7 @@ extern "C" {
 	/* This configuration is created by Eclipse; we do not want it used */
 	#error For now, do not build with the "Release" build target active
 
-#elif defined(XPRJ_Debug_Linux) || defined(XPRJ_Debug_Linux_Desktop)
+#elif defined(XPRJ_Debug_Linux_GCC) || defined(XPRJ_Debug_Linux_GCC_Desktop)
 	/* This is the configuration intended for development & debugging in a Linux VM */
 	/* The 1st is intended to debug on a PowerPC Target from a Linux development environment */
 	/* The 2nd (Desktop) is intended for building within S32DS on Linux for a Linux debugging session */
@@ -117,7 +117,7 @@ extern "C" {
 	#define	XPRJ_DEBUG_CVI			1
 	#define	XPRJ_DEBUG_MSC			0
 	#define	XPRJ_Debug_Win_MinGW 	0
-	#define XPRJ_Debug_Linux		0
+	#define XPRJ_Debug_Linux_GCC		0
 	
 #else
 #error Must define Eclipse symbol XPRJ_${ConfigName}
@@ -139,7 +139,7 @@ extern "C" {
  *	define. Pick reasonable defaults if not defined.
  */
 #if !defined(BUILD_FOR_UNIT_TEST)
-	#if (XPRJ_Debug_Linux) || (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
+	#if (XPRJ_Debug_Linux_GCC) || (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
 		#define BUILD_FOR_UNIT_TEST		(true)
 
 	#else
