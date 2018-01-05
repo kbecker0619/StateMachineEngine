@@ -5,7 +5,7 @@
     <SystemStartScript dnOrder="1"/>
   </DisplayManager>
   <General>
-    <HarmonyPath dnOrder="0" path="../../../../../_Programs/Microchip/harmony/v2_04"/>
+    <HarmonyPath dnOrder="0" path="../../../../../_Projects/microchip/harmony/v2_05"/>
     <Processor dnOrder="1" name="PIC32MZ2048EFM144"/>
     <Board dnOrder="2" name="PIC32MZ (EF) Starter Kit"/>
     <ForceOptimization dnOrder="3" flag="true"/>

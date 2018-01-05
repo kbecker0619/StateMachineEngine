@@ -62,3 +62,7 @@ se_ut_c/.settings/com.processorexpert.core.ide.newprojectwizard.prefs
 components/cwsw_clock_prj/cvibuild.cwsw_clock/build.ini
 components/cwsw_smeng_c_prj/doc/SM_Engine_Zimminess/Home.txt.bak~
 components/cwsw_clock_prj/arch/PIC32MZ2048EFM/framework_mhc
+/components/cwsw_dio_mhc/firmware/cwsw_dio_mhc.X/nbproject/private/
+/components/cwsw_dio_mch_lx/firmware/cwsw_dio_mch_lx.X/nbproject/private/
+/components/cwsw_dio_mch_lx/firmware/cwsw_dio_mch_lx.X/build/pic32mz_ef_sk/
+/components/cwsw_dio_mch_lx/firmware/cwsw_dio_mch_lx.X/dist/pic32mz_ef_sk/

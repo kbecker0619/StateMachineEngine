@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=cwsw_dio_mhc.X
+PROJECTNAME=cwsw_dio_mch_lx.X
 
 # Active Configuration
 DEFAULTCONF=pic32mz_ef_sk
