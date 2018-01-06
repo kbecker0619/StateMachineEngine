@@ -5,29 +5,9 @@ Creation-Date: 2017-12-21T18:58:12-05:00
 ====== Architecture Setup ======
 Created Thursday 21 December 2017
 
-Using MPLAB in a "sister" throw-away project to create the skeleton, then COPYING (not linking) the files and/or file contents as appropriate.
-
-created shortcut to harmony's framework (tree is manually pruned to show important-for-now stuff). reference folder is itself a symlink to the actual installation folder. don't know if it's wise or not, but for now i'm ignoring the version of harmony, which as of this writing is 2.04.
-{{{code: lang="sh" linenumbers="True"
-
-$ ln -s $(realpath /cygdrive/e/harmony/v2_04/framework) framework
-
-$ tree -dL 3 ../cwsw_clock_prj/
-../cwsw_clock_prj/
-├── arch
-│   └── PIC32MZ2048EFM
-│       └── framework -> /cygdrive/g/_Programs/Microchip/harmony/v2_04/framework
-├── cwsw_bsp
-│   ├── include
-│   └── src
-├── cwsw_clock
-│   ├── include
-│   └── src
-├── cwsw_lib -> ../cwsw_lib_prj/cwsw_lib
-└── ut
-
-}}}
-
+see daily notes - current idea changed enough relative to original idea, that it's not worth redoing here
+[[Journal:2017:12:21|original: 21-dec-2017]]
+update: 09-jan-2018
 
 Microchip target:
 Debug_Win_MZ2048EFM : Development and debugging on Windows, using Microchip XC Build Tools
@@ -39,6 +19,7 @@ new env-vars:
 Cross prefix: (nil)
 Cross path:	''${PIC32_XC_HOME}''
 Include path:	${''PIC32_XC_INCLUDE}''
+	[ ] 09-jan: manually added this into Eclipse' workspace on Linux; didn't bother exporting it to the main PATH statement.
 
 to refresh, for MinGW, the two main env-vars:
 	''MINGW_HOME=C:\MinGW''		(or wherever you installed MinGW)

@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-01-06T09:56:08-05:00
+
+====== Saturday 06 Jan 2018 ======
+
+update to architecture-specfic layout, developed on linux, relative to earlier experiment, done on windows
+inputs:
+* more thought
+* experience moving from one Win7 environ to another (different VMs, set up slightly differently)
+* experience moving from Win7 environ to Xubuntu 16
+
+done in xubuntu 16
+
+expectations:
+[ ] use MPLAB + Harmony v2.05 to create a "sister" project
+	[ ] note that earlier project, created on Win7 using Harmony v2.04, would not open in the Linux MPLAB sans errors. I saw the project in the project browser, but there was no content
+	[ ] created a new, sister project, "''cwsw_dio_mhc''"
+	[ ] configuration name was "''pic32mz_ef_sk''" — this same name will be used for a build configuration in Eclipse
+	[ ] **note that for my idea to work, the project names in both MPLAB and in Eclipse must match **("''cwsw_dio''" in this case)
+
+{{{code: lang="sh" linenumbers="True"
+~/workspace/PersonalDev/cwsw_lib/components
+├── cwsw_dio_mch_lx		<<== created today (06-jan-2018), in Linux w/ Harmony v2.05
+│   └── firmware
+├── cwsw_dio_mhc		<<== created in Win7, Harmony v2.04, will not open properly in Linux
+│   └── firmware
+├── cwsw_dio_prj
+│   ├── cwsw_arch
+│   ├── cwsw_board
+│   ├── cwsw_bsp
+│   ├── cwsw_dio
+│   ├── cwsw_lib -> ../cwsw_lib_prj/cwsw_lib
+│   ├── firmware		<<== selective COPY (not symlink) from sister project (must open in MPLAB)
+│   └── ut
+└── cwsw_lib_prj
+
+
+}}}
+
+	[ ] WRT the "selective copy" done between "''framework''" folders - i don't really care for the implmentation of "app" and "bsp" created by Harmony - it's not bad, it just isn't how i want to organize the project — therefore, i may or may not end up with these files. also, certain other files (and even folders) in the generated tree will be rearranged slightly in the parts of the project used by Eclipse.
+	[ ] Note: based on present experience, it appears there will ALWAYS be some "tweaking" of the project, when opened in Win7 vs. when opened in Linux. At the least, I would guess you'll have to
+		[ ] respecify the location of the Harmony framework, when opening the MHC tool
+		[ ] respecify or reselect the location of the build tools in the project properties
+
+Microchip target:
+Debug_Win_MZ2048EFM : Development and debugging on Windows, using Microchip XC Build Tools
+new env-vars:
+	''PIC32_XC_HOME=G:\_Programs\Microchip\xc32\v1.44\pic32mx\bin''
+		on 2nd test installation: E:\_Programs\Microchip\xc32\v1.44\pic32mx
+	''PIC32_XC_INCLUDE=G:\_Programs\Microchip\xc32\v1.44\pic32mx\include''
+
+Cross prefix: (nil)
+Cross path:	''${PIC32_XC_HOME}''
+Include path:	${''PIC32_XC_INCLUDE}''
+
+to refresh, for MinGW, the two main env-vars:
+	''MINGW_HOME=C:\MinGW''		(or wherever you installed MinGW)
+	''MSYS_HOME=C:\MinGW\msys\1.0''	(again, verify this is the correct location)
+

@@ -34,11 +34,11 @@ extern "C" {
 // ----	Project Headers -------------------------
 
 // ----	Module Headers --------------------------
-#if (XPRJ_Debug_Win_MinGW)
-#include "ports_none.h"
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC)
+#include "ports_api.h"
 
 #elif (XPRJ_Debug_Win_MZ2048EFM)
-#include "ports_p32mz2048efm144.h"	/* klb: skip 2nd-level selector used by Microchip; go directly to known header */
+//#include "ports_p32mz2048efm144.h"	/* klb: skip 2nd-level selector used by Microchip; go directly to known header */
 
 #else
 #error Unknown MCU

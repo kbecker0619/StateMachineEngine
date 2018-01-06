@@ -42,9 +42,11 @@
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
+#include "peripheral/ports/ports_api.h"
 
 // ----	Module Headers --------------------------
 #include "cwsw_board.h"
+#include "../../cwsw_arch/cwsw_arch_common.h"
 
 
 
@@ -52,28 +54,9 @@
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
 
-/** BSP_LED.
- * Summary:
- *	Defines the LEDs available on this board.
- * Description:
- * 	This enumeration defines the LEDs available on this board.
- * Remarks:
- * 	None.
- */
-enum eBspLeds
-{
-    BSP_LED_1 = 0,
-    BSP_LED_2 = 1,
-    BSP_LED_3 = 2
-};
-
-
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
-
-typedef enum eBspLeds			BSP_LED;
-
 
 // ============================================================================
 // ----	Global Variables ------------------------------------------------------
@@ -138,17 +121,32 @@ static const PORTS_CHANNEL switch_port_channel_map[] =
  * It knows nothing about the application; sitting just above this file, would be the "bsp" (to
  * slightly abuse that term), which connects the application to the board.
  * @return error code, where 0 means no problem.
+ *
+ * i'm on the fence about embedding a dependency here into the architecture - on the one hand, the
+ * BSP (next layer up) should manage this, but on the other hand, the board depends so much upon
+ * the capabilities of the MCU on that board, that it doesn't make much sense to execute software
+ * to initialize the board, when the micro responsible for executing that very self-same software
+ * hasn't yet been initialized.
  */
+#include "cwsw_eventsim.h"
 uint16_t
-Board__Init(void)
+Cwsw_Board__Init(void)
 {
-	initialized = true;
-	return 0;
+	tEventPayload ev = {0};
+
+	if(Get(Cwsw_Arch, Initialized))
+	{
+		initialized = true;
+		return 0;
+	}
+
+	PostEvent(evNotInitialized, ev);
+	return 1;
 }
 
 
 /** Function:
- * 	void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
+ * 	void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
  *
  * Summary:
  * 	This function enables or disables the USB VBUS switch on the board.
@@ -160,39 +158,9 @@ Board__Init(void)
  * 	Refer to bsp_config.h for usage information.
 */
 void
-BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state)
+Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state)
 {
     /* Enable the VBUS switch */
 	/* NOTE: for LabWindows/CVI, I would expect this to activate an LED or somesuch indicator */
     PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, state );
-}
-
-
-/** Function:
- *	void BSP_Initialize(void)
- *
- * Summary:
- * 	Performs the necessary actions to initialize a board.
- *
- * Description:
- * 	This function initializes the LED, Switch and other ports on the board.
- * 	This function must be called by the user before using any APIs present in
- * 	this BSP.
- *
- * Remarks:
- * 	Refer to bsp.h for usage information.
-*/
-WEAK void BSP_LEDOff(uint16_t whichled) { UNUSED(whichled); }
-void
-BSP_Initialize(void)
-{
-	UNUSED(bsp_RevString);
-
-	/* Setup the USB VBUS Switch Control Pin */
-	BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE_DISABLE);
-
-	/* Switch off LEDs */
-	BSP_LEDOff(BSP_LED_1);
-    BSP_LEDOff(BSP_LED_2);
-    BSP_LEDOff(BSP_LED_3);
 }

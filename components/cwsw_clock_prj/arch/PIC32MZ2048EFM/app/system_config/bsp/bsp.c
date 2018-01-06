@@ -113,7 +113,7 @@ static const PORTS_CHANNEL switch_port_channel_map[] =
 // ============================================================================
 
 /* Function:
-    void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
+    void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 
   Summary:
     This function enables or disables the USB VBUS switch on the board.
@@ -125,7 +125,7 @@ static const PORTS_CHANNEL switch_port_channel_map[] =
     Refer to bsp_config.h for usage information.
 */
 void
-BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state)
+Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state)
 {
     /* Enable the VBUS switch */
 
@@ -153,7 +153,7 @@ BSP_Initialize(void)
 	UNUSED(bsp_RevString);
 
     /* Setup the USB VBUS Switch Control Pin */
-	BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE_DISABLE);
+	Cwsw_Board__UsbVbusSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE_DISABLE);
 //
 //    /* Switch off LEDs */
 //    BSP_LEDOff(BSP_LED_1);

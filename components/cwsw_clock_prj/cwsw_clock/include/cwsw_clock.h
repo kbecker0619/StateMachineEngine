@@ -82,6 +82,8 @@ typedef long tCwswClockTics;
 
 /**	Clock library init function. Only needs to be called once, probably by main
  *	application (rather than all components which use this core library).
+ *
+ *	@note Intended invocation is via "Init(Cwsw_Clock);"
  */
 extern uint16_t				Cwsw_Clock__Init(void);
 
@@ -101,7 +103,7 @@ extern tCwswClockTics	Cwsw__Clock(void);
 #endif
 
 /**	Return the number of ms between start and stop times.
- *	Because we're being simpler than we need to, we're always casting the result to a 
+ *	Because we're being simpler than we need to, we're always casting the result to a
  *  signed long.
  * 	@note We are assuming here that there is 1 clock tic per ms; this is what is
  * 	true for MinGW and so of course that means the whole world does it the same

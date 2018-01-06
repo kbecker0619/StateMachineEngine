@@ -78,7 +78,7 @@ typedef enum
     BSP_SWITCH_1 = 0,
     BSP_SWITCH_2 = 1,
     BSP_SWITCH_3 = 2
-} BSP_SWITCH;
+} tBrdUserSwitch;
 
 /* BSP Switch state.
 
@@ -99,7 +99,7 @@ typedef enum
    /* Switch not pressed */
     BSP_SWITCH_STATE_RELEASED =/*DOM-IGNORE-BEGIN*/ 1/*DOM-IGNORE-END*/
 
-} BSP_SWITCH_STATE;
+} tBrdUserSwitchState;
 
 /* USB VBUS Switch State
 
@@ -121,7 +121,7 @@ typedef enum
     /* USB VBUS Switch enable */
     BSP_USB_VBUS_SWITCH_STATE_ENABLE = /*DOM-IGNORE-BEGIN*/1/*DOM-IGNORE-END*/
 
-} BSP_USB_VBUS_SWITCH_STATE;
+} tBrdUsbVbusSwitchState;
 
 
 // ============================================================================
@@ -137,7 +137,7 @@ typedef enum
 // ============================================================================
 
 /* Function:
-    void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
+    void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 
   Summary:
     This function enables or disables the USB VBUS switch on the board.
@@ -164,17 +164,17 @@ typedef enum
     BSP_Initialize();
 
     // Enable the VBUS switch.
-    BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE_ENABLE);
+    Cwsw_Board__UsbVbusSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE_ENABLE);
 
     </code>
 
   Remarks:
     None
 */
-extern void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
+extern void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 
 /* Function:
-    BSP_SWITCH_STATE BSP_SwitchStateGet(BSP_SWITCH switch);
+    tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch switch);
 
   Summary:
     Returns the present state (pressed or not pressed) of the specified switch.
@@ -209,7 +209,7 @@ extern void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
   Remarks:
     None
 */
-extern BSP_SWITCH_STATE BSP_SwitchStateGet(BSP_SWITCH bspSwitch);
+extern tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch bspSwitch);
 
 /* Function:
     void BSP_Initialize(void)

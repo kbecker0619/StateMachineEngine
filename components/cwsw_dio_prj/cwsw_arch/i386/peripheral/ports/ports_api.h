@@ -120,30 +120,48 @@ typedef enum {
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-/* klb: this is architecture-specific, but Microchip adds one more level of indirection, to
- * customize to the specific MCU actually used.
- *
- * This is agnostic about the board on which the MCU resides.
- *
- * For "none", this is a nop. For LabWindows/CVI, this would light an LED (when I add that support).
- *
- * @note can't use the default "PLIB_INLINE_API" decorator, because of two opposing things:
- * 	(a) "extern" in conflict with "static"
- * 	(b) sans "static", you get multiple-definition linking errors. don't know (yet) how this is
- * 		avoided in MPLAB projects.
- *
- * to compensate, modified the Microchip definition of PLIB_INLINE, to eliminate the "extern"
- * storage identifier.
- */
-static PLIB_INLINE void
-PLIB_PORTS_PinWrite(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos, bool value)
-{
-	UNUSED(index);
-	UNUSED(channel);
-	UNUSED(bitPos);
-	UNUSED(value);
-	// PORTS_PinWrite_MCU32_PPS()
-}
+/* Function:
+    void PLIB_PORTS_PinWrite( PORTS_MODULE_ID index, PORTS_CHANNEL channel,
+                              PORTS_BIT_POS       bitPos,
+                              bool            value )
+
+  Summary:
+    Writes the selected digital pin/latch.
+
+  Description:
+    This function writes to the selected digital pin/latch.
+    This function does not perform atomic register access.
+
+  Precondition:
+    None.
+
+  Parameters:
+    index           - Identifier for the device instance to be configured
+    channel         - Identifier for the Ports channel A, B, C, etc.
+    bitPos          - Possible values of PORTS_BIT_POS
+    value           - Value to be written to the specific pin/latch
+                      true - sets the bit, false - clears the bit
+
+  Returns:
+    None.
+
+  Example:
+    <code>
+
+    // write 'one' in port RC4
+    PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_4, 1);
+
+    </code>
+
+  Remarks:
+	This feature may not be available on all devices. Please refer to the
+	specific device data sheet to determine availability or use
+	PLIB_PORTS_ExistsPortsWrite in your application to determine whether
+	this feature is available.
+*/
+extern void PLIB_PORTS_PinWrite(
+		PORTS_MODULE_ID	index, 	PORTS_CHANNEL	channel,
+		PORTS_BIT_POS   bitPos,	bool            value );
 
 
 #ifdef	__cplusplus

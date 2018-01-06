@@ -29,8 +29,6 @@
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
-#include "../../../../../../cwsw_arch/pic32mz/framework/system/clk/src/sys_clk_none.h"
-
 #include "projcfg.h"
 
 // ----	System Headers --------------------------
@@ -42,7 +40,6 @@
 #include "../../../../../pic32mz/app/system_config/system_config.h"
 
 #include "../../../../../../cwsw_arch/pic32mz/app/system_config/system_config.h"
-#include "../../../../../../cwsw_arch/pic32mz/framework/system/clk/src/osc_OscSelect_none.h"
 #include "../../../../../../cwsw_arch/pic32mz/framework/system/clk/src/osc_OscSelect_none.h"
 #include "../../../../../../cwsw_arch/pic32mz/framework/system/clk/src/sys_clk_local.h"
 #include "../../../../../../cwsw_arch/pic32mz/framework/system/devcon/sys_devcon.h"
@@ -79,10 +76,10 @@ static char const * const sys_clk_pic32mz_RevString = "$Revision: 0123 $";
     OSC_PERIPHERAL_BUS _SYS_CLK_GetOscPeripheralBus ( CLK_BUSES_REFERENCE peripheralBus )
 
   Summary:
-    Helper function to remap periheral bus enums to PLIB OSC enums
+    Helper function to remap peripheral bus enums to PLIB OSC enums
 
   Description:
-    Helper function to remap periheral bus enums to PLIB OSC enums
+    Helper function to remap peripheral bus enums to PLIB OSC enums
 
   Remarks:
     None.

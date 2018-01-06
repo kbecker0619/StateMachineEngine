@@ -42,7 +42,7 @@ extern "C" {
 #include <stddef.h>
 
 // ----	Project Headers -------------------------
-#include "../../../../../pic32mz/app/system_config/system_config.h"
+#include "system_config.h"
 #include "sys_tmr.h"
 #include "../../../../../../cwsw_arch/pic32mz/framework/system/common/sys_common.h"
 #include "../../../../../../cwsw_arch/pic32mz/framework/osal/osal.h"

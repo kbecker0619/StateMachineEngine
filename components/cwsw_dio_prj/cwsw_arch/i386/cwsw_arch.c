@@ -19,13 +19,12 @@
 // ============================================================================
 
 // ----	System Headers --------------------------
-#include "../cwsw_arch/cwsw_arch.h"
-
 #include <stdbool.h>
 
 // ----	Project Headers -------------------------
 
 // ----	Module Headers --------------------------
+#include "cwsw_arch.h"
 
 
 // ============================================================================
@@ -63,7 +62,7 @@ static bool initialized = false;
 // ============================================================================
 
 uint16_t
-Arch__Init(void)
+Cwsw_Arch__Init(void)
 {
 
 	UNUSED(cwsw_arch_RevString);
@@ -77,4 +76,12 @@ Arch__Init(void)
 
 	initialized = true;
 	return 0;
+
+}
+
+
+bool
+Cwsw_Arch__Get_Initialized(void)
+{
+	return initialized;
 }

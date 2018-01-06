@@ -26,7 +26,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #ifndef _PLIB_OSC_PROCESSOR_H
 #define _PLIB_OSC_PROCESSOR_H
 
-#if  (XPRJ_Debug_Win_MinGW)	/* klb modification */
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC)	/* klb modification */
 	#include "osc/osc_none.h"
 
 #elif defined(__PIC32MX__)

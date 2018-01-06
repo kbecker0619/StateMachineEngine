@@ -162,11 +162,40 @@ typedef void (*fpTask)(void);
  *	This is designed to be a sort of extension of the Init(module) and
  *	Task(module) API; in the same way, you "Get(module, attribute)".
  */
-#define Get(component, resource)	_GET(component, resource)
-#define _GET(component, resource)	Get__ ## component(resource)
+#define Get(component, resource)				_GetComp1(component, resource)
+#define _GetComp1(component, resource)			component ## __Get(resource)
 
+#define Set(component, resource, value)			_SetComp1(component, resource, value)
+#define _SetComp1(component, resource, value)	component ## __Set(resource, value)
+
+
+/// throw-away get for global resource
 #define GET(item)				_GET1(item)
 #define _GET1(thing)			GET_ ## thing()
+
+
+#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wvariadic-macros"
+#else
+
+#endif
+/* intended usage would be:
+ * a)	SET(Global_Resource, Value);
+ * b)	SET(Module, Module_Resource, Value);
+ *
+ * with a possible permutation (not tested)
+ * c)	SET(Module, Module_Array_Resource, index, value);
+ *
+ * This one is capitalized because it's dangerous (as in, no ability to use a static checker to
+ * 100% confirm proper operation)
+ */
+//#define SET(item_or_module, value_or_item...)		SET_ ## item_or_module(## value_or_item)
+#define SET(item, value)		_SET1(item, value)
+#define _SET1(item, value)		SET_ ## item(value)
+#if defined(__GNUC__)	/* --- /GNU Environment ----------------------------- */
+#pragma GCC diagnostic pop
+#endif
 
 
 /**	Pre-configured "module" named "Dbg" (Debug) for use with the above Get() API.
@@ -255,7 +284,7 @@ extern uint16_t Cwsw_Lib__Init(void);
 #define cwsw_assert(a)		assert(a)
 
 /** Target symbol for Get(Cwsw_Lib, xxx) interface */
-#define Get__Cwsw_Lib(a)	Cwsw_Lib__Get_ ## a()
+#define Cwsw_Lib__Get(a)	Cwsw_Lib__Get_ ## a()
 
 /** Target for Get(Cwsw_Lib, Initialized) interface */
 extern bool Cwsw_Lib__Get_Initialized(void);

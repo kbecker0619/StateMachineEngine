@@ -57,7 +57,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdbool.h>
 #include "assert.h"
 
-#include "../../../../../cwsw_arch/pic32mz/framework/system/common/sys_common.h"
+#include "sys_common.h"
 
 
 #ifdef __cplusplus

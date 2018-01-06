@@ -33,8 +33,8 @@
  *	$Date: $
  */
 
-#ifndef ARCH_PIC32MZ2048EFM_APP_SYSTEM_CONFIG_FRAMEWORK_MHC_SYSTEM_SYSTEM_H_
-#define ARCH_PIC32MZ2048EFM_APP_SYSTEM_CONFIG_FRAMEWORK_MHC_SYSTEM_SYSTEM_H_
+#ifndef SYSTEM_H_
+#define SYSTEM_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -49,8 +49,8 @@ extern "C" {
 // ----	Project Headers -------------------------
 
 // ----	Module Headers --------------------------
-#include "../../../../cwsw_arch/pic32mz/framework/system/common/sys_common.h"
-#include "../../../../cwsw_arch/pic32mz/framework/system/common/sys_module.h"
+#include "sys_common.h"
+#include "sys_module.h"
 
 
 // ============================================================================
@@ -76,4 +76,4 @@ extern "C" {
 }
 #endif
 
-#endif /* ARCH_PIC32MZ2048EFM_APP_SYSTEM_CONFIG_FRAMEWORK_MHC_SYSTEM_SYSTEM_H_ */
+#endif /* SYSTEM_H_ */

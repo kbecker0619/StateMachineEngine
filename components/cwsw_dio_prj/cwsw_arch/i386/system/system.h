@@ -1,11 +1,16 @@
 /** @file
- *	@brief	Ports Peripheral Library Interface header for Ports function definitions.
+ *	@brief	Top level common system services library interface header.
  *
  *	Description:
- *	This header file contains the function prototypes and definitions of
- *	the data types and constants that make up the interface to the Ports
- *	Peripheral Library for all families of Microchip microcontrollers. The
- *	definitions in this file are common to the Ports peripheral.
+ *	This file is the top level common system services library interface header.
+ *	It defines (or includes files that define) the common system service
+ *	types, prototypes, and other definitions that are commonly used by MPLAB
+ *	Harmony libraries and system services.
+ *
+ *	System services provide common functionality that would otherwise need to
+ *	be duplicated by multiple other modules or that would force them to
+ *	interact in complex and hard to manage ways.  System services eliminate
+ *	conflicts by controlling access shared resources.
  *
  *
  *	@note	This file is an as-needed COPY of the file created by Microchip's Harmony Configurator,
@@ -20,7 +25,7 @@
  *
  *
  *	Original:
- *	Created on: Dec 25, 2017
+ *	Created on: Dec 23, 2017
  *	Author: kbecker
  *
  *	Current:
@@ -28,8 +33,8 @@
  *	$Date: $
  */
 
-#ifndef PLIB_PORTS_H_
-#define PLIB_PORTS_H_
+#ifndef SYSTEM_SYSTEM_H_
+#define SYSTEM_SYSTEM_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -39,19 +44,19 @@ extern "C" {
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
-#include "projcfg.h"
-
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
 
 // ----	Module Headers --------------------------
+#include "sys_common.h"
+#include "sys_module.h"
 
 
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
-#define PLIB_PORTS_H__REVSTRING "$Revision: 0123 $"
+#define SYSTEM_H__REVSTRING "$Revision: 0123 $"
 
 
 // ============================================================================
@@ -66,16 +71,9 @@ extern "C" {
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-/* in the Microchip way of doing things, you set up processor-common stuff above, then select the
- * appropriate MCU-specific header via a command-line define. for now, while i'm adding support for
- * the MZ EZ board, we'll just copy their method.
- *
- * @todo: refactor MCU selection, board selection, etc. ala AUTOSAR & Linux Kernel.
- */
-#include "processor/ports_processor.h"
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif /* PLIB_PORTS_H_ */
+#endif /* SYSTEM_SYSTEM_H_ */

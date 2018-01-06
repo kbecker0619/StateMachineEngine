@@ -42,7 +42,7 @@ extern "C" {
 // ----	System Headers --------------------------
 /* klb: patchify MCH-generated code to make it work in Eclipse w/ multiple build targets */
 #if (XPRJ_Debug_Win_MZ2048EFM)
-#include <xc.h>
+//#include <xc.h>				<<== klb: TEMPORARY! ONLY DURING EARLY BUILDUP
 #endif
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,7 +51,16 @@ extern "C" {
 
 
 // ----	Project Headers -------------------------
-#include "ports/plib_ports.h"
+/* note: while i personally strongly agree with the coding guideline that says, "no path statements
+ * in include statements", i am doing that here in my early attempt to support multiple CPU
+ * architectures and multiple boards; in my idea, the include paths specified on the command line
+ * should point to the correct architecture family, or board, and the structure underneath that
+ * parent should be identical.
+ *
+ * of course there are other, perhaps better, ways to do this, but this is my path during very early
+ * development of my system.
+ */
+#include "peripheral/ports/plib_ports.h"
 
 // ----	Module Headers --------------------------
 
@@ -72,13 +81,13 @@ extern "C" {
  * Remarks:
  * 	None.
  */
-enum eBSP_USB_VBUS_SWITCH_STATE
+enum eBrdUsbVbusSwitchState
 {
     /* USB VBUS Switch disable */
-    BSP_USB_VBUS_SWITCH_STATE_DISABLE = 0,
+    kBrdUsbVbusSwitchState_Disable = 0,
 
     /* USB VBUS Switch enable */
-    BSP_USB_VBUS_SWITCH_STATE_ENABLE = 1
+    kBrdUsbVbusSwitchState_Enable = 1
 };
 
 /** BSP Switch.
@@ -121,13 +130,32 @@ enum eBSP_SWITCH_STATE
 };
 
 
+/** tBoardLed.
+ * Summary:
+ *	Defines the LEDs available on this board.
+ * Description:
+ * 	This enumeration defines the LEDs available on this board.
+ * Remarks:
+ * 	None.
+ */
+enum eBoardLeds
+{
+    kBoardLed1,
+	kBoardLed2,
+	kBoardLed3,
+	kBoardNumLeds
+};
+
+
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
-typedef enum eBSP_USB_VBUS_SWITCH_STATE	BSP_USB_VBUS_SWITCH_STATE;
-typedef enum eBSP_SWITCH				BSP_SWITCH;
-typedef enum eBSP_SWITCH_STATE			BSP_SWITCH_STATE;
+typedef enum eBrdUsbVbusSwitchState		tBrdUsbVbusSwitchState;
+typedef enum eBSP_SWITCH				tBrdUserSwitch;
+typedef enum eBSP_SWITCH_STATE			tBrdUserSwitchState;
+
+typedef enum eBoardLeds					tBoardLed;
 
 
 // ============================================================================
@@ -138,10 +166,10 @@ typedef enum eBSP_SWITCH_STATE			BSP_SWITCH_STATE;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-extern uint16_t Board__Init(void);
+extern uint16_t Cwsw_Board__Init(void);
 
 /* Function:
-    void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
+    void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 
   Summary:
     This function enables or disables the USB VBUS switch on the board.
@@ -153,9 +181,9 @@ extern uint16_t Board__Init(void);
     BSP_Initialize() should have been called.
 
   Parameters:
-    state - If BSP_USB_VBUS_SWITCH_STATE_ENABLE, then the USB VBUS switch is
+    state - If kBrdUsbVbusSwitchState_Enable, then the USB VBUS switch is
             enabled and VBUS is supplied on the USB.
-            If BSP_USB_VBUS_SWITCH_STATE_DISABLE, then the USB VBUS
+            If kBrdUsbVbusSwitchState_Disable, then the USB VBUS
             switch is disabled and VBUS is not supplied on the USB.
 
   Returns:
@@ -168,17 +196,17 @@ extern uint16_t Board__Init(void);
     BSP_Initialize();
 
     // Enable the VBUS switch.
-    BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE_ENABLE);
+    Cwsw_Board__UsbVbusSwitchStateSet(kBrdUsbVbusSwitchState_Enable);
 
     </code>
 
   Remarks:
     None
 */
-extern void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
+extern void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 
 /* Function:
-    BSP_SWITCH_STATE BSP_SwitchStateGet(BSP_SWITCH switch);
+    tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch switch);
 
   Summary:
     Returns the present state (pressed or not pressed) of the specified switch.
@@ -213,7 +241,7 @@ extern void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
   Remarks:
     None
 */
-extern BSP_SWITCH_STATE BSP_SwitchStateGet(BSP_SWITCH bspSwitch);
+extern tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch bspSwitch);
 
 /* Function:
     void BSP_Initialize(void)
@@ -245,6 +273,21 @@ extern BSP_SWITCH_STATE BSP_SwitchStateGet(BSP_SWITCH bspSwitch);
     None
 */
 extern void BSP_Initialize(void);
+
+
+/** Target symbol for Set(Cwsw_Board, Resource, xxx) interface */
+#define Cwsw_Board__Set(resource, value)		Cwsw_Board__Set__ ## resource(value)
+
+/* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface */
+#define Cwsw_Board__Set__UsbVbus(value)			Cwsw_Board__UsbVbusSwitchStateSet(value)
+
+
+/* In the expansions of Cwsw_Board__Set__BspActivity<n>, we refer to functions provided by Harmony.
+ * For desktop console apps, simply make them nops.
+ */
+#define BSP_LEDOn(a)	do { UNUSED(a); } while(0)
+#define BSP_LEDOff(a)	do { UNUSED(a); } while(0)
+
 
 #ifdef	__cplusplus
 }

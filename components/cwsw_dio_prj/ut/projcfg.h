@@ -71,7 +71,7 @@ extern "C" {
 /* ==== A FOLLOW-UP WORD ABOUT BUILD TARGETS ==================================
  * ANSI/ISO C says that the preprocesser evaluates an undefined symbol as having
  * the value '0' - however, many of the environments i'm targeting, and also many
- * of the static analysis tools, emit warnings about usage of undefined symbols.
+ * of the static analysis tools, emit warnings about usage of undefined symbols
  * in normal C code - and i have a rather strong aversion to using #if defined(x)
  * mechanisms in normal code. therefore, i'll here define all of the non-active
  * build targets.
@@ -94,12 +94,15 @@ extern "C" {
 	/* This is the configuration intended for development & debugging in a Linux VM */
 	/* The 1st is intended to debug on a PowerPC Target from a Linux development environment */
 	/* The 2nd (Desktop) is intended for building within S32DS on Linux for a Linux debugging session */
+	#define	XPRJ_DEBUG_CVI				0
+	#define	XPRJ_DEBUG_MSC				0
+	#define	XPRJ_Debug_Win_MinGW 		0
 
 #elif defined(XPRJ_Debug_Win_MinGW)
 	/* This is the configuration intended for development on Windows, using the MinGW tool suite */
-	#define XPRJ_DEBUG_MSC				false
-	#define	XPRJ_DEBUG_CVI				false
-	#define XPRJ_Debug_Win_MZ2048EFM	false
+	#define XPRJ_DEBUG_MSC				0
+	#define	XPRJ_DEBUG_CVI				0
+	#define XPRJ_Debug_Win_MZ2048EFM	0
 
 	#define __PIC32MZ__					/* TODO: ABSTRACT AWAY PIC32MZ STUFF. this, for plib_ports.h */
 	#define __32MZ2048EFM144__			/* and this, for ports_p32xxx.h */
@@ -108,10 +111,10 @@ extern "C" {
 	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
 
 #elif defined(XPRJ_Debug_Win_MZ2048EFM)
-	#define Debug_MZ2048EFM				true
-	#define XPRJ_Debug_Win_MinGW		false
-	#define XPRJ_DEBUG_MSC				false
-	#define	XPRJ_DEBUG_CVI				false
+	#define Debug_MZ2048EFM				1
+	#define XPRJ_Debug_Win_MinGW		0
+	#define XPRJ_DEBUG_MSC				0
+	#define	XPRJ_DEBUG_CVI				0
 
 	/* define stuff that MPLAB defines on the command line */
 	#if !defined(__PIC32M)
@@ -120,7 +123,7 @@ extern "C" {
 		#define __32MZ2048EFM144__
 		#define __LANGUAGE_ASSEMBLY__
 		#define __DEBUG
-		#define Simulator=1
+		#define Simulator	1
 	#endif
 
 #elif (XPRJ_DEBUG_MSC)
@@ -134,9 +137,9 @@ extern "C" {
 	#define	XPRJ_DEBUG_CVI			false
 
 #elif (_CVI_)
-	#define	XPRJ_DEBUG_CVI			1
-	#define	XPRJ_DEBUG_MSC			0
-	#define	XPRJ_Debug_Win_MinGW 	0
+	#define	XPRJ_DEBUG_CVI				1
+	#define	XPRJ_DEBUG_MSC				0
+	#define	XPRJ_Debug_Win_MinGW 		0
 	#define XPRJ_Debug_Linux_GCC		0
 
 #else

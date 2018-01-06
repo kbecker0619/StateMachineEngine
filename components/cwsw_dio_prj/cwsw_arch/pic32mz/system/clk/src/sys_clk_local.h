@@ -47,10 +47,11 @@ extern "C" {
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
-
 #include "sys_devcon.h"
-#include "../sys_clk.h"
+#include "sys_clk.h"
 #include "sys_clk_variant_mapping.h"
+#include "osc/osc_PBClockDivisor_none.h"	/* PERIPHERAL_BUSES_MAX */
+#include "osc/osc_none.h"					/* OSC_SYS_TYPE. NOTE, however, this is architecture-specific */
 
 // ----	Module Headers --------------------------
 

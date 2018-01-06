@@ -75,8 +75,10 @@ typedef void (*pEventHandler)(tEventPayload EventData);
  * 	the actual values, but for the names themselves. See the PostEvent
  * 	definition to see how that's done.
  */
+#if (USE_SIMULATED_EVENTS)
 #include "projevtnames.h"
 typedef enum eProjectEvents tProjectEvents;
+#endif
 
 
 // ============================================================================
