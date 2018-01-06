@@ -43,18 +43,14 @@ expectations:
 		[ ] respecify the location of the Harmony framework, when opening the MHC tool
 		[ ] respecify or reselect the location of the build tools in the project properties
 
-Microchip target:
-Debug_Win_MZ2048EFM : Development and debugging on Windows, using Microchip XC Build Tools
-new env-vars:
-	''PIC32_XC_HOME=G:\_Programs\Microchip\xc32\v1.44\pic32mx\bin''
-		on 2nd test installation: E:\_Programs\Microchip\xc32\v1.44\pic32mx
-	''PIC32_XC_INCLUDE=G:\_Programs\Microchip\xc32\v1.44\pic32mx\include''
 
-Cross prefix: (nil)
-Cross path:	''${PIC32_XC_HOME}''
-Include path:	${''PIC32_XC_INCLUDE}''
-
-to refresh, for MinGW, the two main env-vars:
-	''MINGW_HOME=C:\MinGW''		(or wherever you installed MinGW)
-	''MSYS_HOME=C:\MinGW\msys\1.0''	(again, verify this is the correct location)
-
+early afternoon:
+[ ] created new component project, "cwsw_arch". this will be a bit special, in that it is intended simply to be a container for all stuff specifically related to architecture support; as such, it really (at this time, anyway) won't have a valid unit test
+[ ] moved all existing content of the dio component's "cwsw_arch" folder into the new home; confirmed that the dio project is now fatally broken
+[ ] created symlink from the arch component into the dio project, replacing previous content. confirmed build works again.
+[ ] added new symlink to git index manually (command line). committed changes.
+________________________________________
+[ ] note this plan does disrupt my previous idea, not expressed in writing until now, of sym-linking from the pic32 arch & board folders into the MHC project that's a sister of the DIO working folder. ... developing ...
+[ ] repeated above exercise for board support:
+[ ] created new component project, "cwsw_board". this also is intended mainly to be a container for all stuff specifically related to the project board.
+[ ] moved all existing content of the dio "cwsw_board" folder into the new home; confi
