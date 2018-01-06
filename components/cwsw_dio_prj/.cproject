@@ -180,7 +180,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="cwsw_arch/pic_interrupts.c|cwsw_arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/tcpip|firmware|arch/PIC32MZ2048EFM/framework/driver/i2c/src|arch/pic_exceptions.c|arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mk.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32c.c|arch/PIC32MZ2048EFM/framework/usb|arch/PIC32MZ2048EFM/framework_mhc|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mx.c|arch/PIC32MZ2048EFM/framework/system/touch|arch/PIC32MZ2048EFM/framework/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="firmware|arch/PIC32MZ2048EFM/framework/driver/i2c/src|arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mk.c|cwsw_arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/touch|arch/PIC32MZ2048EFM/framework/tcpip|arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32c.c|arch/PIC32MZ2048EFM/framework/usb|arch/PIC32MZ2048EFM/framework_mhc|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mx.c|cwsw_arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -309,22 +309,18 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889.120263600.2094481044" name="/" resourcePath="cwsw_arch/i386/system/clk">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.base.1354659083" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base" unusedChildren="">
-							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1215774170" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base.36950421"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1258653196" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base.229606359"/>
-							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.467958747" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base.1576553591">
-								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.81134670" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-							</tool>
-							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.1335812190" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base.1015490501"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.1974807722" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base.1424180948"/>
-							<tool id="cdt.managedbuild.tool.gnu.assembler.base.630260974" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base.1135766926">
-								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.395091786" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
-							</tool>
+					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889.120263600.426602841" name="/" resourcePath="cwsw_arch.save">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.696217276" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base" unusedChildren="">
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1650250139" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base.36950421"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.580002863" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base.229606359"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1424242685" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base.1576553591"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.116169945" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base.1015490501"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.730403906" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base.1424180948"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.base.1307722672" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base.1135766926"/>
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="cwsw_arch/i386/system/clk|cwsw_arch/pic32mz|cwsw_arch/pic_interrupts.c|cwsw_arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/tcpip|firmware|arch/PIC32MZ2048EFM/framework/driver/i2c/src|arch/pic_exceptions.c|arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mk.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32c.c|arch/PIC32MZ2048EFM/framework/usb|arch/PIC32MZ2048EFM/framework_mhc|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mx.c|arch/PIC32MZ2048EFM/framework/system/touch|arch/PIC32MZ2048EFM/framework/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="cwsw_arch.save|firmware|arch/PIC32MZ2048EFM/framework/driver/i2c/src|arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mk.c|cwsw_arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/touch|cwsw_arch/i386/system/clk|arch/PIC32MZ2048EFM/framework/tcpip|arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32c.c|arch/PIC32MZ2048EFM/framework/usb|arch/PIC32MZ2048EFM/framework_mhc|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mx.c|cwsw_arch/pic32mz|cwsw_arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
