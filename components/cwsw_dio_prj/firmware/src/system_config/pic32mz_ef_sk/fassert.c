@@ -40,9 +40,6 @@ void __attribute__((noreturn)) _fassert(int          nLineNumber,
                                         const char * sFailedExpression,
                                         const char * sFunction )
 {
-    SYS_DEBUG_PRINT(SYS_ERROR_FATAL,
-                      "ASSERTION '%s' FAILED! File: %s, Line: %d, Function: %s\r\n",
-                       sFailedExpression,sFileName,nLineNumber,sFunction);
 
     while(1) {
         SYS_DEBUG_BreakPoint();

@@ -37,12 +37,12 @@
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
-#include "../../../../../pic32mz/app/system_config/system_config.h"
+#include "system/system_config.h"
 
-#include "../../../../../../cwsw_arch/pic32mz/app/system_config/system_config.h"
-#include "../../../../../../cwsw_arch/pic32mz/framework/system/clk/src/osc_OscSelect_none.h"
-#include "../../../../../../cwsw_arch/pic32mz/framework/system/clk/src/sys_clk_local.h"
-#include "../../../../../../cwsw_arch/pic32mz/framework/system/devcon/sys_devcon.h"
+#include "system/system_config.h"
+#include "system/clk/src/osc_OscSelect_none.h"
+#include "system/clk/src/sys_clk_local.h"
+#include "system/devcon/sys_devcon.h"
 
 
 // ============================================================================

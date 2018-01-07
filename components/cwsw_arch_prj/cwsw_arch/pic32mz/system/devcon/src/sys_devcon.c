@@ -40,8 +40,8 @@
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
 
-#include "int/plib_int.h"
-#include "osc/plib_osc.h"
+//#include "int/plib_int.h"
+//#include "osc/plib_osc.h"
 #include "sys_devcon_local.h"
 
 // ----	Module Headers --------------------------

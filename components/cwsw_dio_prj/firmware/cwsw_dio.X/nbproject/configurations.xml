@@ -34,9 +34,13 @@
         </logicalFolder>
         <logicalFolder name="f2" displayName="system" projectFiles="true">
           <logicalFolder name="f2" displayName="clk" projectFiles="true">
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/clk/src/sys_clk_local.h</itemPath>
+              <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/clk/src/sys_clk_variant_mapping.h</itemPath>
+              <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.h</itemPath>
+            </logicalFolder>
             <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/clk/sys_clk.h</itemPath>
             <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/clk/sys_clk_compatibility.h</itemPath>
-            <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/clk/sys_clk_mapping.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f1" displayName="common" projectFiles="true">
             <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/common/sys_common.h</itemPath>
@@ -77,12 +81,7 @@
             </logicalFolder>
             <logicalFolder name="f1" displayName="framework" projectFiles="true">
               <logicalFolder name="f1" displayName="system" projectFiles="true">
-                <logicalFolder name="f1" displayName="clk" projectFiles="true">
-                  <logicalFolder name="f1" displayName="src" projectFiles="true">
-                    <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/clk/src/sys_clk_pic32mz.c</itemPath>
-                  </logicalFolder>
-                </logicalFolder>
-                <logicalFolder name="f2" displayName="devcon" projectFiles="true">
+                <logicalFolder name="f1" displayName="devcon" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c</itemPath>
                     <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c</itemPath>
@@ -90,7 +89,7 @@
                     <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder name="f3" displayName="ports" projectFiles="true">
+                <logicalFolder name="f2" displayName="ports" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c</itemPath>
                   </logicalFolder>
@@ -109,7 +108,13 @@
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="system" projectFiles="true">
-          <logicalFolder name="f1" displayName="int" projectFiles="true">
+          <logicalFolder name="f1" displayName="clk" projectFiles="true">
+            <logicalFolder name="f1" displayName="src" projectFiles="true">
+              <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c</itemPath>
+              <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="int" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../../microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c</itemPath>
             </logicalFolder>
@@ -125,12 +130,8 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
-    <Elem>../../../../../_Programs/Microchip/harmony/v2_04</Elem>
-    <Elem>..\src</Elem>
-    <Elem>..\src\pic32mz_ef_sk</Elem>
-    <Elem>..\src\system_config\pic32mz_ef_sk</Elem>
-    <Elem>../../../../../microchip/harmony/v2_05</Elem>
     <Elem>../src/pic32mz_ef_sk</Elem>
+    <Elem>../../../../../microchip/harmony/v2_05</Elem>
     <Elem>../src/system_config/pic32mz_ef_sk</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
@@ -180,10 +181,10 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../src/system_config/pic32mz_ef_sk/framework;../../../../../../../_Programs/Microchip/harmony/v2_04/framework;../../../../../../../microchip/harmony/v2_05/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
+                  value="../../../../../../../_Programs/Microchip/harmony/v2_04/framework;../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../../../../../../../microchip/harmony/v2_05/framework;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="isolate-each-function" value="true"/>
+        <property key="isolate-each-function" value="false"/>
         <property key="make-warnings-into-errors" value="false"/>
         <property key="optimization-level" value="-O1"/>
         <property key="place-data-into-section" value="false"/>
@@ -203,7 +204,7 @@
       </C32-AR>
       <C32-AS>
         <property key="assembler-symbols" value=""/>
-        <property key="enable-symbols" value="true"/>
+        <property key="enable-symbols" value="false"/>
         <property key="exclude-floating-point-library" value="false"/>
         <property key="expand-macros" value="false"/>
         <property key="extra-include-directories-for-assembler" value=""/>
@@ -274,7 +275,7 @@
         <property key="extra-include-directories" value=""/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="isolate-each-function" value="true"/>
+        <property key="isolate-each-function" value="false"/>
         <property key="make-warnings-into-errors" value="false"/>
         <property key="optimization-level" value="-O1"/>
         <property key="place-data-into-section" value="false"/>

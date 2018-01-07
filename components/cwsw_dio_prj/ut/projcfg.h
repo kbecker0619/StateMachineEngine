@@ -112,6 +112,7 @@ extern "C" {
 
 #elif defined(XPRJ_Debug_Win_MZ2048EFM)
 	#define Debug_MZ2048EFM				1
+	#define XPRJ_Debug_Linux_GCC		0
 	#define XPRJ_Debug_Win_MinGW		0
 	#define XPRJ_DEBUG_MSC				0
 	#define	XPRJ_DEBUG_CVI				0
@@ -119,12 +120,14 @@ extern "C" {
 	/* define stuff that MPLAB defines on the command line */
 	#if !defined(__PIC32M)
 		#define __PIC32M
-		#define __PIC32MZ__		/* TODO: ABSTRACT AWAY PIC32MZ STUFF */
-		#define __32MZ2048EFM144__
 		#define __LANGUAGE_ASSEMBLY__
 		#define __DEBUG
-		#define Simulator	1
 	#endif
+
+	/* enable or disable individual architectural features */
+	#define USE_SYS_CLK					false
+	#define USE_SYS_DEVCON				false
+
 
 #elif (XPRJ_DEBUG_MSC)
 	/* Visual Studio 8, which is decidedly shy of C11 */
@@ -145,6 +148,12 @@ extern "C" {
 #else
 #error Must define Eclipse symbol XPRJ_${ConfigName}
 
+#endif
+
+#if (USE_SYS_DEVCON)
+	#if !(USE_SYS_CLK)
+		#error DEVCON depends on CLK functionality
+	#endif
 #endif
 
 

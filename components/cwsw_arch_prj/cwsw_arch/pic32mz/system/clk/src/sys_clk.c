@@ -37,7 +37,7 @@
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-#include "../../../../../../cwsw_arch/pic32mz/framework/system/clk/src/sys_clk_local.h"
+#include "sys_clk_local.h"
 
 // ----	Module Headers --------------------------
 

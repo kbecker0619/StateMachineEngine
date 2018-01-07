@@ -141,8 +141,8 @@ void WEAK APP_Initialize ( void )
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
-    appData.sysTimerClientHandle1  = SYS_TMR_HANDLE_INVALID;
-    appData.sysTimerClientHandle2  = SYS_TMR_HANDLE_INVALID;
+//    appData.sysTimerClientHandle1  = SYS_TMR_HANDLE_INVALID;
+//    appData.sysTimerClientHandle2  = SYS_TMR_HANDLE_INVALID;
     appData.LED1Toggle = false;
     appData.LED2Toggle = false;
     appData.startTick = 0; // holds the value of the System Counter at start of period
@@ -157,7 +157,7 @@ void WEAK APP_Initialize ( void )
  */
 uint32_t WEAK SYS_TMR_TickCountGet(void) { return 0; }
 uint32_t WEAK SYS_TMR_TickCounterFrequencyGet ( void ) { return 0; }
-SYS_TMR_HANDLE SYS_TMR_CallbackPeriodic ( uint32_t periodMs, uintptr_t context, SYS_TMR_CALLBACK   callback ) { UNUSED(periodMs); UNUSED(context); UNUSED(callback); return 0; }
+//SYS_TMR_HANDLE SYS_TMR_CallbackPeriodic ( uint32_t periodMs, uintptr_t context, SYS_TMR_CALLBACK   callback ) { UNUSED(periodMs); UNUSED(context); UNUSED(callback); return 0; }
 void WEAK APP_Tasks ( void )
 {
 
@@ -189,8 +189,8 @@ void WEAK APP_Tasks ( void )
         case APP_STATE_INIT:
         {
             bool appInitialized = true;
-			appData.sysTimerClientHandle1 = SYS_TMR_CallbackPeriodic(500, 0, APP_SysTimerCallback1);
-            appData.sysTimerClientHandle2 = SYS_TMR_CallbackPeriodic(1000, 0, APP_SysTimerCallback2);
+//			appData.sysTimerClientHandle1 = SYS_TMR_CallbackPeriodic(500, 0, APP_SysTimerCallback1);
+//            appData.sysTimerClientHandle2 = SYS_TMR_CallbackPeriodic(1000, 0, APP_SysTimerCallback2);
 
             if (appInitialized)
             {

@@ -18,70 +18,86 @@
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk</Path>
       </File>
       <File dnOrder="1">
+        <Name dnOrder="0">sys_clk_pic32mz.c</Name>
+        <Path dnOrder="1">Source&amp;#160;Files/framework/system/clk/src</Path>
+      </File>
+      <File dnOrder="2">
         <Name dnOrder="0">sys_ports_definitions.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/ports</Path>
       </File>
-      <File dnOrder="2">
+      <File dnOrder="3">
         <Name dnOrder="0">osal_impl_basic.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/osal</Path>
       </File>
-      <File dnOrder="3">
-        <Name dnOrder="0">sys_clk_mapping.h</Name>
-        <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk</Path>
-      </File>
       <File dnOrder="4">
+        <Name dnOrder="0">sys_clk_pic32mz.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk/src</Path>
+      </File>
+      <File dnOrder="5">
         <Name dnOrder="0">osal_definitions.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/osal</Path>
       </File>
-      <File dnOrder="5">
+      <File dnOrder="6">
         <Name dnOrder="0">sys_int_mapping.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/int</Path>
       </File>
-      <File dnOrder="6">
+      <File dnOrder="7">
         <Name dnOrder="0">osal.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/osal</Path>
       </File>
-      <File dnOrder="7">
+      <File dnOrder="8">
         <Name dnOrder="0">sys_int_private.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/int/src</Path>
       </File>
-      <File dnOrder="8">
+      <File dnOrder="9">
+        <Name dnOrder="0">sys_clk.c</Name>
+        <Path dnOrder="1">Source&amp;#160;Files/framework/system/clk/src</Path>
+      </File>
+      <File dnOrder="10">
         <Name dnOrder="0">system.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system</Path>
       </File>
-      <File dnOrder="9">
+      <File dnOrder="11">
         <Name dnOrder="0">sys_debug.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/debug</Path>
       </File>
-      <File dnOrder="10">
+      <File dnOrder="12">
+        <Name dnOrder="0">sys_clk_variant_mapping.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk/src</Path>
+      </File>
+      <File dnOrder="13">
         <Name dnOrder="0">sys_module.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/common</Path>
       </File>
-      <File dnOrder="11">
+      <File dnOrder="14">
+        <Name dnOrder="0">sys_clk_local.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk/src</Path>
+      </File>
+      <File dnOrder="15">
         <Name dnOrder="0">sys_ports.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/ports</Path>
       </File>
-      <File dnOrder="12">
+      <File dnOrder="16">
         <Name dnOrder="0">sys_common.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/common</Path>
       </File>
-      <File dnOrder="13">
+      <File dnOrder="17">
         <Name dnOrder="0">sys_buffer.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/common</Path>
       </File>
-      <File dnOrder="14">
+      <File dnOrder="18">
         <Name dnOrder="0">sys_int_pic32.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/framework/system/int/src</Path>
       </File>
-      <File dnOrder="15">
+      <File dnOrder="19">
         <Name dnOrder="0">sys_queue.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/common</Path>
       </File>
-      <File dnOrder="16">
+      <File dnOrder="20">
         <Name dnOrder="0">sys_int.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/int</Path>
       </File>
-      <File dnOrder="17">
+      <File dnOrder="21">
         <Name dnOrder="0">sys_clk_compatibility.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/framework/system/clk</Path>
       </File>
@@ -105,7 +121,7 @@
       <Template dnOrder="3">
         <Name dnOrder="0">system_init.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/pic32mz_ef_sk</Path>
-        <Checksum dnOrder="2">B910A2154706FF1CA1FF458265D1C518</Checksum>
+        <Checksum dnOrder="2">E16F9F2FB39CDBBB2EC447F1B7986DAF</Checksum>
       </Template>
       <Template dnOrder="4">
         <Name dnOrder="0">system_interrupt.c</Name>
@@ -120,8 +136,7 @@
       <Template dnOrder="6">
         <Name dnOrder="0">fassert.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/pic32mz_ef_sk</Path>
-        <Checksum dnOrder="2">ACF441D0BE263FA688241FA6A84CC549</Checksum>
-        <ProjectFileChecksum dnOrder="3">E7CCB09C7348E346331DA19F0D4E360F</ProjectFileChecksum>
+        <Checksum dnOrder="2">EEFFDA5F0EF8BC411198C1F6CA901E9E</Checksum>
       </Template>
       <Template dnOrder="7">
         <Name dnOrder="0">sys_devcon_pic32mz.c</Name>
@@ -131,7 +146,7 @@
       <Template dnOrder="8">
         <Name dnOrder="0">system_config.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/pic32mz_ef_sk</Path>
-        <Checksum dnOrder="2">D5985F8FFA7DEC6502A96A9B71694101</Checksum>
+        <Checksum dnOrder="2">90615256B63B7B4882EECE823E3C46FA</Checksum>
       </Template>
       <Template dnOrder="9">
         <Name dnOrder="0">app.c</Name>
@@ -151,7 +166,7 @@
       <Template dnOrder="12">
         <Name dnOrder="0">system_exceptions.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/pic32mz_ef_sk</Path>
-        <Checksum dnOrder="2">9836A04F3E98D3971DB91DF539160F34</Checksum>
+        <Checksum dnOrder="2">A8BF1AE6018CC1DB37C1C14696195A5F</Checksum>
       </Template>
       <Template dnOrder="13">
         <Name dnOrder="0">app.h</Name>
@@ -169,21 +184,16 @@
         <Checksum dnOrder="2">F740DA09253C01A3D03B3FD6565F5267</Checksum>
       </Template>
       <Template dnOrder="16">
-        <Name dnOrder="0">sys_clk_pic32mz.c</Name>
-        <Path dnOrder="1">Source&amp;#160;Files/app/system_config/pic32mz_ef_sk/framework/system/clk/src</Path>
-        <Checksum dnOrder="2">CC45A61DC821F2A45FBFD5EB0F76DD59</Checksum>
-      </Template>
-      <Template dnOrder="17">
         <Name dnOrder="0">sys_devcon.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/pic32mz_ef_sk/framework/system/devcon</Path>
         <Checksum dnOrder="2">07580DCDEF89D9C79B062544109C5367</Checksum>
       </Template>
-      <Template dnOrder="18">
+      <Template dnOrder="17">
         <Name dnOrder="0">sys_devcon.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/pic32mz_ef_sk/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">54ADBD4A35BCA03C42C74182FCE41849</Checksum>
       </Template>
-      <Template dnOrder="19">
+      <Template dnOrder="18">
         <Name dnOrder="0">system_tasks.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/pic32mz_ef_sk</Path>
         <Checksum dnOrder="2">C2FDF6218CDD9CE0E51AFAC4ACBB5F79</Checksum>

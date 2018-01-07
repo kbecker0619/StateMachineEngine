@@ -1,24 +1,20 @@
 /*******************************************************************************
-  MPLAB Harmony Exceptions Source File
+  System Definitions
 
   File Name:
-    system_exceptions.c
+    system_definitions.h
 
   Summary:
-    This file contains a function which overrides the deafult _weak_ exception
-    handler provided by the XC32 compiler.
+    MPLAB Harmony project system definitions.
 
   Description:
-    This file redefines the default _weak_  exception handler with a more debug
-    friendly one. If an unexpected exception occurs the code will stop in a
-    while(1) loop.  The debugger can be halted and two variables _excep_code and
-    _except_addr can be examined to determine the cause and address where the
-    exception occured.
+    This file contains the system-wide prototypes and definitions for an MPLAB
+    Harmony project.
  *******************************************************************************/
 
-// DOM-IGNORE-BEGIN
+//DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (c) 2013-2017 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013-2014 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -39,75 +35,81 @@ CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
 SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
  *******************************************************************************/
+//DOM-IGNORE-END
+#ifndef _SYS_DEFINITIONS_H
+#define _SYS_DEFINITIONS_H
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
+#include <stdint.h>
+#include <stddef.h>
+#include <stdbool.h>
+
+//#include "../../../../cwsw_arch/pic32mz/app/app.h"
+//#include "../../../../cwsw_arch/pic32mz/framework/system/clk/sys_clk.h"
+//#include "../../../../cwsw_arch/pic32mz/framework/system/common/sys_common.h"
+#include "system/sys_module.h"
+//#include "../../../../cwsw_arch/pic32mz/framework/system/devcon/sys_devcon.h"
+//#include "../../../../cwsw_arch/pic32mz/framework/system/int/sys_int.h"
+//#include "../../../../cwsw_arch/pic32mz/framework/system/ports/sys_ports.h"
+//#include "../../../../cwsw_arch/pic32mz/framework/system/tmr/sys_tmr.h"
+
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+extern "C" {
+
+#endif
 // DOM-IGNORE-END
 
-
-#include <xc.h>                 /* Defines special function registers, CP0 regs  */
-#include "system_config.h"
-#include "system_definitions.h"
-#include "system/debug/sys_debug.h"
-
-
 // *****************************************************************************
 // *****************************************************************************
-// Section: Global Data Definitions
+// Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
 
-/*******************************************************************************
-  Exception Reason Data
-
-  <editor-fold defaultstate="expanded" desc="Exception Reason Data">
-
-  Remarks:
-    These global static items are used instead of local variables in the
-    _general_exception_handler function because the stack may not be available
-    if an exception has occured.
-*/
-
-/* Code identifying the cause of the exception (CP0 Cause register). */
-static unsigned int _excep_code;
-
-/* Address of instruction that caused the exception. */
-static unsigned int _excep_addr;
-
-// </editor-fold>
-
-
 // *****************************************************************************
-// *****************************************************************************
-// Section: Exception Handling
-// *****************************************************************************
-// *****************************************************************************
-
-/*******************************************************************************
-  Function:
-    void _general_exception_handler ( void )
+/* System Objects
 
   Summary:
-    Overrides the XC32 _weak_ _generic_exception_handler.
+    Structure holding the system's object handles
 
   Description:
-    This function overrides the XC32 default _weak_ _generic_exception_handler.
+    This structure contains the object handles for all objects in the
+    MPLAB Harmony project's system configuration.
 
   Remarks:
-    Refer to the XC32 User's Guide for additional information.
- */
+    These handles are returned from the "Initialize" functions for each module
+    and must be passed into the "Tasks" function for each module.
+*/
 
-
-void _general_exception_handler ( void )
+typedef struct
 {
-    /* Mask off Mask of the ExcCode Field from the Cause Register
-    Refer to the MIPs Software User's manual */
-    _excep_code = (_CP0_GET_CAUSE() & 0x0000007C) >> 2;
-    _excep_addr = _CP0_GET_EPC();
+    SYS_MODULE_OBJ  sysTmr;
+    SYS_MODULE_OBJ  drvTmr0;
 
-    while (1)
-    {
-        SYS_DEBUG_BreakPoint();
-    }
+} SYSTEM_OBJECTS;
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: extern declarations
+// *****************************************************************************
+// *****************************************************************************
+
+extern SYSTEM_OBJECTS sysObj;
+
+//DOM-IGNORE-BEGIN
+#ifdef __cplusplus
 }
+#endif
+//DOM-IGNORE-END
 
+#endif /* _SYS_DEFINITIONS_H */
 /*******************************************************************************
  End of File
 */
+

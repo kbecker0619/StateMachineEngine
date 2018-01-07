@@ -44,9 +44,9 @@ extern "C" {
 // ----	Project Headers -------------------------
 #include "system_config.h"
 #include "sys_tmr.h"
-#include "../../../../../../cwsw_arch/pic32mz/framework/system/common/sys_common.h"
-#include "../../../../../../cwsw_arch/pic32mz/framework/osal/osal.h"
-#include "../../../../../../cwsw_arch/pic32mz/framework/driver/driver_common.h"		/* klb: DRV_HANDLE */
+#include "system/common/sys_common.h"
+#include "osal/osal.h"
+#include "driver/driver_common.h"		/* klb: DRV_HANDLE */
 
 // ----	Module Headers --------------------------
 

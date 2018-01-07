@@ -53,4 +53,4 @@ ________________________________________
 [ ] note this plan does disrupt my previous idea, not expressed in writing until now, of sym-linking from the pic32 arch & board folders into the MHC project that's a sister of the DIO working folder. ... developing ...
 [ ] repeated above exercise for board support:
 [ ] created new component project, "cwsw_board". this also is intended mainly to be a container for all stuff specifically related to the project board.
-[ ] moved all existing content of the dio "cwsw_board" folder into the new home; confi
+[ ] moved all existing content of the dio "cwsw_board" folder into the new home; confirmed the dio project is now fatally broken.

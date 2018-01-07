@@ -7,7 +7,7 @@ Created Thursday 21 December 2017
 
 see daily notes - current idea changed enough relative to original idea, that it's not worth redoing here
 [[Journal:2017:12:21|original: 21-dec-2017]]
-update: 09-jan-2018
+[[Journal:2018:01:06|update: 06-jan-2018]]
 
 Microchip target:
 Debug_Win_MZ2048EFM : Development and debugging on Windows, using Microchip XC Build Tools

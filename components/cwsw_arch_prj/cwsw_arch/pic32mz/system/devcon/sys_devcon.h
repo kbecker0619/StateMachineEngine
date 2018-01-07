@@ -43,7 +43,7 @@ extern "C" {
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-#include "../../../../../cwsw_arch/pic32mz/framework/system/common/sys_module.h"		/* klb: SYS_DEVCON_OBJECT */
+#include "system/sys_module.h"		/* klb: SYS_DEVCON_OBJECT */
 
 // ----	Module Headers --------------------------
 

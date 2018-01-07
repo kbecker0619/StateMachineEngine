@@ -60,8 +60,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "projcfg.h"
 #include "cwsw_lib.h"
 
-#include "../../../cwsw_arch/pic32mz/app/system_config/system_config.h"
-#include "../../../cwsw_arch/pic32mz/app/system_config/system_definitions.h"
+#include "system/system_config.h"
+#include "system/system_definitions.h"
 
 
 /* Define WEAK attribute */
@@ -139,15 +139,15 @@ typedef enum
   Remarks:
     Application strings and buffers are be defined outside this structure.
  */
-#include "sys_tmr.h"		/* SYS_TMR_HANDLE */
+//#include "sys_tmr.h"		/* SYS_TMR_HANDLE */
 typedef struct
 {
     /* The application's current state */
     APP_STATES state;
 
     /* TODO: Define any additional data used by the application. */
-    SYS_TMR_HANDLE  sysTimerClientHandle1;  //pointer to System Timer client object 1
-    SYS_TMR_HANDLE  sysTimerClientHandle2;  //pointer to System Timer client object 2
+//    SYS_TMR_HANDLE  sysTimerClientHandle1;  //pointer to System Timer client object 1
+//    SYS_TMR_HANDLE  sysTimerClientHandle2;  //pointer to System Timer client object 2
     bool            LED1Toggle;             //flag to request LED1 state change
     bool            LED2Toggle;             //flag to request LED2 state change
     uint32_t        startTick;				//System Timer value at start of time period
