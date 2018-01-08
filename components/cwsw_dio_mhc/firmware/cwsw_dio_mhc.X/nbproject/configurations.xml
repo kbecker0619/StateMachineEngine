@@ -28,41 +28,37 @@
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="osal" projectFiles="true">
-          <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal.h</itemPath>
-          <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_definitions.h</itemPath>
-          <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_impl_basic.h</itemPath>
+          <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/osal/osal.h</itemPath>
+          <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/osal/osal_definitions.h</itemPath>
+          <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/osal/osal_impl_basic.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="system" projectFiles="true">
           <logicalFolder name="f2" displayName="clk" projectFiles="true">
-            <logicalFolder name="f1" displayName="src" projectFiles="true">
-              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_local.h</itemPath>
-              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_variant_mapping.h</itemPath>
-              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.h</itemPath>
-            </logicalFolder>
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk.h</itemPath>
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_compatibility.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/clk/sys_clk.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/clk/sys_clk_compatibility.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/clk/sys_clk_mapping.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f1" displayName="common" projectFiles="true">
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_common.h</itemPath>
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_module.h</itemPath>
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_buffer.h</itemPath>
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_queue.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/common/sys_common.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/common/sys_module.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/common/sys_buffer.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/common/sys_queue.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f4" displayName="debug" projectFiles="true">
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/debug/sys_debug.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/debug/sys_debug.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f5" displayName="int" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
-              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_private.h</itemPath>
+              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/int/src/sys_int_private.h</itemPath>
             </logicalFolder>
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int.h</itemPath>
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int_mapping.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/int/sys_int.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/int/sys_int_mapping.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="ports" projectFiles="true">
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports.h</itemPath>
-            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports_definitions.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/ports/sys_ports.h</itemPath>
+            <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/ports/sys_ports_definitions.h</itemPath>
           </logicalFolder>
-          <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/system.h</itemPath>
+          <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/system.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -81,7 +77,12 @@
             </logicalFolder>
             <logicalFolder name="f1" displayName="framework" projectFiles="true">
               <logicalFolder name="f1" displayName="system" projectFiles="true">
-                <logicalFolder name="f1" displayName="devcon" projectFiles="true">
+                <logicalFolder name="f1" displayName="clk" projectFiles="true">
+                  <logicalFolder name="f1" displayName="src" projectFiles="true">
+                    <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/clk/src/sys_clk_pic32mz.c</itemPath>
+                  </logicalFolder>
+                </logicalFolder>
+                <logicalFolder name="f2" displayName="devcon" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c</itemPath>
                     <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c</itemPath>
@@ -89,7 +90,7 @@
                     <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache.h</itemPath>
                   </logicalFolder>
                 </logicalFolder>
-                <logicalFolder name="f2" displayName="ports" projectFiles="true">
+                <logicalFolder name="f3" displayName="ports" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <itemPath>../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c</itemPath>
                   </logicalFolder>
@@ -99,7 +100,6 @@
             <itemPath>../src/system_config/pic32mz_ef_sk/system_init.c</itemPath>
             <itemPath>../src/system_config/pic32mz_ef_sk/system_interrupt.c</itemPath>
             <itemPath>../src/system_config/pic32mz_ef_sk/system_exceptions.c</itemPath>
-            <itemPath>../src/system_config/pic32mz_ef_sk/fassert.c</itemPath>
             <itemPath>../src/system_config/pic32mz_ef_sk/system_tasks.c</itemPath>
           </logicalFolder>
         </logicalFolder>
@@ -108,15 +108,9 @@
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="system" projectFiles="true">
-          <logicalFolder name="f1" displayName="clk" projectFiles="true">
+          <logicalFolder name="f1" displayName="int" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
-              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c</itemPath>
-              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c</itemPath>
-            </logicalFolder>
-          </logicalFolder>
-          <logicalFolder name="f2" displayName="int" projectFiles="true">
-            <logicalFolder name="f1" displayName="src" projectFiles="true">
-              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c</itemPath>
+              <itemPath>../../../../../../../_Programs/Microchip/harmony/v2_04/framework/system/int/src/sys_int_pic32.c</itemPath>
             </logicalFolder>
           </logicalFolder>
         </logicalFolder>
@@ -130,9 +124,10 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../src</Elem>
-    <Elem>../src/pic32mz_ef_sk</Elem>
-    <Elem>../src/system_config/pic32mz_ef_sk</Elem>
-    <Elem>../../../../harmony/v2_05</Elem>
+    <Elem>../../../../../_Programs/Microchip/harmony/v2_04</Elem>
+    <Elem>..\src</Elem>
+    <Elem>..\src\pic32mz_ef_sk</Elem>
+    <Elem>..\src\system_config\pic32mz_ef_sk</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -150,7 +145,7 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../../../../../../_Programs/Microchip/harmony/v2_05/bin/framework/peripheral/PIC32MZ2048EFM144_peripherals.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../../../_Programs/Microchip/harmony/v2_04/bin/framework/peripheral/PIC32MZ2048EFM144_peripherals.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -181,7 +176,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="..\..\..\..\..\..\..\_Programs\Microchip\harmony\v2_05\framework;../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
+                  value="../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../../../../../../../_Programs/Microchip/harmony/v2_04/framework;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -204,7 +199,7 @@
       </C32-AR>
       <C32-AS>
         <property key="assembler-symbols" value=""/>
-        <property key="enable-symbols" value="false"/>
+        <property key="enable-symbols" value="true"/>
         <property key="exclude-floating-point-library" value="false"/>
         <property key="expand-macros" value="false"/>
         <property key="extra-include-directories-for-assembler" value=""/>
@@ -409,30 +404,6 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
-      <PKOBSKDEPlatformTool>
-        <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
-        <property key="ToolFirmwareFilePath"
-                  value="Press to browse for a specific firmware version"/>
-        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="memories.configurationmemory" value="true"/>
-        <property key="memories.dataflash" value="true"/>
-        <property key="memories.eeprom" value="true"/>
-        <property key="memories.id" value="true"/>
-        <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.ranges" value="1d000000-1d1fffff"/>
-        <property key="memories.userotp" value="true"/>
-        <property key="programoptions.donoteraseauxmem" value="false"/>
-        <property key="programoptions.eraseb4program" value="true"/>
-        <property key="programoptions.preservedataflash" value="false"/>
-        <property key="programoptions.preservedataflash.ranges" value=""/>
-        <property key="programoptions.preserveeeprom" value="false"/>
-        <property key="programoptions.preserveeeprom.ranges" value=""/>
-        <property key="programoptions.preserveprogram.ranges" value=""/>
-        <property key="programoptions.preserveprogramrange" value="false"/>
-        <property key="programoptions.usehighvoltageonmclr" value="false"/>
-        <property key="programoptions.uselvpprogramming" value="true"/>
-      </PKOBSKDEPlatformTool>
       <Simulator>
         <property key="codecoverage.enabled" value="Disable"/>
         <property key="codecoverage.enableoutputtofile" value="false"/>
@@ -460,10 +431,9 @@
         <property key="tracecontrol.include.timestamp" value="summarydataenabled"/>
         <property key="tracecontrol.select" value="0"/>
         <property key="tracecontrol.stallontracebufferfull" value="false"/>
-        <property key="tracecontrol.timestamp" value="0"/>
         <property key="tracecontrol.tracebufmax" value="546000"/>
         <property key="tracecontrol.tracefile" value="defmplabxtrace.log"/>
-        <property key="tracecontrol.traceresetonrun" value="false"/>
+        <property key="tracecontrol.tracefilemax" value="10000000"/>
         <property key="uart0io.output" value="window"/>
         <property key="uart0io.outputfile" value=""/>
         <property key="uart0io.uartioenabled" value="false"/>

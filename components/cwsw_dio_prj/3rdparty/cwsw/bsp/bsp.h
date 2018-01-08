@@ -167,7 +167,7 @@ extern void BSP_Initialize(void);
   Remarks:
     None
 */
-void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
+extern void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
 
 
 /** Target symbol for Get(Cwsw_Board, Resource) interface */
@@ -177,6 +177,7 @@ void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
 #define Cwsw_Bsp__Set(resource, value)		Cwsw_Bsp__Set_ ## resource(value)
 
 /* Target for some of the expansions to the Set(Cwsw_Bsp, Resource, xxx) interface. */
+#include "cwsw_bsp.h"		/* tDO_LogicalValues */
 extern void Cwsw_Bsp__Set_BspActivity1(tDO_LogicalValues onoff);
 extern void Cwsw_Bsp__Set_BspActivity2(tDO_LogicalValues onoff);
 extern void Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff);

@@ -5,7 +5,7 @@
     <SystemStartScript dnOrder="1"/>
   </DisplayManager>
   <General>
-    <HarmonyPath dnOrder="0" path="../../../../harmony/v2_05"/>
+    <HarmonyPath dnOrder="0" path="../../../../../_Programs/Microchip/harmony/v2_05"/>
     <Processor dnOrder="1" name="PIC32MZ2048EFM144"/>
     <Board dnOrder="2" name="PIC32MZ (EF) Starter Kit"/>
     <ForceOptimization dnOrder="3" flag="true"/>
@@ -201,16 +201,16 @@
     </Templates>
     <CompilerItems dnOrder="2">
       <C32 dnOrder="0">
-        <Include dnOrder="0" value="E:\_Projects\PersonalDev\components\cwsw_dio_prj\firmware\src"/>
-        <Include dnOrder="1" value="E:\_Projects\PersonalDev\components\cwsw_dio_prj\firmware\src\system_config\pic32mz_ef_sk"/>
-        <Include dnOrder="2" value="E:\_Projects\PersonalDev\components\cwsw_dio_prj\firmware\src\pic32mz_ef_sk"/>
-        <Include dnOrder="3" value="E:\harmony\v2_05\framework"/>
-        <Include dnOrder="4" value="E:\_Projects\PersonalDev\components\cwsw_dio_prj\firmware\src\system_config\pic32mz_ef_sk\framework"/>
+        <Include dnOrder="0" value="E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_dio_prj\firmware\src"/>
+        <Include dnOrder="1" value="E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_dio_prj\firmware\src\system_config\pic32mz_ef_sk"/>
+        <Include dnOrder="2" value="E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_dio_prj\firmware\src\pic32mz_ef_sk"/>
+        <Include dnOrder="3" value="E:\_Programs\Microchip\harmony\v2_05\framework"/>
+        <Include dnOrder="4" value="E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_dio_prj\firmware\src\system_config\pic32mz_ef_sk\framework"/>
         <Include dnOrder="5" value="../src/system_config/pic32mz_ef_sk/bsp"/>
       </C32>
     </CompilerItems>
     <Libraries dnOrder="3">
-      <Library dnOrder="0" value="../../../../../../harmony/v2_05/bin/framework/peripheral/PIC32MZ2048EFM144_peripherals.a"/>
+      <Library dnOrder="0" value="../../../../../../../_Programs/Microchip/harmony/v2_05/bin/framework/peripheral/PIC32MZ2048EFM144_peripherals.a"/>
     </Libraries>
   </Manifest>
 </Configuration>

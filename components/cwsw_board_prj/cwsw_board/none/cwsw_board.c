@@ -136,6 +136,17 @@ Cwsw_Board__Init(void)
 
 	if(Get(Cwsw_Arch, Initialized))
 	{
+		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+		#pragma GCC diagnostic push
+		#pragma GCC diagnostic ignored "-Wpedantic"
+		#endif
+
+		dprintf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, bsp_RevString, __FUNCTION__);
+
+		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+		#pragma GCC diagnostic pop
+		#endif
+
 		initialized = true;
 		return 0;
 	}
@@ -156,6 +167,7 @@ Cwsw_Board__Get_Initialized(void)
  * break it apart like this because in or thinking, the MHC intermingles too much between the
  * capabilities of the board, and the business logic that relies on those capabilities.
 */
+#include "bsp.h"	/* BSP_USBVBUSSwitchStateSet() */
 void
 Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state)
 {
