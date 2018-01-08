@@ -3,11 +3,7 @@
  *
  *	Description:
  *
- *	Copyright (c) Kevin L. Becker. All rights reserved.
- *
- *	Original:
- *	Created on: Sep 4, 2016
- *	Author: kbecker
+ *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Current:
  *	$Revision: $

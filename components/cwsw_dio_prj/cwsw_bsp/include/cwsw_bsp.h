@@ -41,7 +41,6 @@ extern "C" {
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
-#include "cwsw_board.h"
 
 // ----	Module Headers --------------------------
 
@@ -50,25 +49,6 @@ extern "C" {
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
 #define BSP_CWSW_BSP_H__REVSTRING "$Revision: 0123 $"
-
-/** Identification for the LED indicators supported by this BSP.
- * These values are intended to be used by this own module, and all those above it (e.g., the
- * application itself).
- *
- * i've tried (and usually prefer) enumerations, but for the moment, the more difficult use case,
- * and (my perception) of the more commonly used one, is to use defines. i've tried building w/
- * these as enums, and that works fine.
- */
-#define kBspActivity1 	kBoardLed1
-#define kBspActivity2	kBoardLed2
-#define kBspActivity3	kBoardLed3
-/* note: because there could be mapping differences between the purpose of an LED on this BSP,
- * and the led provided by the board, we cannot simply assume that the LEDs will be assigned
- * contiguously and starting from value 0, so we need to manually maintain the number of LEDs
- * used in this BSP. The value used here should be a base-1 count of the number of LEDs used.
- */
-#define kBspNumLeds 	1
-
 
 /** Logical values for the LEDs. note the actual wiring on the board, or the polarity of the
  * driver, might be inverted; that connection is made at the board level, not the bsp level.
@@ -92,23 +72,6 @@ typedef enum eDO_Logical_Values		tDO_LogicalValues;
 // ============================================================================
 
 extern uint16_t BSP__Init(void);
-
-
-/* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface.
- * These are here, because we want to use BSP symbols, rather than board symbols
- */
-#define Cwsw_Board__Set__BspActivity1(value)	do { if(!!(value)) { BSP_LEDOn(kBspActivity1); } else { BSP_LEDOff(kBspActivity1); } } while(0)
-#define Cwsw_Board__Set__BspActivity2(value)	do { if(!!(value)) { BSP_LEDOn(kBspActivity2); } else { BSP_LEDOff(kBspActivity2); } } while(0)
-#define Cwsw_Board__Set__BspActivity3(value)	do { if(!!(value)) { BSP_LEDOn(kBspActivity3); } else { BSP_LEDOff(kBspActivity3); } } while(0)
-
-
-/* Targets for expansion of SET(GlobalResource, Value) interface.
- * In this module, the LEDs are considered global resources, which can be set (written to) by any
- * application-layer module.
- */
-#define SET_BspActivity1(value)		Set(Cwsw_Board, BspActivity1, kLogicalOff)
-#define SET_BspActivity2(value)		Set(Cwsw_Board, BspActivity2, kLogicalOff)
-#define SET_BspActivity3(value)		Set(Cwsw_Board, BspActivity3, kLogicalOff)
 
 
 #ifdef	__cplusplus

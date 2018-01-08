@@ -31,6 +31,8 @@
 
 #include "projcfg.h"
 
+#if (USE_SYS_CLK == true)			/* { */
+
 // ----	System Headers --------------------------
 #include <stddef.h>
 #include <stdlib.h>
@@ -60,8 +62,6 @@
 // ============================================================================
 // ----	Module-level Variables ------------------------------------------------
 // ============================================================================
-static char const * const sys_clk_pic32mz_RevString = "$Revision: 0123 $";
-
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
@@ -623,3 +623,9 @@ int8_t SYS_CLK_SystemClockSourceSwitch(CLK_SOURCES_SYSTEM clockSource, unsigned 
 }
 
 
+#endif								/* } */
+
+/** Rev string specifically to address the following GCC warning:
+ *	"ISO C forbids an empty translation unit [-Wpedantic]"
+ */
+static char const * const sys_clk_pic32mz_RevString = "$Revision: 0123 $";

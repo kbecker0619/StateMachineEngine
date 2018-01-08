@@ -78,11 +78,6 @@ typedef enum eBpsIndictorLed tBpsIndicatorLed;
 #endif
 
 
-/** Logical values for the LEDs. note the actual wiring on the board, or the polarity of the
- * driver, might be inverted; that connection is made at the board level, not the bsp level.
- */
-enum eDO_Logical_Values { kLogicalOff, kLogicalOn };
-
 typedef enum
 {
     /* USB VBUS Switch disable */
@@ -97,9 +92,6 @@ typedef enum
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
-
-typedef enum eDO_Logical_Values		tDO_LogicalValues;
-
 
 // ============================================================================
 // ----	Public Variables ------------------------------------------------------

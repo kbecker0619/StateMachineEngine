@@ -3,7 +3,7 @@
  *
  *	Description:
  *
- *	Copyright (c) Kevin L. Becker. All rights reserved.
+ *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
  *	Created on: Sep 4, 2016
@@ -39,7 +39,7 @@ extern "C" {
 // ============================================================================
 #define PROJCFG_H__REVSTRING "$Revision: 09042016 $"
 
-
+// ==== PROJECT-INVARIANT CONSTANTS ========================================= {
 /* ==== A WORD ABOUT BUILD TARGETS ============================================
  *	Within Eclipse, the configuration is available as an IDE variable named
  *		"${ConfigName}"
@@ -53,8 +53,7 @@ extern "C" {
  *	Note the name of this define is specifically chosen for cross-platform
  *	Compatibility, for example with MPLAB X.
  *
- *	Within the NetBeans IDE used by MPLAB X, the equivalent mechanism is to
- *	detect off the command-line define "XPRJ_<config>",
+ *	Within MPLAB X, the equivalent mechanism is to detect the command-line define "XPRJ_<config>",
  *		"#if defined(XPRJ_Debug)"
  *
  *	Note the name of the default configuration created by MPLAB X' New Project
@@ -75,6 +74,12 @@ extern "C" {
  * in normal C code - and i have a rather strong aversion to using #if defined(x)
  * mechanisms in normal code. therefore, i'll here define all of the non-active
  * build targets.
+ * ========================================================================= */
+
+/* ==== One final word ========================================================
+ * This section is intended to be pristine and unchanged for all projects.
+ * Configuration-specific (aka Build-Target-Specific) defines should be done in
+ * a followup section below.
  * ========================================================================= */
 /* Configuration Check */
 #if defined(XPRJ_Debug)
@@ -100,12 +105,10 @@ extern "C" {
 
 #elif defined(XPRJ_Debug_Win_MinGW)
 	/* This is the configuration intended for development on Windows, using the MinGW tool suite */
+	#define XPRJ_Debug_Linux_GCC		0
 	#define XPRJ_DEBUG_MSC				0
 	#define	XPRJ_DEBUG_CVI				0
 	#define XPRJ_Debug_Win_MZ2048EFM	0
-
-	#define __PIC32MZ__					/* TODO: ABSTRACT AWAY PIC32MZ STUFF. this, for plib_ports.h */
-	#define __32MZ2048EFM144__			/* and this, for ports_p32xxx.h */
 
 #elif defined(XPRJ_Debug_Cx_AtmelSamv71)
 	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
@@ -117,6 +120,41 @@ extern "C" {
 	#define XPRJ_DEBUG_MSC				0
 	#define	XPRJ_DEBUG_CVI				0
 
+#elif defined(XPRJ_DEBUG_MSC)
+	/* Visual Studio 8, which is decidedly shy of C11 */
+	/* NOTE: VS8 does not ship w/ headers <stdint.h> or <stdbool.h>, so i found alternate versions
+	 * and copied them into my install directory. i happened to find some web sites w/ versions
+	 * that claimed to work w/ VS8 or VS10, but you could also probably pull them from any other
+	 * compiler you may have installed.
+	 */
+	#define XPRJ_Debug_Win_MinGW	false
+	#define	XPRJ_DEBUG_CVI			false
+
+#elif defined(_CVI_)
+	#define	XPRJ_DEBUG_CVI				1
+	#define	XPRJ_DEBUG_MSC				0
+	#define	XPRJ_Debug_Win_MinGW 		0
+	#define XPRJ_Debug_Linux_GCC		0
+
+#else
+#error Must define Eclipse symbol XPRJ_${ConfigName}
+
+#endif
+
+// ====	/PROJECT-INVARIANT CONSTANTS ======================================== }
+
+// ==== PROJECT SPECIFIC CONSTANTS ========================================== {
+#if (XPRJ_Debug_Win_MinGW)
+	#define __PIC32MZ__					/* TODO: ABSTRACT AWAY PIC32MZ STUFF. this, for plib_ports.h */
+	#define __32MZ2048EFM144__			/* and this, for ports_p32xxx.h */
+
+	/* enable or disable individual architectural features */
+	#define USE_SYS_CLK					false
+	#define USE_SYS_DEVCON				false
+
+#endif
+
+#if defined(XPRJ_Debug_Win_MZ2048EFM)
 	/* define stuff that MPLAB defines on the command line */
 	#if !defined(__PIC32M)
 		#define __PIC32M
@@ -128,27 +166,10 @@ extern "C" {
 	#define USE_SYS_CLK					false
 	#define USE_SYS_DEVCON				false
 
-
-#elif (XPRJ_DEBUG_MSC)
-	/* Visual Studio 8, which is decidedly shy of C11 */
-	/* NOTE: VS8 does not ship w/ headers <stdint.h> or <stdbool.h>, so i found alternate versions
-	 * and copied them into my install directory. i happened to find some web sites w/ versions
-	 * that claimed to work w/ VS8 or VS10, but you could also probably pull them from any other
-	 * compiler you may have installed
-	 */
-	#define XPRJ_Debug_Win_MinGW	false
-	#define	XPRJ_DEBUG_CVI			false
-
-#elif (_CVI_)
-	#define	XPRJ_DEBUG_CVI				1
-	#define	XPRJ_DEBUG_MSC				0
-	#define	XPRJ_Debug_Win_MinGW 		0
-	#define XPRJ_Debug_Linux_GCC		0
-
-#else
-#error Must define Eclipse symbol XPRJ_${ConfigName}
-
 #endif
+
+
+
 
 #if (USE_SYS_DEVCON)
 	#if !(USE_SYS_CLK)
@@ -179,6 +200,7 @@ extern "C" {
 
 	#endif
 #endif
+// ==== /PROJECT SPECIFIC CONSTANTS ========================================= }
 
 
 // ============================================================================

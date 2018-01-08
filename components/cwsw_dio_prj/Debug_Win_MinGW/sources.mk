@@ -13,15 +13,11 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-cwsw_arch \
-cwsw_arch/pic32mz/app \
-cwsw_arch/pic32mz/app/framework/system/ports \
-cwsw_arch/pic32mz/app/system_config \
-cwsw_arch/pic32mz/framework/system/clk/src \
-cwsw_arch/pic32mz/framework/system/devcon/src \
-cwsw_arch/pic32mz/framework/system/int/src \
-cwsw_arch/pic32mz/framework/system/tmr/src \
-cwsw_board \
+3rdparty/cwsw/bsp \
+cwsw_arch/i386 \
+cwsw_arch/i386/peripheral/ports \
+cwsw_arch/i386/system/clk \
+cwsw_board/none \
 cwsw_bsp/src \
 cwsw_lib/src \
 ut \

@@ -1,9 +1,9 @@
-/** @file ptypes.h
- *	@brief	One-sentence short description of file.
+/** @file
+ *	@brief	Portable Types
  *
  *	Description:
  *
- *	Copyright (c) 2017 Kevin L. Becker. All rights reserved.
+ *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
  *	Created on: Feb 2, 2017

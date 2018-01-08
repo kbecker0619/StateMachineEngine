@@ -46,7 +46,7 @@
 
 // ----	Module Headers --------------------------
 #include "cwsw_board.h"
-#include "../../cwsw_arch/cwsw_arch_common.h"
+#include "../cwsw_arch_common.h"
 
 
 
@@ -144,23 +144,22 @@ Cwsw_Board__Init(void)
 	return 1;
 }
 
+bool
+Cwsw_Board__Get_Initialized(void)
+{
+	return initialized;
+}
 
-/** Function:
- * 	void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
- *
- * Summary:
- * 	This function enables or disables the USB VBUS switch on the board.
- *
- * Description:
- * 	This function enables or disables the VBUS switch on the board.
- *
- * Remarks:
- * 	Refer to bsp_config.h for usage information.
+
+/** Set the enable/disable status of teh USB VBUS switch.
+ * This function is a shell on top of the functionality provided by the MHC-generated code; we
+ * break it apart like this because in or thinking, the MHC intermingles too much between the
+ * capabilities of the board, and the business logic that relies on those capabilities.
 */
 void
 Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state)
 {
     /* Enable the VBUS switch */
 	/* NOTE: for LabWindows/CVI, I would expect this to activate an LED or somesuch indicator */
-    PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, state );
+	BSP_USBVBUSSwitchStateSet(state);
 }

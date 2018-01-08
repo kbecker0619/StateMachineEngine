@@ -1,7 +1,15 @@
 /** @file
- *	@brief	One-sentence short description of file.
+ *	@brief	Board Support Package.
  *
  *	Description:
+ *	In the Beckersoft ecosystem, the BSP is generic yet application-specific, and sits between the
+ *	any component or module that needs board services (e.g., application components), and the
+ *	actual board itself, which is generic for any project that utilizes a specific board.
+ *
+ *	this module knows how the various attributes of the board are connected together to fulfill the
+ *	functionality of this app, and (may) expose functionality APIs rather than raw board-related
+ *	APIs. we would normally expect this module to talk only to the board module, though i suppose
+ *	in the abstract, an occasional skipping right to the arch might be in order.
  *
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
@@ -24,13 +32,14 @@
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"		/* foundational, cwsw-common stuff */
+
 #include "cwsw_arch.h"		/* which MCU are we using? should be set by command-line include paths */
 #include "cwsw_board.h"		/* which board are we using? each board is built upon a specific MCU. path to this folder should be set by command-line include paths */
-#include "cwsw_bsp.h"		/* how are we using this board? yes, conceptually, a bsp could support multiple boards and/or MCUs, but that's not where we are at this moment. this file will be project-specific */
-
-#include "system/sys_module.h"			/* SYS_Initialize() */
 
 // ----	Module Headers --------------------------
+#include "cwsw_bsp.h"		/* how are we using this board? yes, conceptually, a bsp could support multiple boards and/or MCUs, but that's not where we are at this moment. this file will be project-specific */
+/* this module is a very thin one that sits on top of the main MHC-generated or workalike bsp */
+#include "bsp.h"
 
 
 // ============================================================================
@@ -41,9 +50,6 @@
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
-//typedef enum eBspLeds tBspLeds;
-
-
 // ============================================================================
 // ----	Global Variables ------------------------------------------------------
 // ============================================================================
@@ -53,41 +59,40 @@
 // ============================================================================
 static char const * const cwsw_bsp_RevString = "$Revision: 0123 $";
 
+//static tBoardLed ind_led_map[kBspNumLeds] = {
+//	kBoardLed1, kBoardLed2, kBoardLed3
+//};
+
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
 
-/** Function:
- *	void BSP_Initialize(void)
- *
- * Summary:
- * 	Performs the necessary actions to initialize a board.
- *
- * Description:
- * 	This function initializes the LED, Switch and other ports on the board.
- * 	This function must be called by the user before using any APIs present in
- * 	this BSP.
- *
- * Remarks:
- * 	Refer to bsp.h for usage information.
-*/
+/* targets for Get() and Set() macro expansions.
+ * These are located here, and are designed as functions, specifically to implement a separation
+ * in dependencies between users of this module and the board moduls. if, for example, these were
+ * implemented as FLMs (function-like macros) or inline functions located in the API, then the
+ * suppliers would need compile-time access to the board. by making functions here, the users only
+ * need API access to this module.
+ */
 void
-BSP_Initialize(void)
+Cwsw_Bsp__Set_BspActivity1(tDO_LogicalValues onoff)
 {
-	/* Setup the USB VBUS Switch Control Pin */
-	Set(Cwsw_Board, UsbVbus, kBrdUsbVbusSwitchState_Disable);
-
-	/* Switch off LEDs */
-	SET(BspActivity1, kLogicalOff);
-	BSP_LEDOff(kBspActivity1);
-
-	SET(BspActivity2, kLogicalOff);
-    BSP_LEDOff(kBspActivity2);
-
-	SET(BspActivity3, kLogicalOff);
-    BSP_LEDOff(kBspActivity3);
+	Set(Cwsw_Board, kBoardLed1, onoff);
 }
+
+void
+Cwsw_Bsp__Set_BspActivity2(tDO_LogicalValues onoff)
+{
+	Set(Cwsw_Board, kBoardLed2, onoff);
+}
+
+void
+Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff)
+{
+	Set(Cwsw_Board, kBoardLed3, onoff);
+}
+
 
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
@@ -105,11 +110,13 @@ BSP_Initialize(void)
  * @return
  */
 #include "system/system.h"					/* API as defined by MHC. Note that including any part of the path, violates all kinds of coding rules (including my own personal rules) */
-//#include "../../cwsw_arch/pic32mz/framework/system/devcon/sys_devcon.h"		/* SYS_DEVCON_Initialize() */
 uint16_t
 BSP__Init(void)
 {
 	UNUSED(cwsw_bsp_RevString);
+//	UNUSED(ind_led_map);
+
+	(void) Init(Cwsw_Lib);	/* board independent, arch independent, for some environs, inits things used by following modules */
 
 	do {	    /* Core Processor Initialization */
 		(void) Init(Cwsw_Arch);
@@ -137,11 +144,8 @@ BSP__Init(void)
 	} while(0);
 
 	do {		/* Initialize the Application */
-		(void) Init(Cwsw_Lib);
 //		APP_Initialize();
 	} while(0);
-
-
 
 	return 0;
 }

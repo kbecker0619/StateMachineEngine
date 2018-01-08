@@ -1,10 +1,7 @@
 eclipse.preferences.version=1
-environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PIC32_XC_HOME/delimiter=\:
-environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PIC32_XC_HOME/operation=replace
-environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PIC32_XC_HOME/value=/opt/microchip/xc32/v1.44/bin
-environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PIC32_XC_INCLUDE/delimiter=\:
-environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PIC32_XC_INCLUDE/operation=append
-environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PIC32_XC_INCLUDE/value=/opt/microchip/xc32/v1.44/pic32mx/include/
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/PATH/value=${PIC32_XC_HOME};${MPLAB_UTILS_HOME};G\:/_Programs/NXP/S32DS_ARM_v2.0/eclipse/jre/bin/client;G\:/_Programs/NXP/S32DS_ARM_v2.0/eclipse/jre/bin;G\:/_Programs/NXP/S32DS_ARM_v2.0/eclipse/jre/lib/i386;C\:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Windows Live;C\:\\ProgramData\\Oracle\\Java\\javapath;C\:\\Windows\\system32;C\:\\Windows;C\:\\Windows\\System32\\Wbem;C\:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;G\:\\_Programs\\Microchip\\xc32\\v1.42\\bin;G\:\\_Programs\\TortoiseGit\\bin;G\:\\_Programs\\Git\\cmd;G\:\\_Programs\\Microchip\\xc32\\v1.44\\bin;G\:\\_Programs\\CodeBlocks\\MinGW\\bin;G\:\\_Programs\\Sophos\\Sophos SSL VPN Client\\bin;G\:\\_Programs\\Expat 2.2.0;C\:\\_Programs\\Graphviz2.38\\bin;C\:\\Users\\kbecker\\AppData\\Roaming\\Dashlane\\4.6.5.21982\\bin\\Firefox_Extension\\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\\components;C\:\\Users\\kbecker\\AppData\\Roaming\\Dashlane\\4.6.6.23032\\bin\\Firefox_Extension\\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\\components;C\:\\Users\\kbecker\\AppData\\Roaming\\Dashlane\\5.3.2.14186\\bin\\Firefox_Extension\\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\\components;C\:\\Users\\kbecker\\AppData\\Roaming\\Dashlane\\5.3.2.14186\\ucrt;G\:\\_Programs\\NXP\\S32DS_ARM_v2.0\\eclipse
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/append=true
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894/appendContributed=true
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889.120263600/PIC32_XC_HOME/delimiter=\:

@@ -52,7 +52,7 @@ extern "C" {
 
 // ----	Project Headers -------------------------
 /* note: while i personally strongly agree with the coding guideline that says, "no path statements
- * in include statements", i am doing that here in my early attempt to support multiple CPU
+ * in include statements", i am doing that here in my early attempt to support multiple MCU
  * architectures and multiple boards; in my idea, the include paths specified on the command line
  * should point to the correct architecture family, or board, and the structure underneath that
  * parent should be identical.
@@ -101,34 +101,12 @@ enum eBrdUsbVbusSwitchState
  * Remarks:
  * 	None.
  */
-enum eBSP_SWITCH
+enum eBrdSwitch
 {
-    BSP_SWITCH_1 = 0,
-    BSP_SWITCH_2 = 1,
-    BSP_SWITCH_3 = 2
+    kBrdSwitch1 = 0,
+	kBrdSwitch2 = 1,
+	kBrdSwitch3 = 2
 };
-
-/** BSP Switch state.
- *
- * Summary:
- * 	Defines possible states of the switches on this board.
- *
- * Description:
- * 	This enumeration defines the possible states of the switches on this board.
- *
- * Remarks:
- * 	None.
- */
-enum eBSP_SWITCH_STATE
-{
-    /* Switch pressed */
-    BSP_SWITCH_STATE_PRESSED = 0,
-
-   /* Switch not pressed */
-    BSP_SWITCH_STATE_RELEASED = 1
-
-};
-
 
 /** tBoardLed.
  * Summary:
@@ -152,8 +130,8 @@ enum eBoardLeds
 // ============================================================================
 
 typedef enum eBrdUsbVbusSwitchState		tBrdUsbVbusSwitchState;
-typedef enum eBSP_SWITCH				tBrdUserSwitch;
-typedef enum eBSP_SWITCH_STATE			tBrdUserSwitchState;
+typedef enum eBrdSwitch				tBrdUserSwitch;
+//typedef enum eBSP_SWITCH_STATE			tBrdUserSwitchState;
 
 typedef enum eBoardLeds					tBoardLed;
 
@@ -231,7 +209,7 @@ extern void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
     BSP_Initialize();
 
     // Check the state of the switch.
-    if(BSP_SWITCH_STATE_PRESSED == BSP_SwitchStateGet(BSP_SWITCH_1))
+    if(BSP_SWITCH_STATE_PRESSED == BSP_SwitchStateGet(kBrdSwitch1))
     {
         // This means that Switch 1 on the board is pressed.
     }
@@ -241,7 +219,7 @@ extern void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
   Remarks:
     None
 */
-extern tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch bspSwitch);
+//extern tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch bspSwitch);
 
 /* Function:
     void BSP_Initialize(void)
@@ -275,18 +253,25 @@ extern tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch bspSwitch);
 extern void BSP_Initialize(void);
 
 
+/** Target symbol for Get(Cwsw_Board, Resource) interface */
+#define Cwsw_Board__Get(resource)				Cwsw_Board__Get_ ## resource()
+
 /** Target symbol for Set(Cwsw_Board, Resource, xxx) interface */
-#define Cwsw_Board__Set(resource, value)		Cwsw_Board__Set__ ## resource(value)
+#define Cwsw_Board__Set(resource, value)		Cwsw_Board__Set_ ## resource(value)
+
+
+/** Target for Get(Cwsw_Arch, Initialized) interface */
+extern bool 									Cwsw_Board__Get_Initialized(void);
+
 
 /* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface */
-#define Cwsw_Board__Set__UsbVbus(value)			Cwsw_Board__UsbVbusSwitchStateSet(value)
+#define Cwsw_Board__Set_UsbVbus(value)			Cwsw_Board__UsbVbusSwitchStateSet(value)
 
 
-/* In the expansions of Cwsw_Board__Set__BspActivity<n>, we refer to functions provided by Harmony.
- * For desktop console apps, simply make them nops.
- */
-#define BSP_LEDOn(a)	do { UNUSED(a); } while(0)
-#define BSP_LEDOff(a)	do { UNUSED(a); } while(0)
+/* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface. */
+#define Cwsw_Board__Set_kBoardLed1(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed1); } else { BSP_LEDOff(kBoardLed1); } } while(0)
+#define Cwsw_Board__Set_kBoardLed2(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed2); } else { BSP_LEDOff(kBoardLed2); } } while(0)
+#define Cwsw_Board__Set_kBoardLed3(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed3); } else { BSP_LEDOff(kBoardLed3); } } while(0)
 
 
 #ifdef	__cplusplus

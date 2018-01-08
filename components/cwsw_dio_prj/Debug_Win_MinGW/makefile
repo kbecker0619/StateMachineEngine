@@ -11,15 +11,11 @@ RM := rm -rf
 -include ut/subdir.mk
 -include cwsw_lib/src/subdir.mk
 -include cwsw_bsp/src/subdir.mk
--include cwsw_board/subdir.mk
--include cwsw_arch/pic32mz/framework/system/tmr/src/subdir.mk
--include cwsw_arch/pic32mz/framework/system/int/src/subdir.mk
--include cwsw_arch/pic32mz/framework/system/devcon/src/subdir.mk
--include cwsw_arch/pic32mz/framework/system/clk/src/subdir.mk
--include cwsw_arch/pic32mz/app/system_config/subdir.mk
--include cwsw_arch/pic32mz/app/framework/system/ports/subdir.mk
--include cwsw_arch/pic32mz/app/subdir.mk
--include cwsw_arch/subdir.mk
+-include cwsw_board/none/subdir.mk
+-include cwsw_arch/i386/system/clk/subdir.mk
+-include cwsw_arch/i386/peripheral/ports/subdir.mk
+-include cwsw_arch/i386/subdir.mk
+-include 3rdparty/cwsw/bsp/subdir.mk
 -include subdir.mk
 -include objects.mk
 

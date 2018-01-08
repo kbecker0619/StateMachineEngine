@@ -78,5 +78,9 @@ PLIB_PORTS_PinWrite(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS 
 	UNUSED(bitPos);
 	UNUSED(value);
 	// PORTS_PinWrite_MCU32_PPS()
+
+	dprintf(
+		"\tDO Write, Idx: %i, Channel: %i, Bit: %i, Value: %s\n",
+		index, channel, bitPos, value ? "On" : "Off");
 }
 

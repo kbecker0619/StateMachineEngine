@@ -144,6 +144,12 @@ Cwsw_Board__Init(void)
 	return 1;
 }
 
+bool
+Cwsw_Board__Get_Initialized(void)
+{
+	return initialized;
+}
+
 
 /** Function:
  * 	void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);

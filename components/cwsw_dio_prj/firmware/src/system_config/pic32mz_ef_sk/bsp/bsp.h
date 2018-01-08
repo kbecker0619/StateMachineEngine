@@ -1,13 +1,13 @@
 /*******************************************************************************
   Board Support Package Header File.
 
-  Company:      
+  Company:
     Microchip Technology Inc.
 
-  File Name:    
+  File Name:
     bsp.h
 
-  Summary:      
+  Summary:
     Board Support Package Header File for PIC32MZ Embedded Connectivity (EF)
     Starter Kit.
 
@@ -104,12 +104,12 @@ typedef enum
 
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     BSP_SWITCH_STATE BSP_SwitchStateGet(BSP_SWITCH switch);
 
   Summary:
     Returns the present state (pressed or not pressed) of the specified switch.
-  
+
   Description:
     This function returns the present state (pressed or not pressed) of the
     specified switch.
@@ -119,13 +119,13 @@ typedef enum
 
   Parameters:
     switch  - The switch whose state needs to be obtained.
-  
+
   Returns:
     The pressed released state of the switch.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
@@ -138,7 +138,7 @@ typedef enum
     </code>
 
   Remarks:
-    None                                                                   
+    None
 */
 
 BSP_SWITCH_STATE BSP_SwitchStateGet(BSP_SWITCH bspSwitch);
@@ -209,12 +209,12 @@ typedef enum
 
 } BSP_LED_ACTIVE_LEVEL;
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state);
 
   Summary:
     Controls the state of the LED.
-  
+
   Description:
     This function allows the application to specify the state of the LED.
 
@@ -224,38 +224,38 @@ typedef enum
   Parameters:
     led     - The LED to operate on.
     state   - The state to be set.
-  
+
   Returns:
     None.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
-    // Switch on LED1 on the board 
+    // Switch on LED1 on the board
     BSP_LEDStateSet(BSP_LED_1, BSP_LED_STATE_ON);
-    
-    // Switch off LED2 on the board 
+
+    // Switch off LED2 on the board
     BSP_LEDStateSet(BSP_LED_2, BSP_LED_STATE_OFF);
 
     </code>
 
   Remarks:
-    None                                                                   
+    None
 */
 
 void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state);
 
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     BSP_LED_STATE BSP_LEDStateGet(BSP_LED led);
 
   Summary:
     Returns the present state of the LED.
-  
+
   Description:
     This function returns the present state of the LED.
 
@@ -264,13 +264,13 @@ void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state);
 
   Parameters:
     led - The LED to whose status needs to be obtained.
-  
+
   Returns:
     The ON/OFF state of the LED.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
@@ -284,19 +284,19 @@ void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state);
     </code>
 
   Remarks:
-    None                                                                   
+    None
 */
 
 BSP_LED_STATE BSP_LEDStateGet(BSP_LED led);
 
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_LEDToggle(BSP_LED led);
 
   Summary:
     Toggles the state of the LED between BSP_LED_STATE_ON and BSP_LED_STATE_OFF.
-  
+
   Description:
     This function toggles the state of the LED between BSP_LED_STATE_ON and
     BSP_LED_STATE_OFF.
@@ -306,20 +306,20 @@ BSP_LED_STATE BSP_LEDStateGet(BSP_LED led);
 
   Parameters:
     led - The LED to toggle.
-  
+
   Returns:
     None.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
-    // Switch on LED1 on the board 
+    // Switch on LED1 on the board
     BSP_LEDStateSet(BSP_LED_1, BSP_LED_STATE_ON);
-    
-    // Switch off LED2 on the board 
+
+    // Switch off LED2 on the board
     BSP_LEDStateSet(BSP_LED_2, BSP_LED_STATE_OFF);
 
     // Toggle state of LED3
@@ -327,19 +327,19 @@ BSP_LED_STATE BSP_LEDStateGet(BSP_LED led);
     </code>
 
   Remarks:
-    None                                                                   
+    None
 */
 
 void BSP_LEDToggle(BSP_LED led);
 
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_LEDOn(BSP_LED led);
 
   Summary:
     Switches ON the specified LED.
-  
+
   Description:
     This function switches ON the specified LED.
 
@@ -348,35 +348,35 @@ void BSP_LEDToggle(BSP_LED led);
 
   Parameters:
     led - The LED to switch on.
-  
+
   Returns:
     None.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
-    // Switch on LED1 on the board 
+    // Switch on LED1 on the board
     BSP_LEDOn(BSP_LED_1);
-    
+
     </code>
 
   Remarks:
-    None                                                                   
+    None
 */
 
 void BSP_LEDOn(BSP_LED led);
 
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_LEDOff(BSP_LED led);
 
   Summary:
     Switches OFF the specified LED.
-  
+
   Description:
     This function switches OFF the specified LED.
 
@@ -385,23 +385,23 @@ void BSP_LEDOn(BSP_LED led);
 
   Parameters:
     led - The LED to switch off.
-  
+
   Returns:
     None.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
-    // Switch off LED1 on the board 
+    // Switch off LED1 on the board
     BSP_LEDOff(BSP_LED_1);
-    
+
     </code>
 
   Remarks:
-    None                                                                   
+    None
 */
 
 void BSP_LEDOff(BSP_LED led);
@@ -431,12 +431,12 @@ typedef enum
 
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
 
   Summary:
     This function enables or disables the USB VBUS switch on the board.
-  
+
   Description:
     This function enables or disables the VBUS switch on the board.
 
@@ -445,37 +445,37 @@ typedef enum
 
   Parameters:
     state - If BSP_USB_VBUS_SWITCH_STATE_ENABLE, then the USB VBUS switch is
-            enabled and VBUS is supplied on the USB. 
+            enabled and VBUS is supplied on the USB.
             If BSP_USB_VBUS_SWITCH_STATE_DISABLE, then the USB VBUS
             switch is disabled and VBUS is not supplied on the USB.
-  
+
   Returns:
     None.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
     // Enable the VBUS switch.
     BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE_ENABLE);
-    
+
     </code>
 
   Remarks:
-    None                                                                   
+    None
 */
 
 void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     bool BSP_USBVBUSPowerEnable(uint8_t port, bool enable)
 
   Summary:
     This function controls the USB VBUS supply.
-  
+
   Description:
     This function controls the USB VBUS supply.
 
@@ -486,13 +486,13 @@ void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
     port - This parameter is ignored.
 
     enable  - if true VBUS supply is enabled. If false VBUS supply is disabled.
-  
+
   Returns:
     None.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
@@ -511,12 +511,12 @@ void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
 void BSP_USBVBUSPowerEnable(uint8_t port, bool enable);
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port)
 
   Summary:
     Returns true if the over current is detected on the VBUS supply.
-  
+
   Description:
     This function returns true if over current is detected on the VBUS supply.
 
@@ -525,14 +525,14 @@ void BSP_USBVBUSPowerEnable(uint8_t port, bool enable);
 
   Parameters:
     port - This parameter is ignored.
-  
+
   Returns:
     true - VBUS supply over current is detected.
     false - VBUS supply over current is not detected.
 
   Example:
     <code>
-    
+
     // Initialize the BSP
     BSP_Initialize();
 
@@ -560,23 +560,23 @@ bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port);
 // *****************************************************************************
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_Initialize(void)
 
   Summary:
     Performs the necessary actions to initialize a board
-  
+
   Description:
     This function initializes the LED and Switch ports on the board.  This
     function must be called by the user before using any APIs present on this
-    BSP.  
+    BSP.
 
   Precondition:
     None.
 
   Parameters:
     None
-  
+
   Returns:
     None.
 
@@ -587,7 +587,7 @@ bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port);
     </code>
 
   Remarks:
-    None                                                                   
+    None
 */
 
 void BSP_Initialize(void);
