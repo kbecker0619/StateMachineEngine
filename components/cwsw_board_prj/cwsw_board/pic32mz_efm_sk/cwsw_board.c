@@ -42,7 +42,7 @@
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
-#include "peripheral/ports/ports_api.h"
+#include "peripheral/ports/plib_ports.h"
 
 // ----	Module Headers --------------------------
 #include "cwsw_board.h"

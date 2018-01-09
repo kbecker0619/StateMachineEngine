@@ -1,18 +1,27 @@
-/** @file ports_api.c
- *	@brief	One-sentence short description of file.
+/** @file
+ *	@brief	MCU selector.
  *
  *	Description:
+ *	This file is nothing more than a container for all known MCU headers, and provides a method to
+ *	select the header appropriate for the build target.
  *
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
- *	Created on: Jan 5, 2018
+ *	Created on: Dec 28, 2017
  *	Author: kbecker
  *
  *	Current:
  *	$Revision: $
  *	$Date: $
  */
+
+#ifndef PORTS_PROCESSOR_H_
+#define PORTS_PROCESSOR_H_
+
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 // ============================================================================
 // ----	Include Files ---------------------------------------------------------
@@ -23,35 +32,42 @@
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-#include "cwsw_lib.h"
-#include "peripheral/ports/plib_ports.h"
 
 // ----	Module Headers --------------------------
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC)
+#include "ports_api.h"
+
+//#elif (XPRJ_Debug_Win_MZ2048EFM)
+//#include "ports_p32mz2048efm144.h"	/* klb: skip 2nd-level selector used by Microchip; go directly to known header */
+#elif defined(__PIC32MZ__)
+	#include "peripheral/ports/processor/ports_p32xxxx.h"
+
+#else
+#error Unknown MCU
+#endif
 
 
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
+#define PORTS_PROCESSOR_H__REVSTRING "$Revision: 0123 $"
+
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
 // ============================================================================
-// ----	Global Variables ------------------------------------------------------
+// ----	Public Variables ------------------------------------------------------
 // ============================================================================
 
 // ============================================================================
-// ----	Module-level Variables ------------------------------------------------
-// ============================================================================
-static char const * const ports_api_RevString = "$Revision: 0123 $";
-
-
-// ============================================================================
-// ----	Private Prototypes ----------------------------------------------------
+// ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-// ============================================================================
-// ----	Public Functions ------------------------------------------------------
-// ============================================================================
 
+#ifdef	__cplusplus
+}
+#endif
+
+#endif /* PORTS_PROCESSOR_H_ */

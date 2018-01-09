@@ -209,7 +209,8 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/pic32mz&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_board/pic32mz_efm_sk&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PIC32_XC_INCLUDE}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_dio/3rdparty/mhc/bsp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/mhc/gen/bsp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/mhc/lib&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.122290796" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>

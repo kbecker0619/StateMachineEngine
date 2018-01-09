@@ -17,8 +17,8 @@
  *	$Date: $
  */
 
-#ifndef PLIB_OSC_H_
-#define PLIB_OSC_H_
+#ifndef _osc_p32xxxx_h_
+#define _osc_p32xxxx_h_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -673,7 +673,7 @@ extern "C" {
     #include "osc_p32mz2048efh144.h"
 
 #elif defined(__32MZ2048EFM144__)
-    #include "processor/osc_p32mz2048efm144.h"		/* klb: added path - temporary only */
+    #include "osc_p32mz2048efm144.h"		/* klb: added path - temporary only */
 
 
 #elif defined(__32MZ1025DAA169__)
@@ -838,4 +838,4 @@ extern "C" {
 }
 #endif
 
-#endif /* PLIB_OSC_H_ */
+#endif /* _osc_p32xxxx_h_ */

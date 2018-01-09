@@ -1,10 +1,10 @@
 /** @file ports_p32mz2048efm144.h
  *	@brief	One-sentence short description of file.
- *	
- *	Description: 
- *	
+ *
+ *	Description:
+ *
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
- *	
+ *
  *	Original:
  *	Created on: Jan 8, 2018
  *	Author: kbecker
@@ -14,8 +14,8 @@
  *	$Date: $
  */
 
-#ifndef 3RDPARTY_MHC_LIB_PERIPHERAL_PORTS_PROCESSOR_PORTS_P32MZ2048EFM144_H_
-#define 3RDPARTY_MHC_LIB_PERIPHERAL_PORTS_PROCESSOR_PORTS_P32MZ2048EFM144_H_
+#ifndef _PORTS_P32MZ2048EFM144_H_
+#define _PORTS_P32MZ2048EFM144_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -38,7 +38,7 @@ extern "C" {
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
-#define 3RDPARTY_MHC_LIB_PERIPHERAL_PORTS_PROCESSOR_PORTS_P32MZ2048EFM144_H__REVSTRING "$Revision: 0123 $"
+#define _PORTS_P32MZ2048EFM144_H__REVSTRING "$Revision: 0123 $"
 
 /* Default definition used for all API dispatch functions */
 #ifndef PLIB_INLINE_API
@@ -467,9 +467,84 @@ typedef enum {
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
+PLIB_INLINE_API bool
+PLIB_PORTS_PinGet(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos)
+{
+#if 0
+	return PORTS_PinGet_MCU32_PPS(index, channel, bitPos);
+#else
+	UNUSED(index);
+	UNUSED(channel);
+	UNUSED(bitPos);
+	return false;
+#endif
+}
+
+PLIB_INLINE_API bool
+PLIB_PORTS_PinGetLatched(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos)
+{
+#if 0
+	return PORTS_PinGetLatched_MCU32_PPS(index, channel, bitPos);
+#else
+	UNUSED(index);
+	UNUSED(channel);
+	UNUSED(bitPos);
+	return false;
+#endif
+}
+
+PLIB_INLINE_API void
+PLIB_PORTS_PinWrite(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos, bool value)
+{
+#if 0
+	PORTS_PinWrite_MCU32_PPS(index, channel, bitPos, value);
+#else
+	UNUSED(index);
+	UNUSED(channel);
+	UNUSED(bitPos);
+	UNUSED(value);
+#endif
+}
+
+PLIB_INLINE_API
+void PLIB_PORTS_PinSet(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos)
+{
+#if 0
+	PORTS_PinSet_MCU32_PPS(index, channel, bitPos);
+#else
+	UNUSED(index);
+	UNUSED(channel);
+	UNUSED(bitPos);
+#endif
+}
+
+PLIB_INLINE_API void
+PLIB_PORTS_PinClear(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos)
+{
+#if 0
+	PORTS_PinClear_MCU32_PPS(index, channel, bitPos);
+#else
+	UNUSED(index);
+	UNUSED(channel);
+	UNUSED(bitPos);
+#endif
+}
+
+PLIB_INLINE_API void
+PLIB_PORTS_PinToggle(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos)
+{
+#if 0
+	PORTS_PinToggle_MCU32_PPS(index, channel, bitPos);
+#else
+	UNUSED(index);
+	UNUSED(channel);
+	UNUSED(bitPos);
+#endif
+}
+
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif /* 3RDPARTY_MHC_LIB_PERIPHERAL_PORTS_PROCESSOR_PORTS_P32MZ2048EFM144_H_ */
+#endif /* _PORTS_P32MZ2048EFM144_H_ */
