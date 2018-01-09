@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c ../src/app.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache_pic32mz.S ../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c ../src/system_config/pic32mz_ef_sk/bsp/bsp.c ../src/system_config/pic32mz_ef_sk/system_init.c ../src/system_config/pic32mz_ef_sk/system_interrupt.c ../src/system_config/pic32mz_ef_sk/system_exceptions.c ../src/system_config/pic32mz_ef_sk/fassert.c ../src/main.c ../src/system_config/pic32mz_ef_sk/system_tasks.c
+SOURCEFILES_QUOTED_IF_SPACED=../src/system_config/pic32mz_ef_sk/bsp/bsp.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache_pic32mz.S ../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c ../src/system_config/pic32mz_ef_sk/system_init.c ../src/system_config/pic32mz_ef_sk/system_interrupt.c ../src/system_config/pic32mz_ef_sk/system_exceptions.c ../src/system_config/pic32mz_ef_sk/fassert.c ../src/system_config/pic32mz_ef_sk/system_tasks.c ../src/app.c ../src/main.c ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1975295575/sys_clk.o ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o ${OBJECTDIR}/_ext/1360937237/app.o ${OBJECTDIR}/_ext/1868830280/sys_devcon.o ${OBJECTDIR}/_ext/1868830280/sys_devcon_pic32mz.o ${OBJECTDIR}/_ext/1868830280/sys_devcon_cache_pic32mz.o ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o ${OBJECTDIR}/_ext/354129722/bsp.o ${OBJECTDIR}/_ext/849053718/system_init.o ${OBJECTDIR}/_ext/849053718/system_interrupt.o ${OBJECTDIR}/_ext/849053718/system_exceptions.o ${OBJECTDIR}/_ext/849053718/fassert.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/849053718/system_tasks.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1975295575/sys_clk.o.d ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d ${OBJECTDIR}/_ext/1360937237/app.o.d ${OBJECTDIR}/_ext/1868830280/sys_devcon.o.d ${OBJECTDIR}/_ext/1868830280/sys_devcon_pic32mz.o.d ${OBJECTDIR}/_ext/1868830280/sys_devcon_cache_pic32mz.o.d ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o.d ${OBJECTDIR}/_ext/354129722/bsp.o.d ${OBJECTDIR}/_ext/849053718/system_init.o.d ${OBJECTDIR}/_ext/849053718/system_interrupt.o.d ${OBJECTDIR}/_ext/849053718/system_exceptions.o.d ${OBJECTDIR}/_ext/849053718/fassert.o.d ${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/849053718/system_tasks.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/354129722/bsp.o ${OBJECTDIR}/_ext/1868830280/sys_devcon.o ${OBJECTDIR}/_ext/1868830280/sys_devcon_pic32mz.o ${OBJECTDIR}/_ext/1868830280/sys_devcon_cache_pic32mz.o ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o ${OBJECTDIR}/_ext/849053718/system_init.o ${OBJECTDIR}/_ext/849053718/system_interrupt.o ${OBJECTDIR}/_ext/849053718/system_exceptions.o ${OBJECTDIR}/_ext/849053718/fassert.o ${OBJECTDIR}/_ext/849053718/system_tasks.o ${OBJECTDIR}/_ext/1360937237/app.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1975295575/sys_clk.o ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/354129722/bsp.o.d ${OBJECTDIR}/_ext/1868830280/sys_devcon.o.d ${OBJECTDIR}/_ext/1868830280/sys_devcon_pic32mz.o.d ${OBJECTDIR}/_ext/1868830280/sys_devcon_cache_pic32mz.o.d ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o.d ${OBJECTDIR}/_ext/849053718/system_init.o.d ${OBJECTDIR}/_ext/849053718/system_interrupt.o.d ${OBJECTDIR}/_ext/849053718/system_exceptions.o.d ${OBJECTDIR}/_ext/849053718/fassert.o.d ${OBJECTDIR}/_ext/849053718/system_tasks.o.d ${OBJECTDIR}/_ext/1360937237/app.o.d ${OBJECTDIR}/_ext/1360937237/main.o.d ${OBJECTDIR}/_ext/1975295575/sys_clk.o.d ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1975295575/sys_clk.o ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o ${OBJECTDIR}/_ext/1360937237/app.o ${OBJECTDIR}/_ext/1868830280/sys_devcon.o ${OBJECTDIR}/_ext/1868830280/sys_devcon_pic32mz.o ${OBJECTDIR}/_ext/1868830280/sys_devcon_cache_pic32mz.o ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o ${OBJECTDIR}/_ext/354129722/bsp.o ${OBJECTDIR}/_ext/849053718/system_init.o ${OBJECTDIR}/_ext/849053718/system_interrupt.o ${OBJECTDIR}/_ext/849053718/system_exceptions.o ${OBJECTDIR}/_ext/849053718/fassert.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/849053718/system_tasks.o
+OBJECTFILES=${OBJECTDIR}/_ext/354129722/bsp.o ${OBJECTDIR}/_ext/1868830280/sys_devcon.o ${OBJECTDIR}/_ext/1868830280/sys_devcon_pic32mz.o ${OBJECTDIR}/_ext/1868830280/sys_devcon_cache_pic32mz.o ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o ${OBJECTDIR}/_ext/849053718/system_init.o ${OBJECTDIR}/_ext/849053718/system_interrupt.o ${OBJECTDIR}/_ext/849053718/system_exceptions.o ${OBJECTDIR}/_ext/849053718/fassert.o ${OBJECTDIR}/_ext/849053718/system_tasks.o ${OBJECTDIR}/_ext/1360937237/app.o ${OBJECTDIR}/_ext/1360937237/main.o ${OBJECTDIR}/_ext/1975295575/sys_clk.o ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o
 
 # Source Files
-SOURCEFILES=../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c ../src/app.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache_pic32mz.S ../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c ../src/system_config/pic32mz_ef_sk/bsp/bsp.c ../src/system_config/pic32mz_ef_sk/system_init.c ../src/system_config/pic32mz_ef_sk/system_interrupt.c ../src/system_config/pic32mz_ef_sk/system_exceptions.c ../src/system_config/pic32mz_ef_sk/fassert.c ../src/main.c ../src/system_config/pic32mz_ef_sk/system_tasks.c
+SOURCEFILES=../src/system_config/pic32mz_ef_sk/bsp/bsp.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache_pic32mz.S ../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c ../src/system_config/pic32mz_ef_sk/system_init.c ../src/system_config/pic32mz_ef_sk/system_interrupt.c ../src/system_config/pic32mz_ef_sk/system_exceptions.c ../src/system_config/pic32mz_ef_sk/fassert.c ../src/system_config/pic32mz_ef_sk/system_tasks.c ../src/app.c ../src/main.c ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c
 
 
 CFLAGS=
@@ -120,29 +120,11 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1975295575/sys_clk.o: ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1975295575" 
-	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1975295575/sys_clk.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1975295575/sys_clk.o.d" -o ${OBJECTDIR}/_ext/1975295575/sys_clk.o ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o: ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1975295575" 
-	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d" -o ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o: ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1224046940" 
-	@${RM} ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d" -o ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/_ext/1360937237/app.o: ../src/app.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/app.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/app.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/app.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1360937237/app.o.d" -o ${OBJECTDIR}/_ext/1360937237/app.o ../src/app.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+${OBJECTDIR}/_ext/354129722/bsp.o: ../src/system_config/pic32mz_ef_sk/bsp/bsp.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/354129722" 
+	@${RM} ${OBJECTDIR}/_ext/354129722/bsp.o.d 
+	@${RM} ${OBJECTDIR}/_ext/354129722/bsp.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/354129722/bsp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/354129722/bsp.o.d" -o ${OBJECTDIR}/_ext/354129722/bsp.o ../src/system_config/pic32mz_ef_sk/bsp/bsp.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/1868830280/sys_devcon.o: ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1868830280" 
@@ -161,12 +143,6 @@ ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o: ../src/system_config/pic32mz_ef
 	@${RM} ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1009894383/sys_ports_static.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1009894383/sys_ports_static.o.d" -o ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o ../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/_ext/354129722/bsp.o: ../src/system_config/pic32mz_ef_sk/bsp/bsp.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/354129722" 
-	@${RM} ${OBJECTDIR}/_ext/354129722/bsp.o.d 
-	@${RM} ${OBJECTDIR}/_ext/354129722/bsp.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/354129722/bsp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/354129722/bsp.o.d" -o ${OBJECTDIR}/_ext/354129722/bsp.o ../src/system_config/pic32mz_ef_sk/bsp/bsp.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/849053718/system_init.o: ../src/system_config/pic32mz_ef_sk/system_init.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/849053718" 
@@ -192,42 +168,48 @@ ${OBJECTDIR}/_ext/849053718/fassert.o: ../src/system_config/pic32mz_ef_sk/fasser
 	@${RM} ${OBJECTDIR}/_ext/849053718/fassert.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/849053718/fassert.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/849053718/fassert.o.d" -o ${OBJECTDIR}/_ext/849053718/fassert.o ../src/system_config/pic32mz_ef_sk/fassert.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/_ext/849053718/system_tasks.o: ../src/system_config/pic32mz_ef_sk/system_tasks.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/849053718" 
 	@${RM} ${OBJECTDIR}/_ext/849053718/system_tasks.o.d 
 	@${RM} ${OBJECTDIR}/_ext/849053718/system_tasks.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/849053718/system_tasks.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/849053718/system_tasks.o.d" -o ${OBJECTDIR}/_ext/849053718/system_tasks.o ../src/system_config/pic32mz_ef_sk/system_tasks.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
-else
+${OBJECTDIR}/_ext/1360937237/app.o: ../src/app.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/app.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/app.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/app.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1360937237/app.o.d" -o ${OBJECTDIR}/_ext/1360937237/app.o ../src/app.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	
 ${OBJECTDIR}/_ext/1975295575/sys_clk.o: ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1975295575" 
 	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1975295575/sys_clk.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1975295575/sys_clk.o.d" -o ${OBJECTDIR}/_ext/1975295575/sys_clk.o ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1975295575/sys_clk.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1975295575/sys_clk.o.d" -o ${OBJECTDIR}/_ext/1975295575/sys_clk.o ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o: ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1975295575" 
 	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d" -o ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d" -o ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o: ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1224046940" 
 	@${RM} ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d" -o ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DPKOBSKDEPlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d" -o ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/_ext/1360937237/app.o: ../src/app.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/app.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1360937237/app.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/app.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1360937237/app.o.d" -o ${OBJECTDIR}/_ext/1360937237/app.o ../src/app.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+else
+${OBJECTDIR}/_ext/354129722/bsp.o: ../src/system_config/pic32mz_ef_sk/bsp/bsp.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/354129722" 
+	@${RM} ${OBJECTDIR}/_ext/354129722/bsp.o.d 
+	@${RM} ${OBJECTDIR}/_ext/354129722/bsp.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/354129722/bsp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/354129722/bsp.o.d" -o ${OBJECTDIR}/_ext/354129722/bsp.o ../src/system_config/pic32mz_ef_sk/bsp/bsp.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/1868830280/sys_devcon.o: ../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1868830280" 
@@ -246,12 +228,6 @@ ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o: ../src/system_config/pic32mz_ef
 	@${RM} ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1009894383/sys_ports_static.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1009894383/sys_ports_static.o.d" -o ${OBJECTDIR}/_ext/1009894383/sys_ports_static.o ../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/_ext/354129722/bsp.o: ../src/system_config/pic32mz_ef_sk/bsp/bsp.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/354129722" 
-	@${RM} ${OBJECTDIR}/_ext/354129722/bsp.o.d 
-	@${RM} ${OBJECTDIR}/_ext/354129722/bsp.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/354129722/bsp.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/354129722/bsp.o.d" -o ${OBJECTDIR}/_ext/354129722/bsp.o ../src/system_config/pic32mz_ef_sk/bsp/bsp.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/849053718/system_init.o: ../src/system_config/pic32mz_ef_sk/system_init.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/849053718" 
@@ -277,17 +253,41 @@ ${OBJECTDIR}/_ext/849053718/fassert.o: ../src/system_config/pic32mz_ef_sk/fasser
 	@${RM} ${OBJECTDIR}/_ext/849053718/fassert.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/849053718/fassert.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/849053718/fassert.o.d" -o ${OBJECTDIR}/_ext/849053718/fassert.o ../src/system_config/pic32mz_ef_sk/fassert.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/_ext/849053718/system_tasks.o: ../src/system_config/pic32mz_ef_sk/system_tasks.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/849053718" 
+	@${RM} ${OBJECTDIR}/_ext/849053718/system_tasks.o.d 
+	@${RM} ${OBJECTDIR}/_ext/849053718/system_tasks.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/849053718/system_tasks.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/849053718/system_tasks.o.d" -o ${OBJECTDIR}/_ext/849053718/system_tasks.o ../src/system_config/pic32mz_ef_sk/system_tasks.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1360937237/app.o: ../src/app.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/app.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1360937237/app.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/app.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1360937237/app.o.d" -o ${OBJECTDIR}/_ext/1360937237/app.o ../src/app.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	
 ${OBJECTDIR}/_ext/1360937237/main.o: ../src/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1360937237" 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1360937237/main.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1360937237/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1360937237/main.o.d" -o ${OBJECTDIR}/_ext/1360937237/main.o ../src/main.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/_ext/849053718/system_tasks.o: ../src/system_config/pic32mz_ef_sk/system_tasks.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/849053718" 
-	@${RM} ${OBJECTDIR}/_ext/849053718/system_tasks.o.d 
-	@${RM} ${OBJECTDIR}/_ext/849053718/system_tasks.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/849053718/system_tasks.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/849053718/system_tasks.o.d" -o ${OBJECTDIR}/_ext/849053718/system_tasks.o ../src/system_config/pic32mz_ef_sk/system_tasks.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+${OBJECTDIR}/_ext/1975295575/sys_clk.o: ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1975295575" 
+	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1975295575/sys_clk.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1975295575/sys_clk.o.d" -o ${OBJECTDIR}/_ext/1975295575/sys_clk.o ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o: ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1975295575" 
+	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o.d" -o ${OBJECTDIR}/_ext/1975295575/sys_clk_pic32mz.o ../../../../../../Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_pic32mz.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o: ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1224046940" 
+	@${RM} ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../../../../../../../_Programs/Microchip/harmony/v2_05/framework" -I"../src" -I"../src/system_config/pic32mz_ef_sk" -I"../src/pic32mz_ef_sk" -I"../src/system_config/pic32mz_ef_sk/framework" -I"../../../../../../Microchip/harmony/v2_05/framework" -I"../src/system_config/pic32mz_ef_sk/bsp" -MMD -MF "${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o.d" -o ${OBJECTDIR}/_ext/1224046940/sys_int_pic32.o ../../../../../../Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c    -DXPRJ_pic32mz_ef_sk=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

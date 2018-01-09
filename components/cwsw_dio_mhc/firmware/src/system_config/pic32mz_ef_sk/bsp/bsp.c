@@ -338,9 +338,9 @@ void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state)
   Remarks:
     None.
 */
-
 bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port)
 {
+	UNUSED(port);
     return(false);
 }
 
@@ -360,6 +360,7 @@ bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port)
 
 void BSP_USBVBUSPowerEnable(uint8_t port, bool enable)
 {
+	UNUSED(port);
     /* Enable the VBUS switch */
 
     PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, enable );

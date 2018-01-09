@@ -4,8 +4,6 @@ Creation-Date: 2018-01-08T12:30:22-05:00
 
 ====== Monday 08 Jan 2018 ======
 
-====== Sunday 07 Jan 2018 ======
-
 continued yesterday's exploration of DIO buildup, but in office on my personal Win7 VM. had LOTS of trouble hooking up w/ github; ended up using HTTPS, retrieving onto my host, then syncing w/ VM's workspace. intent: at end of day, sync bac, then commit. ugh.
 
 the way i did it, symlinks came in as folders. deleted the folders, recreated the symlinks; this may be a problem when syncing back to the host, as you need admin rights to do this.
