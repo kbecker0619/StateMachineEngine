@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/pic32mz_ef_sk/debug/cwsw_dio_ref.X.debug.elf">                 
+  <executable name="dist/pic32mz_ef_sk/production/blinky_leds.X.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>2098304</length>                 
-      <used>6860</used>                     
-      <free>2091444</free>                     
+      <used>9432</used>                     
+      <free>2088872</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 
-      <length>525184</length>                 
-      <used>2012</used>                     
-      <free>523172</free>                     
+      <length>524288</length>                 
+      <used>204</used>                     
+      <free>524084</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

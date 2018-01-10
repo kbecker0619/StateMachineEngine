@@ -76,8 +76,9 @@ int main ( void )
     while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
-
+        // <editor-fold defaultstate="collapsed" desc="Execute system tasks">
+		SYS_Tasks();
+		// </editor-fold>
     }
 
     /* Execution should not come here during normal operation */

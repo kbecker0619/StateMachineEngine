@@ -59,6 +59,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdlib.h>
 #include "system_config.h"
 #include "system_definitions.h"
+#include "driver/tmr/drv_tmr.h"
+#include "system/ports/sys_ports.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -90,9 +92,8 @@ typedef enum
 {
     /* Create the Timer Object */
     APP_STATE_TIMER_OBJECT_CREATE,
-
-    /* Idle State */
-    APP_STATE_IDLE
+    APP_STATE_IDLE,
+	APP_STATE_SERVICE_TASKS
 
 } APP_STATES;
 
@@ -113,9 +114,11 @@ typedef enum
 typedef struct
 {
     /* The application's current state */
-    APP_STATES state;
-
-    SYS_TMR_HANDLE tmrServiceHandle;
+    APP_STATES		state;
+	DRV_HANDLE		heartbeatTimer;
+	uint16_t		heartbeatCount;
+	bool			heartbeatToggle;
+    SYS_TMR_HANDLE	tmrServiceHandle;
 
 } APP_DATA;
 

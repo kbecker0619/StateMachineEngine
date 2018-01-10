@@ -18,7 +18,7 @@
     definitions for build-time configuration options that are not instantiated
     until used by another MPLAB Harmony module or application.
 
-    Created with MPLAB Harmony Version 2.04
+    Created with MPLAB Harmony Version 2.05
 *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
@@ -76,8 +76,8 @@ extern "C" {
 // *****************************************************************************
 /* Common System Service Configuration Options
 */
-#define SYS_VERSION_STR           "2.04"
-#define SYS_VERSION               20400
+#define SYS_VERSION_STR           "2.05"
+#define SYS_VERSION               20500
 
 // *****************************************************************************
 /* Clock System Service Configuration Options
@@ -193,13 +193,17 @@ extern "C" {
 // *****************************************************************************
 // *****************************************************************************
 /*** Timer Driver Configuration ***/
-#define DRV_TMR_INTERRUPT_MODE             false
+#define DRV_TMR_INTERRUPT_MODE             true
 #define DRV_TMR_INSTANCES_NUMBER           1
 #define DRV_TMR_CLIENTS_NUMBER             1
 
 /*** Timer Driver 0 Configuration ***/
-#define DRV_TMR_PERIPHERAL_ID_IDX0          TMR_ID_2
-#define DRV_TMR_INTERRUPT_SOURCE_IDX0       INT_SOURCE_TIMER_2
+#define DRV_TMR_PERIPHERAL_ID_IDX0          TMR_ID_1
+#define DRV_TMR_INTERRUPT_SOURCE_IDX0       INT_SOURCE_TIMER_1
+#define DRV_TMR_INTERRUPT_VECTOR_IDX0       INT_VECTOR_T1
+#define DRV_TMR_ISR_VECTOR_IDX0             _TIMER_1_VECTOR
+#define DRV_TMR_INTERRUPT_PRIORITY_IDX0     INT_PRIORITY_LEVEL1
+#define DRV_TMR_INTERRUPT_SUB_PRIORITY_IDX0 INT_SUBPRIORITY_LEVEL0
 #define DRV_TMR_CLOCK_SOURCE_IDX0           DRV_TMR_CLKSOURCE_INTERNAL
 #define DRV_TMR_PRESCALE_IDX0               TMR_PRESCALE_VALUE_256
 #define DRV_TMR_OPERATION_MODE_IDX0         DRV_TMR_OPERATION_MODE_16_BIT
@@ -224,6 +228,15 @@ extern "C" {
 // Section: Application Configuration
 // *****************************************************************************
 // *****************************************************************************
+	
+#define APP_HEARTBEAT_TMR				DRV_TMR_INDEX_0
+#define APP_HEARTBEAT_TMR_IS_PERIODIC	true
+#define APP_HEARTBEAT_TMR_PERIOD		0xFE51
+#define APP_HEARTBEAT_COUNT_MAX			6
+#define APP_HEARTBEAT_PORT				PORT_CHANNEL_H
+#define APP_HEARTBEAT_PIN				PORTS_BIT_POS_0
+
+	
 /*** Application Defined Pins ***/
 
 /*** Functions for BSP_LED_1 pin ***/

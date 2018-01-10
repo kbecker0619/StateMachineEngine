@@ -105,9 +105,12 @@ static void TimerCallback (  uintptr_t context, uint32_t alarmCount )
 /* Application's LED Task Function */
 static void LedTask( void )
 {
+	volatile bool a;
     if (global_event_triggered(&global_events.evMhc_ToggleLed))
     {
-            BSP_LED_1Toggle();
+		a ^= true;	/* provide a place to hang a breakpoint */
+//		BSP_LED_1Toggle();
+		PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_H, PORTS_BIT_POS_0);
     }
 }
 

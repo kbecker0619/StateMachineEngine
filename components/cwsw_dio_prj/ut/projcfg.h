@@ -78,8 +78,8 @@ extern "C" {
 
 /* ==== One final word ========================================================
  * This section is intended to be pristine and unchanged for all projects.
- * Configuration-specific (aka Build-Target-Specific) defines should be done in
- * a followup section below.
+ * Configuration-specific defines (aka optsions specific to one of these Build
+ * Targets) should be done in a followup section below.
  * ========================================================================= */
 /* Configuration Check */
 #if defined(XPRJ_Debug)
@@ -154,7 +154,7 @@ extern "C" {
 
 #endif
 
-#if defined(XPRJ_Debug_Win_MZ2048EFM)
+#if (XPRJ_Debug_Win_MZ2048EFM)
 	/* define stuff that MPLAB defines on the command line */
 	#if !defined(__PIC32M)
 		#define __PIC32M

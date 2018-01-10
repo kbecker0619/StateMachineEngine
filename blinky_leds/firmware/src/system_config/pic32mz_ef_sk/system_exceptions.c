@@ -5,7 +5,7 @@
     system_exceptions.c
 
   Summary:
-    This file contains a function which overrides the deafult _weak_ exception 
+    This file contains a function which overrides the deafult _weak_ exception
     handler provided by the XC32 compiler.
 
   Description:
@@ -18,7 +18,7 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (c) 2013-2015 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2013-2017 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
@@ -42,7 +42,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // DOM-IGNORE-END
 
 
-#include <xc.h>                 /* Defines special funciton registers, CP0 regs  */
+#include <xc.h>                 /* Defines special function registers, CP0 regs  */
 #include "system_config.h"
 #include "system_definitions.h"
 #include "system/debug/sys_debug.h"
@@ -56,11 +56,11 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 /*******************************************************************************
   Exception Reason Data
-  
+
   <editor-fold defaultstate="expanded" desc="Exception Reason Data">
-  
+
   Remarks:
-    These global static items are used instead of local variables in the 
+    These global static items are used instead of local variables in the
     _general_exception_handler function because the stack may not be available
     if an exception has occured.
 */
@@ -70,33 +70,6 @@ static unsigned int _excep_code;
 
 /* Address of instruction that caused the exception. */
 static unsigned int _excep_addr;
-
-/* Pointer to the string describing the cause of the exception. */
-static char *_cause_str;
-
-/* Array identifying the cause (indexed by _exception_code). */
-static char *cause[] = 
-{
-    "Interrupt",
-    "Undefined",
-    "Undefined",
-    "Undefined",
-    "Load/fetch address error",
-    "Store address error",
-    "Instruction bus error",
-    "Data bus error",
-    "Syscall",
-    "Breakpoint",
-    "Reserved instruction",
-    "Coprocessor unusable",
-    "Arithmetic overflow",
-    "Trap",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved"
-};
 
 // </editor-fold>
 
@@ -113,7 +86,7 @@ static char *cause[] =
 
   Summary:
     Overrides the XC32 _weak_ _generic_exception_handler.
-    
+
   Description:
     This function overrides the XC32 default _weak_ _generic_exception_handler.
 
@@ -121,16 +94,13 @@ static char *cause[] =
     Refer to the XC32 User's Guide for additional information.
  */
 
+
 void _general_exception_handler ( void )
 {
     /* Mask off Mask of the ExcCode Field from the Cause Register
     Refer to the MIPs Software User's manual */
     _excep_code = (_CP0_GET_CAUSE() & 0x0000007C) >> 2;
     _excep_addr = _CP0_GET_EPC();
-    _cause_str  = cause[_excep_code];
-
-    SYS_DEBUG_PRINT(SYS_ERROR_ERROR, "\n\rGeneral Exception %s (cause=%d, addr=%x).\n\r", 
-                    _cause_str, _excep_code, _excep_addr);
 
     while (1)
     {

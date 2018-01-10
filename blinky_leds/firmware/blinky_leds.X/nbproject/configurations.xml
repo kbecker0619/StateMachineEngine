@@ -122,19 +122,30 @@
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../../framework/driver/tmr/src/drv_tmr_variant_mapping.h</itemPath>
               <itemPath>../../../../../../../framework/driver/tmr/src/drv_tmr_local.h</itemPath>
+              <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_variant_mapping.h</itemPath>
+              <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_local.h</itemPath>
             </logicalFolder>
             <itemPath>../../../../../../../framework/driver/tmr/drv_tmr.h</itemPath>
             <itemPath>../../../../../../../framework/driver/tmr/drv_tmr_mapping.h</itemPath>
             <itemPath>../../../../../../../framework/driver/tmr/drv_tmr_compatibility.h</itemPath>
             <itemPath>../../../../../../../framework/driver/tmr/tmr_definitions_pic32m.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_mapping.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_compatibility.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/tmr_definitions_pic32m.h</itemPath>
           </logicalFolder>
           <itemPath>../../../../../../../framework/driver/driver.h</itemPath>
           <itemPath>../../../../../../../framework/driver/driver_common.h</itemPath>
+          <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver.h</itemPath>
+          <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver_common.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f4" displayName="osal" projectFiles="true">
           <itemPath>../../../../../../../framework/osal/osal.h</itemPath>
           <itemPath>../../../../../../../framework/osal/osal_definitions.h</itemPath>
           <itemPath>../../../../../../../framework/osal/osal_impl_basic.h</itemPath>
+          <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal.h</itemPath>
+          <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_definitions.h</itemPath>
+          <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_impl_basic.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f1" displayName="system" projectFiles="true">
           <logicalFolder name="f6" displayName="clk" projectFiles="true">
@@ -144,34 +155,50 @@
             <itemPath>../../../../../../../framework/system/clk/sys_clk.h</itemPath>
             <itemPath>../../../../../../../framework/system/clk/sys_clk_mapping.h</itemPath>
             <itemPath>../../../../../../../framework/system/clk/sys_clk_compatibility.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_compatibility.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_mapping.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f1" displayName="common" projectFiles="true">
             <itemPath>../../../../../../../framework/system/common/sys_common.h</itemPath>
             <itemPath>../../../../../../../framework/system/common/sys_module.h</itemPath>
             <itemPath>../../../../../../../framework/system/common/sys_buffer.h</itemPath>
             <itemPath>../../../../../../../framework/system/common/sys_queue.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_common.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_module.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_buffer.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_queue.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f7" displayName="debug" projectFiles="true">
             <itemPath>../../../../../../../framework/system/debug/sys_debug.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/debug/sys_debug.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f4" displayName="int" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../../framework/system/int/src/sys_int_private.h</itemPath>
+              <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_private.h</itemPath>
             </logicalFolder>
             <itemPath>../../../../../../../framework/system/int/sys_int.h</itemPath>
             <itemPath>../../../../../../../framework/system/int/sys_int_mapping.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int_mapping.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="ports" projectFiles="true">
             <itemPath>../../../../../../../framework/system/ports/sys_ports.h</itemPath>
             <itemPath>../../../../../../../framework/system/ports/sys_ports_definitions.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports_definitions.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f5" displayName="tmr" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../../framework/system/tmr/src/sys_tmr_local.h</itemPath>
+              <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr_local.h</itemPath>
             </logicalFolder>
             <itemPath>../../../../../../../framework/system/tmr/sys_tmr.h</itemPath>
+            <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/sys_tmr.h</itemPath>
           </logicalFolder>
           <itemPath>../../../../../../../framework/system/system.h</itemPath>
+          <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/system.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -302,6 +329,7 @@
             <itemPath>../src/system_config/pic32mz_ef_sk/system_init.c</itemPath>
             <itemPath>../src/system_config/pic32mz_ef_sk/system_interrupt.c</itemPath>
             <itemPath>../src/system_config/pic32mz_ef_sk/system_exceptions.c</itemPath>
+            <itemPath>../src/system_config/pic32mz_ef_sk/fassert.c</itemPath>
             <itemPath>../src/system_config/pic32mz_ef_sk/system_tasks.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f4" displayName="pic32mz_ef_sk_16b" projectFiles="true">
@@ -345,6 +373,7 @@
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
                 <itemPath>../../../../../../../framework/driver/tmr/src/dynamic/drv_tmr.c</itemPath>
+                <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/dynamic/drv_tmr.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
@@ -353,11 +382,13 @@
           <logicalFolder name="f2" displayName="int" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../../framework/system/int/src/sys_int_pic32.c</itemPath>
+              <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f3" displayName="tmr" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../../framework/system/tmr/src/sys_tmr.c</itemPath>
+              <itemPath>../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr.c</itemPath>
             </logicalFolder>
           </logicalFolder>
         </logicalFolder>
@@ -370,30 +401,19 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../../../../../../../framework/system</Elem>
     <Elem>../src</Elem>
     <Elem>../src/system_config/pic32mx_eth_sk</Elem>
     <Elem>../src/system_config/pic32mz_ec_sk</Elem>
     <Elem>../src/system_config/pic32mz_ef_sk</Elem>
-    <Elem>../../../../..</Elem>
-    <Elem>../src/system_config/pic32mz_da_sk</Elem>
-    <Elem>..\src</Elem>
-    <Elem>..\src\pic32mz_ef_sk_16b</Elem>
     <Elem>..\src\system_config\pic32mz_ef_sk_16b</Elem>
+    <Elem>../src/system_config/pic32mz_da_sk</Elem>
+    <Elem>..\src\system_config\pic32mk_gp_db</Elem>
+    <Elem>..\src\system_config\pic32wk_sk</Elem>
+    <Elem>..\src\system_config\pic32mx_xlp_sk</Elem>
+    <Elem>../../../_Programs/Microchip/harmony/v2_05</Elem>
+    <Elem>..\src</Elem>
     <Elem>..\src\pic32mz_ef_sk</Elem>
     <Elem>..\src\system_config\pic32mz_ef_sk</Elem>
-    <Elem>..\src\pic32mk_gp_db</Elem>
-    <Elem>..\src\system_config\pic32mk_gp_db</Elem>
-    <Elem>..\src\pic32mz_ec_sk</Elem>
-    <Elem>..\src\system_config\pic32mz_ec_sk</Elem>
-    <Elem>..\src\pic32mx_eth_sk</Elem>
-    <Elem>..\src\system_config\pic32mx_eth_sk</Elem>
-    <Elem>..\src\pic32mz_da_sk</Elem>
-    <Elem>..\src\system_config\pic32mz_da_sk</Elem>
-    <Elem>..\src\pic32wk_sk</Elem>
-    <Elem>..\src\system_config\pic32wk_sk</Elem>
-    <Elem>..\src\pic32mx_xlp_sk</Elem>
-    <Elem>..\src\system_config\pic32mx_xlp_sk</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -403,9 +423,9 @@
         <targetDevice>PIC32MX795F512L</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>SKDEPIC32PlatformTool</platformTool>
-        <languageToolchain></languageToolchain>
-        <languageToolchainVersion></languageToolchainVersion>
+        <platformTool>PKOBSKDEPlatformTool</platformTool>
+        <languageToolchain>XC32</languageToolchain>
+        <languageToolchainVersion>1.44</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
@@ -433,6 +453,126 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_compatibility.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_variant_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/dynamic/drv_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/tmr_definitions_pic32m.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_impl_basic.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_compatibility.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_buffer.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_module.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_queue.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/debug/sys_debug.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_private.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/system.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/sys_tmr.h"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="../src/system_config/pic32mk_gp_db/bsp/bsp.c"
             ex="true"
             overriding="false">
@@ -550,6 +690,10 @@
             overriding="false">
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/bsp/bsp.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../src/system_config/pic32mz_ef_sk/fassert.c"
             ex="true"
             overriding="false">
       </item>
@@ -673,6 +817,134 @@
             ex="true"
             overriding="false">
       </item>
+      <C32>
+        <property key="additional-warnings" value="false"/>
+        <property key="addresss-attribute-use" value="false"/>
+        <property key="enable-app-io" value="false"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="exclude-floating-point" value="false"/>
+        <property key="extra-include-directories" value=""/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="make-warnings-into-errors" value="false"/>
+        <property key="optimization-level" value=""/>
+        <property key="place-data-into-section" value="false"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="strict-ansi" value="false"/>
+        <property key="support-ansi" value="false"/>
+        <property key="toplevel-reordering" value=""/>
+        <property key="unaligned-access" value=""/>
+        <property key="use-cci" value="false"/>
+        <property key="use-iar" value="false"/>
+        <property key="use-indirect-calls" value="false"/>
+      </C32>
+      <C32-AR>
+        <property key="additional-options-chop-files" value="false"/>
+      </C32-AR>
+      <C32-AS>
+        <property key="assembler-symbols" value=""/>
+        <property key="enable-symbols" value="true"/>
+        <property key="exclude-floating-point-library" value="false"/>
+        <property key="expand-macros" value="false"/>
+        <property key="extra-include-directories-for-assembler" value=""/>
+        <property key="extra-include-directories-for-preprocessor" value=""/>
+        <property key="false-conditionals" value="false"/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="oXC32asm-list-to-file" value="false"/>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="warning-level" value=""/>
+      </C32-AS>
+      <C32-LD>
+        <property key="additional-options-use-response-files" value="false"/>
+        <property key="allocate-dinit" value="false"/>
+        <property key="code-dinit" value="false"/>
+        <property key="ebase-addr" value=""/>
+        <property key="enable-check-sections" value="false"/>
+        <property key="exclude-floating-point-library" value="false"/>
+        <property key="exclude-standard-libraries" value="false"/>
+        <property key="extra-lib-directories" value=""/>
+        <property key="fill-flash-options-addr" value=""/>
+        <property key="fill-flash-options-const" value=""/>
+        <property key="fill-flash-options-how" value="0"/>
+        <property key="fill-flash-options-inc-const" value="1"/>
+        <property key="fill-flash-options-increment" value=""/>
+        <property key="fill-flash-options-seq" value=""/>
+        <property key="fill-flash-options-what" value="0"/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="heap-size" value=""/>
+        <property key="input-libraries" value=""/>
+        <property key="kseg-length" value=""/>
+        <property key="kseg-origin" value=""/>
+        <property key="linker-symbols" value=""/>
+        <property key="map-file" value="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map"/>
+        <property key="no-device-startup-code" value="false"/>
+        <property key="no-startup-files" value="false"/>
+        <property key="oXC32ld-extra-opts" value=""/>
+        <property key="optimization-level" value=""/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="remove-unused-sections" value="false"/>
+        <property key="report-memory-usage" value="false"/>
+        <property key="serial-length" value=""/>
+        <property key="serial-origin" value=""/>
+        <property key="stack-size" value=""/>
+        <property key="symbol-stripping" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="warn-section-align" value="false"/>
+      </C32-LD>
+      <C32CPP>
+        <property key="additional-warnings" value="false"/>
+        <property key="addresss-attribute-use" value="false"/>
+        <property key="check-new" value="false"/>
+        <property key="eh-specs" value="true"/>
+        <property key="enable-app-io" value="false"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="exceptions" value="true"/>
+        <property key="exclude-floating-point" value="false"/>
+        <property key="extra-include-directories" value=""/>
+        <property key="generate-16-bit-code" value="false"/>
+        <property key="generate-micro-compressed-code" value="false"/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="make-warnings-into-errors" value="false"/>
+        <property key="optimization-level" value=""/>
+        <property key="place-data-into-section" value="false"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="rtti" value="true"/>
+        <property key="strict-ansi" value="false"/>
+        <property key="toplevel-reordering" value=""/>
+        <property key="unaligned-access" value=""/>
+        <property key="use-cci" value="false"/>
+        <property key="use-iar" value="false"/>
+        <property key="use-indirect-calls" value="false"/>
+      </C32CPP>
+      <C32Global>
+        <property key="common-include-directories" value=""/>
+        <property key="gp-relative-option" value=""/>
+        <property key="legacy-libc" value="true"/>
+        <property key="mdtcm" value=""/>
+        <property key="mitcm" value=""/>
+        <property key="mstacktcm" value="false"/>
+        <property key="relaxed-math" value="false"/>
+        <property key="save-temps" value="false"/>
+        <property key="wpo-lto" value="false"/>
+      </C32Global>
       <PKOBSKDEPlatformTool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
@@ -991,7 +1263,7 @@
         <targetDevice>PIC32MZ2048EFM144</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>Simulator</platformTool>
+        <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>1.44</languageToolchainVersion>
         <platform>3</platform>
@@ -999,7 +1271,7 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../../../../../../bin/framework/peripheral/PIC32MZ2048EFM144_peripherals.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../_Programs/Microchip/harmony/v2_05/bin/framework/peripheral/PIC32MZ2048EFM144_peripherals.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -1021,8 +1293,12 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../../../../../../../framework/driver/driver.h"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="../../../../../../../framework/driver/driver_common.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1037,8 +1313,12 @@
         <C32Global>
         </C32Global>
       </item>
+      <item path="../../../../../../../framework/driver/tmr/drv_tmr.h"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="../../../../../../../framework/driver/tmr/drv_tmr_compatibility.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1054,7 +1334,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/driver/tmr/drv_tmr_mapping.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1070,7 +1350,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/driver/tmr/src/drv_tmr_local.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1086,7 +1366,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/driver/tmr/src/drv_tmr_variant_mapping.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1101,8 +1381,12 @@
         <C32Global>
         </C32Global>
       </item>
+      <item path="../../../../../../../framework/driver/tmr/src/dynamic/drv_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="../../../../../../../framework/driver/tmr/tmr_definitions_pic32m.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1118,7 +1402,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/osal/osal.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1134,7 +1418,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/osal/osal_definitions.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1150,7 +1434,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/osal/osal_impl_basic.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1166,7 +1450,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/system/clk/sys_clk.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1182,7 +1466,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/system/clk/sys_clk_compatibility.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1198,7 +1482,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/system/clk/sys_clk_mapping.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1214,7 +1498,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/system/common/sys_buffer.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1229,8 +1513,16 @@
         <C32Global>
         </C32Global>
       </item>
+      <item path="../../../../../../../framework/system/common/sys_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../../../framework/system/common/sys_module.h"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="../../../../../../../framework/system/common/sys_queue.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1246,7 +1538,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../../framework/system/debug/sys_debug.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1260,9 +1552,13 @@
         </C32CPP>
         <C32Global>
         </C32Global>
+      </item>
+      <item path="../../../../../../../framework/system/int/src/sys_int_pic32.c"
+            ex="true"
+            overriding="false">
       </item>
       <item path="../../../../../../../framework/system/int/src/sys_int_private.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1276,9 +1572,13 @@
         </C32CPP>
         <C32Global>
         </C32Global>
+      </item>
+      <item path="../../../../../../../framework/system/int/sys_int.h"
+            ex="true"
+            overriding="false">
       </item>
       <item path="../../../../../../../framework/system/int/sys_int_mapping.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1293,8 +1593,24 @@
         <C32Global>
         </C32Global>
       </item>
+      <item path="../../../../../../../framework/system/ports/sys_ports.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../../../framework/system/ports/sys_ports_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../../../framework/system/system.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../../../framework/system/tmr/src/sys_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="../../../../../../../framework/system/tmr/src/sys_tmr_local.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -1308,6 +1624,10 @@
         </C32CPP>
         <C32Global>
         </C32Global>
+      </item>
+      <item path="../../../../../../../framework/system/tmr/sys_tmr.h"
+            ex="true"
+            overriding="false">
       </item>
       <item path="../src/system_config/pic32mk_gp_db/bsp/bsp.c"
             ex="true"
@@ -2246,7 +2566,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../../../../../../../framework;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
+                  value="../../../../../../../framework;../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../../../../../_Programs/Microchip/harmony/v2_05/framework;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -2540,9 +2860,10 @@
         <property key="tracecontrol.include.timestamp" value="summarydataenabled"/>
         <property key="tracecontrol.select" value="0"/>
         <property key="tracecontrol.stallontracebufferfull" value="false"/>
+        <property key="tracecontrol.timestamp" value="0"/>
         <property key="tracecontrol.tracebufmax" value="546000"/>
         <property key="tracecontrol.tracefile" value="defmplabxtrace.log"/>
-        <property key="tracecontrol.tracefilemax" value="10000000"/>
+        <property key="tracecontrol.traceresetonrun" value="false"/>
         <property key="uart0io.output" value="window"/>
         <property key="uart0io.outputfile" value=""/>
         <property key="uart0io.uartioenabled" value="false"/>
@@ -3205,6 +3526,126 @@
         </C32CPP>
         <C32Global>
         </C32Global>
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_compatibility.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_variant_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/dynamic/drv_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/tmr_definitions_pic32m.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_impl_basic.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_compatibility.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_buffer.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_module.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_queue.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/debug/sys_debug.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_private.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/system.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/sys_tmr.h"
+            ex="true"
+            overriding="false">
       </item>
       <item path="../src/system_config/pic32mk_gp_db/bsp/bsp.c"
             ex="true"
@@ -3881,258 +4322,70 @@
       <item path="../src/system_config/pic32mz_ef_sk/bsp/bsp.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/bsp/bsp.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
+      </item>
+      <item path="../src/system_config/pic32mz_ef_sk/fassert.c"
+            ex="true"
+            overriding="false">
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/clk/src/sys_clk_pic32mz.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache_pic32mz.S"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_local.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/sys_devcon.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_config.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_definitions.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_exceptions.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_init.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_interrupt.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_tasks.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <C32>
         <property key="additional-warnings" value="false"/>
@@ -4510,6 +4763,126 @@
         </C32CPP>
         <C32Global>
         </C32Global>
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_compatibility.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_variant_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/dynamic/drv_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/tmr_definitions_pic32m.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_impl_basic.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_compatibility.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_buffer.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_module.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_queue.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/debug/sys_debug.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_private.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/system.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/sys_tmr.h"
+            ex="true"
+            overriding="false">
       </item>
       <item path="../src/system_config/pic32mx_eth_sk/bsp/bsp.c"
             ex="true"
@@ -4962,258 +5335,70 @@
       <item path="../src/system_config/pic32mz_ef_sk/bsp/bsp.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/bsp/bsp.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
+      </item>
+      <item path="../src/system_config/pic32mz_ef_sk/fassert.c"
+            ex="true"
+            overriding="false">
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/clk/src/sys_clk_pic32mz.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache_pic32mz.S"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_local.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/sys_devcon.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_config.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_definitions.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_exceptions.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_init.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_interrupt.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_tasks.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk_16b/bsp/bsp.c"
             ex="true"
@@ -5981,6 +6166,126 @@
         <C32Global>
         </C32Global>
       </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_compatibility.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_variant_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/dynamic/drv_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/tmr_definitions_pic32m.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_impl_basic.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_compatibility.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/sys_clk_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_buffer.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_module.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/common/sys_queue.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/debug/sys_debug.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_pic32.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/src/sys_int_private.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/int/sys_int_mapping.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/ports/sys_ports_definitions.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/system.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/src/sys_tmr_local.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../_Programs/Microchip/harmony/v2_05/framework/system/tmr/sys_tmr.h"
+            ex="true"
+            overriding="false">
+      </item>
       <item path="../src/system_config/pic32mk_gp_db/bsp/bsp.c"
             ex="true"
             overriding="false">
@@ -6432,258 +6737,70 @@
       <item path="../src/system_config/pic32mz_ef_sk/bsp/bsp.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/bsp/bsp.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
+      </item>
+      <item path="../src/system_config/pic32mz_ef_sk/fassert.c"
+            ex="true"
+            overriding="false">
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/clk/src/sys_clk_pic32mz.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_cache_pic32mz.S"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_local.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/src/sys_devcon_pic32mz.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/devcon/sys_devcon.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/framework/system/ports/src/sys_ports_static.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_config.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_definitions.h"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_exceptions.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_init.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_interrupt.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk/system_tasks.c"
             ex="true"
             overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
       </item>
       <item path="../src/system_config/pic32mz_ef_sk_16b/bsp/bsp.c"
             ex="true"

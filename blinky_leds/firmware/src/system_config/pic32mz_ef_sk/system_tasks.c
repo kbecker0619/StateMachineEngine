@@ -76,7 +76,6 @@ void SYS_Tasks ( void )
     SYS_TMR_Tasks(sysObj.sysTmr);
 
     /* Maintain Device Drivers */
-DRV_TMR_Tasks(sysObj.drvTmr0);
 
     /* Maintain Middleware & Other Libraries */
 

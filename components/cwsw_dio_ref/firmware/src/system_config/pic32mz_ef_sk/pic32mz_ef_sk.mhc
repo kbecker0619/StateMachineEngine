@@ -6,7 +6,7 @@
 #     Harmony version: 2.05
 #
 #
-# from E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_dio_ref\firmware\cwsw_dio_ref.hconfig
+# from E:\_Projects\PersonalDev\components\cwsw_dio_ref\firmware\cwsw_dio_ref.hconfig
 #
 CONFIG_APP_INSTANCES=1
 #
@@ -81,7 +81,7 @@ CONFIG_APP_USB_HOST_MSD_READ0=n
 CONFIG_X2C_SCOPE0=n
 CONFIG_X2C_SCOPE_USART_INSTANCE_INDEX0=0
 #
-# from E:\_Projects\PersonalDev\cwsw_lib\components\cwsw_dio_ref\firmware\cwsw_dio_ref.hconfig
+# from E:\_Projects\PersonalDev\components\cwsw_dio_ref\firmware\cwsw_dio_ref.hconfig
 #
 CONFIG_USE_EXCEPTION_HANDLER=y
 CONFIG_EXCEPTION_USE_SYS_DEBUG=y

@@ -92,8 +92,8 @@ typedef struct
     SYS_MODULE_OBJ  sysTmr;
     SYS_MODULE_OBJ  drvTmr0;
 
-} SYSTEM_OBJECTS;
 
+} SYSTEM_OBJECTS;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -102,7 +102,6 @@ typedef struct
 // *****************************************************************************
 
 extern SYSTEM_OBJECTS sysObj;
-
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus

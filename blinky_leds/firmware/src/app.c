@@ -118,11 +118,17 @@ void TimerCallBack(uintptr_t context, uint32_t tickCount)
   Remarks:
     See prototype in app.h.
  */
-
-void APP_Initialize ( void )
+void 
+APP_Initialize ( void )
 {
+	
     /* Put the application into its initial state */
-    appData.state = APP_STATE_TIMER_OBJECT_CREATE;   
+    appData.state = APP_STATE_TIMER_OBJECT_CREATE;  
+
+	appData.heartbeatTimer = DRV_HANDLE_INVALID;
+	appData.heartbeatCount = 0;
+	appData.heartbeatToggle = false;
+
 }
 
 
@@ -133,38 +139,59 @@ void APP_Initialize ( void )
   Remarks:
     See prototype in app.h.
  */
-
-void APP_Tasks ( void )
+void 
+APP_Tasks ( void )
 {
    /* Take appropriate action, depending on the current state. */
     switch (appData.state)
     {
-
         /* Initial state is to create the timer object for periodic alarm */
         case APP_STATE_TIMER_OBJECT_CREATE:
         {
-            appData.tmrServiceHandle = SYS_TMR_ObjectCreate(APP_LED_BLINK_DELAY, 1, TimerCallBack, SYS_TMR_FLAG_PERIODIC);
-            if(SYS_TMR_HANDLE_INVALID != appData.tmrServiceHandle)
-            {
-                appData.state = APP_STATE_IDLE;
-            }
-            break;
+			volatile bool a = false;
+//			appData.tmrServiceHandle = SYS_TMR_ObjectCreate(APP_LED_BLINK_DELAY, 1, TimerCallBack, SYS_TMR_FLAG_PERIODIC);
+//			if(SYS_TMR_HANDLE_INVALID != appData.tmrServiceHandle)
+//			{
+//				appData.state = APP_STATE_IDLE;
+//			}
+		
+			appData.heartbeatTimer = DRV_TMR_Open( APP_HEARTBEAT_TMR, DRV_IO_INTENT_EXCLUSIVE);
+			if ( DRV_HANDLE_INVALID != appData.heartbeatTimer )
+			{
+				DRV_TMR_AlarmRegister(appData.heartbeatTimer,
+									 APP_HEARTBEAT_TMR_PERIOD,
+									 APP_HEARTBEAT_TMR_IS_PERIODIC,
+									 (uintptr_t)&appData,
+									 TimerCallBack);
+				DRV_TMR_Start(appData.heartbeatTimer);
+				appData.state = APP_STATE_IDLE;
+			}
+			else
+			{
+				a ^= true;
+			}
         }
+		break;
 
         /* LED will be toggled in Timer Callback function, 
          * so nothing is there to be done in this state */
         case APP_STATE_IDLE:
         {
-            break;
+			/* Signal the application's heartbeat. */
+			if (appData.heartbeatToggle == true)
+			{
+				SYS_PORTS_PinToggle(PORTS_ID_0, APP_HEARTBEAT_PORT, APP_HEARTBEAT_PIN);
+				appData.heartbeatToggle = false;
+			}
         }
+		break;
         
         /* Should not come here during normal operation */
         default:
         {
             PLIB_ASSERT(false , "unknown application state");
-
-            break;
         }
+		break;
 
     }
 }
