@@ -1,22 +1,22 @@
 /*******************************************************************************
-  Global event header file
+  USART Driver Local Data Structures for static implementation
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    global_event.h
+    drv_usart_static_local.h
 
   Summary:
-    Global event header file
+    USART Driver Local Data Structures for static implementation
 
   Description:
-    Global event header file
+    Driver Local Data Structures for static implementation
 *******************************************************************************/
 
 //DOM-IGNORE-BEGIN
 /*******************************************************************************
-Copyright (c) 2016 released Microchip Technology Inc.  All rights reserved.
+Copyright (c) 2015 released Microchip Technology Inc.  All rights reserved.
 
 Microchip licenses to you the right to use, modify, copy and distribute Software
 only when embedded on a Microchip microcontroller or digital  signal  controller
@@ -39,8 +39,8 @@ SUBSTITUTE  GOODS,  TECHNOLOGY,  SERVICES,  OR  ANY  CLAIMS  BY  THIRD   PARTIES
 *******************************************************************************/
 //DOM-IGNORE-END
 
-#ifndef _GLOBAL_EVENT_H
-#define _GLOBAL_EVENT_H
+#ifndef _DRV_USART_STATIC_LOCAL_H
+#define _DRV_USART_STATIC_LOCAL_H
 
 
 // *****************************************************************************
@@ -52,7 +52,19 @@ SUBSTITUTE  GOODS,  TECHNOLOGY,  SERVICES,  OR  ANY  CLAIMS  BY  THIRD   PARTIES
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include "driver/usart/drv_usart.h"
+#include "driver/usart/src/drv_usart_variant_mapping.h"
+#include "system/clk/sys_clk.h"
+#include "system/int/sys_int.h"
+#include "system/debug/sys_debug.h"
 
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+    extern "C" {
+
+#endif
+// DOM-IGNORE-END
 
 // *****************************************************************************
 // *****************************************************************************
@@ -60,23 +72,46 @@ SUBSTITUTE  GOODS,  TECHNOLOGY,  SERVICES,  OR  ANY  CLAIMS  BY  THIRD   PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
-typedef struct {
-    bool evMhc_ToggleLed;
-} global_events_t;
-
-extern global_events_t global_events;
+/* USART FIFO+RX(8+1) size */
+#define _DRV_USART_RX_DEPTH     9
 
 
 // *****************************************************************************
+/* USART Static Driver Instance Object
+
+  Summary:
+    Object used to keep any data required for the static USART driver.
+
+  Description:
+    This object is used to keep track of any data that must be maintained to
+    manage the USART static driver.
+
+  Remarks:
+    None.
+*/
+
+typedef struct
+{
+
+    /* Client specific error */
+    DRV_USART_ERROR error;
+
+
+} DRV_USART_OBJ;
+
 // *****************************************************************************
-// Section: Global functions.
+// *****************************************************************************
+// Section: Local functions.
 // *****************************************************************************
 // *****************************************************************************
 
-bool global_event_triggered(bool *pEvent);
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus
+}
+#endif
+// DOM-IGNORE-END
 
-
-#endif //#ifndef _GLOBAL_EVENT_H
+#endif //#ifndef _DRV_USART_STATIC_LOCAL_H
 
 /*******************************************************************************
  End of File

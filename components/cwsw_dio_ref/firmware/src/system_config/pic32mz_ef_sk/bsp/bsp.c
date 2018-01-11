@@ -51,14 +51,14 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 
 // *****************************************************************************
-/* Data Structure: 
+/* Data Structure:
     switch_port_channel_map[]
 
   Summary:
     Maps each switch to its port channel
-  
+
   Description:
-    The switch_port_channel_map array, indexed by BSP_SWITCH, maps each switch 
+    The switch_port_channel_map array, indexed by BSP_SWITCH, maps each switch
     to its port channel.
 
   Remarks:
@@ -72,12 +72,12 @@ static const PORTS_CHANNEL switch_port_channel_map[] =
 };
 
 // *****************************************************************************
-/* Data Structure: 
+/* Data Structure:
     switch_port_bit_pos_map[]
 
   Summary:
     Maps each switch to its port bit position
-  
+
   Description:
     The switch_port_bit_pos_map array, indexed by BSP_SWITCH, maps each switch to its port bit position
 
@@ -93,12 +93,12 @@ static const PORTS_BIT_POS switch_port_bit_pos_map[] =
 
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_SwitchStateGet(BSP_SWITCH switch);
 
   Summary:
     Returns the present state (pressed or not pressed) of the specified switch.
-  
+
   Description:
     This function returns the present state (pressed or not pressed) of the
     specified switch.
@@ -113,14 +113,14 @@ BSP_SWITCH_STATE BSP_SwitchStateGet( BSP_SWITCH bspSwitch )
 }
 
 // *****************************************************************************
-/* Data Structure: 
+/* Data Structure:
     led_port_channel_map[]
 
   Summary:
     Maps each led to its port channel
-  
+
   Description:
-    The led_port_channel_map array, indexed by BSP_LED, maps each led to its 
+    The led_port_channel_map array, indexed by BSP_LED, maps each led to its
     port channel.
 
   Remarks:
@@ -134,14 +134,14 @@ static const PORTS_CHANNEL led_port_channel_map[] =
 };
 
 // *****************************************************************************
-/* Data Structure: 
+/* Data Structure:
     led_port_bit_pos_map[]
 
   Summary:
     Maps each led to its port bit position
-  
+
   Description:
-    The led_port_bit_pos_map array, indexed by BSP_LED, maps each led to its port 
+    The led_port_bit_pos_map array, indexed by BSP_LED, maps each led to its port
     bit position.
 
   Remarks:
@@ -155,14 +155,14 @@ static const PORTS_BIT_POS led_port_bit_pos_map[] =
 };
 
 // *****************************************************************************
-/* Data Structure: 
+/* Data Structure:
     led_active_level_map[]
 
   Summary:
     Maps each led to its active level
-  
+
   Description:
-    The led_active_level_map array, indexed by BSP_LED, maps each led to its active 
+    The led_active_level_map array, indexed by BSP_LED, maps each led to its active
     level.
 
   Remarks:
@@ -176,12 +176,12 @@ static const BSP_LED_ACTIVE_LEVEL led_active_level_map[] =
 };
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state);
 
   Summary:
     Controls the state of the LED.
-  
+
   Description:
     This function allows the application to specify the state of the LED.
 
@@ -194,30 +194,30 @@ void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state)
     /* Set the state of the LED */
     if(led_active_level_map[led] == BSP_LED_ACTIVE_HIGH)
     {
-        PLIB_PORTS_PinWrite (PORTS_ID_0 , led_port_channel_map[led], led_port_bit_pos_map[led], 
+        PLIB_PORTS_PinWrite (PORTS_ID_0 , led_port_channel_map[led], led_port_bit_pos_map[led],
 							 (BSP_LED_STATE_ON == state ? true : false));
     }
     else
     {
-        PLIB_PORTS_PinWrite (PORTS_ID_0 , led_port_channel_map[led], led_port_bit_pos_map[led], 
+        PLIB_PORTS_PinWrite (PORTS_ID_0 , led_port_channel_map[led], led_port_bit_pos_map[led],
 							 (BSP_LED_STATE_ON == state ? false : true));
     }
 }
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_LEDToggle(BSP_LED led);
 
   Summary:
     Toggles the state of the LED between BSP_LED_STATE_ON and BSP_LED_STATE_OFF.
-  
+
   Description:
     This function toggles the state of the LED between BSP_LED_STATE_ON and
     BSP_LED_STATE_OFF.
 
   Remarks:
     Refer to bsp.h for usage information.
-*/    
+*/
 
 void BSP_LEDToggle(BSP_LED led)
 {
@@ -225,18 +225,18 @@ void BSP_LEDToggle(BSP_LED led)
 }
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     BSP_LED_STATE BSP_LEDStateGet(BSP_LED led);
 
   Summary:
     Returns the present state of the LED.
-  
+
   Description:
     This function returns the present state of the LED.
 
   Remarks:
     Refer to bsp.h for usage information.
-*/    
+*/
 
 BSP_LED_STATE BSP_LEDStateGet (BSP_LED led)
 {
@@ -254,12 +254,12 @@ BSP_LED_STATE BSP_LEDStateGet (BSP_LED led)
 }
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_LEDOn(BSP_LED led);
 
   Summary:
     Switches ON the specified LED.
-  
+
   Description:
     This function switches ON the specified LED.
 
@@ -280,12 +280,12 @@ void BSP_LEDOn(BSP_LED led)
 }
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_LEDOff(BSP_LED led);
 
   Summary:
     Switches Off the specified LED.
-  
+
   Description:
     This function switches Off the specified LED.
 
@@ -305,12 +305,12 @@ void BSP_LEDOff(BSP_LED led)
     }
 }
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
 
   Summary:
     This function enables or disables the USB VBUS switch on the board.
-  
+
   Description:
     This function enables or disables the VBUS switch on the board.
 
@@ -326,43 +326,42 @@ void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state)
 }
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port)
 
   Summary:
     Returns true if the over current is detected on the VBUS supply.
-  
+
   Description:
     This function returns true if over current is detected on the VBUS supply.
 
   Remarks:
     None.
 */
-
 bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port)
 {
+	UNUSED(port);
     return(false);
 }
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     bool BSP_USBVBUSPowerEnable(uint8_t port, bool enable)
 
   Summary:
     This function controls the USB VBUS supply.
-  
+
   Description:
     This function controls the USB VBUS supply.
 
   Remarks:
     None.
 */
-
 void BSP_USBVBUSPowerEnable(uint8_t port, bool enable)
 {
-    /* Enable the VBUS switch */
-
-    PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, enable );
+	UNUSED(port);
+	/* Enable the VBUS switch */
+	PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, enable );
 }
 
 // *****************************************************************************
@@ -373,16 +372,16 @@ void BSP_USBVBUSPowerEnable(uint8_t port, bool enable)
 // *****************************************************************************
 
 // *****************************************************************************
-/* Function: 
+/* Function:
     void BSP_Initialize(void)
 
   Summary:
     Performs the necessary actions to initialize a board
-  
+
   Description:
     This function initializes the LED, Switch and other ports on the board.
     This function must be called by the user before using any APIs present in
-    this BSP.  
+    this BSP.
 
   Remarks:
     Refer to bsp.h for usage information.

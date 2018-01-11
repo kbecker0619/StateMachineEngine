@@ -78,7 +78,7 @@ extern "C" {
 
 /* ==== One final word ========================================================
  * This section is intended to be pristine and unchanged for all projects.
- * Configuration-specific defines (aka optsions specific to one of these Build
+ * Configuration-specific defines (aka options specific to one of these Build
  * Targets) should be done in a followup section below.
  * ========================================================================= */
 /* Configuration Check */

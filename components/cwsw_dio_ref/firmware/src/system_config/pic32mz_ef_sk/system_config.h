@@ -92,6 +92,9 @@ extern "C" {
 #define SYS_CLK_BUS_PERIPHERAL_8            100000000ul
 #define SYS_CLK_CONFIG_PRIMARY_XTAL         24000000ul
 #define SYS_CLK_CONFIG_SECONDARY_XTAL       32768ul
+#define SYS_CLK_CONFIG_FREQ_ERROR_LIMIT     10
+#define SYS_CLK_WAIT_FOR_SWITCH             true
+#define SYS_CLK_ON_WAIT                     OSC_ON_WAIT_IDLE 
    
 /*** Ports System Service Configuration ***/
 #define SYS_PORT_A_ANSEL        0x3F23
@@ -177,15 +180,6 @@ extern "C" {
 
 /*** Interrupt System Service Configuration ***/
 #define SYS_INT                     true
-/*** Timer System Service Configuration ***/
-#define SYS_TMR_POWER_STATE             SYS_MODULE_POWER_RUN_FULL
-#define SYS_TMR_DRIVER_INDEX            DRV_TMR_INDEX_0
-#define SYS_TMR_MAX_CLIENT_OBJECTS      5
-#define SYS_TMR_FREQUENCY               1000
-#define SYS_TMR_FREQUENCY_TOLERANCE     10
-#define SYS_TMR_UNIT_RESOLUTION         10000
-#define SYS_TMR_CLIENT_TOLERANCE        10
-#define SYS_TMR_INTERRUPT_NOTIFICATION  false
 
 // *****************************************************************************
 // *****************************************************************************
@@ -194,6 +188,8 @@ extern "C" {
 // *****************************************************************************
 /*** Timer Driver Configuration ***/
 #define DRV_TMR_INTERRUPT_MODE             true
+#define DRV_TMR_INSTANCES_NUMBER           1
+#define DRV_TMR_CLIENTS_NUMBER             1
 
 /*** Timer Driver 0 Configuration ***/
 #define DRV_TMR_PERIPHERAL_ID_IDX0          TMR_ID_1
@@ -203,10 +199,10 @@ extern "C" {
 #define DRV_TMR_INTERRUPT_PRIORITY_IDX0     INT_PRIORITY_LEVEL1
 #define DRV_TMR_INTERRUPT_SUB_PRIORITY_IDX0 INT_SUBPRIORITY_LEVEL0
 #define DRV_TMR_CLOCK_SOURCE_IDX0           DRV_TMR_CLKSOURCE_INTERNAL
-#define DRV_TMR_PRESCALE_IDX0               TMR_PRESCALE_VALUE_8
+#define DRV_TMR_PRESCALE_IDX0               TMR_PRESCALE_VALUE_256
 #define DRV_TMR_OPERATION_MODE_IDX0         DRV_TMR_OPERATION_MODE_16_BIT
 #define DRV_TMR_ASYNC_WRITE_ENABLE_IDX0     false
-#define DRV_TMR_POWER_STATE_IDX0            
+#define DRV_TMR_POWER_STATE_IDX0            SYS_MODULE_POWER_RUN_FULL
 
  
 // *****************************************************************************
@@ -257,10 +253,13 @@ extern "C" {
 
 
 /*** Application Instance 0 Configuration ***/
-#define APP_TMR_DRV                       0
-#define APP_TMR_DRV_IS_PERIODIC           true
-#define APP_TMR_DRV_PERIOD                0x30d4
-
+#define APP_HEARTBEAT_TMR				DRV_TMR_INDEX_0
+#define APP_HEARTBEAT_TMR_IS_PERIODIC	true
+#define APP_HEARTBEAT_TMR_PERIOD		0xFE51
+#define APP_HEARTBEAT_COUNT_MAX			6
+#define APP_HEARTBEAT_PORT				PORT_CHANNEL_H
+#define APP_HEARTBEAT_PIN				PORTS_BIT_POS_0
+	
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }

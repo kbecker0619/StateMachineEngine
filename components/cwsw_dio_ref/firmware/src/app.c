@@ -54,7 +54,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 
 #include "app.h"
-      #include "global_event.h"
 #include "bsp.h"
 
 // *****************************************************************************
@@ -86,12 +85,6 @@ APP_DATA appData;
 // *****************************************************************************
 // *****************************************************************************
 
-/* Application's Timer Callback Function */
-static void TimerCallback (  uintptr_t context, uint32_t alarmCount )
-{
-    global_events.evMhc_ToggleLed = true;   
-}
-
 /* TODO:  Add any necessary callback functions.
 */
 
@@ -103,31 +96,37 @@ static void TimerCallback (  uintptr_t context, uint32_t alarmCount )
 
 
 /* Application's LED Task Function */
-static void LedTask( void )
+static void 
+LedTask( void )
 {
-	volatile bool a;
-    if (global_event_triggered(&global_events.evMhc_ToggleLed))
-    {
-		a ^= true;	/* provide a place to hang a breakpoint */
-//		BSP_LED_1Toggle();
-		PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_H, PORTS_BIT_POS_0);
-    }
+	BSP_LEDToggle(BSP_LED_1);
 }
 
-/* Application's Timer Setup Function */
-static void TimerSetup( void )
+static void
+SwitchTask(void)
 {
-    DRV_TMR_AlarmRegister(
-        appData.handleTimer1, 
-        APP_TMR_DRV_PERIOD, 
-        APP_TMR_DRV_IS_PERIODIC,
-        (uintptr_t)NULL, 
-        TimerCallback);
-    DRV_TMR_Start(appData.handleTimer1);
+	if(!BSP_SwitchStateGet(BSP_SWITCH_2))
+	{
+		BSP_LEDOn(BSP_LED_2);
+	}
+	else
+	{
+		BSP_LEDOff(BSP_LED_2);
+	}
 }
 
 /* TODO:  Add any necessary local functions.
 */
+static void 
+APP_TimerCallback ( uintptr_t context, uint32_t alarmCount )
+{
+	appData.heartbeatCount++;
+	if (appData.heartbeatCount >= APP_HEARTBEAT_COUNT_MAX)
+	{
+		appData.heartbeatCount = 0;
+		appData.heartbeatToggle = true;
+	}
+}
 
 
 // *****************************************************************************
@@ -144,16 +143,19 @@ static void TimerSetup( void )
     See prototype in app.h.
  */
 
-void APP_Initialize ( void )
+void 
+APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
 
-    appData.handleTimer1 = DRV_HANDLE_INVALID;
-    
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
+	appData.state = APP_STATE_INIT;
+	appData.heartbeatTimer = DRV_HANDLE_INVALID;
+	appData.heartbeatCount = 0;
+	appData.heartbeatToggle = false;
 }
 
 
@@ -165,36 +167,44 @@ void APP_Initialize ( void )
     See prototype in app.h.
  */
 
-void APP_Tasks ( void )
+void 
+APP_Tasks ( void )
 {
-
     /* Check the application's current state. */
     switch ( appData.state )
     {
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
-            bool appInitialized = true;
-       
-            if (appData.handleTimer1 == DRV_HANDLE_INVALID)
-            {
-                appData.handleTimer1 = DRV_TMR_Open(APP_TMR_DRV, DRV_IO_INTENT_EXCLUSIVE);
-                appInitialized &= ( DRV_HANDLE_INVALID != appData.handleTimer1 );
-            }
-        
-            if (appInitialized)
-            {
-                TimerSetup();
-            
-                appData.state = APP_STATE_SERVICE_TASKS;
-            }
-            break;
-        }
+			appData.heartbeatTimer = DRV_TMR_Open( APP_HEARTBEAT_TMR, DRV_IO_INTENT_EXCLUSIVE);
+			if ( DRV_HANDLE_INVALID != appData.heartbeatTimer )
+			{
+				DRV_TMR_AlarmRegister(
+					appData.heartbeatTimer, 
+					APP_HEARTBEAT_TMR_PERIOD, APP_HEARTBEAT_TMR_IS_PERIODIC,
+					(uintptr_t)&appData, APP_TimerCallback);
+				DRV_TMR_Start(appData.heartbeatTimer);
+				appData.state = APP_STATE_IDLE;
+			}
+		}
+		break;
 
+		case APP_STATE_IDLE:
+		{
+			/* Signal the application's heartbeat. */
+			if (appData.heartbeatToggle == true)
+			{
+				appData.heartbeatToggle = false;
+				appData.state = APP_STATE_SERVICE_TASKS;
+			}
+			SwitchTask();
+		}	
+		break;
+		
         case APP_STATE_SERVICE_TASKS:
         {
             LedTask();
-        
+			appData.state = APP_STATE_IDLE;
             break;
         }
 
