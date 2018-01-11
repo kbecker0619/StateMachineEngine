@@ -59,6 +59,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "system_config.h"
 #include "system_definitions.h"
 
+
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
 
@@ -88,6 +89,7 @@ typedef enum
 {
 	/* Application's state machine's initial state. */
 	APP_STATE_INIT=0,
+	APP_STATE_IDLE,
 	APP_STATE_SERVICE_TASKS,
 
 	/* TODO: Define states used by the application state machine. */
@@ -114,7 +116,14 @@ typedef struct
     APP_STATES state;
 
     /* TODO: Define any additional data used by the application. */
-
+	/* Heartbeat driver timer handle. */
+	DRV_HANDLE heartbeatTimer;
+	
+	/* Heartbeat timer timeout count. */
+	unsigned int heartbeatCount;
+	
+	/* Heartbeat LED toggle flag. */
+	bool heartbeatToggle;
 } APP_DATA;
 
 

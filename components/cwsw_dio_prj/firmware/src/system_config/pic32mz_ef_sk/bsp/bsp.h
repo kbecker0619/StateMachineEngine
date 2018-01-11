@@ -175,7 +175,6 @@ typedef enum
   Remarks:
     None.
 */
-
 typedef enum
 {
     /* LED State is on */
@@ -198,7 +197,6 @@ typedef enum
   Remarks:
     None.
 */
-
 typedef enum
 {
     /* LED active level is low */
@@ -245,7 +243,6 @@ typedef enum
   Remarks:
     None
 */
-
 void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state);
 
 
@@ -286,7 +283,6 @@ void BSP_LEDStateSet(BSP_LED led, BSP_LED_STATE state);
   Remarks:
     None
 */
-
 BSP_LED_STATE BSP_LEDStateGet(BSP_LED led);
 
 
@@ -329,7 +325,6 @@ BSP_LED_STATE BSP_LEDStateGet(BSP_LED led);
   Remarks:
     None
 */
-
 void BSP_LEDToggle(BSP_LED led);
 
 
@@ -366,7 +361,6 @@ void BSP_LEDToggle(BSP_LED led);
   Remarks:
     None
 */
-
 void BSP_LEDOn(BSP_LED led);
 
 
@@ -551,8 +545,8 @@ void BSP_USBVBUSPowerEnable(uint8_t port, bool enable);
     None.
 */
 
-bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port);
 
+bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port);
 // *****************************************************************************
 // *****************************************************************************
 // Section: Interface Routines

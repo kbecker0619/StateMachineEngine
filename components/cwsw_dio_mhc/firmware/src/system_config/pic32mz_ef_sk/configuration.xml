@@ -194,7 +194,7 @@
       </C32>
     </CompilerItems>
     <Libraries dnOrder="3">
-      <Library dnOrder="0" value="../../../../../../../_Programs/Microchip/harmony/v2_04/bin/framework/peripheral/PIC32MZ2048EFM144_peripherals.a"/>
+      <Library dnOrder="0" value="../../../../../../../_Programs/Microchip/harmony/v2_05/bin/framework/peripheral/PIC32MZ2048EFM144_peripherals.a"/>
     </Libraries>
   </Manifest>
 </Configuration>

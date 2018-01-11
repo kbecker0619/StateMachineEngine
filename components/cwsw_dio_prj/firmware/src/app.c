@@ -96,12 +96,37 @@ APP_DATA appData;
 
 
 /* Application's LED Task Function */
-static void LedTask( void )
+static void 
+LedTask( void )
 {
+	BSP_LEDToggle(BSP_LED_1);
+}
+
+static void
+SwitchTask(void)
+{
+	if(!BSP_SwitchStateGet(BSP_SWITCH_2))
+	{
+		BSP_LEDOn(BSP_LED_2);
+	}
+	else
+	{
+		BSP_LEDOff(BSP_LED_2);
+	}
 }
 
 /* TODO:  Add any necessary local functions.
 */
+static void 
+APP_TimerCallback ( uintptr_t context, uint32_t alarmCount )
+{
+	appData.heartbeatCount++;
+	if (appData.heartbeatCount >= APP_HEARTBEAT_COUNT_MAX)
+	{
+		appData.heartbeatCount = 0;
+		appData.heartbeatToggle = true;
+	}
+}
 
 
 // *****************************************************************************
@@ -118,15 +143,19 @@ static void LedTask( void )
     See prototype in app.h.
  */
 
-void APP_Initialize ( void )
+void 
+APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
 
-    
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
+	appData.state = APP_STATE_INIT;
+	appData.heartbeatTimer = DRV_HANDLE_INVALID;
+	appData.heartbeatCount = 0;
+	appData.heartbeatToggle = false;
 }
 
 
@@ -138,30 +167,44 @@ void APP_Initialize ( void )
     See prototype in app.h.
  */
 
-void APP_Tasks ( void )
+void 
+APP_Tasks ( void )
 {
-
     /* Check the application's current state. */
     switch ( appData.state )
     {
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
-            bool appInitialized = true;
-       
-        
-            if (appInitialized)
-            {
-            
-                appData.state = APP_STATE_SERVICE_TASKS;
-            }
-            break;
-        }
+			appData.heartbeatTimer = DRV_TMR_Open( APP_HEARTBEAT_TMR, DRV_IO_INTENT_EXCLUSIVE);
+			if ( DRV_HANDLE_INVALID != appData.heartbeatTimer )
+			{
+				DRV_TMR_AlarmRegister(
+					appData.heartbeatTimer, 
+					APP_HEARTBEAT_TMR_PERIOD, APP_HEARTBEAT_TMR_IS_PERIODIC,
+					(uintptr_t)&appData, APP_TimerCallback);
+				DRV_TMR_Start(appData.heartbeatTimer);
+				appData.state = APP_STATE_IDLE;
+			}
+		}
+		break;
 
+		case APP_STATE_IDLE:
+		{
+			/* Signal the application's heartbeat. */
+			if (appData.heartbeatToggle == true)
+			{
+				appData.heartbeatToggle = false;
+				appData.state = APP_STATE_SERVICE_TASKS;
+			}
+			SwitchTask();
+		}	
+		break;
+		
         case APP_STATE_SERVICE_TASKS:
         {
             LedTask();
-        
+			appData.state = APP_STATE_IDLE;
             break;
         }
 
