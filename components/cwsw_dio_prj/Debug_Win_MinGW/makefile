@@ -12,10 +12,11 @@ RM := rm -rf
 -include cwsw_lib/src/subdir.mk
 -include cwsw_bsp/src/subdir.mk
 -include cwsw_board/none/subdir.mk
+-include cwsw_arch/i386/system/ports/subdir.mk
 -include cwsw_arch/i386/system/clk/subdir.mk
 -include cwsw_arch/i386/peripheral/ports/subdir.mk
 -include cwsw_arch/i386/subdir.mk
--include 3rdparty/cwsw/bsp/subdir.mk
+-include 3rdparty/cwsw/gen/bsp/subdir.mk
 -include subdir.mk
 -include objects.mk
 

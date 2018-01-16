@@ -1,5 +1,5 @@
 /** @file projcfg.h
- *	@brief	Project Configuraton for CWSW Clock Library Unit test environment
+ *	@brief	Project Configuration for CWSW DIO Library Unit test environment
  *
  *	Description:
  *
@@ -113,7 +113,8 @@ extern "C" {
 #elif defined(XPRJ_Debug_Cx_AtmelSamv71)
 	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
 
-#elif defined(XPRJ_Debug_Win_MZ2048EFM)
+#elif defined(XPRJ_Debug_Win_MZ2048EFM) || defined(XPRJ_pic32mz_ef_sk)
+	#define pic32mz_ef_sk				1
 	#define Debug_MZ2048EFM				1
 	#define XPRJ_Debug_Linux_GCC		0
 	#define XPRJ_Debug_Win_MinGW		0
@@ -151,24 +152,24 @@ extern "C" {
 	/* enable or disable individual architectural features */
 	#define USE_SYS_CLK					false
 	#define USE_SYS_DEVCON				false
+	#define USE_SYS_PORTS				true
 
 #endif
 
-#if (XPRJ_Debug_Win_MZ2048EFM)
+#if (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk)
 	/* define stuff that MPLAB defines on the command line */
 	#if !defined(__PIC32M)
 		#define __PIC32M
 		#define __LANGUAGE_ASSEMBLY__
-		#define __DEBUG
+
 	#endif
 
 	/* enable or disable individual architectural features */
 	#define USE_SYS_CLK					false
 	#define USE_SYS_DEVCON				false
+	#define USE_SYS_PORTS				true
 
 #endif
-
-
 
 
 #if (USE_SYS_DEVCON)

@@ -26,27 +26,18 @@
         </logicalFolder>
         <itemPath>../src/app.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="f1" displayName="framework" projectFiles="true">
-        <logicalFolder name="f1" displayName="driver" projectFiles="true">
-          <logicalFolder name="f1" displayName="tmr" projectFiles="true">
-            <logicalFolder name="f1" displayName="src" projectFiles="true">
-              <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_variant_mapping.h</itemPath>
-              <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/drv_tmr_local.h</itemPath>
-            </logicalFolder>
-            <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr.h</itemPath>
-            <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_mapping.h</itemPath>
-            <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/drv_tmr_compatibility.h</itemPath>
-            <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/tmr_definitions_pic32m.h</itemPath>
-          </logicalFolder>
-          <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver.h</itemPath>
-          <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/driver_common.h</itemPath>
+      <logicalFolder name="f3" displayName="cwsw_stuff" projectFiles="true">
+        <logicalFolder name="include" displayName="include" projectFiles="true">
+          <itemPath>../../cwsw_bsp/include/cwsw_bsp.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f2" displayName="osal" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="framework" projectFiles="true">
+        <logicalFolder name="f1" displayName="osal" projectFiles="true">
           <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal.h</itemPath>
           <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_definitions.h</itemPath>
           <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/osal/osal_impl_basic.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f3" displayName="system" projectFiles="true">
+        <logicalFolder name="f2" displayName="system" projectFiles="true">
           <logicalFolder name="f2" displayName="clk" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/src/sys_clk_local.h</itemPath>
@@ -120,17 +111,80 @@
         <itemPath>../src/app.c</itemPath>
         <itemPath>../src/main.c</itemPath>
       </logicalFolder>
-      <logicalFolder name="f1" displayName="framework" projectFiles="true">
-        <logicalFolder name="f1" displayName="driver" projectFiles="true">
-          <logicalFolder name="f1" displayName="tmr" projectFiles="true">
-            <logicalFolder name="f1" displayName="src" projectFiles="true">
-              <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/driver/tmr/src/dynamic/drv_tmr.c</itemPath>
+      <logicalFolder name="f3" displayName="cwsw_stuff" projectFiles="true">
+        <logicalFolder name="cwsw_bsp" displayName="cwsw_bsp" projectFiles="true">
+          <logicalFolder name="include" displayName="include" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>../../cwsw_bsp/src/cwsw_bsp.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="pic32mz" displayName="pic32mz" projectFiles="true">
+          <logicalFolder name="app" displayName="app" projectFiles="true">
+            <logicalFolder name="system_config"
+                           displayName="system_config"
+                           projectFiles="true">
+              <itemPath>../../cwsw_arch/pic32mz/app/system_config/system_init.c</itemPath>
+            </logicalFolder>
+            <itemPath>../../cwsw_arch/pic32mz/app/app.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="framework" displayName="framework" projectFiles="true">
+            <logicalFolder name="driver" displayName="driver" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="osal" displayName="osal" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="osc" displayName="osc" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="ports" displayName="ports" projectFiles="true">
+              <logicalFolder name="processor" displayName="processor" projectFiles="true">
+              </logicalFolder>
+              <itemPath>../../cwsw_arch/pic32mz/peripheral/ports/ports_api.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="clk" displayName="clk" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <itemPath>../../cwsw_arch/pic32mz/system/clk/src/sys_clk.c</itemPath>
+                <itemPath>../../cwsw_arch/pic32mz/system/clk/src/sys_clk_p32mz2048efm144.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="devcon" displayName="devcon" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <itemPath>../../cwsw_arch/pic32mz/system/devcon/src/sys_devcon.c</itemPath>
+                <itemPath>../../cwsw_arch/pic32mz/system/devcon/src/sys_devcon_none.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <itemPath>../../cwsw_arch/pic32mz/system/int/src/sys_int_pic32c.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+            <logicalFolder name="ports" displayName="ports" projectFiles="true">
+              <itemPath>../../cwsw_arch/pic32mz/system/ports/sys_ports_pic32mz.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <itemPath>../../cwsw_arch/pic32mz/system/tmr/src/sys_tmr.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
+          <itemPath>../../cwsw_arch/pic32mz/cwsw_arch.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f2" displayName="system" projectFiles="true">
+        <logicalFolder name="pic32mz_efm_sk"
+                       displayName="pic32mz_efm_sk"
+                       projectFiles="true">
+          <itemPath>../../cwsw_board/pic32mz_efm_sk/cwsw_board.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="src" displayName="src" projectFiles="true">
+          <itemPath>../../cwsw_lib/src/cwsw_lib.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="framework" projectFiles="true">
+        <logicalFolder name="f1" displayName="system" projectFiles="true">
           <logicalFolder name="f1" displayName="clk" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../_Programs/Microchip/harmony/v2_05/framework/system/clk/src/sys_clk.c</itemPath>
@@ -152,11 +206,9 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../src</Elem>
-    <Elem>../src/pic32mz_ef_sk</Elem>
-    <Elem>../src/system_config/pic32mz_ef_sk</Elem>
     <Elem>../../../../../../_Programs/Microchip/harmony/v2_05</Elem>
     <Elem>../../../../_Programs/Microchip/harmony/v2_05</Elem>
+    <Elem>../..</Elem>
     <Elem>..\src</Elem>
     <Elem>..\src\pic32mz_ef_sk</Elem>
     <Elem>..\src\system_config\pic32mz_ef_sk</Elem>
@@ -169,7 +221,7 @@
         <targetDevice>PIC32MZ2048EFM144</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PKOBSKDEPlatformTool</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>1.44</languageToolchainVersion>
         <platform>3</platform>
@@ -199,6 +251,164 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../../cwsw_arch/pic32mz/app/app.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/app/system_config/system_init.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/peripheral/ports/ports_api.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/system/clk/src/sys_clk.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/system/clk/src/sys_clk_p32mz2048efm144.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/system/devcon/src/sys_devcon.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/system/devcon/src/sys_devcon_none.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/system/int/src/sys_int_pic32c.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/system/ports/sys_ports_pic32mz.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="../../cwsw_arch/pic32mz/system/tmr/src/sys_tmr.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
@@ -208,7 +418,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../../../../../../../_Programs/Microchip/harmony/v2_05/framework;../../../../../../Microchip/harmony/v2_05/framework;../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../../../../../../_Programs/Microchip/harmony/v2_05/framework;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
+                  value="../../../../../../../_Programs/Microchip/harmony/v2_05/framework;../../../../../../Microchip/harmony/v2_05/framework;../../cwsw_lib/include;../../ut;../../cwsw_bsp/include;../../cwsw_board/pic32mz_efm_sk;../../cwsw_arch/pic32mz;../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../../../../../../_Programs/Microchip/harmony/v2_05/framework;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -217,7 +427,7 @@
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value=""/>
+        <property key="preprocessor-macros" value="USE_SIMULATED_EVENTS=(false)"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="toplevel-reordering" value=""/>
@@ -442,7 +652,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>
         <property key="memories.eeprom" value="true"/>

@@ -18,6 +18,8 @@
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
+#include "projcfg.h"
+
 // ----	System Headers --------------------------
 #include <stdbool.h>				/* type bool + true, false */
 
@@ -50,8 +52,8 @@ static bool initialized = false;
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
-
 #if (USE_SYS_CLK == true)
+#include "system/clk/sys_clk.h"		/* todo: make "system/clk" when eclipse symlinks are removed */
 WEAK void
 SYS_CLK_Initialize ( const SYS_CLK_INIT *clkInit )
 {

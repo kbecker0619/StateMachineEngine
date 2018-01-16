@@ -84,7 +84,6 @@ extern "C" {
     This enumeration defines the valid application states.  These states
     determine the behavior of the application at various times.
 */
-
 typedef enum
 {
 	/* Application's state machine's initial state. */
@@ -109,7 +108,6 @@ typedef enum
   Remarks:
     Application strings and buffers are be defined outside this structure.
  */
-
 typedef struct
 {
     /* The application's current state */
@@ -117,7 +115,7 @@ typedef struct
 
     /* TODO: Define any additional data used by the application. */
 	/* Heartbeat driver timer handle. */
-	DRV_HANDLE heartbeatTimer;
+//	DRV_HANDLE heartbeatTimer;
 	
 	/* Heartbeat timer timeout count. */
 	unsigned int heartbeatCount;
@@ -171,7 +169,6 @@ typedef struct
   Remarks:
     This routine must be called from the SYS_Initialize function.
 */
-
 void APP_Initialize ( void );
 
 
@@ -204,7 +201,6 @@ void APP_Initialize ( void );
   Remarks:
     This routine must be called from SYS_Tasks() routine.
  */
-
 void APP_Tasks( void );
 
 

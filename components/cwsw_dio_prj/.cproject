@@ -152,7 +152,9 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_bsp/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/i386&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_board/none&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_dio/3rdparty/cwsw/bsp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/cwsw/gen&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/cwsw/gen/bsp&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/cwsw/lib&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.138776766" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
@@ -203,14 +205,18 @@
 							<builder buildPath="${workspace_loc:/cwsw_dio}/Debug_Win_MZ2048EFM" id="cdt.managedbuild.builder.gnu.cross.686200003" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.375952707" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
 								<option id="gnu.c.compiler.option.include.paths.793166655" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${PIC32_XC_INCLUDE}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/ut&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_bsp/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/pic32mz&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_board/pic32mz_efm_sk&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${PIC32_XC_INCLUDE}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/mhc/gen/bsp&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/mhc/lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_dio/3rdparty/mhc/gen}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_dio/3rdparty/mhc/lib/system/clk}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_dio/3rdparty/mhc/lib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_dio/3rdparty/mhc/lib/peripheral}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.122290796" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
@@ -248,7 +254,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="3rdparty/cwsw|cwsw_arch.save|cwsw_arch/i386|cwsw_board/none|cwsw_arch/i386/system/clk|cwsw_arch/pic32mz/system/clk|cwsw_arch/pic32mz/system/int|cwsw_arch/pic32mz/system/tmr|firmware|cwsw_arch.save/pic_exceptions.c|arch/pic_exceptions.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="3rdparty/mhc/lib/system.save|3rdparty/cwsw|cwsw_arch.save|cwsw_arch/i386|cwsw_board/none|cwsw_arch/i386/system/clk|cwsw_arch/pic32mz/system/int|cwsw_arch/pic32mz/system/tmr|firmware|cwsw_arch.save/pic_exceptions.c|arch/pic_exceptions.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

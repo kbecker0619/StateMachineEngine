@@ -13,10 +13,11 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-3rdparty/cwsw/bsp \
+3rdparty/cwsw/gen/bsp \
 cwsw_arch/i386 \
 cwsw_arch/i386/peripheral/ports \
 cwsw_arch/i386/system/clk \
+cwsw_arch/i386/system/ports \
 cwsw_board/none \
 cwsw_bsp/src \
 cwsw_lib/src \

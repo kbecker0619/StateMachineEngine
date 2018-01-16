@@ -51,10 +51,18 @@ static bool initialized = false;
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
 
+#if !(USE_SYS_CLK)
 #define SYS_CLK_Initialize(a)			do { UNUSED(a); } while(0)
+#endif
+#if !(USE_SYS_DEVCON)
 #define SYS_DEVCON_Initialize(a, b)		do { UNUSED(a); UNUSED(b); } while(0)
 #define SYS_DEVCON_PerformanceConfig(a)	do { UNUSED(a); } while(0)
+#endif
+#if (USE_SYS_PORTS)
+#include "system/ports/sys_ports.h"
+#else
 #define SYS_PORTS_Initialize()			do {} while(0)
+#endif
 
 
 // ============================================================================

@@ -185,13 +185,21 @@ const SYS_CLK_INIT sysClkInit =
     See prototype in system/common/sys_module.h.
  */
 
-void SYS_Initialize ( void* data )
+void
+SYS_Initialize ( void* data )
 {
-    /* Core Processor Initialization */
-    SYS_CLK_Initialize( NULL );
-    SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)NULL);
-    SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
-    SYS_PORTS_Initialize();
+	if(0)
+	{
+		/* Core Processor Initialization */
+		SYS_CLK_Initialize( NULL );
+		SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)NULL);
+		SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
+		SYS_PORTS_Initialize();
+	}
+	else
+	{
+		(void) Init(Cwsw_Board);
+	}
 
     /* Board Support Package Initialization */
     BSP_Initialize();        

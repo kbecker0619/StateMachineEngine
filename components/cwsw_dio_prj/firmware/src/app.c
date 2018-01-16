@@ -1,24 +1,24 @@
 /*******************************************************************************
   MPLAB Harmony Application Source File
-  
+
   Company:
-    Microchip Technology Inc.
-  
+	Microchip Technology Inc.
+
   File Name:
-    app.c
+	app.c
 
   Summary:
-    This file contains the source code for the MPLAB Harmony application.
+	This file contains the source code for the MPLAB Harmony application.
 
   Description:
-    This file contains the source code for the MPLAB Harmony application.  It 
-    implements the logic of the application's state machine and it may call 
-    API routines of other MPLAB Harmony modules in the system, such as drivers,
-    system services, and middleware.  However, it does not call any of the
-    system interfaces (such as the "Initialize" and "Tasks" functions) of any of
-    the modules in the system or make any assumptions about when those functions
-    are called.  That is the responsibility of the configuration-specific system
-    files.
+	This file contains the source code for the MPLAB Harmony application.  It
+	implements the logic of the application's state machine and it may call
+	API routines of other MPLAB Harmony modules in the system, such as drivers,
+	system services, and middleware.  However, it does not call any of the
+	system interfaces (such as the "Initialize" and "Tasks" functions) of any of
+	the modules in the system or make any assumptions about when those functions
+	are called.  That is the responsibility of the configuration-specific system
+	files.
  *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
@@ -49,9 +49,12 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: Included Files 
+// Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
+
+#include "projcfg.h"
+#include "cwsw_lib.h"
 
 #include "app.h"
 #include "bsp.h"
@@ -66,16 +69,16 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 /* Application Data
 
   Summary:
-    Holds application data
+	Holds application data
 
   Description:
-    This structure holds the application's data.
+	This structure holds the application's data.
 
   Remarks:
-    This structure should be initialized by the APP_Initialize function.
-    
-    Application strings and buffers are be defined outside this structure.
-*/
+	This structure should be initialized by the APP_Initialize function.
+
+	Application strings and buffers are be defined outside this structure.
+ */
 
 APP_DATA appData;
 
@@ -86,7 +89,7 @@ APP_DATA appData;
 // *****************************************************************************
 
 /* TODO:  Add any necessary callback functions.
-*/
+ */
 
 // *****************************************************************************
 // *****************************************************************************
@@ -96,16 +99,21 @@ APP_DATA appData;
 
 
 /* Application's LED Task Function */
-static void 
-LedTask( void )
+#include "cwsw_bsp.h"	// tDO_LogicalValues
+#include "cwsw_board.h"	// kBoardLed1
+
+static void
+Heartbeat__Task(void)
 {
-	BSP_LEDToggle(BSP_LED_1);
+	tDO_LogicalValues curstate = Get(Cwsw_Board, kBoardLed1);
+	Set(Cwsw_Board, kBoardLed1, !curstate);
+	//	BSP_LEDToggle(BSP_LED_1);
 }
 
 static void
-SwitchTask(void)
+Switch__Task(void)
 {
-	if(!BSP_SwitchStateGet(BSP_SWITCH_2))
+	if (!BSP_SwitchStateGet(BSP_SWITCH_2))
 	{
 		BSP_LEDOn(BSP_LED_2);
 	}
@@ -116,9 +124,9 @@ SwitchTask(void)
 }
 
 /* TODO:  Add any necessary local functions.
-*/
-static void 
-APP_TimerCallback ( uintptr_t context, uint32_t alarmCount )
+ */
+static void
+APP_TimerCallback(uintptr_t context, uint32_t alarmCount)
 {
 	appData.heartbeatCount++;
 	if (appData.heartbeatCount >= APP_HEARTBEAT_COUNT_MAX)
@@ -137,90 +145,86 @@ APP_TimerCallback ( uintptr_t context, uint32_t alarmCount )
 
 /*******************************************************************************
   Function:
-    void APP_Initialize ( void )
+	void APP_Initialize ( void )
 
   Remarks:
-    See prototype in app.h.
+	See prototype in app.h.
  */
-
-void 
-APP_Initialize ( void )
+void
+APP_Initialize(void)
 {
-    /* Place the App state machine in its initial state. */
-    appData.state = APP_STATE_INIT;
-
-    /* TODO: Initialize your application's state machine and other
-     * parameters.
-     */
+	/* Place the App state machine in its initial state. */
 	appData.state = APP_STATE_INIT;
-	appData.heartbeatTimer = DRV_HANDLE_INVALID;
+
+	/* TODO: Initialize your application's state machine and other
+	 * parameters.
+	 */
+	appData.state = APP_STATE_INIT;
+//	appData.heartbeatTimer = DRV_HANDLE_INVALID;
 	appData.heartbeatCount = 0;
 	appData.heartbeatToggle = false;
 }
 
-
 /******************************************************************************
   Function:
-    void APP_Tasks ( void )
+	void APP_Tasks ( void )
 
   Remarks:
-    See prototype in app.h.
+	See prototype in app.h.
  */
-
-void 
-APP_Tasks ( void )
+void
+APP_Tasks(void)
 {
-    /* Check the application's current state. */
-    switch ( appData.state )
-    {
-        /* Application's initial state. */
-        case APP_STATE_INIT:
-        {
-			appData.heartbeatTimer = DRV_TMR_Open( APP_HEARTBEAT_TMR, DRV_IO_INTENT_EXCLUSIVE);
-			if ( DRV_HANDLE_INVALID != appData.heartbeatTimer )
-			{
-				DRV_TMR_AlarmRegister(
-					appData.heartbeatTimer, 
-					APP_HEARTBEAT_TMR_PERIOD, APP_HEARTBEAT_TMR_IS_PERIODIC,
-					(uintptr_t)&appData, APP_TimerCallback);
-				DRV_TMR_Start(appData.heartbeatTimer);
-				appData.state = APP_STATE_IDLE;
-			}
-		}
-		break;
-
-		case APP_STATE_IDLE:
-		{
-			/* Signal the application's heartbeat. */
-			if (appData.heartbeatToggle == true)
-			{
-				appData.heartbeatToggle = false;
-				appData.state = APP_STATE_SERVICE_TASKS;
-			}
-			SwitchTask();
-		}	
-		break;
-		
-        case APP_STATE_SERVICE_TASKS:
-        {
-            LedTask();
+	/* Check the application's current state. */
+	switch (appData.state)
+	{
+		/* Application's initial state. */
+	case APP_STATE_INIT:
+	{
+//		appData.heartbeatTimer = DRV_TMR_Open(APP_HEARTBEAT_TMR, DRV_IO_INTENT_EXCLUSIVE);
+//		if (DRV_HANDLE_INVALID != appData.heartbeatTimer)
+//		{
+//			DRV_TMR_AlarmRegister(appData.heartbeatTimer,
+//								  APP_HEARTBEAT_TMR_PERIOD, APP_HEARTBEAT_TMR_IS_PERIODIC,
+//								  (uintptr_t) & appData, APP_TimerCallback);
+//			DRV_TMR_Start(appData.heartbeatTimer);
 			appData.state = APP_STATE_IDLE;
-            break;
-        }
+//		}
+	}
+		break;
 
-        /* TODO: implement your application state machine.*/
-        
+	case APP_STATE_IDLE:
+	{
+		/* Signal the application's heartbeat. */
+		if (appData.heartbeatToggle == true)
+		{
+			appData.heartbeatToggle = false;
+//			appData.state = APP_STATE_SERVICE_TASKS;
+		}
+		Task(Switch);
+	}
+		break;
 
-        /* The default state should never be executed. */
-        default:
-        {
-            /* TODO: Handle error in application's state machine. */
-            break;
-        }
-    }
+	case APP_STATE_SERVICE_TASKS:
+	{
+		Task(Heartbeat);
+		appData.state = APP_STATE_IDLE;
+		break;
+	}
+
+		/* TODO: implement your application state machine.*/
+
+
+		/* The default state should never be executed. */
+	default:
+	{
+		/* TODO: Handle error in application's state machine. */
+		break;
+	}
+	}
 }
 
- 
+
 
 /*******************************************************************************
  End of File

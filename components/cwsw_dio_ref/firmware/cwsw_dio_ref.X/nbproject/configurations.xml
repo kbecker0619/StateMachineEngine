@@ -160,6 +160,7 @@
     <Elem>..\src</Elem>
     <Elem>..\src\pic32mz_ef_sk</Elem>
     <Elem>..\src\system_config\pic32mz_ef_sk</Elem>
+    <Elem>../../../cwsw_dio_prj/cwsw_arch/pic32mz</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

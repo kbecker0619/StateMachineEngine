@@ -106,7 +106,6 @@ static const PORTS_BIT_POS switch_port_bit_pos_map[] =
   Remarks:
     Refer to bsp.h for usage information.
 */
-
 BSP_SWITCH_STATE BSP_SwitchStateGet( BSP_SWITCH bspSwitch )
 {
     return ( PLIB_PORTS_PinGet(PORTS_ID_0, switch_port_channel_map[bspSwitch], switch_port_bit_pos_map[bspSwitch]) );
@@ -237,7 +236,6 @@ void BSP_LEDToggle(BSP_LED led)
   Remarks:
     Refer to bsp.h for usage information.
 */
-
 BSP_LED_STATE BSP_LEDStateGet (BSP_LED led)
 {
     bool value;
@@ -266,7 +264,6 @@ BSP_LED_STATE BSP_LEDStateGet (BSP_LED led)
   Remarks:
     Refer to bsp.h for usage information.
 */
-
 void BSP_LEDOn(BSP_LED led)
 {
     if(led_active_level_map[led] == BSP_LED_ACTIVE_HIGH)
@@ -292,7 +289,6 @@ void BSP_LEDOn(BSP_LED led)
   Remarks:
     Refer to bsp.h for usage information.
 */
-
 void BSP_LEDOff(BSP_LED led)
 {
     if(led_active_level_map[led] == BSP_LED_ACTIVE_HIGH)
@@ -304,6 +300,7 @@ void BSP_LEDOff(BSP_LED led)
         PLIB_PORTS_PinSet( PORTS_ID_0, led_port_channel_map[led], led_port_bit_pos_map[led] );
     }
 }
+
 // *****************************************************************************
 /* Function:
     void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
@@ -317,11 +314,9 @@ void BSP_LEDOff(BSP_LED led)
   Remarks:
     Refer to bsp_config.h for usage information.
 */
-
 void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state)
 {
     /* Enable the VBUS switch */
-
     PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, state );
 }
 
@@ -386,7 +381,6 @@ void BSP_USBVBUSPowerEnable(uint8_t port, bool enable)
   Remarks:
     Refer to bsp.h for usage information.
 */
-
 void BSP_Initialize(void )
 {
     /* Setup the USB VBUS Switch Control Pin */

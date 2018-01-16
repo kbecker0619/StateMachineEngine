@@ -273,6 +273,9 @@ extern bool 									Cwsw_Board__Get_Initialized(void);
 #define Cwsw_Board__Set_kBoardLed2(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed2); } else { BSP_LEDOff(kBoardLed2); } } while(0)
 #define Cwsw_Board__Set_kBoardLed3(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed3); } else { BSP_LEDOff(kBoardLed3); } } while(0)
 
+/* Target for some of the expansions to the Get(Cwsw_Board, Resource) interface. */
+#define Cwsw_Board__Get_kBoardLed1()			BSP_LEDStateGet(kBoardLed1)
+
 
 #ifdef	__cplusplus
 }

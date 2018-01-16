@@ -59,10 +59,6 @@
 // ============================================================================
 static char const * const cwsw_bsp_RevString = "$Revision: 0123 $";
 
-//static tBoardLed ind_led_map[kBspNumLeds] = {
-//	kBoardLed1, kBoardLed2, kBoardLed3
-//};
-
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
@@ -94,6 +90,13 @@ Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff)
 }
 
 
+static void
+Heartbeat__Task(void)
+{
+	tDO_LogicalValues curstate = Get(Cwsw_Board, kBoardLed1);
+	Set(Cwsw_Board, kBoardLed1, !curstate);
+}
+
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
@@ -109,7 +112,9 @@ Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff)
  *
  * @return
  */
-#include "system/system.h"					/* API as defined by MHC. Note that including any part of the path, violates all kinds of coding rules (including my own personal rules) */
+#include "system/system.h"			/* API as defined by MHC. Note that including any part of the path, violates all kinds of coding rules (including my own personal rules) */
+#include "system_definitions.h"		/* sysObj */
+#include "system/int/sys_int.h"
 uint16_t
 BSP__Init(void)
 {
@@ -118,34 +123,47 @@ BSP__Init(void)
 
 	(void) Init(Cwsw_Lib);	/* board independent, arch independent, for some environs, inits things used by following modules */
 
-	do {	    /* Core Processor Initialization */
-		(void) Init(Cwsw_Arch);
-	} while(0);
+#	if(!XPRJ_pic32mz_ef_sk)
+	{
+		do {	    /* Core Processor Initialization */
+			(void) Init(Cwsw_Arch);
+		} while(0);
 
-	do {		/* Board Support Package Initialization */
-		(void) Init(Cwsw_Board);
-		BSP_Initialize();
-	} while(0);
+		do {		/* Board Support Package Initialization */
+			(void) Init(Cwsw_Board);
+			BSP_Initialize();
+		} while(0);
 
-	do {		/* Initialize Drivers */
+		do {		/* Initialize Drivers */
 
-	} while(0);
+		} while(0);
 
-	do {		/* Initialize System Services */
+		do {		/* Initialize System Services */
+		    SYS_INT_Initialize();
+		} while(0);
 
-	} while(0);
+		do {		/* Initialize Middleware */
+//			sysObj.drvTmr0 = DRV_TMR_Initialize(DRV_TMR_INDEX_0, (SYS_MODULE_INIT *)&drvTmr0InitData);
 
-	do {		/* Initialize Middleware */
+//			SYS_INT_VectorPrioritySet(INT_VECTOR_T1, INT_PRIORITY_LEVEL1);
+//			SYS_INT_VectorSubprioritySet(INT_VECTOR_T1, INT_SUBPRIORITY_LEVEL0);
+		} while(0);
 
-	} while(0);
+		do {		/* Enable Global Interrupts */
+//			SYS_INT_Enable();
+		} while(0);
 
-	do {		/* Enable Global Interrupts */
-//		SYS_INT_Enable();
-	} while(0);
-
-	do {		/* Initialize the Application */
-//		APP_Initialize();
-	} while(0);
+		do {		/* Initialize the Application */
+//			APP_Initialize();
+		} while(0);
+	}
+#	else
+	{
+		/* for now, simply defer to the MHC-generated code
+		 */
+		SYS_Initialize(NULL);
+	}
+#endif
 
 	return 0;
 }

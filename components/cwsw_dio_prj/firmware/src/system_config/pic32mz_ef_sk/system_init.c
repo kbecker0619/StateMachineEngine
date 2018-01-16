@@ -46,6 +46,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
+#include "projcfg.h"
+
 #include "system_config.h"
 #include "system_definitions.h"
 
@@ -120,20 +122,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
-// <editor-fold defaultstate="collapsed" desc="DRV_Timer Initialization Data">
-/*** TMR Driver Initialization Data ***/
-
-const DRV_TMR_INIT drvTmr0InitData =
-{
-    .moduleInit.sys.powerState = DRV_TMR_POWER_STATE_IDX0,
-    .tmrId = DRV_TMR_PERIPHERAL_ID_IDX0,
-    .clockSource = DRV_TMR_CLOCK_SOURCE_IDX0,
-    .prescale = DRV_TMR_PRESCALE_IDX0,
-    .mode = DRV_TMR_OPERATION_MODE_16_BIT,
-    .interruptSource = DRV_TMR_INTERRUPT_SOURCE_IDX0,
-    .asyncWriteEnable = false,
-};
-// </editor-fold>
 
 // *****************************************************************************
 // *****************************************************************************
@@ -188,9 +176,12 @@ const SYS_CLK_INIT sysClkInit =
 void SYS_Initialize ( void* data )
 {
     /* Core Processor Initialization */
-    SYS_CLK_Initialize( NULL );
-    SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)NULL);
-    SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
+	if(USE_SYS_CLK)
+	{
+	    SYS_CLK_Initialize( NULL );
+	}
+//    SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)NULL);
+//    SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
     SYS_PORTS_Initialize();
 
     /* Board Support Package Initialization */
@@ -198,13 +189,6 @@ void SYS_Initialize ( void* data )
 
     /* Initialize Drivers */
 
-    sysObj.drvTmr0 = DRV_TMR_Initialize(DRV_TMR_INDEX_0, (SYS_MODULE_INIT *)&drvTmr0InitData);
-
-    SYS_INT_VectorPrioritySet(INT_VECTOR_T1, INT_PRIORITY_LEVEL1);
-    SYS_INT_VectorSubprioritySet(INT_VECTOR_T1, INT_SUBPRIORITY_LEVEL0);
- 
- 
- 
     /* Initialize System Services */
 
     /*** Interrupt Service Initialization Code ***/

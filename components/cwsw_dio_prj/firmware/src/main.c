@@ -55,23 +55,31 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
+#include "projcfg.h"
 #include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "system/common/sys_module.h"   // SYS function prototypes
 
+#include "cwsw_lib.h"
+#include "cwsw_bsp.h"
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: Main Entry Point
 // *****************************************************************************
 // *****************************************************************************
-
 int main ( void )
 {
-    /* Initialize all MPLAB Harmony modules, including application(s). */
-    SYS_Initialize ( NULL );
-
+	if(0)
+	{
+		/* Initialize all MPLAB Harmony modules, including application(s). */
+		SYS_Initialize ( NULL );
+	}
+	else
+	{
+		(void) Init(BSP);		// because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
+	}
 
     while ( true )
     {

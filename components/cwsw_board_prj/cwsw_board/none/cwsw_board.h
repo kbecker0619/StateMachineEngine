@@ -229,12 +229,17 @@ extern bool 									Cwsw_Board__Get_Initialized(void);
 #define Cwsw_Board__Set_kBoardLed2(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed2); } else { BSP_LEDOff(kBoardLed2); } } while(0)
 #define Cwsw_Board__Set_kBoardLed3(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed3); } else { BSP_LEDOff(kBoardLed3); } } while(0)
 
+/* Target for some of the expansions to the Get(Cwsw_Board, Resource) interface. */
+#define Cwsw_Board__Get_kBoardLed1()			BSP_LEDStateGet(kBoardLed1)
+
 
 /* In the expansions of Cwsw_Board__Set__BoardLed<n>, we refer to functions provided by Harmony.
  * For desktop console apps, simply make them nops.
  */
-#define BSP_LEDOn(a)	do { dprintf("\tLED %i on\n", a); } while(0)
-#define BSP_LEDOff(a)	do { dprintf("\tLED %i off\n", a); } while(0)
+#define BSP_LEDOn(a)		do { dprintf("\tLED %i on\n", a); } while(0)
+#define BSP_LEDOff(a)		do { dprintf("\tLED %i off\n", a); } while(0)
+
+#define BSP_LEDStateGet(a)	(1)
 
 
 #ifdef	__cplusplus
