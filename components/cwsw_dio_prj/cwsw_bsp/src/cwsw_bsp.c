@@ -90,7 +90,7 @@ Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff)
 }
 
 
-static void
+void
 Heartbeat__Task(void)
 {
 	tDO_LogicalValues curstate = Get(Cwsw_Board, kBoardLed1);
@@ -115,13 +115,14 @@ Heartbeat__Task(void)
 #include "system/system.h"			/* API as defined by MHC. Note that including any part of the path, violates all kinds of coding rules (including my own personal rules) */
 #include "system_definitions.h"		/* sysObj */
 #include "system/int/sys_int.h"
+#include "app.h"
 uint16_t
 BSP__Init(void)
 {
 	UNUSED(cwsw_bsp_RevString);
 //	UNUSED(ind_led_map);
 
-	(void) Init(Cwsw_Lib);	/* board independent, arch independent, for some environs, inits things used by following modules */
+	(void) Init(Cwsw_Lib);	/* Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules */
 
 #	if(!XPRJ_pic32mz_ef_sk)
 	{
@@ -150,11 +151,11 @@ BSP__Init(void)
 		} while(0);
 
 		do {		/* Enable Global Interrupts */
-//			SYS_INT_Enable();
+			SYS_INT_Enable();
 		} while(0);
 
 		do {		/* Initialize the Application */
-//			APP_Initialize();
+			APP_Initialize();
 		} while(0);
 	}
 #	else

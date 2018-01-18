@@ -78,7 +78,7 @@ int main ( void )
 	}
 	else
 	{
-		(void) Init(BSP);		// because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
+		(void) Init(BSP);		// BSP__Init(). because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
 	}
 
     while ( true )

@@ -102,7 +102,7 @@ APP_DATA appData;
 #include "cwsw_bsp.h"	// tDO_LogicalValues
 #include "cwsw_board.h"	// kBoardLed1
 
-static void
+void
 Heartbeat__Task(void)
 {
 	tDO_LogicalValues curstate = Get(Cwsw_Board, kBoardLed1);

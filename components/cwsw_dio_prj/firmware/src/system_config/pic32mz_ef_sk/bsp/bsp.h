@@ -583,8 +583,7 @@ bool BSP_USBVBUSSwitchOverCurrentDetect(uint8_t port);
   Remarks:
     None
 */
-
-void BSP_Initialize(void);
+extern void BSP_Initialize(void);
 
 #endif // _BSP_H
 

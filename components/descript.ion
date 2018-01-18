@@ -1,0 +1,2 @@
+cwsw_arch_prj Location of project files for the component that supports MCU Architectural concerns
+cwsw_board_prj Location of project files for support of various board-related support

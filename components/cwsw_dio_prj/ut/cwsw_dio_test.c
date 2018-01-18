@@ -14,6 +14,19 @@
 #include "cwsw_lib.h"
 #include "cwsw_bsp.h"
 
+#include "app.h"
+
+
+static bool terminate_requested = false;
+
+static void
+Csws_Dio_Ut__Task(void)
+{
+
+}
+
+
+
 int main(void)
 {
 
@@ -21,5 +34,20 @@ int main(void)
 
 	(void)puts("CWSW DIO Library Unit Test");
 
+	terminate_requested = false;
+	while(!terminate_requested) { Task(Csws_Dio_Ut); }
+
 	return EXIT_SUCCESS;
+}
+
+void APP_Initialize ( void )
+{
+
+}
+
+extern void Heartbeat__Task(void);
+
+void APP_Task(void)
+{
+	Task(Heartbeat);
 }

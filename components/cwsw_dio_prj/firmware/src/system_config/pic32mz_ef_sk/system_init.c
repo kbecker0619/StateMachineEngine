@@ -176,13 +176,21 @@ const SYS_CLK_INIT sysClkInit =
 void SYS_Initialize ( void* data )
 {
     /* Core Processor Initialization */
-	if(USE_SYS_CLK)
-	{
-	    SYS_CLK_Initialize( NULL );
-	}
-//    SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)NULL);
-//    SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
-    SYS_PORTS_Initialize();
+	do {
+		if(USE_SYS_CLK)
+		{
+			SYS_CLK_Initialize( NULL );
+		}
+		if(USE_SYS_DEVCON)
+		{
+			SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)NULL);
+			SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
+		}
+		if(USE_SYS_PORTS)
+		{
+			SYS_PORTS_Initialize();
+		}
+	} while(0);
 
     /* Board Support Package Initialization */
     BSP_Initialize();        

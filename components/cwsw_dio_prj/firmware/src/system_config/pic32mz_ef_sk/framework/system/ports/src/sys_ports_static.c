@@ -48,6 +48,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 *******************************************************************************/
 //DOM-IGNORE-END
 
+#include "projcfg.h"
+
 #include "system_config.h"
 #include "system/ports/sys_ports.h"
 #include "peripheral/devcon/plib_devcon.h"
@@ -70,7 +72,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 */
 void SYS_PORTS_Initialize(void)
 {
-
+#if (USE_SYS_PORTS)
     /* PORT A Initialization */
     PLIB_PORTS_OpenDrainEnable(PORTS_ID_0, PORT_CHANNEL_A, SYS_PORT_A_ODC);
     PLIB_PORTS_Write( PORTS_ID_0, PORT_CHANNEL_A,  SYS_PORT_A_LAT);
@@ -176,7 +178,7 @@ void SYS_PORTS_Initialize(void)
 
     /* PPS Output Remapping */
 
-    
+#endif
 }
 
 /******************************************************************************
@@ -894,7 +896,6 @@ void SYS_PORTS_PinClear ( PORTS_MODULE_ID index,
   Remarks:
     None.
 */
-
 void SYS_PORTS_PinDirectionSelect ( PORTS_MODULE_ID index,
                                  SYS_PORTS_PIN_DIRECTION pinDir,
                                  PORTS_CHANNEL channel,
@@ -926,7 +927,6 @@ void SYS_PORTS_PinDirectionSelect ( PORTS_MODULE_ID index,
   Remarks:
     None.
 */
-
 void SYS_PORTS_PinOpenDrainEnable ( PORTS_MODULE_ID index,
                                     PORTS_CHANNEL channel,
                                     PORTS_BIT_POS bitPos )
@@ -955,7 +955,6 @@ void SYS_PORTS_PinOpenDrainEnable ( PORTS_MODULE_ID index,
   Remarks:
     None.
 */
-
 void SYS_PORTS_PinOpenDrainDisable ( PORTS_MODULE_ID index,
                                      PORTS_CHANNEL channel,
                                      PORTS_BIT_POS bitPos )
@@ -986,7 +985,6 @@ void SYS_PORTS_PinOpenDrainDisable ( PORTS_MODULE_ID index,
     Not all features are available on all devices. Refer to the specific device
     data sheet for availability.
 */
-
 void SYS_PORTS_PinPullUpEnable ( PORTS_MODULE_ID index, 
                                     PORTS_CHANNEL channel,
                                     PORTS_BIT_POS bitPos )
@@ -1013,7 +1011,6 @@ void SYS_PORTS_PinPullUpEnable ( PORTS_MODULE_ID index,
     Not all features are available on all devices. Refer to the specific device
     data sheet for availability.
 */
-
 void SYS_PORTS_PinPullUpDisable ( PORTS_MODULE_ID index, 
                                      PORTS_CHANNEL channel,
                                      PORTS_BIT_POS bitPos )
@@ -1040,7 +1037,6 @@ void SYS_PORTS_PinPullUpDisable ( PORTS_MODULE_ID index,
     Not all features are available on all devices. Refer to the specific device
     data sheet for availability.
 */
-
 void SYS_PORTS_PinPullDownEnable ( PORTS_MODULE_ID index, 
                                     PORTS_CHANNEL channel,
                                     PORTS_BIT_POS bitPos )
@@ -1125,9 +1121,11 @@ void SYS_PORTS_InterruptEnable
   Precondition:
     None.
 */	
-void SYS_PORTS_RemapInput( PORTS_MODULE_ID      index,
-						   PORTS_REMAP_INPUT_FUNCTION function,
-						   PORTS_REMAP_INPUT_PIN      remapPin )
+void 
+SYS_PORTS_RemapInput( 
+	PORTS_MODULE_ID				index,
+	PORTS_REMAP_INPUT_FUNCTION	function,
+	PORTS_REMAP_INPUT_PIN		remapPin )
 {
 #if defined(PLIB_PORTS_ExistsRemapInput)
     if(PLIB_PORTS_ExistsRemapInput(index))
@@ -1154,9 +1152,11 @@ void SYS_PORTS_RemapInput( PORTS_MODULE_ID      index,
   Precondition:
     None.
 */
-void SYS_PORTS_RemapOutput( PORTS_MODULE_ID      index,
-						    PORTS_REMAP_OUTPUT_FUNCTION function,
-						    PORTS_REMAP_OUTPUT_PIN      remapPin )
+void 
+SYS_PORTS_RemapOutput( 
+	PORTS_MODULE_ID				index,
+	PORTS_REMAP_OUTPUT_FUNCTION	function,
+	PORTS_REMAP_OUTPUT_PIN      remapPin )
 {
 #if defined(PLIB_PORTS_ExistsRemapOutput)
     if(PLIB_PORTS_ExistsRemapOutput(index))
