@@ -22,12 +22,18 @@ static bool terminate_requested = false;
 static void
 Csws_Dio_Ut__Task(void)
 {
+	Task(Heartbeat);
+}
+
+void
+APP_Initialize(void)
+{
 
 }
 
 
-
-int main(void)
+int
+main(void)
 {
 
 	(void) Init(BSP);		// because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
@@ -40,14 +46,3 @@ int main(void)
 	return EXIT_SUCCESS;
 }
 
-void APP_Initialize ( void )
-{
-
-}
-
-extern void Heartbeat__Task(void);
-
-void APP_Task(void)
-{
-	Task(Heartbeat);
-}

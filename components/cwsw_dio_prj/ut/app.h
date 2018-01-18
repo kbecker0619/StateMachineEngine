@@ -1,4 +1,4 @@
-/** @file app.h
+/** @file
  *	@brief	One-sentence short description of file.
  *
  *	Description:
@@ -83,7 +83,9 @@ extern "C" {
   Remarks:
     This routine must be called from the SYS_Initialize function.
 */
-extern void APP_Initialize ( void );
+extern void APP_Initialize(void);
+
+extern void Heartbeat__Task(void);
 
 
 #ifdef	__cplusplus

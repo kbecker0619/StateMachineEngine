@@ -3,3 +3,4 @@
 *.cdb
 cvibuild.cwsw_lib
 /Debug_Linux_GCC/
+/Debug/
