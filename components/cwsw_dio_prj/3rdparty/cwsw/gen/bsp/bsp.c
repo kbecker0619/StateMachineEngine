@@ -70,42 +70,43 @@ static char const * const bsp_RevString = "$Revision: 0123 $";
 // ============================================================================
 
 /* Function:
-    void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
+	void BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state);
 
   Summary:
-    This function enables or disables the USB VBUS switch on the board.
+	This function enables or disables the USB VBUS switch on the board.
 
   Description:
-    This function enables or disables the VBUS switch on the board.
+	This function enables or disables the VBUS switch on the board.
 
   Remarks:
-    Refer to bsp_config.h for usage information.
+	Refer to bsp_config.h for usage information.
 */
 void
 BSP_USBVBUSSwitchStateSet(BSP_USB_VBUS_SWITCH_STATE state)
 {
-    /* Enable the VBUS switch */
-    PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, state );
+	/* Enable the VBUS switch */
+	PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, state );
 }
 
 
 /* Function:
-    void BSP_Initialize(void)
+	void BSP_Initialize(void)
 
   Summary:
-    Performs the necessary actions to initialize a board
+	Performs the necessary actions to initialize a board
 
   Description:
-    This function initializes the LED, Switch and other ports on the board.
-    This function must be called by the user before using any APIs present in
-    this BSP.
+	This function initializes the LED, Switch and other ports on the board.
+	This function must be called by the user before using any APIs present in
+	this BSP.
 
   Remarks:
-    Refer to bsp.h for usage information.
+	Refer to bsp.h for usage information.
 */
 void
 BSP_Initialize(void)
 {
+	UNUSED(bsp_RevString);
 	/* Setup the USB VBUS Switch Control Pin */
 	if(Get(Cwsw_Board, Initialized))
 	{

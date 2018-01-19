@@ -77,6 +77,8 @@ PLIB_PORTS_PinWrite(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS 
 	UNUSED(channel);
 	UNUSED(bitPos);
 	UNUSED(value);
+	UNUSED(ports_api_RevString);
+	
 	// PORTS_PinWrite_MCU32_PPS()
 
 	dprintf(

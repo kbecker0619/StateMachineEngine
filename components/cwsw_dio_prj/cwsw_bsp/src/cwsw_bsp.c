@@ -97,6 +97,7 @@ Heartbeat__Task(void)
 	Set(Cwsw_Board, kBoardLed1, !curstate);
 }
 
+
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
@@ -127,7 +128,7 @@ BSP__Init(void)
 #	if(!XPRJ_pic32mz_ef_sk)
 	{
 		do {	    /* Core Processor Initialization */
-			(void) Init(Cwsw_Arch);
+			(void) Init(Cwsw_Arch);	// Cwsw_Arch__Init()
 		} while(0);
 
 		do {		/* Board Support Package Initialization */

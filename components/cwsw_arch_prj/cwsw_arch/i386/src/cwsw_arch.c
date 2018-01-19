@@ -1,12 +1,12 @@
-/** @file cwsw_lib.c
- *	@brief	One-sentence short description of file.
+/** @file
+ *	@brief	Initialize the MCU.
  *
  *	Description:
  *
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
- *	Created on: Jun 4, 2017
+ *	Created on: Jan 3, 2018
  *	Author: kbecker
  *
  *	Current:
@@ -19,11 +19,12 @@
 // ============================================================================
 
 // ----	System Headers --------------------------
+#include <stdbool.h>
 
 // ----	Project Headers -------------------------
 
 // ----	Module Headers --------------------------
-#include "cwsw_lib.h"
+#include "cwsw_arch.h"
 
 
 // ============================================================================
@@ -41,14 +42,8 @@
 // ============================================================================
 // ----	Module-level Variables ------------------------------------------------
 // ============================================================================
-static char const * const cwsw_lib_RevString = "$Revision: 0123 $";
+static char const * const cwsw_arch_RevString = "$Revision: 0123 $";
 
-/** "Has this module been initialized?" flag.
- *	For the SQSP Library, the import of this flag is less than in most modules; there are no
- *	state-related or HW initializations that must be done, and there is no task function that needs
- *	to be set up. In addition, nothing in this module needs to be deinitialized (such as, in
- *	preparation for entry into sleep mode, etc.)
- */
 static bool initialized = false;
 
 
@@ -56,41 +51,45 @@ static bool initialized = false;
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
 
+#if !(USE_SYS_CLK)
+#define SYS_CLK_Initialize(a)			do { UNUSED(a); } while(0)
+#endif
+#if !(USE_SYS_DEVCON)
+#define SYS_DEVCON_Initialize(a, b)		do { UNUSED(a); UNUSED(b); } while(0)
+#define SYS_DEVCON_PerformanceConfig(a)	do { UNUSED(a); } while(0)
+#endif
+#if (USE_SYS_PORTS)
+#include "system/ports/sys_ports.h"
+#else
+#define SYS_PORTS_Initialize()			do {} while(0)
+#endif
+
+
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
 
-/** Module initialization function.
- *	This function shall be called before the main scheduler is started.
- *	This function's responsibility is to set up the local vars, and manage the necessary HW, to
- *	prepare for the task function's 1st call (once the scheduler has been started).
- *	@returns error code, or 0 for no problem (i.e., success).
- */
 uint16_t
-Cwsw_Lib__Init(void)
+Cwsw_Arch__Init(void)
 {
-	UNUSED(cwsw_lib_RevString);
-	if( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI) )
-	{
-		disable_console_buffering();
 
-		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-		#pragma GCC diagnostic push
-		#pragma GCC diagnostic ignored "-Wpedantic"
-		#endif
+	UNUSED(cwsw_arch_RevString);
+	// for desktop use, there's really not much to do here.
 
-		dprintf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, cwsw_lib_RevString, __FUNCTION__);
+    /* Core Processor Initialization */
+	SYS_CLK_Initialize( NULL );
+	SYS_DEVCON_Initialize(0, NULL);
+	SYS_DEVCON_PerformanceConfig(0);
+	SYS_PORTS_Initialize();
 
-		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-		#pragma GCC diagnostic pop
-		#endif
-	}
 	initialized = true;
 	return 0;
+
 }
 
+
 bool
-Cwsw_Lib__Get_Initialized(void)
+Cwsw_Arch__Get_Initialized(void)
 {
 	return initialized;
 }

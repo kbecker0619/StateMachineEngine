@@ -99,15 +99,15 @@ extern "C" {
 	/* This is the configuration intended for development & debugging in a Linux VM */
 	/* The 1st is intended to debug on a PowerPC Target from a Linux development environment */
 	/* The 2nd (Desktop) is intended for building within S32DS on Linux for a Linux debugging session */
-	#define	XPRJ_DEBUG_CVI				0
-	#define	XPRJ_DEBUG_MSC				0
+	#define	XPRJ_Debug_CVI				0
+	#define	XPRJ_Debug_MSC				0
 	#define	XPRJ_Debug_Win_MinGW 		0
 
 #elif defined(XPRJ_Debug_Win_MinGW)
 	/* This is the configuration intended for development on Windows, using the MinGW tool suite */
 	#define XPRJ_Debug_Linux_GCC		0
-	#define XPRJ_DEBUG_MSC				0
-	#define	XPRJ_DEBUG_CVI				0
+	#define XPRJ_Debug_MSC				0
+	#define	XPRJ_Debug_CVI				0
 	#define XPRJ_Debug_Win_MZ2048EFM	0
 
 #elif defined(XPRJ_Debug_Cx_AtmelSamv71)
@@ -118,10 +118,10 @@ extern "C" {
 	#define Debug_MZ2048EFM				1
 	#define XPRJ_Debug_Linux_GCC		0
 	#define XPRJ_Debug_Win_MinGW		0
-	#define XPRJ_DEBUG_MSC				0
-	#define	XPRJ_DEBUG_CVI				0
+	#define XPRJ_Debug_MSC				0
+	#define	XPRJ_Debug_CVI				0
 
-#elif defined(XPRJ_DEBUG_MSC)
+#elif defined(XPRJ_Debug_MSC)
 	/* Visual Studio 8, which is decidedly shy of C11 */
 	/* NOTE: VS8 does not ship w/ headers <stdint.h> or <stdbool.h>, so i found alternate versions
 	 * and copied them into my install directory. i happened to find some web sites w/ versions
@@ -129,11 +129,11 @@ extern "C" {
 	 * compiler you may have installed.
 	 */
 	#define XPRJ_Debug_Win_MinGW	false
-	#define	XPRJ_DEBUG_CVI			false
+	#define	XPRJ_Debug_CVI			false
 
 #elif defined(_CVI_)
-	#define	XPRJ_DEBUG_CVI				1
-	#define	XPRJ_DEBUG_MSC				0
+	#define	XPRJ_Debug_CVI				1
+	#define	XPRJ_Debug_MSC				0
 	#define	XPRJ_Debug_Win_MinGW 		0
 	#define XPRJ_Debug_Linux_GCC		0
 
@@ -193,7 +193,7 @@ extern "C" {
  *	define. Pick reasonable defaults if not defined.
  */
 #if !defined(BUILD_FOR_UNIT_TEST)
-	#if (XPRJ_Debug_Linux_GCC) || (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
+	#if (XPRJ_Debug_Linux_GCC) || (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
 		#define BUILD_FOR_UNIT_TEST		(true)
 
 	#else

@@ -57,23 +57,23 @@ static char const * const sys_int_none_RevString = "$Revision: 0123 $";
 /******************************************************************************
 
   Function:
-    void SYS_INT_Initialize ( void )
+	void SYS_INT_Initialize ( void )
 
   Summary:
-    Configures and initializes the interrupt sub-system.
+	Configures and initializes the interrupt sub-system.
 
   Description:
-    This function appropriately configures and initializes the interrupt sub-system
-    for the current system design.
+	This function appropriately configures and initializes the interrupt sub-system
+	for the current system design.
 
   Precondition:
-    None.
+	None.
 
   Parameters:
-    None.
+	None.
 
   Returns:
-    None.
+	None.
 
   Example:
   <code>
@@ -81,15 +81,16 @@ static char const * const sys_int_none_RevString = "$Revision: 0123 $";
   </code>
 
   Remarks:
-    This function is not implemented in the System Interrupt library.  It is
-    implemented by the board support package (using the processor-specific
-    interrupt peripheral library) because it requires knowledge of the specific
-    interrupt requirements for each system.
+	This function is not implemented in the System Interrupt library.  It is
+	implemented by the board support package (using the processor-specific
+	interrupt peripheral library) because it requires knowledge of the specific
+	interrupt requirements for each system.
 */
 void
 SYS_INT_Initialize ( void )
 {
-    /* enable the multi vector */
+	UNUSED(sys_int_none_RevString);
+	/* enable the multi vector */
 //    PLIB_INT_MultiVectorSelect( INT_ID_0 );
 }
 

@@ -28,8 +28,8 @@
  *	$Date: $
  */
 
-#ifndef CWSW_ARCH_I386_SYSTEM_SYS_MODULE_H_
-#define CWSW_ARCH_I386_SYSTEM_SYS_MODULE_H_
+#ifndef SYS_MODULE_H_
+#define SYS_MODULE_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -50,7 +50,7 @@ extern "C" {
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
-#define CWSW_ARCH_I386_SYSTEM_SYS_MODULE_H__REVSTRING "$Revision: 0123 $"
+#define SYS_MODULE_H__REVSTRING "$Revision: 0123 $"
 
 /* System Module Object Invalid
 
@@ -243,7 +243,11 @@ typedef unsigned short int SYS_MODULE_INDEX;
     may change in the future or about the value stored in a variable of this
     type.
 */
-typedef uintptr_t SYS_MODULE_OBJ;
+#if (XPRJ_Debug_CVI)
+typedef char *		SYS_MODULE_OBJ;
+#else
+typedef uintptr_t	SYS_MODULE_OBJ;
+#endif
 
 
 /* System Module Status
@@ -346,4 +350,4 @@ typedef union
 }
 #endif
 
-#endif /* CWSW_ARCH_I386_SYSTEM_SYS_MODULE_H_ */
+#endif /* SYS_MODULE_H_ */

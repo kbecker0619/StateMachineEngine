@@ -8,8 +8,16 @@
  ============================================================================
  */
 
+#include "projcfg.h"
+
 #include <stdio.h>
 #include <stdlib.h>
+
+#if (XPRJ_Debug_CVI)
+#include <cvirte.h>
+#include <userint.h>
+#include "cwsw_dio_uir.h"
+#endif
 
 #include "cwsw_lib.h"
 #include "cwsw_bsp.h"
@@ -32,17 +40,33 @@ APP_Initialize(void)
 }
 
 
+extern int panelHandle;
+
 int
-main(void)
+main(int argc, char *argv[])
 {
+	UNUSED(argc);
+	UNUSED(argv);
 
-	(void) Init(BSP);		// because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
+	(void) Init(BSP);		// BSP__Init().	because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
+	(void) puts("CWSW DIO Library Unit Test");
 
-	(void)puts("CWSW DIO Library Unit Test");
-
-	terminate_requested = false;
-	while(!terminate_requested) { Task(Csws_Dio_Ut); }
+#if (XPRJ_Debug_CVI)
+	{
+		if (InitCVIRTE (0, argv, 0) == 0)								return -1;	/* out of memory */
+		if ((panelHandle = LoadPanel (0, "cwsw_dio.uir", PANEL)) < 0)	return -1;
+		DisplayPanel (panelHandle);
+		RunUserInterface ();
+		DiscardPanel (panelHandle);
+	}
+#else
+	{
+		terminate_requested = false;
+		while(!terminate_requested) { Task(Csws_Dio_Ut); }
+	}
+#endif
 
 	return EXIT_SUCCESS;
+
 }
 

@@ -1,6 +1,7 @@
 [Workspace Header]
 Version = 710
-Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib.cws"
+Pathname Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib"
+Pathname Line0002 = ".cws"
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
@@ -9,9 +10,9 @@ Active Project = 1
 Project 0001 = "cwsw_lib.prj"
 Drag Bar Left = 205
 Window Top = 56
-Window Left = 6
-Window Bottom = 905
-Window Right = 1213
+Window Left = 48
+Window Bottom = 707
+Window Right = 1254
 Maximized = False
 Maximized Children = True
 Max Number Of Errors = 20
@@ -25,7 +26,7 @@ Hide Windows = False
 Global Hot Key = False
 Break At First Statement = True
 Sort Type = "File Name"
-Number of Opened Files = 14
+Number of Opened Files = 11
 Window Confinement Region Enabled = True
 MainColumnWidth = 186
 FileDateColumnWidth = 70
@@ -44,7 +45,7 @@ Batch Build Debug = False
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_clock/include/clock_if.h"
 File Type = "Include"
-Disk Date = 3596119670
+Disk Date = 3599082878
 In Projects = ""
 Window Top = 58
 Window Left = 23
@@ -55,158 +56,127 @@ Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,18,32,311,595,1,0,"
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_clock/include/cwsw_clock.h"
 File Type = "Include"
-Disk Date = 3596187327
+Disk Date = 3599082878
 In Projects = ""
 Window Top = 86
 Window Left = 38
-Window Z-Order = 14
+Window Z-Order = 11
 Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
 
 [File 0003]
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_clock/src/cwsw_clock.c"
 File Type = "CSource"
-Disk Date = 3596192916
+Disk Date = 3599082878
 In Projects = ""
 Window Top = 114
 Window Left = 53
-Window Z-Order = 13
+Window Z-Order = 10
 Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
 
 [File 0004]
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_lib/include/ctassert.h"
+Path Line0002 = "_lib/include/ptypes.h"
 File Type = "Include"
-Disk Date = 3596119671
+Disk Date = 3599082882
 In Projects = ""
-Window Top = 142
-Window Left = 68
-Window Z-Order = 12
+Window Top = 58
+Window Left = 23
+Window Z-Order = 9
 Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
 
 [File 0005]
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_lib/include/cwsw_eventsim.h"
-File Type = "Include"
-Disk Date = 3596119671
+Path Line0002 = "_lib/src/cwsw_lib.c"
+File Type = "CSource"
+Disk Date = 3599165614
 In Projects = ""
-Window Top = 170
-Window Left = 83
-Window Z-Order = 11
+Window Top = 86
+Window Left = 38
+Window Z-Order = 8
 Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
 
 [File 0006]
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_lib/include/ptypes.h"
+Path Line0002 = "_smeng_c/include/cwsw_smengine.h"
 File Type = "Include"
-Disk Date = 3596119671
+Disk Date = 3599082887
 In Projects = ""
-Window Top = 58
-Window Left = 23
-Window Z-Order = 10
+Window Top = 114
+Window Left = 53
+Window Z-Order = 7
 Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
 
 [File 0007]
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_lib/src/cwsw_lib.c"
-File Type = "CSource"
-Disk Date = 3596192916
+Path Line0002 = "_smeng_c/include/fsm_extensions.h"
+File Type = "Include"
+Disk Date = 3599082887
 In Projects = ""
-Window Top = 86
-Window Left = 38
-Window Z-Order = 9
+Window Top = 142
+Window Left = 68
+Window Z-Order = 6
 Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
 
 [File 0008]
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_smeng_c/include/cwsw_smengine.h"
+Path Line0002 = "_smeng_c/src/cwsw_smengine_prv.h"
 File Type = "Include"
-Disk Date = 3596119671
+Disk Date = 3599082887
 In Projects = ""
-Window Top = 114
-Window Left = 53
-Window Z-Order = 8
+Window Top = 170
+Window Left = 83
+Window Z-Order = 5
 Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
 
 [File 0009]
 Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_smeng_c/include/fsm_extensions.h"
-File Type = "Include"
-Disk Date = 3596119671
-In Projects = ""
-Window Top = 142
-Window Left = 68
-Window Z-Order = 7
-Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
-
-[File 0010]
-Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
-Path Line0002 = "_smeng_c/src/cwsw_smengine_prv.h"
-File Type = "Include"
-Disk Date = 3596119671
-In Projects = ""
-Window Top = 170
-Window Left = 83
-Window Z-Order = 6
-Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
-
-[File 0011]
-Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/cwsw"
 Path Line0002 = "_smeng_c/src/cwsw_smengine.c"
 File Type = "CSource"
-Disk Date = 3596127797
+Disk Date = 3599082887
 In Projects = ""
 Window Top = 30
 Window Left = 8
-Window Z-Order = 5
-Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
-
-[File 0012]
-Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_smeng_c_prj/ut/c"
-Path Line0002 = "oinvend.c"
-File Type = "CSource"
-Disk Date = 3596126410
-In Projects = ""
-Window Top = 58
-Window Left = 23
 Window Z-Order = 4
 Source Window State = "1,0,0,0,0,0,0,0,0,76,0,0,0,0,0,19,0,0,0,0,311,595,1,0,"
 
-[File 0013]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/ut/cwsw_lib_test.c"
+[File 0010]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/ut/cwsw_"
+Path Line0002 = "lib_test.c"
 File Type = "CSource"
-Disk Date = 3596119671
+Disk Date = 3599082882
 In Projects = "1,"
 Window Top = 198
 Window Left = 98
 Window Z-Order = 2
 Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,25,0,0,18,11,401,623,1,0,"
 
-[File 0014]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/ut/projcfg.h"
-File Type = "Include"
-Disk Date = 3596196272
+[File 0011]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib"
+Path Line0002 = "/src/cwsw_lib.c"
+File Type = "CSource"
+Disk Date = 3599165614
 In Projects = "1,"
-Window Top = 226
-Window Left = 113
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,25,105,0,117,28,401,623,1,0,"
+Window Z-Order = 1
+Source Window State = "1,0,0,0,0,0,0,0,0,134,0,0,0,0,0,27,0,0,0,0,0,0,0,0,"
 
-[File 0015]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/include/cwsw_"
-Path Line0002 = "lib.h"
+[File 0012]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib"
+Path Line0002 = "/include/cwsw_lib.h"
 File Type = "Include"
-Disk Date = 3596194338
+Disk Date = 0
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0016]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/src/cwsw_lib."
-Path Line0002 = "c"
-File Type = "CSource"
-Disk Date = 3596192916
+[File 0013]
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/ut/projc"
+Path Line0002 = "fg.h"
+File Type = "Include"
+Disk Date = 3599082882
 In Projects = "1,"
-Window Z-Order = 1
-Source Window State = "1,0,0,0,0,0,0,0,0,135,0,0,0,0,0,41,56,0,64,17,0,0,0,0,"
+Window Top = 226
+Window Left = 113
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,105,0,117,28,401,623,1,0,"
 
 [Build Options 0001]
 Generate Browse Info = True

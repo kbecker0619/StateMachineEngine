@@ -1,10 +1,10 @@
 [Project Header]
 Version = 710
-Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock.prj"
+Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_dio.prj"
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
-Number of Files = 9
+Number of Files = 21
 Target Type = "Executable"
 Flags = 16
 
@@ -13,70 +13,66 @@ File Type = "Include"
 Res Id = 1
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "cwsw_clock/include/clock_if.h"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/include/c"
-Path Line0002 = "lock_if.h"
+Path Rel Path = "ut/app.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut/app.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
 [File 0002]
-File Type = "Include"
+File Type = "CSource"
 Res Id = 2
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "cwsw_lib/include/ctassert.h"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_lib/include/cta"
-Path Line0002 = "ssert.h"
-Exclude = False
-Project Flags = 0
-Folder = "Include Files"
-
-[File 0003]
-File Type = "CSource"
-Res Id = 3
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "cwsw_clock/src/cwsw_clock.c"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/src/cwsw_"
-Path Line0002 = "clock.c"
+Path Rel Path = "3rdparty/cwsw/gen/bsp/bsp.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty/cwsw/gen/bsp/"
+Path Line0002 = "bsp.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0004]
+[File 0003]
 File Type = "Include"
+Res Id = 3
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty"
+Path Line0002 = "/cwsw/gen/bsp/bsp.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0004]
+File Type = "CSource"
 Res Id = 4
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "cwsw_clock/include/cwsw_clock.h"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/include/c"
-Path Line0002 = "wsw_clock.h"
-Exclude = False
-Project Flags = 0
-Folder = "Include Files"
-
-[File 0005]
-File Type = "CSource"
-Res Id = 5
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "ut/cwsw_clock_test.c"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/ut/cwsw_clock_test.c"
+Path Rel Path = "cwsw_arch/i386/src/cwsw_arch.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_arch/i386/src/cws"
+Path Line0002 = "w_arch.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
+
+[File 0005]
+File Type = "Include"
+Res Id = 5
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_ar"
+Path Line0002 = "ch/i386/cwsw_arch.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
 
 [File 0006]
 File Type = "CSource"
 Res Id = 6
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "../cwsw_lib_prj/cwsw_lib/src/cwsw_lib.c"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/src/cwsw_lib."
-Path Line0002 = "c"
+Path Rel Path = "cwsw_board/none/src/cwsw_board.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_board/none/src/cw"
+Path Line0002 = "sw_board.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -85,42 +81,175 @@ Folder = "Source Files"
 [File 0007]
 File Type = "Include"
 Res Id = 7
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "../cwsw_lib_prj/cwsw_lib/include/cwsw_lib.h"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/include/cwsw_"
-Path Line0002 = "lib.h"
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_board_prj/cwsw_b"
+Path Line0002 = "oard/none/cwsw_board.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
 [File 0008]
-File Type = "Include"
+File Type = "CSource"
 Res Id = 8
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "ut/projcfg.h"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/ut/projcfg.h"
+Path Rel Path = "cwsw_bsp/src/cwsw_bsp.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_bsp/src/cwsw_bsp."
+Path Line0002 = "c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+
+[File 0009]
+File Type = "Include"
+Res Id = 9
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_bsp"
+Path Line0002 = "/cwsw_bsp.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0009]
+[File 0010]
+File Type = "User Interface Resource"
+Res Id = 10
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut/cwsw_"
+Path Line0002 = "dio.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+
+[File 0011]
+File Type = "CSource"
+Res Id = 11
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/cwsw_dio_test.c"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut/cwsw_dio_test.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+
+[File 0012]
+File Type = "CSource"
+Res Id = 12
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut/cwsw_"
+Path Line0002 = "dio_uir.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+
+[File 0013]
+File Type = "Include"
+Res Id = 13
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut/cwsw_"
+Path Line0002 = "dio_uir.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0014]
+File Type = "CSource"
+Res Id = 14
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_lib/src/cwsw_lib.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_lib/src/cwsw_lib."
+Path Line0002 = "c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+
+[File 0015]
+File Type = "Include"
+Res Id = 15
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib"
+Path Line0002 = "/cwsw_lib.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0016]
+File Type = "CSource"
+Res Id = 16
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_arch/i386/peripheral/ports/ports_api.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_arch/i386/periphe"
+Path Line0002 = "ral/ports/ports_api.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+
+[File 0017]
+File Type = "Include"
+Res Id = 17
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/projcfg.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut/projcfg.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0018]
 File Type = "Unknown"
-Res Id = 9
+Res Id = 18
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/readme.md"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/ut/readme.md"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut/readme.md"
 Exclude = False
 Project Flags = 0
 Folder = "Not In A Folder"
 
+[File 0019]
+File Type = "Include"
+Res Id = 19
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty"
+Path Line0002 = "/cwsw/lib/system/int/sys_int.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0020]
+File Type = "CSource"
+Res Id = 20
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "3rdparty/cwsw/lib/system/int/sys_int_none.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty/cwsw/lib/syst"
+Path Line0002 = "em/int/sys_int_none.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+
+[File 0021]
+File Type = "Include"
+Res Id = 21
+Path Is Rel = False
+Path Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty"
+Path Line0002 = "/cwsw/gen/system_definitions.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
 [Folders]
-User Interface Files Folder Not Added Yet = True
 Instrument Files Folder Not Added Yet = True
-Folder 0 = "Source Files"
-Folder 1 = "Include Files"
+Folder 0 = "Include Files"
+Folder 1 = "Source Files"
+Folder 2 = "User Interface Files"
 
 [Compiler Options]
 Default Calling Convention = "cdecl"
@@ -131,34 +260,47 @@ Enable Unreachable Code Warning = True
 Enable Unreferenced Identifiers Warning = True
 Enable Assignment In Conditional Warning = True
 O Option Compatible With 5.0 = False
-Uninitialized Locals Compile Warning = "Conservative"
+Uninitialized Locals Compile Warning = "Aggressive"
 
 [Run Options]
 Stack Size = 250000
 Image Base Address = 4194304
 
 [Compiler Defines]
-Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
+Compiler Defines = "/DWIN32_LEAN_AND_MEAN /DUSE_SIMULATED_EVENTS=0"
 
 [Include Paths]
-Include Path 1 Is Rel = True
-Include Path 1 Rel To = "Project"
-Include Path 1 Rel Path = "cwsw_lib/include"
-Include Path 1 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_lib/include"
-Include Path 2 Is Rel = True
-Include Path 2 Rel To = "Project"
-Include Path 2 Rel Path = "cwsw_clock/include"
-Include Path 2 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/include"
+Include Path 1 Is Rel = False
+Include Path 1 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib"
+Include Path 2 Is Rel = False
+Include Path 2 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_bsp"
+Include Path 3 Is Rel = False
+Include Path 3 Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_ar"
+Include Path 3 Line0002 = "ch/i386"
+Include Path 4 Is Rel = False
+Include Path 4 Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_board_prj/cwsw_b"
+Include Path 4 Line0002 = "oard/none"
+Include Path 5 Is Rel = False
+Include Path 5 Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty"
+Include Path 5 Line0002 = "/cwsw/gen/bsp"
+Include Path 6 Is Rel = False
+Include Path 6 Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty"
+Include Path 6 Line0002 = "/cwsw/gen"
+Include Path 7 Is Rel = False
+Include Path 7 Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty"
+Include Path 7 Line0002 = "/cwsw/lib"
+Include Path 8 Is Rel = False
+Include Path 8 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut"
 
 [Create Executable]
 Executable File_Debug Is Rel = True
 Executable File_Debug Rel To = "Project"
-Executable File_Debug Rel Path = "cwsw_clock_dbg.exe"
-Executable File_Debug = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock_dbg.exe"
+Executable File_Debug Rel Path = "cwsw_dio_dbg.exe"
+Executable File_Debug = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_dio_dbg.exe"
 Executable File_Release Is Rel = True
 Executable File_Release Rel To = "Project"
-Executable File_Release Rel Path = "cwsw_clock.exe"
-Executable File_Release = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock.exe"
+Executable File_Release Rel Path = "cwsw_dio.exe"
+Executable File_Release = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_dio.exe"
 Icon File Is Rel = False
 Icon File = ""
 Application Title = ""
