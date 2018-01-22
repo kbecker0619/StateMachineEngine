@@ -142,6 +142,11 @@ BSP__Init(void)
 			if(Get(Cwsw_Board, Initialized))
 			{
 				/* Switch off LEDs */
+				/* ok, so the way i'm doing this here, i'm re-initializing the indicators that were
+				 * already initialized by the board init. the right way (as opposed to the quick
+				 * and dirty way) might be to simply initialized the BSP's idea of whether or not
+				 * the indicators are on or off (although i can envision problems with that as well)
+				 */
 				SET(BspHeartbeatInd, kLogicalOff);
 				SET(BspActivity2, kLogicalOff);
 				SET(BspActivity3, kLogicalOff);
