@@ -24,6 +24,8 @@ int main (int argc, char *argv[])
 }
 #endif   /* formerly excluded lines */
 
+extern void Csws_Dio_Ut__Task(void);
+
 int
 CVICALLBACK cbOnBtnQuit (
 	int panel, int control, int event,
@@ -34,6 +36,9 @@ CVICALLBACK cbOnBtnQuit (
 	{
 		case EVENT_COMMIT:
 			QuitUserInterface (0);
+			break;
+		case EVENT_IDLE:
+			Task(Csws_Dio_Ut);
 			break;
 	}
 	return 0;
@@ -50,22 +55,69 @@ CVICALLBACK cbOnBtn (
 	int eventData1, int eventData2)
 {
 	tEventPayload ev = {0};
-	static int val = 0;
+
 	UNUSED(panel);
 	UNUSED(callbackData);
 	UNUSED(eventData1);
 	UNUSED(eventData2);
 	switch (event)
 	{
-	//	case EVENT_LEFT_CLICK:
 		case EVENT_COMMIT:
-	//	case EVENT_VAL_CHANGED:
-	//	case EVENT_LEFT_CLICK_UP:	// this version of LW doesn't have mouse-up eventgs, so that'll change our desired behavior
-			val = !val;
 			ev.evId = control;
-			ev.evInt = event;
+			(void)GetCtrlVal(panelHandle, control, &ev.evInt);
 			PostEvent(evButtonCommit, ev);
 
+			break;
+	}
+	return 0;
+}
+
+
+#include "cwsw_bsp.h"
+int
+CVICALLBACK cbTaskTimer (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)
+{
+	if(Get(Cwsw_Bsp, Initialized))
+	{
+		// for debugging purposes only
+		(void)SuspendTimerCallbacks();
+
+		switch (event)
+		{
+			case EVENT_TIMER_TICK:
+				Task(Csws_Dio_Ut);
+				break;
+		}
+
+		(void)ResumeTimerCallbacks();
+	}
+	return 0;
+}
+
+
+int
+CVICALLBACK cbPanel (int panel, int event, void *callbackData, int eventData1, int eventData2)
+{
+	static volatile int a = 0;
+	switch (event)
+	{
+		case EVENT_GOT_FOCUS:
+			break;
+
+		case EVENT_LOST_FOCUS:
+			break;
+
+		case EVENT_CLOSE:
+			break;
+
+		case EVENT_IDLE:
+			a = !a;
+			break;
+		case EVENT_NONE:
+			a = !a + 1;
+			break;
+
+		default:
 			break;
 	}
 	return 0;
@@ -77,12 +129,14 @@ BoardPanel__Set_PanelHandle(int val)
 {
 
 }
+
+/* This LUT converts from whatever indexes are used by the application, to the
+ * panel controls used by our LW output panel.
+ */
+static int ledlut[] = { PANEL_LED1, PANEL_LED2, PANEL_LED3, 3, 4, PANEL_USBVBUS, 6, 7 };
+
 void lwWriteVirtualPin(int bitPos, int value)
 {
-	/* This LUT converts from whatever indexes are used by the application, to the
-	 * panel controls used by our LW output panel.
-	 */
-	int ledlut[] = { PANEL_LED1, PANEL_LED2, PANEL_LED3, 3, 4, PANEL_USBVBUS, 6, 7 };
 	if(panelHandle)
 	{
 		SetCtrlVal(panelHandle, ledlut[bitPos], value);
@@ -94,3 +148,27 @@ void lwUserLedSet(int whichled, int value)
 	lwWriteVirtualPin(whichled, value);
 }
 
+bool lwReadVirtualPin(int channel, int bitPos)
+{
+	int val = 0;
+	switch(channel)
+	{
+	case PORT_CHANNEL_B:
+		switch(bitPos)
+		{
+		case PORTS_BIT_POS_0:	// LED 1
+		case PORTS_BIT_POS_1:	// LED 2
+		case PORTS_BIT_POS_2:	// LED 3
+			GetCtrlVal(panelHandle, ledlut[bitPos], &val);
+			break;
+
+		default:
+			break;
+		}
+		break;
+
+	default:
+		break;
+	}
+	return !!val;
+}

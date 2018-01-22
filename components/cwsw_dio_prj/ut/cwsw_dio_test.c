@@ -27,11 +27,17 @@
 
 static bool terminate_requested = false;
 
-static void
+void
 Csws_Dio_Ut__Task(void)
 {
-	bool a = GET(BspSwitch1);	/* Get(Cwsw_Board, kBrdSwitch1) ==> PLIB_PORTS_PinGet() */
-	SET(BspActivity2, a);		/* Cwsw_Bsp__Set_BspActivity2() */
+	if(GET(SetEventSeen))
+	{
+		bool a = GET(activity1ind);	
+		SET(BspHeartbeatInd, a);		/* Cwsw_Bsp__Set_BspActivity2() */
+		SET(BspActivity2, GET(activity2ind));
+		SET(BspActivity3, GET(activity3ind));
+		SET(SetEventSeen, false);
+	}
 	Task(Heartbeat);
 }
 
@@ -55,8 +61,8 @@ main(int argc, char *argv[])
 
 #if (XPRJ_Debug_CVI)
 	{
-		if (InitCVIRTE (0, argv, 0) == 0)								return -1;	/* out of memory */
-		if ((panelHandle = LoadPanel (0, "cwsw_dio.uir", PANEL)) < 0)	return -1;
+		if (InitCVIRTE (0, argv, 0) == 0)									return -1;	/* out of memory */
+		if ((panelHandle = LoadPanel (0, "cwsw_dio_uir.uir", PANEL)) < 0)	return -1;
 		DisplayPanel (panelHandle);
 		RunUserInterface ();
 		DiscardPanel (panelHandle);
@@ -64,7 +70,7 @@ main(int argc, char *argv[])
 #else
 	{
 		terminate_requested = false;
-		while(!terminate_requested) { Task(Csws_Dio_Ut); }
+		while(!terminate_requested) { Task(Csws_Dio_Ut); }	/* Csws_Dio_Ut__Task() */
 	}
 #endif
 

@@ -60,6 +60,13 @@
 // ============================================================================
 static char const * const cwsw_bsp_RevString = "$Revision: 0123 $";
 
+static bool initialized = false;
+
+bool activity1ind = false;
+bool activity2ind = false;
+bool activity3ind = false;
+bool seteventseen = false;
+
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
@@ -97,8 +104,37 @@ Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff)
 void
 Heartbeat__Task(void)
 {
-	tDO_LogicalValues curstate = Get(Cwsw_Board, kBoardLed1);
-	Set(Cwsw_Board, kBoardLed1, !curstate);
+	static int taskct = 0;
+	if(++taskct > 100)
+	{
+		tDO_LogicalValues curstate = Get(Cwsw_Board, kBoardLed1);
+		Set(Cwsw_Board, kBoardLed1, !curstate);
+		taskct = 0;
+	}
+}
+
+
+/** Abstractedd button handler.
+ *	This handler is intended to be the same, whether you're getting input from the console, from a LW/CVI panel, etc.
+ * 	Within this handler, all you should do is set the flags used by the "business logic" in the task function(s).
+ */
+void
+EventHandler__evButtonCommit(tEventPayload EventData)
+{
+	/* control (as in, which button) is passed in evId field.
+	 * state of control is passed in evInt field.
+	 */
+	int sw = EventData.evId;
+	bool st = !!TO_INT(EventData.evInt) ? kLogicalOn : kLogicalOff;
+
+	switch(sw)
+	{
+	case kBrdSwitch1:	activity1ind = st;	seteventseen = true;	break;
+	case kBrdSwitch2:   activity2ind = st;	seteventseen = true;	break;
+	case kBrdSwitch3:   activity3ind = st;	seteventseen = true;	break;
+
+	default:			break;
+	}
 }
 
 
@@ -186,28 +222,13 @@ BSP__Init(void)
 	}
 #endif
 
+	initialized = true;
 	return 0;
 }
 
 
-void
-EventHandler__evButtonCommit(tEventPayload EventData)
+bool
+Cwsw_Bsp__Get_Initialized(void)
 {
-	int sw = EventData.evId;
-	/* original idea was to light the led in response to click or declick events
-	 * however, this version of lw does not support mouse-up events, so instead,
-	 * we'll toggle the led @ each commit event.
-	 */
-	bool st = !!TO_INT(EventData.evInt) ? kLogicalOn : kLogicalOff;
-	static bool led1 = false;
-	UNUSED(st);
-	switch(sw)
-	{
-	default:
-		led1 = !led1;
-		Set(Cwsw_Board, kBoardLed1, led1);
-		break;
-
-	}
+	return initialized;
 }
-

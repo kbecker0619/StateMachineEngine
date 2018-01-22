@@ -104,10 +104,25 @@ PLIB_PORTS_PinGet(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bi
 		"\tDO Read, Idx: %i, Channel: %i, Bit: %i\n",
 		index, channel, bitPos);
 
+	#if (XPRJ_Debug_CVI)
+	return lwReadVirtualPin(channel, bitPos);
+
+	#else
 	switch(channel)
 	{
+	case PORT_CHANNEL_B:
+		switch(bitPos)
+		{
+		case PORTS_BIT_POS_0:
+			break;
+		default:
+			break;
+		}
+		break;
 	default:
 		return false;
 	}
+
+	#endif
 	return false;
 }

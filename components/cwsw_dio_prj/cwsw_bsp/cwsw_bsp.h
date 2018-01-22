@@ -83,10 +83,21 @@ typedef enum eBspIndictorLed tBspIndicatorLed;
 // ============================================================================
 
 extern uint16_t BSP__Init(void);
+extern bool Cwsw_Bsp__Get_Initialized(void);
 
 
 /** Target symbol for GET(BspSwitch1) */
 #define GET_BspSwitch1()					Get(Cwsw_Board, kBrdSwitch1)
+#define GET_activity1ind()					!(!(activity1ind))
+extern bool activity1ind;
+#define GET_activity2ind()					!(!(activity2ind))
+extern bool activity2ind;
+#define GET_activity3ind()					!(!(activity3ind))
+extern bool activity3ind;
+
+#define GET_SetEventSeen()					!(!(seteventseen))
+#define SET_SetEventSeen(val)				do { seteventseen = (val); } while(0)
+extern bool seteventseen;
 
 
 /** Target symbol for Get(Cwsw_Board, Resource) interface */

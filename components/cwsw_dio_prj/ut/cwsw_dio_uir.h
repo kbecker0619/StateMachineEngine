@@ -38,9 +38,11 @@ extern void BoardPanel__Set_PanelHandle(int val);
 
 int  CVICALLBACK cbOnBtn(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK cbOnBtnQuit(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK cbPanel(int panel, int event, void *callbackData, int eventData1, int eventData2);
 
 extern void lwWriteVirtualPin(int bitPos, int value);
 extern void lwUserLedSet(int whichled, int value);
+extern bool lwReadVirtualPin(int channel, int bitPos);
 
 
 #ifdef __cplusplus
