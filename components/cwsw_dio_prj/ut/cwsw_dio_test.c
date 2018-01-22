@@ -21,7 +21,7 @@
 
 #include "cwsw_lib.h"
 #include "cwsw_bsp.h"
-
+#include "cwsw_eventsim.h"
 #include "app.h"
 
 
@@ -30,13 +30,15 @@ static bool terminate_requested = false;
 static void
 Csws_Dio_Ut__Task(void)
 {
+	bool a = GET(BspSwitch1);	/* Get(Cwsw_Board, kBrdSwitch1) ==> PLIB_PORTS_PinGet() */
+	SET(BspActivity2, a);		/* Cwsw_Bsp__Set_BspActivity2() */
 	Task(Heartbeat);
 }
 
 void
 APP_Initialize(void)
 {
-
+	terminate_requested = false;
 }
 
 
@@ -68,5 +70,11 @@ main(int argc, char *argv[])
 
 	return EXIT_SUCCESS;
 
+}
+
+void
+EventHandler__evNotInitialized(tEventPayload EventData)
+{
+	UNUSED(EventData);
 }
 

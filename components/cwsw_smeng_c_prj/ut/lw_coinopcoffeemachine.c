@@ -24,7 +24,7 @@ int main (int argc, char *argv[])
 }
 #endif
 
-int CVICALLBACK 
+int CVICALLBACK
 cbOnCoinInserted (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)
 {
 	tEventPayload ev = {evNoEvent, 0};
@@ -37,14 +37,14 @@ cbOnCoinInserted (int panel, int control, int event, void *callbackData, int eve
 		ev.evInt = 25;
 		PostEvent(evCoinInsertionSensed, ev);
 		break;
-		
+
 	default:
 		break;
 	}
 	return 0;
 }
 
-int CVICALLBACK 
+int CVICALLBACK
 QuitCallback (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)
 {
 	switch (event)
@@ -56,10 +56,10 @@ QuitCallback (int panel, int control, int event, void *callbackData, int eventDa
 	return 0;
 }
 
-int CVICALLBACK 
+int CVICALLBACK
 cbOnTimerTic (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)
 {
-	// for debuggin purposes only
+	// for debugging purposes only
 	(void)SuspendTimerCallbacks();
 	switch (event)
 	{

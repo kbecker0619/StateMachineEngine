@@ -70,6 +70,9 @@ static char const * const ports_api_RevString = "$Revision: 0123 $";
  * to compensate, modified the Microchip definition of PLIB_INLINE, to eliminate the "extern"
  * storage identifier.
  */
+#if (XPRJ_Debug_CVI)
+#include "cwsw_dio_uir.h"
+#endif
 void
 PLIB_PORTS_PinWrite(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos, bool value)
 {
@@ -78,11 +81,33 @@ PLIB_PORTS_PinWrite(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS 
 	UNUSED(bitPos);
 	UNUSED(value);
 	UNUSED(ports_api_RevString);
-	
-	// PORTS_PinWrite_MCU32_PPS()
 
 	dprintf(
 		"\tDO Write, Idx: %i, Channel: %i, Bit: %i, Value: %s\n",
 		index, channel, bitPos, value ? "On" : "Off");
+
+	#if (XPRJ_Debug_CVI)
+	{
+		lwWriteVirtualPin(bitPos, value);
+
+	}
+	#endif
 }
 
+bool
+PLIB_PORTS_PinGet(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bitPos)
+{
+	UNUSED(index);
+	UNUSED(bitPos);
+
+	dprintf(
+		"\tDO Read, Idx: %i, Channel: %i, Bit: %i\n",
+		index, channel, bitPos);
+
+	switch(channel)
+	{
+	default:
+		return false;
+	}
+	return false;
+}

@@ -25,10 +25,13 @@ extern "C" {
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
+#include "projcfg.h"
+
 // ----	System Headers --------------------------
+#include <stdint.h>
+#include <stdbool.h>
 
 // ----	Project Headers -------------------------
-#include "projcfg.h"
 
 // ----	Module Headers --------------------------
 
@@ -78,6 +81,9 @@ typedef void (*pEventHandler)(tEventPayload EventData);
 #if (USE_SIMULATED_EVENTS)
 #include "projevtnames.h"
 typedef enum eProjectEvents tProjectEvents;
+
+#else
+
 #endif
 
 

@@ -74,48 +74,26 @@ static char const * const bsp_RevString = "$Revision: 0123 $";
 
 static bool initialized = false;
 
-/** Data Structure:
- * 	switch_port_channel_map[]
- *
- * Summary:
- * 	Maps each switch to its port channel
- * Description:
- * 	The switch_port_channel_map array, indexed by BSP_SWITCH, maps each switch
- * 	to its port channel.
- *
- * Remarks:
- * 	Refer to bsp.h for usage information.
-*/
-static const PORTS_CHANNEL switch_port_channel_map[] =
-{
-    PORT_CHANNEL_B,
-    PORT_CHANNEL_B,
-    PORT_CHANNEL_B
-};
-
-/** Data Structure:
- * 	switch_port_bit_pos_map[]
- *
- * Summary:
- * 	Maps each switch to its port bit position
- *
- * Description:
- * 	The switch_port_bit_pos_map array, indexed by BSP_SWITCH, maps each switch to its port bit position
- *
- * Remarks:
- * 	Refer to bsp.h for usage information.
-*/
-//static const PORTS_BIT_POS switch_port_bit_pos_map[] =
-//{
-//    PORTS_BIT_POS_12,
-//    PORTS_BIT_POS_13,
-//    PORTS_BIT_POS_14
-//};
-
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
+
+/** Set the enable/disable status of the USB VBUS switch.
+ * This function is a shell on top of the functionality provided by the MHC-generated code; we
+ * break it apart like this because in or thinking, the MHC intermingles too much between the
+ * capabilities of the board, and the business logic that relies on those capabilities.
+*/
+void
+Cwsw_Board__UsbVbusSwitchStateSet(tDO_LogicalValues state)
+{
+	/* Enable or disable the VBUS switch */
+	/* in this instance, the logical value passed in is of the same polarity as
+	 * the physical state required to enable or disable the USB V switch.
+	 */
+	PLIB_PORTS_PinWrite( PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_5, state );
+}
+
 
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
@@ -152,6 +130,11 @@ Cwsw_Board__Init(void)
 		#pragma GCC diagnostic pop
 		#endif
 
+		Set(Cwsw_Board, UsbVbus, kLogicalOff);	// Cwsw_Board__UsbVbusSwitchStateSet()
+		SET(kBoardLed1, kLogicalOff);
+		SET(kBoardLed2, kLogicalOff);
+		SET(kBoardLed3, kLogicalOff);
+
 		initialized = true;
 		return 0;
 	}
@@ -166,17 +149,3 @@ Cwsw_Board__Get_Initialized(void)
 	return initialized;
 }
 
-
-/** Set the enable/disable status of teh USB VBUS switch.
- * This function is a shell on top of the functionality provided by the MHC-generated code; we
- * break it apart like this because in or thinking, the MHC intermingles too much between the
- * capabilities of the board, and the business logic that relies on those capabilities.
-*/
-#include "bsp.h"	/* BSP_USBVBUSSwitchStateSet() */
-void
-Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state)
-{
-    /* Enable the VBUS switch */
-	/* NOTE: for LabWindows/CVI, I would expect this to activate an LED or somesuch indicator */
-	BSP_USBVBUSSwitchStateSet(state);
-}

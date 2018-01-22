@@ -46,14 +46,33 @@ extern "C" {
 #include <stdbool.h>
 
 // ----	Project Headers -------------------------
+/* note: while i personally strongly agree with the coding guideline that says, "no path statements
+ * in include statements", i am doing that here in my early attempt to support multiple MCU
+ * architectures and multiple boards; in my idea, the include paths specified on the command line
+ * should point to the correct architecture family, or board, and the structure underneath that
+ * parent should be identical.
+ *
+ * of course there are other, perhaps better, ways to do this, but this is my path during very early
+ * development of my system.
+ */
+#include "peripheral/ports/ports_api.h"
 
 // ----	Module Headers --------------------------
-
+#if (XPRJ_Debug_CVI)
+#include "cwsw_dio_uir.h"		/* CVI's control defines (PANEL_LED1, PANEL_BTN_1, et. al. */
+#endif
 
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
 #define CWSW_BOARD_H_REVSTRING "$Revision: 0123 $"
+
+/** Logical values for the LEDs and switches.
+ *	Note the actual wiring on the board, or the polarity of the driver, might be inverted;
+ *	that connection is made at the driver level, not the board level.
+ */
+enum eDO_Logical_Values { kLogicalOff, kLogicalOn };
+
 
 /** USB VBUS Switch State.
  * Summary:
@@ -68,11 +87,11 @@ extern "C" {
  */
 enum eBrdUsbVbusSwitchState
 {
-    /* USB VBUS Switch disable */
-    kBrdUsbVbusSwitchState_Disable = 0,
+	/* USB VBUS Switch disable */
+	kBrdUsbVbusSwitchState_Disable = 0,
 
-    /* USB VBUS Switch enable */
-    kBrdUsbVbusSwitchState_Enable = 1
+	/* USB VBUS Switch enable */
+	kBrdUsbVbusSwitchState_Enable = 1
 };
 
 /** BSP Switch.
@@ -86,12 +105,26 @@ enum eBrdUsbVbusSwitchState
  * Remarks:
  * 	None.
  */
+#if (XPRJ_Debug_CVI)
 enum eBrdSwitch
 {
-    kBrdSwitch1 = 0,
-	kBrdSwitch2 = 1,
-	kBrdSwitch3 = 2
+	kBrdSwitch1 = PANEL_BTN_1,
+	kBrdSwitch2 = PANEL_BTN_2,
+	kBrdSwitch3 = PANEL_BTN_3,
+	kBrdNumSwitches = 3
 };
+
+#else
+enum eBrdSwitch
+{
+	kBrdSwitch1,
+	kBrdSwitch2,
+	kBrdSwitch3,
+	kBrdNumSwitches = 3
+};
+
+#endif
+
 
 /** tBoardLed.
  * Summary:
@@ -101,21 +134,35 @@ enum eBrdSwitch
  * Remarks:
  * 	None.
  */
+#if (XPRJ_Debug_CVI)
 enum eBoardLeds
 {
-    kBoardLed1,
+	kBoardLed1 = PANEL_LED1,
+	kBoardLed2 = PANEL_LED2,
+	kBoardLed3 = PANEL_LED3,
+	kBoardNumLeds = 3
+};
+
+#else
+enum eBoardLeds
+{
+	kBoardLed1,
 	kBoardLed2,
 	kBoardLed3,
-	kBoardNumLeds
+	kBoardNumLeds = 3
 };
+
+#endif
 
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
+typedef enum eDO_Logical_Values		tDO_LogicalValues;
+
 typedef enum eBrdUsbVbusSwitchState		tBrdUsbVbusSwitchState;
-typedef enum eBrdSwitch				tBrdUserSwitch;
+typedef enum eBrdSwitch					tBrdUserSwitch;
 //typedef enum eBSP_SWITCH_STATE			tBrdUserSwitchState;
 
 typedef enum eBoardLeds					tBoardLed;
@@ -133,77 +180,77 @@ typedef enum eBoardLeds					tBoardLed;
 extern uint16_t Cwsw_Board__Init(void);
 
 /* Function:
-    void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
+	void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 
   Summary:
-    This function enables or disables the USB VBUS switch on the board.
+	This function enables or disables the USB VBUS switch on the board.
 
   Description:
-    This function enables or disables the VBUS switch on the board.
+	This function enables or disables the VBUS switch on the board.
 
   Precondition:
-    BSP_Initialize() should have been called.
+	BSP_Initialize() should have been called.
 
   Parameters:
-    state - If kBrdUsbVbusSwitchState_Enable, then the USB VBUS switch is
-            enabled and VBUS is supplied on the USB.
-            If kBrdUsbVbusSwitchState_Disable, then the USB VBUS
-            switch is disabled and VBUS is not supplied on the USB.
+	state - If kBrdUsbVbusSwitchState_Enable, then the USB VBUS switch is
+			enabled and VBUS is supplied on the USB.
+			If kBrdUsbVbusSwitchState_Disable, then the USB VBUS
+			switch is disabled and VBUS is not supplied on the USB.
 
   Returns:
-    None.
+	None.
 
   Example:
-    <code>
+	<code>
 
-    // Initialize the BSP
-    BSP_Initialize();
+	// Initialize the BSP
+	BSP_Initialize();
 
-    // Enable the VBUS switch.
-    Cwsw_Board__UsbVbusSwitchStateSet(kBrdUsbVbusSwitchState_Enable);
+	// Enable the VBUS switch.
+	Cwsw_Board__UsbVbusSwitchStateSet(kBrdUsbVbusSwitchState_Enable);
 
-    </code>
+	</code>
 
   Remarks:
-    None
+	None
 */
-extern void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
+extern void Cwsw_Board__UsbVbusSwitchStateSet(tDO_LogicalValues state);
 
 /* Function:
-    tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch switch);
+	tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch switch);
 
   Summary:
-    Returns the present state (pressed or not pressed) of the specified switch.
+	Returns the present state (pressed or not pressed) of the specified switch.
 
   Description:
-    This function returns the present state (pressed or not pressed) of the
-    specified switch.
+	This function returns the present state (pressed or not pressed) of the
+	specified switch.
 
   Precondition:
-    BSP_Initialize() should have been called.
+	BSP_Initialize() should have been called.
 
   Parameters:
-    switch  - The switch whose state needs to be obtained.
+	switch  - The switch whose state needs to be obtained.
 
   Returns:
-    The pressed released state of the switch.
+	The pressed released state of the switch.
 
   Example:
-    <code>
+	<code>
 
-    // Initialize the BSP
-    BSP_Initialize();
+	// Initialize the BSP
+	BSP_Initialize();
 
-    // Check the state of the switch.
-    if(BSP_SWITCH_STATE_PRESSED == BSP_SwitchStateGet(kBrdSwitch1))
-    {
-        // This means that Switch 1 on the board is pressed.
-    }
+	// Check the state of the switch.
+	if(BSP_SWITCH_STATE_PRESSED == BSP_SwitchStateGet(kBrdSwitch1))
+	{
+		// This means that Switch 1 on the board is pressed.
+	}
 
-    </code>
+	</code>
 
   Remarks:
-    None
+	None
 */
 //extern tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch bspSwitch);
 
@@ -216,8 +263,16 @@ extern void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 #define Cwsw_Board__Set(resource, value)		Cwsw_Board__Set_ ## resource(value)
 
 
-/** Target for Get(Cwsw_Arch, Initialized) interface */
+/** Target for Get(Cwsw_Board, Initialized) interface */
 extern bool 									Cwsw_Board__Get_Initialized(void);
+
+
+/* "short cut" targets for global board resources.
+ *	simply redirect them to the actual public interface.
+ */
+#define SET_kBoardLed1(onoff)					Set(Cwsw_Board, kBoardLed1, onoff)
+#define SET_kBoardLed2(onoff)					Set(Cwsw_Board, kBoardLed2, onoff)
+#define SET_kBoardLed3(onoff)					Set(Cwsw_Board, kBoardLed3, onoff)
 
 
 /* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface */
@@ -225,19 +280,15 @@ extern bool 									Cwsw_Board__Get_Initialized(void);
 
 
 /* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface. */
-#define Cwsw_Board__Set_kBoardLed1(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed1); } else { BSP_LEDOff(kBoardLed1); } } while(0)
-#define Cwsw_Board__Set_kBoardLed2(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed2); } else { BSP_LEDOff(kBoardLed2); } } while(0)
-#define Cwsw_Board__Set_kBoardLed3(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed3); } else { BSP_LEDOff(kBoardLed3); } } while(0)
+#define Cwsw_Board__Set_kBoardLed1(value)		PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_0, value)
+#define Cwsw_Board__Set_kBoardLed2(value)		PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_1, value)
+#define Cwsw_Board__Set_kBoardLed3(value)		PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_2, value)
+//#define Cwsw_Board__Set_kBoardLed2(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed2); } else { BSP_LEDOff(kBoardLed2); } } while(0)
 
 /* Target for some of the expansions to the Get(Cwsw_Board, Resource) interface. */
-#define Cwsw_Board__Get_kBoardLed1()			BSP_LEDStateGet(kBoardLed1)
+#define Cwsw_Board__Get_kBrdSwitch1()			PLIB_PORTS_PinGet(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_3)
+#define Cwsw_Board__Get_kBoardLed1()			PLIB_PORTS_PinGet(PORTS_ID_0, PORT_CHANNEL_B, PORTS_BIT_POS_0)
 
-
-/* In the expansions of Cwsw_Board__Set__BoardLed<n>, we refer to functions provided by Harmony.
- * For desktop console apps, simply make them nops.
- */
-#define BSP_LEDOn(a)		do { dprintf("\tLED %i on\n", a); } while(0)
-#define BSP_LEDOff(a)		do { dprintf("\tLED %i off\n", a); } while(0)
 
 #define BSP_LEDStateGet(a)	(1)
 

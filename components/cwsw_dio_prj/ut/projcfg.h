@@ -156,6 +156,11 @@ extern "C" {
 
 #endif
 
+#if (XPRJ_Debug_CVI)
+// use cwsw simulated events to achieve separation between UI panels
+#define USE_SIMULATED_EVENTS			(true)
+#endif
+
 #if (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk)
 	/* define stuff that MPLAB defines on the command line */
 	#if !defined(__PIC32M)

@@ -41,6 +41,7 @@ extern "C" {
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
+#include "cwsw_board.h"		/* tDO_LogicalValues */
 
 // ----	Module Headers --------------------------
 
@@ -50,17 +51,27 @@ extern "C" {
 // ============================================================================
 #define BSP_CWSW_BSP_H__REVSTRING "$Revision: 0123 $"
 
-/** Logical values for the LEDs. note the actual wiring on the board, or the polarity of the
- * driver, might be inverted; that connection is made at the board level, not the bsp level.
+/** Identification for the LED indicators supported by this BSP.
+ *	These values are intended to be used by this own module, and all those above it
+ *	(e.g., the application itself).
  */
-enum eDO_Logical_Values { kLogicalOff, kLogicalOn };
+enum eBspIndictorLed {
+	kBspHeartbeatInd, kBspActivity2, kBspActivity3,
+
+	/* note: because there could be mapping differences between the purpose of an LED on this BSP,
+	 * and the led provided by the board, we cannot simply assume that the LEDs will be assigned
+	 * contiguously and starting from value 0, so we need to manually maintain the number of LEDs
+	 * used in this BSP. The value defined here should be a base-1 count of the number of LEDs used.
+	 */
+	kBspNumLeds = 3
+};
 
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
-typedef enum eDO_Logical_Values		tDO_LogicalValues;
+typedef enum eBspIndictorLed tBspIndicatorLed;
 
 
 // ============================================================================
@@ -72,6 +83,34 @@ typedef enum eDO_Logical_Values		tDO_LogicalValues;
 // ============================================================================
 
 extern uint16_t BSP__Init(void);
+
+
+/** Target symbol for GET(BspSwitch1) */
+#define GET_BspSwitch1()					Get(Cwsw_Board, kBrdSwitch1)
+
+
+/** Target symbol for Get(Cwsw_Board, Resource) interface */
+#define Cwsw_Bsp__Get(resource)				Cwsw_Bsp__Get_ ## resource()
+
+
+/** Target symbol for Set(Cwsw_Board, Resource, xxx) interface */
+#define Cwsw_Bsp__Set(resource, value)		Cwsw_Bsp__Set_ ## resource(value)
+
+
+/* Target for some of the expansions to the Set(Cwsw_Bsp, Resource, xxx) interface. */
+#include "cwsw_bsp.h"		/* tDO_LogicalValues */
+extern void Cwsw_Bsp__Set_BspHeartbeatInd(tDO_LogicalValues onoff);
+extern void Cwsw_Bsp__Set_BspActivity2(tDO_LogicalValues onoff);
+extern void Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff);
+
+
+/* Targets for expansion of SET(GlobalResource, Value) interface.
+ * In this module, the LEDs are considered global resources, "owned" by the BSP,
+ * which can be set (written to) by any application-layer module.
+ */
+#define SET_BspHeartbeatInd(value)	Set(Cwsw_Bsp, BspHeartbeatInd, value)
+#define SET_BspActivity2(value)		Set(Cwsw_Bsp, BspActivity2, value)
+#define SET_BspActivity3(value)		Set(Cwsw_Bsp, BspActivity3, value)
 
 
 #ifdef	__cplusplus

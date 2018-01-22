@@ -17,7 +17,6 @@ RM := rm -rf
 -include cwsw_arch/i386/src/subdir.mk
 -include cwsw_arch/i386/peripheral/ports/subdir.mk
 -include 3rdparty/cwsw/lib/system/int/subdir.mk
--include 3rdparty/cwsw/gen/bsp/subdir.mk
 -include 3rdparty/cwsw/gen/subdir.mk
 -include subdir.mk
 -include objects.mk

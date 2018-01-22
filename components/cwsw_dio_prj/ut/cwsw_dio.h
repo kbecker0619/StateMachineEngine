@@ -6,12 +6,13 @@
 /*          of this include file.                                         */
 /**************************************************************************/
 
+#include <userint.h>
 
 #ifdef __cplusplus
-	extern "C" {
+    extern "C" {
 #endif
 
-	 /* Panels and Controls: */
+     /* Panels and Controls: */
 
 #define  PANEL                           1
 #define  PANEL_BTN_QUIT                  2       /* callback function: cbOnBtnQuit */
@@ -23,26 +24,18 @@
 #define  PANEL_LED1                      8
 #define  PANEL_USBVBUS                   9
 
-/** Target symbol for Set(BoardPanel, Resource, Value) interface */
-#define BoardPanel__Set(res, val)		BoardPanel__Set_ ## res(val)
 
-extern void BoardPanel__Set_PanelHandle(int val);
+     /* Menu Bars, Menus, and Menu Items: */
 
-
-	 /* Menu Bars, Menus, and Menu Items: */
-
-		  /* (no menu bars in the resource file) */
+          /* (no menu bars in the resource file) */
 
 
-	 /* Callback Prototypes: */
+     /* Callback Prototypes: */ 
 
 int  CVICALLBACK cbOnBtn(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK cbOnBtnQuit(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
-extern void lwWriteVirtualPin(int bitPos, int value);
-extern void lwUserLedSet(int whichled, int value);
-
 
 #ifdef __cplusplus
-	}
+    }
 #endif

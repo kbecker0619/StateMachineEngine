@@ -164,6 +164,10 @@ extern void PLIB_PORTS_PinWrite(
 		PORTS_BIT_POS   bitPos,	bool            value );
 
 
+extern bool PLIB_PORTS_PinGet(
+		PORTS_MODULE_ID index, PORTS_CHANNEL channel,
+		PORTS_BIT_POS bitPos);
+
 #ifdef	__cplusplus
 }
 #endif

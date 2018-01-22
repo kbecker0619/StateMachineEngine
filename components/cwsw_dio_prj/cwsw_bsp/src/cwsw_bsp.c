@@ -29,17 +29,18 @@
 #include "projcfg.h"
 
 // ----	System Headers --------------------------
+#include <stdint.h>
+#include <stdbool.h>
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"		/* foundational, cwsw-common stuff */
+#include "cwsw_eventsim.h"
 
 #include "cwsw_arch.h"		/* which MCU are we using? should be set by command-line include paths */
 #include "cwsw_board.h"		/* which board are we using? each board is built upon a specific MCU. path to this folder should be set by command-line include paths */
 
 // ----	Module Headers --------------------------
 #include "cwsw_bsp.h"		/* how are we using this board? yes, conceptually, a bsp could support multiple boards and/or MCUs, but that's not where we are at this moment. this file will be project-specific */
-/* this module is a very thin one that sits on top of the main MHC-generated or workalike bsp */
-#include "bsp.h"
 
 
 // ============================================================================
@@ -71,8 +72,11 @@ static char const * const cwsw_bsp_RevString = "$Revision: 0123 $";
  * suppliers would need compile-time access to the board. by making functions here, the users only
  * need API access to this module.
  */
+#if (XPRJ_Debug_CVI)
+#include "cwsw_dio_uir.h"
+#endif
 void
-Cwsw_Bsp__Set_BspActivity1(tDO_LogicalValues onoff)
+Cwsw_Bsp__Set_BspHeartbeatInd(tDO_LogicalValues onoff)
 {
 	Set(Cwsw_Board, kBoardLed1, onoff);
 }
@@ -123,17 +127,27 @@ BSP__Init(void)
 	UNUSED(cwsw_bsp_RevString);
 //	UNUSED(ind_led_map);
 
-	(void) Init(Cwsw_Lib);	/* Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules */
+	(void) Init(Cwsw_Lib);				/* Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules */
 
 #	if(!XPRJ_pic32mz_ef_sk)
 	{
 		do {	    /* Core Processor Initialization */
-			(void) Init(Cwsw_Arch);	// Cwsw_Arch__Init()
+			(void) Init(Cwsw_Arch);		// Cwsw_Arch__Init()
 		} while(0);
 
 		do {		/* Board Support Package Initialization */
-			(void) Init(Cwsw_Board);
-			BSP_Initialize();
+			(void) Init(Cwsw_Board);	// Cwsw_Board__Init()
+
+			/* Setup the USB VBUS Switch Control Pin */
+			if(Get(Cwsw_Board, Initialized))
+			{
+				/* Switch off LEDs */
+				SET(BspHeartbeatInd, kLogicalOff);
+				SET(BspActivity2, kLogicalOff);
+				SET(BspActivity3, kLogicalOff);
+
+			}
+
 		} while(0);
 
 		do {		/* Initialize Drivers */
@@ -169,3 +183,26 @@ BSP__Init(void)
 
 	return 0;
 }
+
+
+void
+EventHandler__evButtonCommit(tEventPayload EventData)
+{
+	int sw = EventData.evId;
+	/* original idea was to light the led in response to click or declick events
+	 * however, this version of lw does not support mouse-up events, so instead,
+	 * we'll toggle the led @ each commit event.
+	 */
+	bool st = !!TO_INT(EventData.evInt) ? kLogicalOn : kLogicalOff;
+	static bool led1 = false;
+	UNUSED(st);
+	switch(sw)
+	{
+	default:
+		led1 = !led1;
+		Set(Cwsw_Board, kBoardLed1, led1);
+		break;
+
+	}
+}
+
