@@ -156,6 +156,16 @@ extern "C" {
 
 #endif
 
+#if (XPRJ_Debug_Linux_GCC)
+	/* enable or disable individual architectural features */
+	#define USE_SYS_CLK					false
+	#define USE_SYS_DEVCON				false
+	#define USE_SYS_PORTS				true
+
+#else
+
+#endif
+
 #if (XPRJ_Debug_CVI)
 // use cwsw simulated events to achieve separation between UI panels
 #define USE_SIMULATED_EVENTS			(true)

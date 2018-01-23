@@ -222,19 +222,19 @@ typedef void (*fpTask)(void);
 
 #endif
 
-#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
 /*	per https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html, variadics used
  *	as i'm using them here, will break on a non-GNU compiler. buyer beware.
  */
 #if (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
-#define dprintf						printf
+#define dbg_printf					printf
 #else
 #if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wvariadic-macros"
 #endif
 
-#define	dprintf(format, args...)	(void)printf(format , ## args)
+#define	dbg_printf(format, args...)	(void)printf(format , ## args)
 
 #if defined(__GNUC__)	/* --- /GNU Environment ----------------------------- */
 #pragma GCC diagnostic pop
@@ -259,7 +259,7 @@ typedef void (*fpTask)(void);
 #define PRIVATE						/* nothing */
 
 #else
-#define dprintf(format, args...)	do {} while(0)
+#define dbg_printf(format, args...)	do {} while(0)
 #define disable_console_buffering()	do {} while(0)
 
 

@@ -33,14 +33,15 @@
 #include <stdbool.h>
 
 // ----	Project Headers -------------------------
-#include "cwsw_lib.h"		/* foundational, cwsw-common stuff */
+#include "cwsw_lib.h"			/* foundational, cwsw-common stuff */
 #include "cwsw_eventsim.h"
 
-#include "cwsw_arch.h"		/* which MCU are we using? should be set by command-line include paths */
-#include "cwsw_board.h"		/* which board are we using? each board is built upon a specific MCU. path to this folder should be set by command-line include paths */
+#include "cwsw_arch.h"			/* which MCU are we using? should be set by command-line include paths */
+#include "cwsw_board.h"			/* which board are we using? each board is built upon a specific MCU. path to this folder should be set by command-line include paths */
 
 // ----	Module Headers --------------------------
-#include "cwsw_bsp.h"		/* how are we using this board? yes, conceptually, a bsp could support multiple boards and/or MCUs, but that's not where we are at this moment. this file will be project-specific */
+#include "cwsw_bsp.h"			/* how are we using this board? yes, conceptually, a bsp could support multiple boards and/or MCUs, but that's not where we are at this moment. this file will be project-specific */
+#include "system/int/sys_int.h"	/* todo: refactor this out. BSP should be going through board and/or arch, not skipping a layer and going right to interrupts */
 
 
 // ============================================================================

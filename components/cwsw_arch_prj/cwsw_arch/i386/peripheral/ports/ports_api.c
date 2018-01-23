@@ -82,7 +82,7 @@ PLIB_PORTS_PinWrite(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS 
 	UNUSED(value);
 	UNUSED(ports_api_RevString);
 
-	dprintf(
+	dbg_printf(
 		"\tDO Write, Idx: %i, Channel: %i, Bit: %i, Value: %s\n",
 		index, channel, bitPos, value ? "On" : "Off");
 
@@ -100,7 +100,7 @@ PLIB_PORTS_PinGet(PORTS_MODULE_ID index, PORTS_CHANNEL channel, PORTS_BIT_POS bi
 	UNUSED(index);
 	UNUSED(bitPos);
 
-	dprintf(
+	dbg_printf(
 		"\tDO Read, Idx: %i, Channel: %i, Bit: %i\n",
 		index, channel, bitPos);
 

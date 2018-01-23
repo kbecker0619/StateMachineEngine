@@ -79,7 +79,7 @@ Cwsw_Lib__Init(void)
 		#pragma GCC diagnostic ignored "-Wpedantic"
 		#endif
 
-		dprintf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, cwsw_lib_RevString, __FUNCTION__);
+		dbg_printf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, cwsw_lib_RevString, __FUNCTION__);
 
 		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 		#pragma GCC diagnostic pop
