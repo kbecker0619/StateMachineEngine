@@ -60,8 +60,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "projcfg.h"
 #include "cwsw_lib.h"
 
-#include "system/system_config.h"
-#include "system/system_definitions.h"
+#include "system_config.h"
+#include "system_definitions.h"
 
 
 /* Define WEAK attribute */

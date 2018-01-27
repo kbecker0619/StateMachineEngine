@@ -23,6 +23,7 @@
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
+#include "cwsw_lib.h"
 
 // ----	Module Headers --------------------------
 #include "system/ports/sys_ports.h"
@@ -56,21 +57,22 @@ static char const * const sys_ports_static_RevString = "$Revision: 0123 $";
 
 /******************************************************************************
   Function:
-    SYS_PORTS_Initialize(void)
+	SYS_PORTS_Initialize(void)
 
   Summary:
-    Initializes Ports System Service
+	Initializes Ports System Service
 
   Description:
-    This function initializes different port pins/channels to the desired state.
-    It also remaps the pins to the desired specific function.
+	This function initializes different port pins/channels to the desired state.
+	It also remaps the pins to the desired specific function.
 
   Remarks:
-    None.
+	None.
 */
 void
 SYS_PORTS_Initialize(void)
-{
+{								   
+	UNUSED(sys_ports_static_RevString);
 #	if(0)
 	{
 	    /* PORT A Initialization */

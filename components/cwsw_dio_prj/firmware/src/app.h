@@ -114,8 +114,6 @@ typedef struct
     APP_STATES state;
 
     /* TODO: Define any additional data used by the application. */
-	/* Heartbeat driver timer handle. */
-//	DRV_HANDLE heartbeatTimer;
 	
 	/* Heartbeat timer timeout count. */
 	unsigned int heartbeatCount;

@@ -17,7 +17,7 @@ C_DEPS += \
 cwsw_bsp/src/%.o: ../cwsw_bsp/src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C Compiler'
-	gcc -std=gnu11 -D"XPRJ_Debug_Win_MinGW=1" -DUSE_SIMULATED_EVENTS=0 -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_arch/i386" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_board/none" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty/cwsw/gen" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty/cwsw/gen/bsp" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty/cwsw/lib" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_lib" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_bsp" -O0 -g3 -pedantic -Wall -Wextra -Wconversion -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	gcc -std=gnu11 -D"XPRJ_Debug_Win_MinGW=1" -DUSE_SIMULATED_EVENTS=0 -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_arch/i386" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_board/none" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_lib" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_bsp" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty/cwsw/gen" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty/cwsw/gen/bsp" -I"E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/3rdparty/cwsw/lib" -O0 -g3 -pedantic -Wall -Wextra -Wconversion -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

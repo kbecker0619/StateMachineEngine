@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/firmware/src/app.c</file>
+            <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/firmware/src/system_config/pic32mz_ef_sk/system_tasks.c</file>
+            <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_bsp/src/cwsw_bsp.c</file>
             <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/firmware/src/system_config/pic32mz_ef_sk/bsp/bsp.c</file>
-            <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/firmware/src/system_config/pic32mz_ef_sk/bsp/bsp.h</file>
+            <file>file:/E:/_Programs/Microchip/harmony/v2_05/framework/peripheral/ports/templates/ports_PortsWrite_MCU32_PPS.h</file>
+            <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/firmware/src/app.c</file>
+            <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/firmware/src/main.c</file>
+            <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_board/pic32mz_efm_sk/src/cwsw_board.c</file>
+            <file>file:/E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_arch/pic32mz/cwsw_arch.c</file>
         </group>
     </open-files>
 </project-private>

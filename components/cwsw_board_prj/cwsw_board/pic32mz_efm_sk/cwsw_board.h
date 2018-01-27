@@ -70,6 +70,13 @@ extern "C" {
 // ============================================================================
 #define CWSW_BOARD_H_REVSTRING "$Revision: 0123 $"
 
+/** Logical values for the LEDs and switches.
+ *	Note the actual wiring on the board, or the polarity of the driver, might be inverted;
+ *	that connection is made at the driver level, not the board level.
+ */
+enum eDO_Logical_Values { kLogicalOff, kLogicalOn };
+
+
 /** USB VBUS Switch State.
  * Summary:
  * 	Defines the possible states of the USB VBUS Switch on this board
@@ -129,9 +136,11 @@ enum eBoardLeds
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
-typedef enum eBrdUsbVbusSwitchState		tBrdUsbVbusSwitchState;
+typedef enum eDO_Logical_Values		tDO_LogicalValues;
+
+typedef enum eBrdUsbVbusSwitchState	tBrdUsbVbusSwitchState;
 typedef enum eBrdSwitch				tBrdUserSwitch;
-//typedef enum eBSP_SWITCH_STATE			tBrdUserSwitchState;
+//typedef enum eBSP_SWITCH_STATE	tBrdUserSwitchState;
 
 typedef enum eBoardLeds					tBoardLed;
 
@@ -181,7 +190,7 @@ extern uint16_t Cwsw_Board__Init(void);
   Remarks:
     None
 */
-extern void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
+extern void Cwsw_Board__UsbVbusSwitchStateSet(tDO_LogicalValues state);
 
 /* Function:
     tBrdUserSwitchState BSP_SwitchStateGet(tBrdUserSwitch switch);
@@ -253,6 +262,15 @@ extern void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 extern void BSP_Initialize(void);
 
 
+// --- targets for get/set/etc macros -----------------------------------------
+/** "Chapter Designator" for Get/Set API.
+ *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
+ *	to find macros for the Get/Set API; simply highlight the Module argument, and select Go To
+ *	Definition.
+ */
+enum { Cwsw_Board };	/* PIC32 MZ EZ Board */
+
+
 /** Target symbol for Get(Cwsw_Board, Resource) interface */
 #define Cwsw_Board__Get(resource)				Cwsw_Board__Get_ ## resource()
 
@@ -269,6 +287,7 @@ extern bool 									Cwsw_Board__Get_Initialized(void);
 
 
 /* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface. */
+#include "bsp.h"
 #define Cwsw_Board__Set_kBoardLed1(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed1); } else { BSP_LEDOff(kBoardLed1); } } while(0)
 #define Cwsw_Board__Set_kBoardLed2(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed2); } else { BSP_LEDOff(kBoardLed2); } } while(0)
 #define Cwsw_Board__Set_kBoardLed3(value)		do { if(!!(value)) { BSP_LEDOn(kBoardLed3); } else { BSP_LEDOff(kBoardLed3); } } while(0)

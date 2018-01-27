@@ -136,6 +136,7 @@ extern "C" {
 	#define	XPRJ_Debug_MSC				0
 	#define	XPRJ_Debug_Win_MinGW 		0
 	#define XPRJ_Debug_Linux_GCC		0
+	#define XPRJ_pic32mz_ef_sk			0
 
 #else
 #error Must define Eclipse symbol XPRJ_${ConfigName}
@@ -167,15 +168,23 @@ extern "C" {
 #endif
 
 #if (XPRJ_Debug_CVI)
-// use cwsw simulated events to achieve separation between UI panels
-#define USE_SIMULATED_EVENTS			(true)
+	// use cwsw simulated events to achieve separation between UI panels
+	#define USE_SIMULATED_EVENTS		(1)
+	#define USE_SYS_CLK					(0)
+	#define USE_SYS_DEVCON				(0)
+	#define USE_SYS_PORTS				(0)
+	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
+	
 #endif
 
-#if (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk)
+#if (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk == pic32mz_ef_sk)
 	/* define stuff that MPLAB defines on the command line */
+//    #define pic32mz_ef_sk               (1)
 	#if !defined(__PIC32M)
 		#define __PIC32M
 		#define __LANGUAGE_ASSEMBLY__
+
+		#define __32MZ1024EFM144__	1	/* used in ports selection */
 
 	#endif
 
@@ -183,6 +192,8 @@ extern "C" {
 	#define USE_SYS_CLK					false
 	#define USE_SYS_DEVCON				false
 	#define USE_SYS_PORTS				true
+
+#else
 
 #endif
 

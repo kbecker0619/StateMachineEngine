@@ -91,7 +91,13 @@ SYS_DEVCON_Initialize( const SYS_MODULE_INDEX index, const SYS_MODULE_INIT * con
 
 #endif
 
+#if (USE_SYS_PORTS == true)
+	#include "system/ports/sys_ports.h"
+
+#else
 #define SYS_PORTS_Initialize()			do {} while(0)
+
+#endif
 
 
 // ============================================================================
@@ -101,7 +107,6 @@ SYS_DEVCON_Initialize( const SYS_MODULE_INDEX index, const SYS_MODULE_INIT * con
 uint16_t
 Cwsw_Arch__Init(void)
 {
-
 	UNUSED(cwsw_arch_RevString);
 	// for desktop use, there's really not much to do here.
 

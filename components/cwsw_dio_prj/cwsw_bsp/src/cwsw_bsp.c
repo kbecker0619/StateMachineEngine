@@ -75,7 +75,7 @@ bool seteventseen = false;
 
 /* targets for Get() and Set() macro expansions.
  * These are located here, and are designed as functions, specifically to implement a separation
- * in dependencies between users of this module and the board moduls. if, for example, these were
+ * in dependencies between users of this module and the board modules. if, for example, these were
  * implemented as FLMs (function-like macros) or inline functions located in the API, then the
  * suppliers would need compile-time access to the board. by making functions here, the users only
  * need API access to this module.
@@ -115,7 +115,7 @@ Heartbeat__Task(void)
 }
 
 
-/** Abstractedd button handler.
+/** Abstracted button handler.
  *	This handler is intended to be the same, whether you're getting input from the console, from a LW/CVI panel, etc.
  * 	Within this handler, all you should do is set the flags used by the "business logic" in the task function(s).
  */
@@ -166,7 +166,7 @@ BSP__Init(void)
 
 	(void) Init(Cwsw_Lib);				/* Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules */
 
-#	if(!XPRJ_pic32mz_ef_sk)
+#	if(!XPRJ_pic32mz_ef_sk) || ( (XPRJ_pic32mz_ef_sk == pic32mz_ef_sk) && (1) )
 	{
 		do {	    /* Core Processor Initialization */
 			(void) Init(Cwsw_Arch);		// Cwsw_Arch__Init()

@@ -161,9 +161,9 @@ enum eBoardLeds
 
 typedef enum eDO_Logical_Values		tDO_LogicalValues;
 
-typedef enum eBrdUsbVbusSwitchState		tBrdUsbVbusSwitchState;
-typedef enum eBrdSwitch					tBrdUserSwitch;
-//typedef enum eBSP_SWITCH_STATE			tBrdUserSwitchState;
+typedef enum eBrdUsbVbusSwitchState	tBrdUsbVbusSwitchState;
+typedef enum eBrdSwitch				tBrdUserSwitch;
+//typedef enum eBSP_SWITCH_STATE	tBrdUserSwitchState;
 
 typedef enum eBoardLeds					tBoardLed;
 
@@ -256,6 +256,14 @@ extern void Cwsw_Board__UsbVbusSwitchStateSet(tDO_LogicalValues state);
 
 
 // --- targets for get/set/etc macros -----------------------------------------
+/** "Chapter Designator" for Get/Set API.
+ *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
+ *	to find macros for the Get/Set API; simply highlight the Module argument, and select Go To
+ *	Definition.
+ */
+enum { Cwsw_Board };	/* "None" board - Windows / Linux Desktop */
+
+
 /** Target symbol for Get(Cwsw_Board, Resource) interface */
 #define Cwsw_Board__Get(resource)				Cwsw_Board__Get_ ## resource()
 
@@ -267,8 +275,8 @@ extern void Cwsw_Board__UsbVbusSwitchStateSet(tDO_LogicalValues state);
 extern bool 									Cwsw_Board__Get_Initialized(void);
 
 
-/* "short cut" targets for global board resources.
- *	simply redirect them to the actual public interface.
+/* "short cut" targets for resources considered to be Global (shared) Resources.
+ *	Simply redirect them to the actual public interface.
  */
 #define SET_kBoardLed1(onoff)					Set(Cwsw_Board, kBoardLed1, onoff)
 #define SET_kBoardLed2(onoff)					Set(Cwsw_Board, kBoardLed2, onoff)

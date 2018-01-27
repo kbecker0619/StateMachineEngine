@@ -29,9 +29,9 @@ extern "C" {
 #include <stdint.h>		/* klb: uint32-t */
 
 // ----	Project Headers -------------------------
-#include "../../../../../cwsw_arch/pic32mz/app/system_config/system_config.h"
-#include "../../../../../cwsw_arch/pic32mz/framework/system/common/sys_common.h"
-#include "../../../../../cwsw_arch/pic32mz/framework/system/common/sys_module.h"
+#include "system_config/system_config.h"
+#include "system/common/sys_common.h"
+#include "system/common/sys_module.h"
 
 #if defined(__PIC32C__)
 #include "system/int/sys_int_pic32c.h"

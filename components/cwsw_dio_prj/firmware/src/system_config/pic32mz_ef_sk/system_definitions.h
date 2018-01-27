@@ -87,7 +87,7 @@ extern "C" {
 
 typedef struct
 {
-
+	int	nothing;
 
 } SYSTEM_OBJECTS;
 

@@ -53,37 +53,37 @@ extern "C" {
 // ============================================================================
 
 /* Function:
-    void SYS_PORTS_Initialize()
+	void SYS_PORTS_Initialize()
 
   Summary:
-    Initializes PORT Pins/Channels.
+	Initializes PORT Pins/Channels.
 	<p><b>Implementation:</b> Static/Dynamic</p>
 
   Description:
-    This function initializes different port pins/channels to the desired state.
-    It also remaps the pins to the desired specific function.
+	This function initializes different port pins/channels to the desired state.
+	It also remaps the pins to the desired specific function.
 
   Precondition:
-    None.
+	None.
 
   Parameters:
-    None.
+	None.
 
   Returns:
-    None.
+	None.
 
   Example:
-    <code>
+	<code>
 
 	SYS_PORTS_Initialize();
 
-    </code>
+	</code>
 
   Remarks:
-    This API must be be called at the time of system initialization to
+	This API must be be called at the time of system initialization to
 	initialize the ports pins.
 */
-extern void SYS_PORTS_Initialize();
+extern void SYS_PORTS_Initialize(void);
 
 
 #ifdef	__cplusplus

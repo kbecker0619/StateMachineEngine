@@ -165,6 +165,7 @@ APP_Initialize(void)
 	appData.heartbeatToggle = false;
 }
 
+
 /******************************************************************************
   Function:
 	void APP_Tasks ( void )

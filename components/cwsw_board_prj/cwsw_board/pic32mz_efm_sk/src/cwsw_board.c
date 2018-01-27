@@ -136,6 +136,7 @@ Cwsw_Board__Init(void)
 
 	if(Get(Cwsw_Arch, Initialized))
 	{
+		BSP_Initialize();
 		initialized = true;
 		return 0;
 	}
@@ -164,7 +165,7 @@ Cwsw_Board__Get_Initialized(void)
  * 	Refer to bsp_config.h for usage information.
 */
 void
-Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state)
+Cwsw_Board__UsbVbusSwitchStateSet(tDO_LogicalValues state)
 {
     /* Enable the VBUS switch */
 	/* NOTE: for LabWindows/CVI, I would expect this to activate an LED or somesuch indicator */
