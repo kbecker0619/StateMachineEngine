@@ -1,5 +1,5 @@
-/** @file sys_ports.h
- *	@brief	One-sentence short description of file.
+/** @file
+ *	@brief	Main, but architecture-specific, API for Ports functionality.
  *
  *	Description:
  *
