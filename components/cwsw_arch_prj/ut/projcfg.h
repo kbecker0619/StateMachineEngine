@@ -152,13 +152,14 @@ extern "C" {
 	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
 
 	/* enable or disable individual architectural features */
-	#define USE_SYS_CLK					true	/* For modules that need the Clock module. In most cases, this will be true */
+	#define USE_SYS_CLK					false	/* For modules that need the Clock module. In most cases, this will be true */
 	#define USE_SYS_DEVCON				false	/* For modules that need the Device Control functionality */
 	#define USE_SYS_PORTS				true	/* Enable for modules that use GPIO ports */
 
 #endif
 
 #if (XPRJ_Debug_Linux_GCC)
+	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
 	/* enable or disable individual architectural features */
 	#define USE_SYS_CLK					false
 	#define USE_SYS_DEVCON				false
@@ -169,12 +170,12 @@ extern "C" {
 #endif
 
 #if (XPRJ_Debug_CVI)
+	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
 	// use cwsw simulated events to achieve separation between UI panels
 	#define USE_SIMULATED_EVENTS		(1)
 	#define USE_SYS_CLK					(0)
 	#define USE_SYS_DEVCON				(0)
 	#define USE_SYS_PORTS				(0)
-	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
 
 #endif
 
