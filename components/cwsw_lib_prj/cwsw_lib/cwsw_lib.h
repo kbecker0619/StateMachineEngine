@@ -266,7 +266,7 @@ typedef void (*fpTask)(void);
 /**	when built on a PC, it's likely i want to see module elements that we would
  *	otherwise want to keep secret.
  */
-#define PRIVATE						static
+#define PRIVATE				static
 
 #endif
 
@@ -278,7 +278,7 @@ typedef void (*fpTask)(void);
 /**	Core library init function. Only needs to be called once, probably by main
  *	application (rather than all components which use this core library).
  */
-extern uint16_t Cwsw_Lib__Init(void);
+extern uint16_t 			Cwsw_Lib__Init(void);
 
 #include <assert.h>
 #define cwsw_assert(a)		assert(a)
@@ -287,7 +287,7 @@ extern uint16_t Cwsw_Lib__Init(void);
 #define Cwsw_Lib__Get(a)	Cwsw_Lib__Get_ ## a()
 
 /** Target for Get(Cwsw_Lib, Initialized) interface */
-extern bool Cwsw_Lib__Get_Initialized(void);
+extern bool 				Cwsw_Lib__Get_Initialized(void);
 
 
 #ifdef	__cplusplus

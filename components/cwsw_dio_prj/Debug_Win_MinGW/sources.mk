@@ -17,7 +17,7 @@ SUBDIRS := \
 3rdparty/cwsw/lib/system/int \
 cwsw_arch/i386/peripheral/ports \
 cwsw_arch/i386/src \
-cwsw_arch/i386/system/clk \
+cwsw_arch/i386/system/clk/src \
 cwsw_arch/i386/system/ports/src \
 cwsw_board/none/src \
 cwsw_bsp/src \

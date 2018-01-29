@@ -149,6 +149,7 @@
     <Elem>..\src</Elem>
     <Elem>..\src\pic32mz_ef_sk</Elem>
     <Elem>..\src\system_config\pic32mz_ef_sk</Elem>
+    <Elem>../../../../../_Programs/Microchip/harmony/v2_05</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -197,7 +198,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="..\..\..\..\..\..\..\_Programs\Microchip\harmony\v2_05\framework;../../cwsw_lib;../../cwsw_bsp;../../cwsw_board/pic32mz_efm_sk;../../cwsw_arch/pic32mz;../../ut;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
+                  value="../../cwsw_lib;../../cwsw_bsp;../../cwsw_board/pic32mz_efm_sk;../../cwsw_arch/pic32mz;../../ut;../src;../src/system_config/pic32mz_ef_sk;../src/pic32mz_ef_sk;../../../../../../../_Programs/Microchip/harmony/v2_05/framework;../src/system_config/pic32mz_ef_sk/framework;../src/system_config/pic32mz_ef_sk/bsp"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>

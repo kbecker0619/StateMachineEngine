@@ -44,6 +44,9 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<sourceEntries>
+						<entry excluding="firmware|cwsw_arch/pic32mz" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
@@ -155,9 +158,9 @@
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="Development and debugging on Windows, using MinGW" id="cdt.managedbuild.config.gnu.exe.debug.1402691241.1874887244" name="Debug_Win_MinGW" parent="cdt.managedbuild.config.gnu.exe.debug">
 					<folderInfo id="cdt.managedbuild.config.gnu.exe.debug.1402691241.1874887244." name="/" resourcePath="">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.964464483" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.964464483" name="MinGW GCC" nonInternalBuilderId="cdt.managedbuild.builder.gnu.cross" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.PE" id="cdt.managedbuild.target.gnu.platform.mingw.base.974103491" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
-							<builder buildPath="${workspace_loc:/cwsw_arch}/Debug_Win_MinGW" id="cdt.managedbuild.tool.gnu.builder.mingw.base.1517122475" keepEnvironmentInBuildfile="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/cwsw_arch}/Debug_Win_MinGW" cleanBuildTarget="clean" id="org.eclipse.cdt.build.core.internal.builder.934485931" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.build.core.internal.builder"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1727111853" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.309591417" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -193,8 +196,18 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1419317492" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.exe.debug.1402691241.1874887244.1669178328" name="/" resourcePath="cwsw_arch/i386">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.1680981214" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base" unusedChildren="">
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.1127239754" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base.1727111853"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.228417965" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base.1418680634"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.420052551" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.2042000758"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1493381090" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1871868254"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.872477112" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1389196556"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1796241205" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1419317492"/>
+						</toolChain>
+					</folderInfo>
 					<sourceEntries>
-						<entry excluding="cwsw_arch/pic32mz" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="firmware|cwsw_arch/pic32mz" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

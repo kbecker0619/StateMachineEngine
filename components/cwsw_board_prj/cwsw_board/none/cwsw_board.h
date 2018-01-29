@@ -165,7 +165,7 @@ typedef enum eBrdUsbVbusSwitchState	tBrdUsbVbusSwitchState;
 typedef enum eBrdSwitch				tBrdUserSwitch;
 //typedef enum eBSP_SWITCH_STATE	tBrdUserSwitchState;
 
-typedef enum eBoardLeds					tBoardLed;
+typedef enum eBoardLeds				tBoardLed;
 
 
 // ============================================================================

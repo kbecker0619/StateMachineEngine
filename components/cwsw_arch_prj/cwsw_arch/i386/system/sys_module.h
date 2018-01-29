@@ -39,7 +39,11 @@ extern "C" {
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
+#include "projcfg.h"
+
 // ----	System Headers --------------------------
+#include <stdint.h>
+#include <stdbool.h>
 
 // ----	Project Headers -------------------------
 #include "sys_common.h"
@@ -246,7 +250,7 @@ typedef unsigned short int SYS_MODULE_INDEX;
 #if (XPRJ_Debug_CVI)
 typedef char *		SYS_MODULE_OBJ;
 #else
-typedef uintptr_t	SYS_MODULE_OBJ;
+typedef uint32_t *SYS_MODULE_OBJ;
 #endif
 
 

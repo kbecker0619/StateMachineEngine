@@ -61,6 +61,13 @@ extern uint16_t Cwsw_Arch__Init(void);
 
 // ==== Targets for Get/Set APIs ============================================ {
 
+/** "Chapter Designator" for Get/Set API.
+ *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
+ *	to find macros for the Get/Set API; simply highlight the Module argument, and select Go To
+ *	Definition.
+ */
+enum { Cwsw_Arch };	/* "None" board - Windows / Linux Desktop */
+
 /** Target symbol for Get(Cwsw_Arch, xxx) interface */
 #define Cwsw_Arch__Get(a)		Cwsw_Arch__Get_ ## a()
 

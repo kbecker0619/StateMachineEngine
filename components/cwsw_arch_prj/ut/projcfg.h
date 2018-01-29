@@ -71,9 +71,9 @@ extern "C" {
  * ANSI/ISO C says that the preprocesser evaluates an undefined symbol as having
  * the value '0' - however, many of the environments i'm targeting, and also many
  * of the static analysis tools, emit warnings about usage of undefined symbols
- * in normal C code - and i have a rather strong aversion to using #if defined(x)
- * mechanisms in normal code. therefore, i'll here define all of the non-active
- * build targets.
+ * in normal C code - and even though i do it when necessary, i have a rather
+ * strong aversion to using #if defined(x) mechanisms in normal code.
+ * therefore, i'll here define all of the non-active build targets.
  * ========================================================================= */
 
 /* ==== One final word ========================================================
@@ -191,9 +191,9 @@ extern "C" {
 	#endif
 
 	/* enable or disable individual architectural features */
-	#define USE_SYS_CLK					false
-	#define USE_SYS_DEVCON				false
-	#define USE_SYS_PORTS				true
+	#define USE_SYS_CLK					(true)
+	#define USE_SYS_DEVCON				(true)
+	#define USE_SYS_PORTS				(true)
 
 #else
 
