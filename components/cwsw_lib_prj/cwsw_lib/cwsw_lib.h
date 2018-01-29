@@ -136,6 +136,14 @@ enum { kModuleiId_Lib = 0 };
 #endif
 
 
+/** "Chapter Designator" for Get/Set API.
+ *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
+ *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
+ *	Eclipse, NetBeans, etc.), and select Go To Definition.
+ */
+enum { Cwsw_Lib };	/* CWSW Library */
+
+
 /**	Abstract module initialization.
  *	The intention is, all modules use the same signature for their init
  *	function, so make it more obvious to the code maintainer that we're
