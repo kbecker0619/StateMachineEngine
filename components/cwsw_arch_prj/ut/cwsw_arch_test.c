@@ -57,6 +57,7 @@ static char const * const cwsw_arch_test_RevString = "$Revision: 0123 $";
 
 int main(void)
 {
+	UNUSED(cwsw_arch_test_RevString);
 	(void)Init(Cwsw_Lib);		// Cwsw_Lib__Init()
 	(void)Init(Cwsw_Arch);		// Cwsw_Arch__Init()
 

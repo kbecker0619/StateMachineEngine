@@ -1,7 +1,10 @@
 /** @file
- *	@brief	One-sentence short description of file.
+ *	@brief	API common to all instances of the cwsw_arch reusable component.
  *
  *	Description:
+ *	Do not include this file directly; it is intended to be included by the architecture-specific
+ *	API file in one of the supported architectures, located immediately below this file's location.
+ *
  *
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
@@ -63,10 +66,10 @@ extern uint16_t Cwsw_Arch__Init(void);
 
 /** "Chapter Designator" for Get/Set API.
  *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
- *	to find macros for the Get/Set API; simply highlight the Module argument, and select Go To
- *	Definition.
+ *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
+ *	Eclipse, NetBeans, etc.), and select Go To Definition.
  */
-enum { Cwsw_Arch };	/* "None" board - Windows / Linux Desktop */
+enum { Cwsw_Arch };	/* Generic architecture for all MCU architectures */
 
 /** Target symbol for Get(Cwsw_Arch, xxx) interface */
 #define Cwsw_Arch__Get(a)		Cwsw_Arch__Get_ ## a()

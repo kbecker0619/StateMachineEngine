@@ -160,10 +160,11 @@ extern "C" {
 
 #if (XPRJ_Debug_Linux_GCC)
 	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
+
 	/* enable or disable individual architectural features */
-	#define USE_SYS_CLK					false
-	#define USE_SYS_DEVCON				false
-	#define USE_SYS_PORTS				true
+	#define USE_SYS_CLK					(true)
+	#define USE_SYS_DEVCON				(false)
+	#define USE_SYS_PORTS				(true)
 
 #else
 

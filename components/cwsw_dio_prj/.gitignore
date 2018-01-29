@@ -60,3 +60,4 @@ cwsw_extensions.7z
 *.cdb
 cvibuild.*
 /Debug_Win_MinGW/
+/Debug_Linux_GCC/

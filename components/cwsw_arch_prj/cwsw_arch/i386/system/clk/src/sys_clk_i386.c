@@ -30,8 +30,7 @@
 // ============================================================================
 
 #include "projcfg.h"
-
-#if (USE_SYS_CLK == true)			/* { */
+#if (USE_SYS_CLK)					/* { */
 
 // ----	System Headers --------------------------
 #include <stddef.h>
@@ -42,9 +41,9 @@
 #include "system/system_config.h"
 
 #include "system/system_config.h"
-#include "system/clk/src/osc_OscSelect_none.h"
+//#include "system/clk/src/osc_OscSelect_none.h"
 #include "system/clk/src/sys_clk_local.h"
-#include "system/devcon/sys_devcon.h"
+//#include "system/devcon/sys_devcon.h"
 
 
 // ============================================================================
@@ -84,12 +83,12 @@
   Remarks:
     None.
 */
-OSC_PERIPHERAL_BUS _SYS_CLK_GetOscPeripheralBus ( CLK_BUSES_PERIPHERAL peripheralBus )
-{
-    OSC_PERIPHERAL_BUS oscBus = (OSC_PERIPHERAL_BUS)peripheralBus;
-
-    return oscBus;
-}
+//OSC_PERIPHERAL_BUS _SYS_CLK_GetOscPeripheralBus ( CLK_BUSES_PERIPHERAL peripheralBus )
+//{
+//    OSC_PERIPHERAL_BUS oscBus = (OSC_PERIPHERAL_BUS)peripheralBus;
+//
+//    return oscBus;
+//}
 
 /******************************************************************************
   Function:
@@ -104,154 +103,154 @@ OSC_PERIPHERAL_BUS _SYS_CLK_GetOscPeripheralBus ( CLK_BUSES_PERIPHERAL periphera
   Remarks:
     None.
 */
-#include "osc/plib_osc.h"		/* PLIB_OSC_SysPLLInputClockSourceGet() */
-bool
-_SYS_CLK_SystemClockSet(
-		CLK_SOURCES_SYSTEM systemSource,
-		uint32_t systemClockHz,
-		bool waitUntilComplete,
-		uint32_t *clockClosest)
-{
-//    unsigned char calculatedRegValue = 0, valueToPLLMULT = 0, valueToPLLODIV = 0;
-    unsigned long achievedFreq = 0;
-//    int8_t result;
-
-    UNUSED(systemSource);
-    UNUSED(waitUntilComplete);
-    UNUSED(clockClosest);
-
-//    switch ( systemSource )
+//#include "osc/plib_osc.h"		/* PLIB_OSC_SysPLLInputClockSourceGet() */
+//bool
+//_SYS_CLK_SystemClockSet(
+//		CLK_SOURCES_SYSTEM systemSource,
+//		uint32_t systemClockHz,
+//		bool waitUntilComplete,
+//		uint32_t *clockClosest)
+//{
+////    unsigned char calculatedRegValue = 0, valueToPLLMULT = 0, valueToPLLODIV = 0;
+//    unsigned long achievedFreq = 0;
+////    int8_t result;
+//
+//    UNUSED(systemSource);
+//    UNUSED(waitUntilComplete);
+//    UNUSED(clockClosest);
+//
+////    switch ( systemSource )
+////    {
+////        case SYS_CLK_SOURCE_FRC_BY_DIV:
+////            /* As we know the output and input frequencies, get the multiplier
+////            needed to get the output */
+////            calculatedRegValue = TO_U8( SYS_CLK_FRC_CLOCK / systemClockHz );
+////
+////            /* Find the closest register value in the hardware */
+////            achievedFreq = SYS_CLK_FRCClosestDivisorGet ( calculatedRegValue, &valueToPLLMULT, systemClockHz );
+////            break;
+////
+////        case SYS_CLK_SOURCE_LPRC:
+////            /* Processor's internal LPRC clock */
+////            achievedFreq = SYS_CLK_LPRC_CLOCK;
+////            systemClockHz = achievedFreq;
+////            break;
+////
+////        case SYS_CLK_SOURCE_SECONDARY:
+////            achievedFreq = SYS_CLK_CONFIG_SECONDARY_XTAL;
+////            systemClockHz = achievedFreq;
+////            break;
+////
+////        case SYS_CLK_SOURCE_PRIMARY:
+////            /* If the System clock is directly using the from the Primary oscillator
+////            clock, return the configured primary oscillator frequency */
+////            achievedFreq = SYS_CLK_CONFIG_PRIMARY_XTAL;
+////            systemClockHz = achievedFreq;
+////            break;
+////
+////        case SYS_CLK_SOURCE_FRC_SYSPLL:
+////
+////            if( OSC_SYSPLL_IN_CLK_SOURCE_FRC == PLIB_OSC_SysPLLInputClockSourceGet( OSC_PLIB_ID ))
+////            {
+////                /* Source of system clock is internal fast RC with PLL.
+////                 Find the closest register value in the hardware */
+////                achievedFreq = SYS_CLK_ClosestFactorsGet ( SYS_CLK_FRC_CLOCK,
+////                        systemClockHz, &valueToPLLMULT, &valueToPLLODIV );
+////            }
+////            else
+////            {
+////                achievedFreq = SYS_CLK_ClosestFactorsGet ( SYS_CLK_CONFIG_PRIMARY_XTAL,
+////                        systemClockHz, &valueToPLLMULT, &valueToPLLODIV );
+////            }
+////            break;
+////
+////        default:
+////            return false;
+////            break;
+////    }
+//    /* Check whether the difference between the achievable frequency and the
+//    frequency requested is within the allowed range */
+//    if ( true == SYS_CLK_FrequencyErrorCheck ( systemClockHz, achievedFreq ) )
 //    {
-//        case SYS_CLK_SOURCE_FRC_BY_DIV:
-//            /* As we know the output and input frequencies, get the multiplier
-//            needed to get the output */
-//            calculatedRegValue = TO_U8( SYS_CLK_FRC_CLOCK / systemClockHz );
-//
-//            /* Find the closest register value in the hardware */
-//            achievedFreq = SYS_CLK_FRCClosestDivisorGet ( calculatedRegValue, &valueToPLLMULT, systemClockHz );
-//            break;
-//
-//        case SYS_CLK_SOURCE_LPRC:
-//            /* Processor's internal LPRC clock */
-//            achievedFreq = SYS_CLK_LPRC_CLOCK;
-//            systemClockHz = achievedFreq;
-//            break;
-//
-//        case SYS_CLK_SOURCE_SECONDARY:
-//            achievedFreq = SYS_CLK_CONFIG_SECONDARY_XTAL;
-//            systemClockHz = achievedFreq;
-//            break;
-//
-//        case SYS_CLK_SOURCE_PRIMARY:
-//            /* If the System clock is directly using the from the Primary oscillator
-//            clock, return the configured primary oscillator frequency */
-//            achievedFreq = SYS_CLK_CONFIG_PRIMARY_XTAL;
-//            systemClockHz = achievedFreq;
-//            break;
-//
-//        case SYS_CLK_SOURCE_FRC_SYSPLL:
-//
-//            if( OSC_SYSPLL_IN_CLK_SOURCE_FRC == PLIB_OSC_SysPLLInputClockSourceGet( OSC_PLIB_ID ))
-//            {
-//                /* Source of system clock is internal fast RC with PLL.
-//                 Find the closest register value in the hardware */
-//                achievedFreq = SYS_CLK_ClosestFactorsGet ( SYS_CLK_FRC_CLOCK,
-//                        systemClockHz, &valueToPLLMULT, &valueToPLLODIV );
-//            }
-//            else
-//            {
-//                achievedFreq = SYS_CLK_ClosestFactorsGet ( SYS_CLK_CONFIG_PRIMARY_XTAL,
-//                        systemClockHz, &valueToPLLMULT, &valueToPLLODIV );
-//            }
-//            break;
-//
-//        default:
-//            return false;
-//            break;
+////        result = SYS_CLK_SystemClockSourceSwitch ( systemSource, valueToPLLMULT,
+////                    valueToPLLODIV, waitUntilComplete );
+////
+////        /* Update the new clock source and clock frequency for the system
+////        clock */
+////        if ( result == -1 )
+////        {
+////            clkObject.systemClockStatus = SYS_CLK_OPERATION_FAIL_SWITCHING_DISABLED;
+////            return false;
+////        }
+////
+////        /* Update the clock source and frequency */
+////        clkObject.systemClockSource = result;
+////        clkObject.systemClock = achievedFreq;
+////        clkObject.systemClosestClock = achievedFreq;
 //    }
-    /* Check whether the difference between the achievable frequency and the
-    frequency requested is within the allowed range */
-    if ( true == SYS_CLK_FrequencyErrorCheck ( systemClockHz, achievedFreq ) )
-    {
-//        result = SYS_CLK_SystemClockSourceSwitch ( systemSource, valueToPLLMULT,
-//                    valueToPLLODIV, waitUntilComplete );
+//    else
+//    {
+////        /* Requested frequency is not achievable. Update the error code and closest
+////        possible frequency */
+////        clkObject.systemClosestClock = achievedFreq;
+////        clkObject.systemClockStatus = SYS_CLK_OPERATION_FAIL_NOT_ACHIEVABLE;
+////        return false;
+//    }
 //
-//        /* Update the new clock source and clock frequency for the system
-//        clock */
-//        if ( result == -1 )
-//        {
-//            clkObject.systemClockStatus = SYS_CLK_OPERATION_FAIL_SWITCHING_DISABLED;
-//            return false;
-//        }
+//    /* Control is here, means switching operation is either complete or in
+//    progress, not failure */
+//    return true;
+//}
+
+//CLK_SOURCES_SYSTEM
+//_SYS_CLK_ClockTypeMap( OSC_SYS_TYPE systemSource )
+//{
+//    switch( systemSource )
+//    {
+//        case OSC_FRC_WITH_PLL:
+//            return SYS_CLK_SOURCE_FRC_SYSPLL;
+//        case OSC_PRIMARY:
+//            return SYS_CLK_SOURCE_PRIMARY;
+//        case OSC_PRIMARY_WITH_PLL:
+//            return SYS_CLK_SOURCE_PRIMARY_SYSPLL;
+//        case OSC_SECONDARY:
+//            return SYS_CLK_SOURCE_SECONDARY;
+//        case OSC_LPRC:
+//            return SYS_CLK_SOURCE_LPRC;
+//        case OSC_FRC_BY_FRCDIV:
+//            return SYS_CLK_SOURCE_FRC_BY_DIV;
+//        case OSC_BFRC:
+//            return SYS_CLK_SOURCE_BKP_FRC;
+//        default:
+//            return SYS_CLK_SOURCE_NONE;
+//    }
+//}
+
+//OSC_SYS_TYPE _SYS_CLK_ClockSourceMap (CLK_SOURCES_SYSTEM clockSource)
+//{
+//	switch(clockSource)
+//	{
+//		case SYS_CLK_SOURCE_FRC_SYSPLL:
+//			return OSC_FRC_WITH_PLL;
+//		case SYS_CLK_SOURCE_PRIMARY:
+//			return OSC_PRIMARY;
+//		case SYS_CLK_SOURCE_PRIMARY_SYSPLL:
+//			return OSC_PRIMARY_WITH_PLL;
+//		case SYS_CLK_SOURCE_SECONDARY:
+//			return OSC_SECONDARY;
+//		case SYS_CLK_SOURCE_LPRC:
+//			return OSC_LPRC;
+//        case SYS_CLK_SOURCE_BKP_FRC:
+//            return OSC_BFRC;
+//		case SYS_CLK_SOURCE_FRC_BY_16:
+//			return OSC_FRC_BY_FRCDIV;
+//		case SYS_CLK_SOURCE_FRC_BY_DIV:
+//			return OSC_FRC_BY_FRCDIV;
+//		default:
+//			return 0xff;
+//	}
 //
-//        /* Update the clock source and frequency */
-//        clkObject.systemClockSource = result;
-//        clkObject.systemClock = achievedFreq;
-//        clkObject.systemClosestClock = achievedFreq;
-    }
-    else
-    {
-//        /* Requested frequency is not achievable. Update the error code and closest
-//        possible frequency */
-//        clkObject.systemClosestClock = achievedFreq;
-//        clkObject.systemClockStatus = SYS_CLK_OPERATION_FAIL_NOT_ACHIEVABLE;
-//        return false;
-    }
-
-    /* Control is here, means switching operation is either complete or in
-    progress, not failure */
-    return true;
-}
-
-CLK_SOURCES_SYSTEM
-_SYS_CLK_ClockTypeMap( OSC_SYS_TYPE systemSource )
-{
-    switch( systemSource )
-    {
-        case OSC_FRC_WITH_PLL:
-            return SYS_CLK_SOURCE_FRC_SYSPLL;
-        case OSC_PRIMARY:
-            return SYS_CLK_SOURCE_PRIMARY;
-        case OSC_PRIMARY_WITH_PLL:
-            return SYS_CLK_SOURCE_PRIMARY_SYSPLL;
-        case OSC_SECONDARY:
-            return SYS_CLK_SOURCE_SECONDARY;
-        case OSC_LPRC:
-            return SYS_CLK_SOURCE_LPRC;
-        case OSC_FRC_BY_FRCDIV:
-            return SYS_CLK_SOURCE_FRC_BY_DIV;
-        case OSC_BFRC:
-            return SYS_CLK_SOURCE_BKP_FRC;
-        default:
-            return SYS_CLK_SOURCE_NONE;
-    }
-}
-
-OSC_SYS_TYPE _SYS_CLK_ClockSourceMap (CLK_SOURCES_SYSTEM clockSource)
-{
-	switch(clockSource)
-	{
-		case SYS_CLK_SOURCE_FRC_SYSPLL:
-			return OSC_FRC_WITH_PLL;
-		case SYS_CLK_SOURCE_PRIMARY:
-			return OSC_PRIMARY;
-		case SYS_CLK_SOURCE_PRIMARY_SYSPLL:
-			return OSC_PRIMARY_WITH_PLL;
-		case SYS_CLK_SOURCE_SECONDARY:
-			return OSC_SECONDARY;
-		case SYS_CLK_SOURCE_LPRC:
-			return OSC_LPRC;
-        case SYS_CLK_SOURCE_BKP_FRC:
-            return OSC_BFRC;
-		case SYS_CLK_SOURCE_FRC_BY_16:
-			return OSC_FRC_BY_FRCDIV;
-		case SYS_CLK_SOURCE_FRC_BY_DIV:
-			return OSC_FRC_BY_FRCDIV;
-		default:
-			return 0xff;
-	}
-
-}
+//}
 
 /******************************************************************************
   Function:
@@ -268,13 +267,12 @@ OSC_SYS_TYPE _SYS_CLK_ClockSourceMap (CLK_SOURCES_SYSTEM clockSource)
   Remarks:
     None.
 */
-uint32_t _SYS_CLK_PLLInputDividerRead ( void )
-{
-    return TO_U32(PLIB_OSC_SysPLLInputDivisorGet(OSC_PLIB_ID) + 1);
-}
+//uint32_t _SYS_CLK_PLLInputDividerRead ( void )
+//{
+//    return TO_U32(PLIB_OSC_SysPLLInputDivisorGet(OSC_PLIB_ID) + 1);
+//}
 
 
-#error here
 /******************************************************************************
   Function:
     uint32_t _SYS_CLK_SystemClockRead ( void )
@@ -410,45 +408,45 @@ _SYS_CLK_SystemClockRead(void)
     None.
 */
 #include <limits.h>		/* klb: so i can silence compiler @ end of function SYS_CLK_ClosestFactorsGet() */
-unsigned long
-SYS_CLK_ClosestFactorsGet(
-		unsigned long sourceFrequency, unsigned long requestedFrequency,
-		unsigned char *valueToPLLMULT, unsigned char *valueToPLLODIV)
-{
-	uint8_t multCount = 0, divCount = 0;
-	uint16_t multiplier = 0, divisor = 0;
-	uint32_t inputDivisor = 0;
-	unsigned long tempFrequency = 0;
-
-	inputDivisor = _SYS_CLK_PLLInputDividerRead();
-
-	for(multCount = 1; multCount <= 128; ++multCount)
-	{
-		multiplier = multCount;
-
-		for(divCount = 0; divCount <= 5; ++divCount)
-		{
-			/* Implementation unique to MZ chip family */
-			if(divCount == 0)
-			{
-				divCount++;
-			}
-
-			divisor = TO_U16(0x01U << divCount);	/* klb: silence compiler */
-
-			tempFrequency = (sourceFrequency / inputDivisor) * multiplier / divisor;
-
-			if((abs(TO_INT(requestedFrequency) - TO_INT(tempFrequency))) <= SYS_CLK_CONFIG_FREQ_ERROR_LIMIT)
-			{
-				*valueToPLLMULT = TO_U8(multiplier);	/* klb: silence compiler. is the data loss an issue? */
-				*valueToPLLODIV = divCount;
-				return tempFrequency;
-			}
-		}
-	}
-
-	return ULONG_MAX;		/* klb: silence compiler */
-}
+//unsigned long
+//SYS_CLK_ClosestFactorsGet(
+//		unsigned long sourceFrequency, unsigned long requestedFrequency,
+//		unsigned char *valueToPLLMULT, unsigned char *valueToPLLODIV)
+//{
+//	uint8_t multCount = 0, divCount = 0;
+//	uint16_t multiplier = 0, divisor = 0;
+//	uint32_t inputDivisor = 0;
+//	unsigned long tempFrequency = 0;
+//
+//	inputDivisor = _SYS_CLK_PLLInputDividerRead();
+//
+//	for(multCount = 1; multCount <= 128; ++multCount)
+//	{
+//		multiplier = multCount;
+//
+//		for(divCount = 0; divCount <= 5; ++divCount)
+//		{
+//			/* Implementation unique to MZ chip family */
+//			if(divCount == 0)
+//			{
+//				divCount++;
+//			}
+//
+//			divisor = TO_U16(0x01U << divCount);	/* klb: silence compiler */
+//
+//			tempFrequency = (sourceFrequency / inputDivisor) * multiplier / divisor;
+//
+//			if((abs(TO_INT(requestedFrequency) - TO_INT(tempFrequency))) <= SYS_CLK_CONFIG_FREQ_ERROR_LIMIT)
+//			{
+//				*valueToPLLMULT = TO_U8(multiplier);	/* klb: silence compiler. is the data loss an issue? */
+//				*valueToPLLODIV = divCount;
+//				return tempFrequency;
+//			}
+//		}
+//	}
+//
+//	return ULONG_MAX;		/* klb: silence compiler */
+//}
 
 
 /******************************************************************************
@@ -468,36 +466,36 @@ SYS_CLK_ClosestFactorsGet(
     None.
 */
 
-uint32_t
-SYS_CLK_FRCClosestDivisorGet(unsigned char regValue, unsigned char *valueToReg, uint32_t requestedFrequency)
-{
-	uint8_t index = 0;
-	uint16_t divisor = 0;
-	uint32_t tempFrequency = 0, PrevFrequency = 0;
-
-	UNUSED(regValue);
-
-	for(index = 0; index < 8; index++)
-	{
-		divisor = index;
-		/* Here the code is too specific to PIC32MX. The code may not be so easily
-		 usable for other controllers. But seems like this is the best way to avoid
-		 RAM usage for lookup tables */
-		if(divisor == 7)
-		{
-			divisor++;
-		}
-
-		tempFrequency = TO_U32(SYS_CLK_FRC_CLOCK / ( 0x01 << divisor ));
-
-		if((abs(TO_INT(requestedFrequency) - TO_INT(tempFrequency))) < (abs(TO_INT(requestedFrequency) - TO_INT(PrevFrequency))))
-		{
-			PrevFrequency = tempFrequency;
-			*valueToReg = index;
-		}
-	}
-	return PrevFrequency;
-}
+//uint32_t
+//SYS_CLK_FRCClosestDivisorGet(unsigned char regValue, unsigned char *valueToReg, uint32_t requestedFrequency)
+//{
+//	uint8_t index = 0;
+//	uint16_t divisor = 0;
+//	uint32_t tempFrequency = 0, PrevFrequency = 0;
+//
+//	UNUSED(regValue);
+//
+//	for(index = 0; index < 8; index++)
+//	{
+//		divisor = index;
+//		/* Here the code is too specific to PIC32MX. The code may not be so easily
+//		 usable for other controllers. But seems like this is the best way to avoid
+//		 RAM usage for lookup tables */
+//		if(divisor == 7)
+//		{
+//			divisor++;
+//		}
+//
+//		tempFrequency = TO_U32(SYS_CLK_FRC_CLOCK / ( 0x01 << divisor ));
+//
+//		if((abs(TO_INT(requestedFrequency) - TO_INT(tempFrequency))) < (abs(TO_INT(requestedFrequency) - TO_INT(PrevFrequency))))
+//		{
+//			PrevFrequency = tempFrequency;
+//			*valueToReg = index;
+//		}
+//	}
+//	return PrevFrequency;
+//}
 
 /******************************************************************************
   Function:
@@ -516,16 +514,16 @@ SYS_CLK_FRCClosestDivisorGet(unsigned char regValue, unsigned char *valueToReg, 
   Remarks:
     None.
 */
-bool
-SYS_CLK_FrequencyErrorCheck(unsigned long inpFreq, unsigned long acheivedFreq)
-{
-    /* Get the difference between frequency requested and achieved  */
-    if(abs(TO_INT(inpFreq) - TO_INT(acheivedFreq)) > SYS_CLK_CONFIG_FREQ_ERROR_LIMIT)
-    {
-        return false;
-    }
-    return true;
-}
+//bool
+//SYS_CLK_FrequencyErrorCheck(unsigned long inpFreq, unsigned long acheivedFreq)
+//{
+//    /* Get the difference between frequency requested and achieved  */
+//    if(abs(TO_INT(inpFreq) - TO_INT(acheivedFreq)) > SYS_CLK_CONFIG_FREQ_ERROR_LIMIT)
+//    {
+//        return false;
+//    }
+//    return true;
+//}
 
 
 /******************************************************************************
@@ -541,94 +539,96 @@ SYS_CLK_FrequencyErrorCheck(unsigned long inpFreq, unsigned long acheivedFreq)
   Remarks:
     None.
 */
-int8_t SYS_CLK_SystemClockSourceSwitch(CLK_SOURCES_SYSTEM clockSource, unsigned char valueToPLLMULT, unsigned char valueToPLLODIV, bool waitUntilComplete ) {
-    uint32_t delay= 100;
-    OSC_SYS_TYPE oscSource = _SYS_CLK_ClockSourceMap(clockSource);
+//int8_t SYS_CLK_SystemClockSourceSwitch(CLK_SOURCES_SYSTEM clockSource, unsigned char valueToPLLMULT, unsigned char valueToPLLODIV, bool waitUntilComplete ) {
+//    uint32_t delay= 100;
+//    OSC_SYS_TYPE oscSource = _SYS_CLK_ClockSourceMap(clockSource);
+//
+//    /* Check whether PLL and clock selections are locked */
+//    if( PLIB_OSC_PLLClockIsLocked ( OSC_PLIB_ID ) != true )
+//    {
+//        /* Unlock before you switch */
+//        SYS_DEVCON_SystemUnlock ( );
+//
+//        /* Special treatment if the source is a PLL based source. Do not change
+//        multipliers after switching. Switch to a FRC source first, then alter
+//        the multiplier values. */
+//        if ( ( ( clockSource == SYS_CLK_SOURCE_PRIMARY_SYSPLL ) ) ||
+//            ( clockSource == SYS_CLK_SOURCE_FRC_SYSPLL ) )
+//        {
+//            PLIB_OSC_SysClockSelect( OSC_PLIB_ID, OSC_FRC_BY_FRCDIV );
+//
+//            /* Ensure that we are not on a PLL based source before switching */
+//
+//            /* Write the values before switching. Datasheet says so. */
+//            PLIB_OSC_SysPLLMultiplierSelect ( OSC_PLIB_ID, valueToPLLMULT );
+//            PLIB_OSC_SysPLLOutputDivisorSet ( OSC_PLIB_ID, valueToPLLODIV );
+//
+//            /* Switch to a PLL source */
+//            PLIB_OSC_SysClockSelect( OSC_PLIB_ID, oscSource );
+//
+//            delay = SYS_CLK_SYSPLL_LOCK_DELAY_80MHZ;
+//
+//            /* Wait till the PLL settles down / locked  */
+//            clkObject.systemClockStatus = SYS_CLK_OPERATION_IN_PROGRESS;
+//
+//            /* Device expects this delay. We are changing the System clock source here,
+//            On debugging sometimes the code just stops without this delay. Have to
+//            understand this further and fine tune this delay. */
+////            Nop();
+////            Nop();
+////            Nop();
+//
+//            if ( waitUntilComplete == true )
+//            {
+//                #if defined (PLIB_OSC_ExistsPLLLockStatus)
+//                while ( PLIB_OSC_PLLIsLocked ( OSC_PLIB_ID, OSC_PLL_SYSTEM ) != true )
+//                #endif
+//                {
+//                    if ( delay-- <= 0 )
+//                    {
+//                    /* Rarest case. Either the PLL lock failed or the bit is showing
+//                    the wrong status, A restart needed, an error status update will
+//                    not help */
+////                    clkObject.systemClockStatus = SYS_CLK_OPERATION_FAIL_PLL_LOCK_TIMEOUT;
+//
+//                    //SYS_ASSERT("PLL lock timeout");
+////                    Nop();
+//                    /* Reaching here means clock switching is not enabled
+//                     through configuration bits */
+//                    return -1;
+//                    }
+//                }
+//                clkObject.systemClockStatus = SYS_CLK_OPERATION_COMPLETE;
+//            }
+//        }
+//        else
+//        {
+//            /* If the new oscillator is not a PLL source, the one we are running on may
+//            be. So switch first before setting the divisor */
+//            PLIB_OSC_SysClockSelect( OSC_PLIB_ID, oscSource );
+//
+//            if ( clockSource == SYS_CLK_SOURCE_FRC_BY_DIV )
+//            {
+//                PLIB_OSC_FRCDivisorSelect ( OSC_PLIB_ID, valueToPLLMULT );
+//            }
+//        }
+//
+//        /* Lock it before going back */
+//        SYS_DEVCON_SystemLock ( );
+//
+//        /* Return something which is not equal to '-1'. Let us return the clock source
+//        itself */
+//        return clockSource;
+//    }
+//    return -1;
+//}
 
-    /* Check whether PLL and clock selections are locked */
-    if( PLIB_OSC_PLLClockIsLocked ( OSC_PLIB_ID ) != true )
-    {
-        /* Unlock before you switch */
-        SYS_DEVCON_SystemUnlock ( );
 
-        /* Special treatment if the source is a PLL based source. Do not change
-        multipliers after switching. Switch to a FRC source first, then alter
-        the multiplier values. */
-        if ( ( ( clockSource == SYS_CLK_SOURCE_PRIMARY_SYSPLL ) ) ||
-            ( clockSource == SYS_CLK_SOURCE_FRC_SYSPLL ) )
-        {
-            PLIB_OSC_SysClockSelect( OSC_PLIB_ID, OSC_FRC_BY_FRCDIV );
-
-            /* Ensure that we are not on a PLL based source before switching */
-
-            /* Write the values before switching. Datasheet says so. */
-            PLIB_OSC_SysPLLMultiplierSelect ( OSC_PLIB_ID, valueToPLLMULT );
-            PLIB_OSC_SysPLLOutputDivisorSet ( OSC_PLIB_ID, valueToPLLODIV );
-
-            /* Switch to a PLL source */
-            PLIB_OSC_SysClockSelect( OSC_PLIB_ID, oscSource );
-
-            delay = SYS_CLK_SYSPLL_LOCK_DELAY_80MHZ;
-
-            /* Wait till the PLL settles down / locked  */
-            clkObject.systemClockStatus = SYS_CLK_OPERATION_IN_PROGRESS;
-
-            /* Device expects this delay. We are changing the System clock source here,
-            On debugging sometimes the code just stops without this delay. Have to
-            understand this further and fine tune this delay. */
-//            Nop();
-//            Nop();
-//            Nop();
-
-            if ( waitUntilComplete == true )
-            {
-                #if defined (PLIB_OSC_ExistsPLLLockStatus)
-                while ( PLIB_OSC_PLLIsLocked ( OSC_PLIB_ID, OSC_PLL_SYSTEM ) != true )
-                #endif
-                {
-                    if ( delay-- <= 0 )
-                    {
-                    /* Rarest case. Either the PLL lock failed or the bit is showing
-                    the wrong status, A restart needed, an error status update will
-                    not help */
-//                    clkObject.systemClockStatus = SYS_CLK_OPERATION_FAIL_PLL_LOCK_TIMEOUT;
-
-                    //SYS_ASSERT("PLL lock timeout");
-//                    Nop();
-                    /* Reaching here means clock switching is not enabled
-                     through configuration bits */
-                    return -1;
-                    }
-                }
-                clkObject.systemClockStatus = SYS_CLK_OPERATION_COMPLETE;
-            }
-        }
-        else
-        {
-            /* If the new oscillator is not a PLL source, the one we are running on may
-            be. So switch first before setting the divisor */
-            PLIB_OSC_SysClockSelect( OSC_PLIB_ID, oscSource );
-
-            if ( clockSource == SYS_CLK_SOURCE_FRC_BY_DIV )
-            {
-                PLIB_OSC_FRCDivisorSelect ( OSC_PLIB_ID, valueToPLLMULT );
-            }
-        }
-
-        /* Lock it before going back */
-        SYS_DEVCON_SystemLock ( );
-
-        /* Return something which is not equal to '-1'. Let us return the clock source
-        itself */
-        return clockSource;
-    }
-    return -1;
-}
-
-
-#endif								/* } */
-
-/** Rev string specifically to address the following GCC warning:
+#else
+/** Rev string specifically located here, to address the following GCC warning:
  *	"ISO C forbids an empty translation unit [-Wpedantic]"
  */
 static char const * const sys_clk_pic32mz_RevString = "$Revision: 0123 $";
+void sysclk_foo(void) { (void)sys_clk_pic32mz_RevString; }
+
+#endif								/* } */

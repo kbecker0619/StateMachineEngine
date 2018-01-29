@@ -19,7 +19,7 @@
 // ============================================================================
 
 #include "projcfg.h"
-#if defined(USE_SYS_CLK)			/* { */
+#if (USE_SYS_CLK)					/* { */
 
 // ----	System Headers --------------------------
 #include <stddef.h>
@@ -30,6 +30,7 @@
 // ----	Module Headers --------------------------
 #include "system/clk/sys_clk.h"
 #include "sys_clk_local.h"
+#include "sys_clk_i386.h"
 
 
 // ============================================================================
@@ -47,8 +48,6 @@
 // ============================================================================
 // ----	Module-level Variables ------------------------------------------------
 // ============================================================================
-static char const * const sys_clk_RevString = "$Revision: 0123 $";
-
 SYS_CLK_OBJECT clkObject;
 
 
@@ -59,17 +58,19 @@ SYS_CLK_OBJECT clkObject;
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
-#include "sys_clk_i386.h"
+
+
 void
 SYS_CLK_Initialize ( const SYS_CLK_INIT *clkInit )
 {
 	UNUSED(clkInit);
-	UNUSED(sys_clk_RevString);
 
 	clkObject.systemClock = _SYS_CLK_SystemClockRead();
 	clkObject.callback = NULL;
-
 }
 
+#else
+static char const * const sys_clk_RevString = "$Revision: 0123 $";
+void SYS_CLK_Initialize ( const void *clkInit ) { (void)(sys_clk_RevString); }
 
 #endif								/* } */

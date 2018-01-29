@@ -26,7 +26,6 @@ extern "C" {
 // ============================================================================
 
 #include "projcfg.h"
-#if defined(USE_SYS_CLK)			/* { */
 
 // ----	System Headers --------------------------
 
@@ -56,6 +55,9 @@ extern "C" {
     optional and not every system will use it. There are dedicated APIs for
     configuring those.
 */
+/* note: this struct specifically placed outside of the "USE CLK" conditional because the init
+ * function uses the type.
+ */
 #include "system/sys_module.h"		/* SYS_MODULE_INIT */
 typedef    struct
 {
@@ -64,6 +66,8 @@ typedef    struct
 
 } SYS_CLK_INIT;
 
+
+#if defined(USE_SYS_CLK)			/* { */
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
