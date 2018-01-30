@@ -22,5 +22,3 @@ In addition, I've resurrected my interest in my Calypso board, and I also want t
 To each, need to add command-line symbol	''XPRJ_${ConfigName}=1''
 
 Added symlink to cwsw_lib, and that to include paths
-
-
