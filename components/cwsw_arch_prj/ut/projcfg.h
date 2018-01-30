@@ -152,9 +152,9 @@ extern "C" {
 	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
 
 	/* enable or disable individual architectural features */
-	#define USE_SYS_CLK					false	/* For modules that need the Clock module. In most cases, this will be true */
-	#define USE_SYS_DEVCON				false	/* For modules that need the Device Control functionality */
-	#define USE_SYS_PORTS				true	/* Enable for modules that use GPIO ports */
+	#define USE_SYS_CLK					(1)		/* For modules that need the Clock module. In most cases, this will be true */
+	#define USE_SYS_DEVCON				(0)		/* For modules that need the Device Control functionality */
+	#define USE_SYS_PORTS				(1)		/* Enable for modules that use GPIO ports */
 
 #endif
 
@@ -162,9 +162,9 @@ extern "C" {
 	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
 
 	/* enable or disable individual architectural features */
-	#define USE_SYS_CLK					(true)
-	#define USE_SYS_DEVCON				(false)
-	#define USE_SYS_PORTS				(true)
+	#define USE_SYS_CLK					(1)
+	#define USE_SYS_DEVCON				(0)
+	#define USE_SYS_PORTS				(1)
 
 #else
 
@@ -182,19 +182,19 @@ extern "C" {
 
 #if (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk == pic32mz_ef_sk)
 	/* define stuff that MPLAB defines on the command line */
-//    #define pic32mz_ef_sk               (1)
+//    #define pic32mz_ef_sk             (1)
 	#if !defined(__PIC32M)
 		#define __PIC32M
 		#define __LANGUAGE_ASSEMBLY__
 
-		#define __32MZ1024EFM144__	1	/* used in ports selection */
+		#define __32MZ1024EFM144__      1	/* used in ports selection */
 
 	#endif
 
 	/* enable or disable individual architectural features */
-	#define USE_SYS_CLK					(true)
-	#define USE_SYS_DEVCON				(true)
-	#define USE_SYS_PORTS				(true)
+	#define USE_SYS_CLK					(1)
+	#define USE_SYS_DEVCON				(1)
+	#define USE_SYS_PORTS				(1)
 
 #else
 

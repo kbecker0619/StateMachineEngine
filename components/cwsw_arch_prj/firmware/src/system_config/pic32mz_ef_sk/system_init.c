@@ -2,17 +2,17 @@
   System Initialization File
 
   File Name:
-    system_init.c
+	system_init.c
 
   Summary:
-    This file contains source code necessary to initialize the system.
+	This file contains source code necessary to initialize the system.
 
   Description:
-    This file contains source code necessary to initialize the system.  It
-    implements the "SYS_Initialize" function, defines the configuration bits,
-    and allocates any necessary global system resources, such as the
-    sysObj structure that contains the object handles to all the MPLAB Harmony
-    module objects in the system.
+	This file contains source code necessary to initialize the system.  It
+	implements the "SYS_Initialize" function, defines the configuration bits,
+	and allocates any necessary global system resources, such as the
+	sysObj structure that contains the object handles to all the MPLAB Harmony
+	module objects in the system.
  *******************************************************************************/
 
 // DOM-IGNORE-BEGIN
@@ -140,13 +140,13 @@ SYSTEM_OBJECTS sysObj;
 // <editor-fold defaultstate="collapsed" desc="SYS_CLK Initialization Data">
 // *****************************************************************************
 /* System Clock Initialization Data
-*/
-const SYS_CLK_INIT sysClkInit =
-{
-    .moduleInit = {0},
-    .systemClockFrequencyHz = SYS_CLK_FREQ,
-    .waitTillComplete = true,
-    .onWaitInstruction = SYS_CLK_ON_WAIT,
+ */
+const SYS_CLK_INIT sysClkInit ={
+	.moduleInit =
+	{0},
+	.systemClockFrequencyHz = SYS_CLK_FREQ,
+	.waitTillComplete = true,
+	.onWaitInstruction = SYS_CLK_ON_WAIT,
 };
 // </editor-fold>
 
@@ -164,55 +164,57 @@ const SYS_CLK_INIT sysClkInit =
 
 /*******************************************************************************
   Function:
-    void SYS_Initialize ( void *data )
+	void SYS_Initialize ( void *data )
 
   Summary:
-    Initializes the board, services, drivers, application and other modules.
+	Initializes the board, services, drivers, application and other modules.
 
   Remarks:
-    See prototype in system/common/sys_module.h.
+	See prototype in system/common/sys_module.h.
  */
 
-void SYS_Initialize ( void* data )
+void SYS_Initialize(void* data)
 {
-    /* Core Processor Initialization */
-	do {
-		if(USE_SYS_CLK)
+	/* Core Processor Initialization */
+	do
+	{
+		if (USE_SYS_CLK)
 		{
-			SYS_CLK_Initialize( NULL );
+			SYS_CLK_Initialize(NULL);
 		}
-		if(USE_SYS_DEVCON)
+		if (USE_SYS_DEVCON)
 		{
-			SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)NULL);
+			SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*) NULL);
 			SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
 		}
-		if(USE_SYS_PORTS)
+		if (USE_SYS_PORTS)
 		{
 			SYS_PORTS_Initialize();
 		}
-	} while(0);
+	}
+	while (0);
 
-    /* Board Support Package Initialization */
-    BSP_Initialize();        
+	/* Board Support Package Initialization */
+	BSP_Initialize();
 
-    /* Initialize Drivers */
+	/* Initialize Drivers */
 
-    /* Initialize System Services */
+	/* Initialize System Services */
 
-    /*** Interrupt Service Initialization Code ***/
-    SYS_INT_Initialize();
+	/*** Interrupt Service Initialization Code ***/
+	SYS_INT_Initialize();
 
-    /* Initialize Middleware */
+	/* Initialize Middleware */
 
-    /* Enable Global Interrupts */
-    SYS_INT_Enable();
+	/* Enable Global Interrupts */
+	SYS_INT_Enable();
 
-    /* Initialize the Application */
-    APP_Initialize();
+	/* Initialize the Application */
+	APP_Initialize();
 }
 
 
 /*******************************************************************************
  End of File
-*/
+ */
 
