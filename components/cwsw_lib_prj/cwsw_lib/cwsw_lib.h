@@ -58,6 +58,17 @@ enum { kModuleiId_Lib = 0 };//!< kModuleiId_Lib
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
+/** Module initialization function.
+ *	This function shall be called before the main scheduler is started.
+ *	This function's responsibility is to set up the local vars, and manage the necessary HW, to
+ *	prepare for the task function's 1st call (once the scheduler has been started).
+ *	@returns error code, or 0 for no problem (i.e., success).
+ */
+extern uint16_t 			Cwsw_Lib__Init(void);
+
+/** Target for Get(Cwsw_Lib, Initialized) interface. */
+extern bool 				Cwsw_Lib__Get_Initialized(void);
+
 
 /*	===	definitions common to all environments ================================
  */
@@ -71,9 +82,14 @@ enum { kModuleiId_Lib = 0 };//!< kModuleiId_Lib
 /**	Extract the high-order byte out of a 16-bit word. */
 #define MSB_16(word16)	(uint8_t)(((uint16_t)word16 / 256U) & (uint8_t)0xFF)
 
-/** Coerce var to a U8. Usage of this indicates you intend to convert incompatible types. */
+/** Coerce parameter to a U8 (i.e., unsigned byte).
+ *	Usage of this indicates you intend to convert incompatible types, perhaps more clearly than a
+ *	simple cast might.
+ */
 #define TO_U8(a)		(uint8_t)(a)
-/** Coerce var to a S8. Usage of this indicates you intend to convert incompatible types. */
+/** Coerce parameter to a S8 (i.e., signed byte).
+ *	Usage of this indicates you intend to convert incompatible types, perhaps more clearly than a
+ *	simple cast might. */
 #define TO_S8(a)		(int8_t)(a)
 /** Coerce var to a U16. Usage of this indicates you intend to convert incompatible types. */
 #define TO_U16(a)		(uint16_t)(a)
@@ -83,6 +99,16 @@ enum { kModuleiId_Lib = 0 };//!< kModuleiId_Lib
 #define TO_U32(a)		(uint32_t)(a)
 /** Coerce var to a S32. Usage of this indicates you intend to convert incompatible types. */
 #define TO_S32(a)		(int32_t)(a)
+
+/** Coerce parameter to a plain-Jane 'int'.
+ *	While many coding standards, including MISRA, specifically prohibit the willy-nilly,
+ *	uncontrolled usage of the built-in canonical types of 'C', nevertheless there are times when
+ *	you may want to use the native format of the CPU's register (which is the definition of 'int').
+ *	One example might be, in a complex formula where the compiler is complaining that transient
+ *	calculations might force a conversion to or from 'int', you can use this to specifically
+ *	suppress the warning. Usage implies that the review board accepts the justification supplied as
+ *	part of the review process.
+ */
 #define TO_INT(a)		(int)(a)
 
 /**	Determine if "val" is in between values "low" and "hi", inclusive.
@@ -92,10 +118,43 @@ enum { kModuleiId_Lib = 0 };//!< kModuleiId_Lib
 #define IN_RANGE(val, low, hi)	(((val) <= (low)) && ((val) >= (hi)))
 
 
-#define BIT_TEST(mem, bit)		((mem)&(1U<<(bit)))
+/** @defgroup bitmap_api	Bit Manipulation and Test
+ *	@{
+ */
+/** Extract the value of a specific bit within a scalar bitmap.
+ *	@param mem	A value of any integral type.
+ *	@param bit 	Base-0 bit number.
+ *	@note Does not work on array (vector) bitmaps.
+ *	@ingroup bitmap_api
+ */
+#define BIT_TEST(mem, bit)		!!((mem)&(1U<<(bit)))
+
+/** Set the specified bit i8n a bitmap.
+ *	@param mem	A value of any integral type.
+ *	@param bit	Base-0 bit number.
+ *	@note Does not work on array (vector) bitmaps.
+ *	@ingroup bitmap_api
+ */
 #define BIT_SET(mem, bit)		((mem)|=(1U<<(bit)))
+
+/** Clear (reset) the specified bit in a bitmap.
+ *	@param mem	A value of any integral type.
+ *	@param bit	Base-0 bit number.
+ *	@note Does not work on array (vector) bitmaps.
+ *	@ingroup bitmap_api
+ */
 #define BIT_CLR(mem, bit)		((mem)&=~(1U<<(bit)))
+
+/** Flip a bit in a bitmap.
+ *	Sets the bit if it was clear (reset) before invocation, or resets the bit if it was set.
+ *	@param mem	A value of any integral type.
+ *	@param bit	Base-0 bit number.
+ *	@note Does not work on array (vector) bitmaps.
+ *	@ingroup bitmap_api
+ */
 #define BIT_TOGGLE(mem, bit)	((mem)^=(1U<<(bit)))
+
+/** @} */
 
 
 /** Determine the number of elements in a table */
@@ -142,7 +201,7 @@ enum { kModuleiId_Lib = 0 };//!< kModuleiId_Lib
  *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
  *	Eclipse, NetBeans, etc.), and select Go To Definition.
  */
-enum { Cwsw_Lib };	/* CWSW Library */
+enum { Cwsw_Lib };	/* CWSW Library *///!< Cwsw_Lib
 
 
 /**	Abstract module initialization.
@@ -275,15 +334,6 @@ typedef void (*fpTask)(void);
 
 #endif
 
-
-/** Module initialization function.
- *	This function shall be called before the main scheduler is started.
- *	This function's responsibility is to set up the local vars, and manage the necessary HW, to
- *	prepare for the task function's 1st call (once the scheduler has been started).
- *	@returns error code, or 0 for no problem (i.e., success).
- */
-extern uint16_t 			Cwsw_Lib__Init(void);
-
 #include <assert.h>
 /** CWSW assertion check.
  *	The intent of this function is not exactly the same as that of the canonical assert() statement
@@ -296,9 +346,6 @@ extern uint16_t 			Cwsw_Lib__Init(void);
 
 /** Target symbol for Get(Cwsw_Lib, xxx) interface */
 #define Cwsw_Lib__Get(a)	Cwsw_Lib__Get_ ## a()
-
-/** Target for Get(Cwsw_Lib, Initialized) interface */
-extern bool 				Cwsw_Lib__Get_Initialized(void);
 
 
 #ifdef	__cplusplus

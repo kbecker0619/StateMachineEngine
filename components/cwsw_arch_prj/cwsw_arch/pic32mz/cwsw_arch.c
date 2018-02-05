@@ -178,7 +178,6 @@ Cwsw_Arch__Get_Initialized(void)
  *		@subpage Arch_Resources \n
  *		@subpage Arch_Interfaces \n
  *		@subpage Arch_Main_Obj_Diag \n
- *		@subpage Arch_Seq_Diag_Fail \n
  *		@subpage Arch_Dsm \n
  */
 
@@ -195,39 +194,9 @@ Cwsw_Arch__Get_Initialized(void)
 	 *		CWSW Library.
 	 */
 
-	/**	\page Arch_Interactions				Interactions
-	 *	@tableofcontents
-	 *	-	TBD
-	 */
-
 	/**	\page Arch_Resources        	   	Resources
 	 *	@tableofcontents
 	 *	TBD
-	 */
-
-	/**	\page Arch_Interfaces          		Interfaces
-	 *	@tableofcontents
-	 *	In this module, we are introducing several proposed new interfaces.
-	 *
-	 *	@subpage Arch_interfaces_headers	\n
-	 *	@subpage Arch_interfaces_abstraction
-	 */
-
-	/**	\page Arch_interfaces_abstraction	Abstraction Macro Interfaces
-	 *	@tableofcontents
-	 *	The motivation for the first of the two following proposals, comes from the Dish desire to
-	 *	avoid placing direct references within a module, to other modules.  This is motivated by a
-	 *	desire to improve reusability.  Since fulfilling this abstraction requires macros in the
-	 *	PRV headers, we are proposing a generalization of this abstraction.
-	 *
-	 *	@subpage Get_Macro \n
-	 *	@subpage Set_Macro \n
-	 *	@subpage Notify_Macro \n
-	 */
-
-	/**	\page Arch_Seq_Diag_Fail	        CLSA Failures Sequence Diagram
-	 *	@tableofcontents
-     *	\image html sdCLSA__FailureCheck.jpg "Failures Detection - Details TBD"
 	 */
 
 /**	@page Arch_Integration					Integrating the Reusable Component

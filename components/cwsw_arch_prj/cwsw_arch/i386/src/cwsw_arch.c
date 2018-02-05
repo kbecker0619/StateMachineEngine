@@ -83,7 +83,11 @@ Cwsw_Arch__Init(void)
 	UNUSED(cwsw_arch_RevString);
 	// for desktop use, there's really not much to do here.
 
-    /* Core Processor Initialization */
+    /* Core Processor Initialization
+     * forgive this flagrant violation of personal ingenuity, but the names and call order is
+     * borrowed, /FOR NOW/, from MHC. I fully intend to absract this so it's my own implementation,
+     * not a blatant borrowing of someone else's favored methods.
+     */
 	SYS_CLK_Initialize( NULL );
 	SYS_DEVCON_Initialize(0, NULL);
 	SYS_DEVCON_PerformanceConfig(0);

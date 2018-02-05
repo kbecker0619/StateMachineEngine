@@ -59,7 +59,6 @@ SYS_CLK_OBJECT clkObject;
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
 
-
 void
 SYS_CLK_Initialize ( const SYS_CLK_INIT *clkInit )
 {
