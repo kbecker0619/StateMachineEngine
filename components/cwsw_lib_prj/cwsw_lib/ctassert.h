@@ -1,4 +1,4 @@
-/** @file ctassert.h
+/** @file
  *	@brief	Compile-time assertion capability.
  *
  *	Description:

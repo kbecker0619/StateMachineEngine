@@ -160,7 +160,15 @@ enum { Cwsw_Lib };	/* CWSW Library */
 typedef uint16_t (*fpInit)(void);
 
 
-/**	Module task function.
+/**	Abstract Module task function.
+ *	The intention is, all modules use the same signature for their task
+ *	function, so make it more obvious to the code maintainer that we're
+ *	using a standardized (template) task function.
+ *
+ *	There is a 2-layer expansion because it is possible the argument could of
+ *	itself be a macro; for example, if the module source, header, and function
+ *	prefixes were all the same, and so a macro was defined to represent that
+ *	module.
  */
 #define Task(instance)	_TASK(instance)
 #define _TASK(instance)	instance ## __Task()
