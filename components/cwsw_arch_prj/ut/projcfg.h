@@ -1,5 +1,5 @@
-/** @file projcfg.h
- *	@brief	Project Configuration for CWSW DIO Library Unit test environment
+/** @file
+ *	@brief	Project Configuration for CWSW Arch Library Unit test environment
  *
  *	Description:
  *
@@ -63,12 +63,12 @@ extern "C" {
  *	Within my development environment, I let Eclipse' New Project Wizard create
  *	its standard Debug and Release configurations, then create new ones for on-
  *	target debugging, as required. I assume my Windows/Linux Debug configuration
- *	is also intended for unit tests, so I rather indiscriminently print things
+ *	is also intended for unit tests, so I rather indiscriminately print things
  *	to the console.
  * ========================================================================= */
 
 /* ==== A FOLLOW-UP WORD ABOUT BUILD TARGETS ==================================
- * ANSI/ISO C says that the preprocesser evaluates an undefined symbol as having
+ * ANSI/ISO C says that the preprocessor evaluates an undefined symbol as having
  * the value '0' - however, many of the environments i'm targeting, and also many
  * of the static analysis tools, emit warnings about usage of undefined symbols
  * in normal C code - and even though i do it when necessary, i have a rather
@@ -95,6 +95,13 @@ extern "C" {
 	/* This configuration is created by Eclipse; we do not want it used */
 	#error For now, do not build with the "Release" build target active
 
+#elif defined(XPRJ_Debug_Win_MinGW)
+	/* This is the configuration intended for development on Windows, using the MinGW tool suite */
+	#define XPRJ_Debug_Linux_GCC		0
+	#define XPRJ_Debug_MSC				0
+	#define	XPRJ_Debug_CVI				0
+	#define XPRJ_Debug_Win_MZ2048EFM	0
+
 #elif defined(XPRJ_Debug_Linux_GCC) || defined(XPRJ_Debug_Linux_GCC_Desktop)
 	/* This is the configuration intended for development & debugging in a Linux VM */
 	/* The 1st is intended to debug on a PowerPC Target from a Linux development environment */
@@ -103,25 +110,14 @@ extern "C" {
 	#define	XPRJ_Debug_MSC				0
 	#define	XPRJ_Debug_Win_MinGW 		0
 
-#elif defined(XPRJ_Debug_Win_MinGW)
-	/* This is the configuration intended for development on Windows, using the MinGW tool suite */
+#elif defined(_CVI_)
+	#define	XPRJ_Debug_CVI				1
+	#define	XPRJ_Debug_MSC				0
+	#define	XPRJ_Debug_Win_MinGW 		0
 	#define XPRJ_Debug_Linux_GCC		0
-	#define XPRJ_Debug_MSC				0
-	#define	XPRJ_Debug_CVI				0
-	#define XPRJ_Debug_Win_MZ2048EFM	0
+	#define XPRJ_pic32mz_ef_sk			0
 
-#elif defined(XPRJ_Debug_Cx_AtmelSamv71)
-	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
-
-#elif defined(XPRJ_Debug_Win_MZ2048EFM) || defined(XPRJ_pic32mz_ef_sk)
-	#define pic32mz_ef_sk				1
-	#define Debug_MZ2048EFM				1
-	#define XPRJ_Debug_Linux_GCC		0
-	#define XPRJ_Debug_Win_MinGW		0
-	#define XPRJ_Debug_MSC				0
-	#define	XPRJ_Debug_CVI				0
-
-#elif defined(XPRJ_Debug_MSC)
+#elif (XPRJ_Debug_MSC)
 	/* Visual Studio 8, which is decidedly shy of C11 */
 	/* NOTE: VS8 does not ship w/ headers <stdint.h> or <stdbool.h>, so i found alternate versions
 	 * and copied them into my install directory. i happened to find some web sites w/ versions
@@ -131,12 +127,25 @@ extern "C" {
 	#define XPRJ_Debug_Win_MinGW	false
 	#define	XPRJ_Debug_CVI			false
 
-#elif defined(_CVI_)
-	#define	XPRJ_Debug_CVI				1
-	#define	XPRJ_Debug_MSC				0
-	#define	XPRJ_Debug_Win_MinGW 		0
+#elif (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk)
+	#define pic32mz_ef_sk				1
+	#define Debug_MZ2048EFM				1
+	#define XPRJ_Debug_Win_MinGW		0
 	#define XPRJ_Debug_Linux_GCC		0
-	#define XPRJ_pic32mz_ef_sk			0
+	#define	XPRJ_Debug_CVI				0
+	#define XPRJ_Debug_MSC				0
+
+#elif (XPRJ_Debug_Cx_AtmelSamv71)
+	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
+
+#elif (XPRJ_Debug_XC_MPC57xx_DevKit) || (XPRJ_Debug_XC_MPC57xx_DevKit_RAM)
+	/* This configuration is intended for the NXP Calypso Dev Board */
+#define pic32mz_ef_sk				(-1)
+#define Debug_MZ2048EFM				(0)
+#define XPRJ_Debug_Win_MinGW		(0)
+#define XPRJ_Debug_Linux_GCC		(0)
+#define	XPRJ_Debug_CVI				(0)
+#define XPRJ_Debug_MSC				(0)
 
 #else
 #error Must define Eclipse symbol XPRJ_${ConfigName}

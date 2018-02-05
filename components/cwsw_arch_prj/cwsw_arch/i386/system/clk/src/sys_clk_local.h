@@ -1,4 +1,4 @@
-/** @file sys_clk_local.h
+/** @file
  *	@brief	One-sentence short description of file.
  *
  *	Description:

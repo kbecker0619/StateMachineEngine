@@ -1,4 +1,4 @@
-/** @file sys_ports_static.c
+/** @file
  *	@brief	One-sentence short description of file.
  *
  *	Description:

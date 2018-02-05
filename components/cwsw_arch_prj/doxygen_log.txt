@@ -1,0 +1,23 @@
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/cwsw_lib.h:210: warning: explicit link request to 'true' could not be resolved
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/cwsw_lib.h:210: warning: explicit link request to 'false' could not be resolved
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:39: warning: unable to resolve reference to `StateEngine' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:41: warning: unable to resolve reference to `Arch_srs' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:78: warning: unable to resolve reference to `Arch_Composition' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:84: warning: unable to resolve reference to `Arch_Main_Obj_Diag' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:88: warning: unable to resolve reference to `Arch_Dsm' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:122: warning: unable to resolve reference to `Arch_interfaces_headers' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:133: warning: unable to resolve reference to `Get_Macro' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:135: warning: unable to resolve reference to `Set_Macro' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:137: warning: unable to resolve reference to `Notify_Macro' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/cwsw_arch_common.h:140: warning: image file sdCLSA__FailureCheck.jpg is not found in IMAGE_PATH: assuming external image.
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:108: warning: Found unknown command `\TBD'
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:115: warning: unable to resolve reference to `Lib_Responsibilities' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:117: warning: unable to resolve reference to `Lib_Constraints' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:119: warning: unable to resolve reference to `Lib_Interactions' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:121: warning: unable to resolve reference to `Lib_Composition' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:123: warning: unable to resolve reference to `Lib_Resources' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:125: warning: unable to resolve reference to `Lib_Interfaces' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:127: warning: unable to resolve reference to `Lib_Main_Obj_Diag' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:129: warning: unable to resolve reference to `Lib_Seq_Diag_Fail' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:131: warning: unable to resolve reference to `Lib_Dsm' for \ref command
+E:/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_lib/src/cwsw_lib.c:451: warning: explicit link request to 'false' could not be resolved

@@ -59,3 +59,5 @@ cwsw_extensions.7z
 /Debug_Win_MinGW/
 /Debug/
 /Debug_Linux_GCC/
+/doxygen/
+/doxygen_logtxt

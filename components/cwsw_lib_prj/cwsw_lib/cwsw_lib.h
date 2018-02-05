@@ -1,4 +1,5 @@
-/** @file cwsw_lib.h
+
+/** @file
  *	@brief	API for CWSW Library.
  *
  *	Description:
@@ -42,7 +43,7 @@ extern "C" {
 #define SQSP_LIB_H__REVSTRING "$Revision: 0123 $"
 
 /** Unique ID for each and every module */
-enum { kModuleiId_Lib = 0 };
+enum { kModuleiId_Lib = 0 };//!< kModuleiId_Lib
 
 
 // ============================================================================
@@ -182,12 +183,6 @@ typedef void (*fpTask)(void);
 #define _GET1(thing)			GET_ ## thing()
 
 
-#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wvariadic-macros"
-#else
-
-#endif
 /* intended usage would be:
  * a)	SET(Global_Resource, Value);
  * b)	SET(Module, Module_Resource, Value);
@@ -201,9 +196,6 @@ typedef void (*fpTask)(void);
 //#define SET(item_or_module, value_or_item...)		SET_ ## item_or_module(## value_or_item)
 #define SET(item, value)		_SET1(item, value)
 #define _SET1(item, value)		SET_ ## item(value)
-#if defined(__GNUC__)	/* --- /GNU Environment ----------------------------- */
-#pragma GCC diagnostic pop
-#endif
 
 
 /**	Pre-configured "module" named "Dbg" (Debug) for use with the above Get() API.
@@ -216,80 +208,83 @@ typedef void (*fpTask)(void);
 
 
 /**	Is specified condition true?
- *	@return #TRUE if condition is true, #FALSE otherwise.
+ *	@return #true if condition is true, #false otherwise.
  */
 #define IS(cond)                (bool)(GET(cond) != false)
 
 
 /*	=== dev-on-PC API =========================================================
  */
+/** @fn dbg_printf(format, args...)
+ *	Redirectable replacement for printf() statement.
+ * 	per https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html, variadics used
+ *	as we're using them here, will break on a non-GNU compiler. buyer beware.
+ */
 #if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wvariadic-macros"
-#else
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wvariadic-macros"
+	#define	dbg_printf(format, args...)	(void)printf(format , ## args)
+	#pragma GCC diagnostic pop
 
-#endif
-
-#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
-/*	per https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html, variadics used
- *	as i'm using them here, will break on a non-GNU compiler. buyer beware.
- */
-#if (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
-#define dbg_printf					printf
-#else
-#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wvariadic-macros"
-#endif
-
-#define	dbg_printf(format, args...)	(void)printf(format , ## args)
-
-#if defined(__GNUC__)	/* --- /GNU Environment ----------------------------- */
-#pragma GCC diagnostic pop
-#endif
-#endif
-
-/*	within eclipse, on windows, using mingw, it seems that stdout
- *	buffering is broken. the advice i've found is to disable said
- *	buffering. this is supposed to do that.
- *
- *	the alternative would be to directly open a console window. this
- *	involves changing .gdbinit and is described at
- *	http://stackoverflow.com/questions/13035075/printf-not-printing-on-console
- *	and
- *	https://mirlab.wordpress.com/2014/02/23/no-console-output-in-eclipse-with-cdt-in-windows/
- */
-#define disable_console_buffering()	setvbuf(stdout, NULL, _IONBF, 0)
-
-/**	when built on a PC, it's likely i want to see module elements that we would
- *	otherwise want to keep secret.
- */
-#define PRIVATE						/* nothing */
+#elif defined(_CVI_) || defined(_MSC_VER)
+	#define dbg_printf					printf
 
 #else
-#define dbg_printf(format, args...)	do {} while(0)
-#define disable_console_buffering()	do {} while(0)
-
-
-/**	when built on a PC, it's likely i want to see module elements that we would
- *	otherwise want to keep secret.
- */
-#define PRIVATE				static
+	#define dbg_printf(format, args...)	do {} while(0)
 
 #endif
 
-#if defined(__GNUC__)	/* --- /GNU Environment ----------------------------- */
-#pragma GCC diagnostic pop
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC)
+	/**	Disable console buffering.
+	 * 	Within eclipse, on Windows, using MinGW, it seems that stdout
+	 *	buffering is broken. The advice I've found is to disable said
+	 *	buffering. This is supposed to do that.
+	 *
+	 *	The alternative would be to directly open a console window; this
+	 *	involves changing .gdbinit and is described at
+	 *	http://stackoverflow.com/questions/13035075/printf-not-printing-on-console
+	 *	and
+	 *	https://mirlab.wordpress.com/2014/02/23/no-console-output-in-eclipse-with-cdt-in-windows/
+	 */
+	#define disable_console_buffering()	setvbuf(stdout, NULL, _IONBF, 0)
+
+#else
+	#define disable_console_buffering()	do {} while(0)
+
+#endif
+
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) || defined(_CVI_) || defined(_MSC_VER)
+	/**	When built on a PC, it's likely I want to see module elements that we would
+	 *	otherwise want to keep secret.
+	 */
+	#define PRIVATE						/* nothing */
+
+#else
+	/**	when built on a PC, it's likely i want to see module elements that we would
+	 *	otherwise want to keep secret.
+	 */
+	#define PRIVATE				static
+
 #endif
 
 
-/**	Core library init function. Only needs to be called once, probably by main
- *	application (rather than all components which use this core library).
+/** Module initialization function.
+ *	This function shall be called before the main scheduler is started.
+ *	This function's responsibility is to set up the local vars, and manage the necessary HW, to
+ *	prepare for the task function's 1st call (once the scheduler has been started).
+ *	@returns error code, or 0 for no problem (i.e., success).
  */
 extern uint16_t 			Cwsw_Lib__Init(void);
 
 #include <assert.h>
+/** CWSW assertion check.
+ *	The intent of this function is not exactly the same as that of the canonical assert() statement
+ *	in ISO C; in this implementation, intended as it is for deeply embedded systems, you should be
+ *	able to redirect it to a logging function with breakpoint, or other functionality as
+ *	appropriate.
+ */
 #define cwsw_assert(a)		assert(a)
+
 
 /** Target symbol for Get(Cwsw_Lib, xxx) interface */
 #define Cwsw_Lib__Get(a)	Cwsw_Lib__Get_ ## a()
