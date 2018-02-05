@@ -1,13 +1,7 @@
 # Reusable Component : MCU Architecture Support
 
-[Introduction to the Architecture reusable component](Arch_Introduction)
+This folder is the "parent" for the MCU architectures supported by the CWSW Software libraries.
 
-[Architecture Subsystem Design](Arch_Design)
+There is one directory for each supported architecture; in your build system, simply exclude all architectures except for the one around which your project is built.
 
-[Component Responsibilities](Arch_Responsibilities)
-
-[Integrating the Reusable Component](Arch_Integration)
-
-[StateEngine]
-
-[Arch_srs]
+Please see the detailed design documentation, created by Doxygen, for detailed information.
