@@ -62,3 +62,4 @@ components/cwsw_smeng_c_prj/.settings/com.processorexpert.core.ide.newprojectwiz
 se_ut_c/.settings/com.processorexpert.core.ide.newprojectwizard.prefs
 components/cwsw_clock_prj/cvibuild.cwsw_clock/build.ini
 components/cwsw_clock_prj/arch/PIC32MZ2048EFM/framework_mhc
+/components/cwsw_arch_prj/doxygen_log.txt

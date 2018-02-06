@@ -122,33 +122,33 @@ extern bool 				Cwsw_Lib__Get_Initialized(void);
  *	@{
  */
 /** Extract the value of a specific bit within a scalar bitmap.
- *	@param mem	A value of any integral type.
- *	@param bit 	Base-0 bit number.
+ *	@param[in] mem	A value of any integral type.
+ *	@param[in] bit 	Base-0 bit number.
  *	@note Does not work on array (vector) bitmaps.
  *	@ingroup bitmap_api
  */
 #define BIT_TEST(mem, bit)		!!((mem)&(1U<<(bit)))
 
-/** Set the specified bit i8n a bitmap.
- *	@param mem	A value of any integral type.
- *	@param bit	Base-0 bit number.
+/** Set the specified bit in a bitmap.
+ *	@param[in,out] mem	A value of any integral type.
+ *	@param[in] bit	Base-0 bit number.
  *	@note Does not work on array (vector) bitmaps.
  *	@ingroup bitmap_api
  */
 #define BIT_SET(mem, bit)		((mem)|=(1U<<(bit)))
 
 /** Clear (reset) the specified bit in a bitmap.
- *	@param mem	A value of any integral type.
- *	@param bit	Base-0 bit number.
+ *	@param[in,out] mem	A value of any integral type.
+ *	@param[in] bit	Base-0 bit number.
  *	@note Does not work on array (vector) bitmaps.
  *	@ingroup bitmap_api
  */
 #define BIT_CLR(mem, bit)		((mem)&=~(1U<<(bit)))
 
-/** Flip a bit in a bitmap.
+/** Flip the value of a specified bit in a bitmap.
  *	Sets the bit if it was clear (reset) before invocation, or resets the bit if it was set.
- *	@param mem	A value of any integral type.
- *	@param bit	Base-0 bit number.
+ *	@param[in,out] mem	A value of any integral type.
+ *	@param[in] bit	Base-0 bit number.
  *	@note Does not work on array (vector) bitmaps.
  *	@ingroup bitmap_api
  */
@@ -234,44 +234,35 @@ typedef uint16_t (*fpInit)(void);
 typedef void (*fpTask)(void);
 
 
-/**	NON-PRODUCTION interface to "get" an internal variable.
- *	This is designed to be a sort of extension of the Init(module) and
- *	Task(module) API; in the same way, you "Get(module, attribute)".
+/**	Get the value of a module's resource or attribute.
+ * <dl><dt><b>Usage:</b></dt><dd>Get(Module, Attribute);</dd></dl>
+ * <dl><dt><b>Example:</b></dt><dd><code>bool is_init = Get(Cwsw_Lib, Initialized);</code></dd></dl>
  */
-#define Get(component, resource)				_GetComp1(component, resource)
-#define _GetComp1(component, resource)			component ## __Get(resource)
+#define Get(component, resource)			_GET1(component, resource)
+#define _GET1(component, resource)			component ## __Get(resource)
 
-#define Set(component, resource, value)			_SetComp1(component, resource, value)
-#define _SetComp1(component, resource, value)	component ## __Set(resource, value)
-
-
-/// throw-away get for global resource
-#define GET(item)				_GET1(item)
-#define _GET1(thing)			GET_ ## thing()
-
-
-/* intended usage would be:
- * a)	SET(Global_Resource, Value);
- * b)	SET(Module, Module_Resource, Value);
- *
- * with a possible permutation (not tested)
- * c)	SET(Module, Module_Array_Resource, index, value);
- *
- * This one is capitalized because it's dangerous (as in, no ability to use a static checker to
- * 100% confirm proper operation)
+/** Set a module's attribute to the specified value.
+ * <dl><dt><b>Usage:</b></dt><dd>Set(Module, Attribute, Value);</dd></dl>
+ * <dl><dt><b>Example:</b></dt><dd><code>Set(AudioMeter, NeedleResponse, Dampening_VU);</code></dd></dl>
  */
-//#define SET(item_or_module, value_or_item...)		SET_ ## item_or_module(## value_or_item)
-#define SET(item, value)		_SET1(item, value)
-#define _SET1(item, value)		SET_ ## item(value)
+#define Set(component, resource, value)		_SET1(component, resource, value)
+#define _SET1(component, resource, value)	component ## __Set(resource, value)
 
 
-/**	Pre-configured "module" named "Dbg" (Debug) for use with the above Get() API.
- *	To use this, you will need to create a symbol in your module that looks
- *	like "Get_Dbg_resource()". if you want this to be a macro, fine, or a "real"
- *	function, hey, roll with it.
+/** Get the value of a global resource.
+ * <dl><dt><b>Usage:</b></dt><dd>GET(GlobalAttribute);</dd></dl>
+ * <dl><dt><b>Example:</b></dt><dd><code>GET(DiagnosticsMode);</code></dd></dl>
  */
-#define Get_Dbg(resource)			_get_debug(resource)
-#define _get_debug(resource)		Get_Dbg_ ## resource()
+#define GET(item)							_GET2(item)
+#define _GET2(thing)						GET_ ## thing()
+
+
+/** Set the value of a global resource.
+ *	<dl><dt>@b Usage: </dt><dd>SET(GlobalAttribute, Value);</dd></dl>
+ *	<dl><dt>@b Example: </dt><dd><tt>SET(DiagnosticsMode, kDiagMode_Mfg);</tt></dd></dl>
+ */
+#define SET(item, value)					_SET2(item, value)
+#define _SET2(item, value)					SET_ ## item(value)
 
 
 /**	Is specified condition true?
