@@ -1,0 +1,1 @@
+../../../../cwsw_arch_prj/ut/projcfg.h

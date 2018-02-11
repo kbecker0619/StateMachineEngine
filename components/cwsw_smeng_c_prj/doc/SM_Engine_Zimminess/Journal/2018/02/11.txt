@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-02-11T16:18:34-05:00
+
+====== Sunday 11 Feb 2018 ======
+
+XPRJ_Debug_XC_MPC57xx_DevKit = ((1) /* INTENDED ONLY FOR WITHIN-ECLIPSE DEV - NOT FOR PRODUCTION */
+XPRJ_Debug_XC_MPC57xx_DevKit=1
