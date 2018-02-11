@@ -1,4 +1,4 @@
-/** @file
+/** @file cwsw_clk.h
  *	@brief	One-sentence short description of file.
  *
  *	Description:
@@ -6,7 +6,7 @@
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
- *	Created on: Jan 3, 2018
+ *	Created on: Feb 11, 2018
  *	Author: kbecker
  *
  *	Current:
@@ -14,8 +14,8 @@
  *	$Date: $
  */
 
-#ifndef CWSW_ARCH_H_
-#define CWSW_ARCH_H_
+#ifndef CWSW_ARCH_MPC57XX_SYSTEM_CLK_CWSW_CLK_H_
+#define CWSW_ARCH_MPC57XX_SYSTEM_CLK_CWSW_CLK_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -27,23 +27,20 @@ extern "C" {
 
 #include "projcfg.h"
 #if !(XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
-#pragma message "Unknown CPU Architecture"
+#pragma message "Unknown MCU Architecture"
 #endif								/* } */
 
 // ----	System Headers --------------------------
-#include <stdint.h>
 
 // ----	Project Headers -------------------------
-#include "cwsw_lib.h"
 
 // ----	Module Headers --------------------------
-#include "../cwsw_arch_common.h"
 
 
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
-#define CWSW_ARCH_H__REVSTRING "$Revision: 0123 $"
+#define CWSW_ARCH_MPC57XX_SYSTEM_CLK_CWSW_CLK_H__REVSTRING "$Revision: 0123 $"
 
 
 // ============================================================================
@@ -58,9 +55,11 @@ extern "C" {
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
+extern void peri_clock_gating (void);
+
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif /* CWSW_ARCH_H_ */
+#endif /* CWSW_ARCH_MPC57XX_SYSTEM_CLK_CWSW_CLK_H_ */

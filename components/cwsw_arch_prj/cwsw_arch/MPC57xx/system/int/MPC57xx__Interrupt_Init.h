@@ -26,7 +26,9 @@ extern "C" {
 // ============================================================================
 
 #include "projcfg.h"
-#if (XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#if !(XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#pragma message "Unknown MCU Architecture"
+#endif								/* } */
 
 // ----	System Headers --------------------------
 
@@ -65,5 +67,4 @@ extern void xcptn_xmpl(void);
 }
 #endif
 
-#endif								/* } */
 #endif /* CWSW_ARCH_MPC57XX_SYSTEM_INT_MPC57XX__INTERRUPT_INIT_H_ */

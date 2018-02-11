@@ -29,7 +29,9 @@ extern "C" {
 // ============================================================================
 
 #include "projcfg.h"
-#if (XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#if !(XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#pragma message "Unknown MCU Architecture"
+#endif								/* } */
 
 // ----	System Headers --------------------------
 
@@ -62,10 +64,6 @@ extern void dummy(void);
 
 extern void SW_INT_1_init(void);
 
-
-#else								/* } { */
-#error no
-#endif								/* } */
 
 #ifdef	__cplusplus
 }

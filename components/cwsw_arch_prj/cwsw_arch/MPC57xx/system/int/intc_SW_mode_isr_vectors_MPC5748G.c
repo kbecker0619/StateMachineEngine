@@ -21,7 +21,9 @@
 /*========================================================================*/
 
 #include "projcfg.h"	/* klb: update for cwsw libraries - primarily to add WEAK binding */
-#if (XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#if !(XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#error Unknown MCU Architecture
+#endif								/* } */
 
 #include "cwsw_lib.h"
 #include "intc_SW_mode_isr_vectors_MPC5748G.h"
@@ -793,5 +795,3 @@ const uint32_t __attribute__ ((section (".intc_vector_table"))) IntcIsrVectorTab
 (uint32_t) &dummy, /* Vector # 753 eMIOS channel 94,95 EMIOS_GFR[F94,F95] */
 
 };
-
-#endif								/* } */

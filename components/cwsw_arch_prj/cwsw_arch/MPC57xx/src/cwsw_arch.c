@@ -19,7 +19,9 @@
 // ============================================================================
 
 #include "projcfg.h"
-#if (XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#if !(XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#error Unknown MCU Architecture
+#endif								/* } */
 
 // ----	System Headers --------------------------
 #include <stdbool.h>
@@ -85,10 +87,13 @@ static bool initialized = false;
  *	The purpose for including this here, is to allow disabling of the actual
  *	MCU support functionality while still allowing the project to build.
  */
-#include "system/int/MPC57xx__Interrupt_Init.h"	/* xcptn_xmpl() */
-#include "derivative.h"							/* PIT */
+#include "system/int/MPC57xx__Interrupt_Init.h"				/* xcptn_xmpl() */
+#include "system/int/intc_SW_mode_isr_vectors_MPC5748G.h"	/* SW_INT_1_init */
+#include "derivative.h"										/* PIT */
 #include "system/int/pit.h"
+#include "system/clk/cwsw_clk.h"							/* peri_clock_gating() */
 WEAK void xcptn_xmpl(void) {}
+WEAK void peri_clock_gating (void) {}
 uint16_t
 Cwsw_Arch__Init(void)
 {
@@ -99,40 +104,47 @@ Cwsw_Arch__Init(void)
 	do {						/* enabled interrupts. This is done 1st in NXP example code. */
 		xcptn_xmpl();           /* Configure and Enable Interrupts */
 
-//	    /* klb: specifically call interrupt init functions for this demonstration project.
-//	     * not sure i'm doing it right, i am still exploring, and at the time i'm writing this,
-//	     * i can't actually connect to a target board to test it out.
-//	     *
-//	     * this code copied from main() in the NXP's New Project From Example wizard.
-//	     */
-//	    PIT.MCR.B.MDIS = 0; /* Enable PIT module. NOTE: PIT module must be       */
-//	                        /* enabled BEFORE writing to it's registers.         */
-//	                        /* Other cores will write to PIT registers so the    */
-//	                        /* PIT is enabled here before starting other cores.  */
-//	    PIT.MCR.B.FRZ = 1;  /* Freeze PIT timers in debug mode */
-//
-//	    PIT0_init(40000000); /* Initialize PIT channel 0 for desired SYSCLK counts*/
-//	             	 	 	 /* timeout= 40M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
-//	    					 /*        = 40M x 4 / 160M = 160/160 = 1 sec.  */
-//
-//		PIT1_init(20000000);
-//		             /* timeout= 20M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
-//		             /*        = 20M x 4 / 160M = 80/160 = 0.5 sec.  */
-//
-//		PIT2_init(10000000);
-//		             /* timeout= 10M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
-//		             /*        = 10M x 4 / 160M = 40/160 = 0.25 sec.  */
-//
-//	    SW_INT_1_init();   	 /* Initialize SW INT1 (to be serviced by core 1) */
-//
+	    /* klb: specifically call interrupt init functions for this demonstration project.
+	     * not sure i'm doing it right, i am still exploring, and at the time i'm writing this,
+	     * i can't actually connect to a target board to test it out.
+	     *
+	     * this code copied from main() in the NXP's New Project From Example wizard.
+	     */
+	    PIT.MCR.B.MDIS = 0; /* Enable PIT module. NOTE: PIT module must be       */
+	                        /* enabled BEFORE writing to it's registers.         */
+	                        /* Other cores will write to PIT registers so the    */
+	                        /* PIT is enabled here before starting other cores.  */
+	    PIT.MCR.B.FRZ = 1;  /* Freeze PIT timers in debug mode */
+
+	    PIT0_init(40000000); /* Initialize PIT channel 0 for desired SYSCLK counts*/
+	             	 	 	 /* timeout= 40M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
+	    					 /*        = 40M x 4 / 160M = 160/160 = 1 sec.  */
+
+		PIT1_init(20000000);
+		             /* timeout= 20M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
+		             /*        = 20M x 4 / 160M = 80/160 = 0.5 sec.  */
+
+		PIT2_init(10000000);
+		             /* timeout= 10M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
+		             /*        = 10M x 4 / 160M = 40/160 = 0.25 sec.  */
+
+	    SW_INT_1_init();   	 /* Initialize SW INT1 (to be serviced by core 1^h0 (klb)) */
+
+	} while(0);
+
+	do {
+	    //Since We are using PIT- one of the peripherals. We need to enable peripheral clocks.
+	    peri_clock_gating();     /* Configure gating/enabling peripheral(PTI) clocks for modes*/
+	                             /* Configuration occurs after mode transition! */
+
 	} while(0);
 
 
 
 	/* Core Processor Initialization
-     * forgive this flagrant violation of personal ingenuity, but the names and call order is
-     * borrowed, /FOR NOW/, from MHC. I fully intend to absract this so it's my own implementation,
-     * not a blatant borrowing of someone else's favored methods.
+     * forgive this flagrant violation of personal ingenuity, but the names and call order
+     * is borrowed, /FOR NOW/, from MHC. I fully intend to abstract this so it's my own
+     * implementation, not a blatant borrowing of someone else's favored methods.
      */
 	SYS_CLK_Initialize(NULL);
 	SYS_DEVCON_Initialize(0, NULL);
@@ -150,8 +162,3 @@ Cwsw_Arch__Get_Initialized(void)
 {
 	return initialized;
 }
-
-#else
-#error Unknown CPU Architecture
-
-#endif								/* } */

@@ -226,7 +226,7 @@
 								<option id="gnu.c.compiler.option.warnings.pedantic.932085008" name="Pedantic (-pedantic)" superClass="gnu.c.compiler.option.warnings.pedantic" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1920196772" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;XPRJ_Debug_Win_MinGW=/* INTENDED ONLY FOR WITHIN-ECLIPSE DEV; NOT FOR PRODUCTION */1&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;XPRJ_Debug_Win_MinGW=1 /* INTENDED ONLY FOR WITHIN-ECLIPSE DEV; NOT FOR PRODUCTION */&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.paths.57762077" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
@@ -358,8 +358,10 @@
 								<option id="gnu.c.compiler.option.warnings.pedantic.1491755943" name="Pedantic (-pedantic)" superClass="gnu.c.compiler.option.warnings.pedantic" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.warnings.missingdeclaration.727702308" name="Warn on undeclared global function (-Wmissing-declaration)" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.warnings.missingdeclaration" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1801818943" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;XPRJ_Debug_XC_MPC57xx_DevKit=/* INTENDED ONLY FOR WITHIN-ECLIPSE DEV - NOT FOR PRODUCTION */1&quot;"/>
+									<listOptionValue builtIn="false" value="XPRJ_Debug_XC_MPC57xx_DevKit=1"/>
+									<listOptionValue builtIn="false" value="MPC574xG=1"/>
+									<listOptionValue builtIn="false" value="START_FROM_FLASH=1"/>
+									<listOptionValue builtIn="false" value="TURN_ON_CPU0=1"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.paths.1327293220" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/ut&quot;"/>
@@ -420,6 +422,10 @@
 								</option>
 								<option id="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.libraries.2059733988" superClass="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.libraries" useByScannerDiscovery="false" value="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.libraries.ewl_c9x_noio" valueType="enumerated"/>
 								<option id="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.sysroot.111149185" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.sysroot" useByScannerDiscovery="false" value="--sysroot=&quot;${VLE_EWL_DIR}&quot;" valueType="string"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.assembler.option.defs.322609340" name="Defined symbols (-D)" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.option.defs" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="MPC574xG=1"/>
+									<listOptionValue builtIn="false" value="TURN_ON_CPU0=1"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.108350115" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.2075804704" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>
 							</tool>
