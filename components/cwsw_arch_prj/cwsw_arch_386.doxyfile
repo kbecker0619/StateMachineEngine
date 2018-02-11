@@ -1,0 +1,8 @@
+# Doxyfile for i386 architecture (i.e., Windows using MinGW and Linux for Linux desktop using GCC)
+
+@INCLUDE = cwsw_arch.doxyfile
+
+PREDEFINED          += XPRJ_Debug_Win_MinGW=1 
+EXCLUDE				+= cwsw_arch/MPC57xx \
+					   Debug_XC_MPC57xx_DevKit \
+					   Debug_Win_MinGW

@@ -42,9 +42,6 @@ extern "C" {
 // ============================================================================
 #define SQSP_LIB_H__REVSTRING "$Revision: 0123 $"
 
-/** Unique ID for each and every module */
-enum { kModuleiId_Lib = 0 };//!< kModuleiId_Lib
-
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
@@ -60,8 +57,9 @@ enum { kModuleiId_Lib = 0 };//!< kModuleiId_Lib
 
 /** Module initialization function.
  *	This function shall be called before the main scheduler is started.
- *	This function's responsibility is to set up the local vars, and manage the necessary HW, to
- *	prepare for the task function's 1st call (once the scheduler has been started).
+ *	This function's responsibility is to set up the local vars, to prepare for
+ *	the task function's 1st call (once the scheduler has been started).
+ *
  *	@returns error code, or 0 for no problem (i.e., success).
  */
 extern uint16_t 			Cwsw_Lib__Init(void);
@@ -201,7 +199,7 @@ extern bool 				Cwsw_Lib__Get_Initialized(void);
  *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
  *	Eclipse, NetBeans, etc.), and select Go To Definition.
  */
-enum { Cwsw_Lib };	/* CWSW Library *///!< Cwsw_Lib
+enum { Cwsw_Lib = 0 };	/* CWSW Library */
 
 
 /**	Abstract module initialization.

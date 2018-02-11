@@ -1,6 +1,6 @@
 # CWSW MCU Architecture Support
 
-This component provides standardized support for all supported MCU architectures. 
+This project provides standardized support for all supported MCU architectures. 
 Where possible, it simply provides a repackaging of the drivers already supplied by a given supplier.
 
 This component "lives" at the bottom of the dependency heirarchy, 

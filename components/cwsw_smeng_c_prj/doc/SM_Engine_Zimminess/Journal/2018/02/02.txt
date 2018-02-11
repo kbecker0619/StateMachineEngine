@@ -11,12 +11,3 @@ Continue NXP experiment
 [ ] used new project wizard to create absolute minimal core-0-only HW app
 	[x] no joy
 	[ ] switch to linux?
-
-
-
-
-
-
-
-[ ] saved existing "components" workspace, then copied the workspace from the unbroken-but-now-upgraded workspace i tried yesterday
-[ ] using in-workspace core 0 project completed yesterday

@@ -19,6 +19,7 @@
 // ============================================================================
 
 #include "projcfg.h"
+#if (XPRJ_Debug_Win_MZ2048EFM) || defined(XPRJ_pic32mz_ef_sk)
 
 // ----	System Headers --------------------------
 #include <stdbool.h>				/* type bool + true, false */
@@ -127,3 +128,8 @@ Cwsw_Arch__Get_Initialized(void)
 {
 	return initialized;
 }
+
+#else
+#error Unknown CPU Architecture
+
+#endif								/* } */

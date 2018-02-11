@@ -14,8 +14,8 @@
  *	$Date: $
  */
 
-#ifndef PROJCFG_H_
-#define PROJCFG_H_
+#ifndef PROJCFG__H_
+#define PROJCFG__H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -127,8 +127,10 @@ extern "C" {
 	#define XPRJ_Debug_Win_MinGW	false
 	#define	XPRJ_Debug_CVI			false
 
-#elif (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk)
+#elif (XPRJ_Debug_Win_MZ2048EFM) || defined(XPRJ_pic32mz_ef_sk)
+    /* xMPLAB assigns XPRJ_pic32mz_ef_sk=pic32mz_ef_sk, but the latter signal is not defined to be anything */
 	#define pic32mz_ef_sk				1
+
 	#define Debug_MZ2048EFM				1
 	#define XPRJ_Debug_Win_MinGW		0
 	#define XPRJ_Debug_Linux_GCC		0
@@ -139,13 +141,14 @@ extern "C" {
 	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
 
 #elif (XPRJ_Debug_XC_MPC57xx_DevKit) || (XPRJ_Debug_XC_MPC57xx_DevKit_RAM)
+	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
+
 	/* This configuration is intended for the NXP Calypso Dev Board */
-#define pic32mz_ef_sk				(-1)
-#define Debug_MZ2048EFM				(0)
-#define XPRJ_Debug_Win_MinGW		(0)
-#define XPRJ_Debug_Linux_GCC		(0)
-#define	XPRJ_Debug_CVI				(0)
-#define XPRJ_Debug_MSC				(0)
+	#define XPRJ_Debug_Win_MinGW		(0)
+	#define XPRJ_Debug_Linux_GCC		(0)
+	#define	XPRJ_Debug_CVI				(0)
+	#define XPRJ_Debug_MSC				(0)
+	#define Debug_MZ2048EFM				(0)
 
 #else
 #error Must define Eclipse symbol XPRJ_${ConfigName}
@@ -175,8 +178,6 @@ extern "C" {
 	#define USE_SYS_DEVCON				(0)
 	#define USE_SYS_PORTS				(1)
 
-#else
-
 #endif
 
 #if (XPRJ_Debug_CVI)
@@ -205,10 +206,15 @@ extern "C" {
 	#define USE_SYS_DEVCON				(1)
 	#define USE_SYS_PORTS				(1)
 
-#else
-
 #endif
 
+#if (XPRJ_Debug_XC_MPC57xx_DevKit) || (XPRJ_Debug_XC_MPC57xx_DevKit_RAM)
+	/* enable or disable individual architectural features */
+	#define USE_SYS_CLK					(0)
+	#define USE_SYS_DEVCON				(0)
+	#define USE_SYS_PORTS				(0)
+
+#endif
 
 #if (USE_SYS_DEVCON)
 	#if !(USE_SYS_CLK)
@@ -239,6 +245,7 @@ extern "C" {
 
 	#endif
 #endif
+
 // ==== /PROJECT SPECIFIC CONSTANTS ========================================= }
 
 
@@ -294,4 +301,4 @@ extern "C" {
 }
 #endif
 
-#endif /* PROJCFG_H_ */
+#endif /* PROJCFG__H_ */

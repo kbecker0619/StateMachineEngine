@@ -1,12 +1,12 @@
 /** @file
- *	@brief	Initialize the MCU.
+ *	@brief	This file is intended to hold the @b default ISR handlers for the MCP 5748 G MCU.
  *
  *	Description:
  *
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
- *	Created on: Jan 3, 2018
+ *	Created on: Feb 10, 2018
  *	Author: kbecker
  *
  *	Current:
@@ -19,16 +19,17 @@
 // ============================================================================
 
 #include "projcfg.h"
-#if (XPRJ_Debug_Win_MinGW)			/* { */
+#if (XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
 
 // ----	System Headers --------------------------
-#include <stdbool.h>
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
+#include "system/int/intc_SW_mode_isr_vectors_MPC5748G.h"		/* isr handler prototypes */
 
 // ----	Module Headers --------------------------
 #include "cwsw_arch.h"
+#include "gpio.h"
 
 
 // ============================================================================
@@ -46,86 +47,52 @@
 // ============================================================================
 // ----	Module-level Variables ------------------------------------------------
 // ============================================================================
-static char const * const cwsw_arch_RevString = "$Revision: 0123 $";
-
-static bool initialized = false;
-
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
 
-#if (USE_SYS_CLK)
-#include "system/clk/sys_clk.h"
-
-#else
-#define SYS_CLK_Initialize(a)			do { UNUSED(a); } while(0)
-
-#endif
-
-#if (USE_SYS_DEVCON)
-#else
-#define SYS_DEVCON_Initialize(a, b)		do { UNUSED(a); UNUSED(b); } while(0)
-#define SYS_DEVCON_PerformanceConfig(a)	do { UNUSED(a); } while(0)
-#endif
-
-#if (USE_SYS_PORTS)
-#include "system/ports/sys_ports.h"
-#else
-#define SYS_PORTS_Initialize()			do {} while(0)
-#endif
-
-
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
 
-uint16_t
-Cwsw_Arch__Init(void)
+/** @b Default, weakly-bound interrupt handler for PIT 0.
+ */
+WEAK void
+PIT0_isr(void)
 {
+	static uint8_t counter=0; /* Increment ISR counter */
 
-	UNUSED(cwsw_arch_RevString);
-	// for desktop use, there's really not much to do here.
+	counter++;
+	LED_DS4 = ~LED_DS4; /* Toggle DS4 LED port */
+	if(counter == 4)
+	{
+		counter = 0;
+		INTC_SSCIR1=0x02;
+	}
+	PIT.TIMER[0].TFLG.R = 1; /* Clear interrupt flag */
+}
 
-	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-	#pragma GCC diagnostic push
-	#pragma GCC diagnostic ignored "-Wpedantic"
-	#endif
-
-	dbg_printf(
-			"\tModule ID %i\t%s\t%s\n"
-			"\tEntering %s()\n\n",
-			Cwsw_Arch, __FILE__, cwsw_arch_RevString,
-			__FUNCTION__);
-
-
-	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-	#pragma GCC diagnostic pop
-	#endif
-
-    /* Core Processor Initialization
-     * forgive this flagrant violation of personal ingenuity, but the names and call order is
-     * borrowed, /FOR NOW/, from MHC. I fully intend to absract this so it's my own implementation,
-     * not a blatant borrowing of someone else's favored methods.
-     */
-	SYS_CLK_Initialize( NULL );
-	SYS_DEVCON_Initialize(0, NULL);
-	SYS_DEVCON_PerformanceConfig(0);
-	SYS_PORTS_Initialize();
-
-	initialized = true;
-	return 0;
-
+WEAK void
+PIT2_isr(void)
+{
+	LED_DS6 = ~LED_DS6; /* Toggle DS6 LED port */
+	PIT.TIMER[2].TFLG.R = 1; /* Clear interrupt flag */
 }
 
 
-bool
-Cwsw_Arch__Get_Initialized(void)
+/** @b Default, weakly-bound initialization for SW 1 interrupts.
+ */
+WEAK void
+SW_INT_1_init(void)
 {
-	return initialized;
+//	INTC.PSR[1].B.PRC_SELN = 0x4; /* IRQ sent to Core 1 */ /* klb: in this iteration, we want to begin our support for Calypso w/ CORE0 only */
+	INTC.PSR[1].B.PRIN =0x0F; /* IRQ priority = 15 (15 = highest) */
 }
 
-#else
-#error Unknown CPU Architecture
+
+
+#else								/* } { */
+#pragma message "Not using MCP57xx CPU Architecture"
 
 #endif								/* } */

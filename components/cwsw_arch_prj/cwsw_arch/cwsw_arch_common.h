@@ -34,7 +34,6 @@ extern "C" {
 #include <stdint.h>
 
 // ----	Project Headers -------------------------
-#include "cwsw_lib.h"
 
 // ----	Module Headers --------------------------
 
@@ -58,6 +57,22 @@ extern "C" {
 // ============================================================================
 
 // ==== Discrete Functions ================================================== {
+/** Initialization for the MCU Architecture Support component.
+ *	This function's responsibility is to set up the local vars, and manage the necessary HW, to
+ *	prepare for the task function's 1st call (once the scheduler has been started).
+ *
+ *	This function shall be called before the main scheduler is started.
+ *
+ *	As general guidance, the CWSW Library component should have been initialized
+ *	before this function is called (since this module depends on the library),
+ *	though this is not a strict requirement.
+ *
+ *	As general guidance, this should be called before board or application
+ *	initialization functions. This module sits at the "bottom" of the dependency
+ *	tree, excepting for calls into support libraries.
+ *
+ *	@returns error code, or 0 for no problem (i.e., success).
+ */
 extern uint16_t Cwsw_Arch__Init(void);
 
 // ==== /Discrete Functions ================================================= }
@@ -69,7 +84,7 @@ extern uint16_t Cwsw_Arch__Init(void);
  *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
  *	Eclipse, NetBeans, etc.), and select Go To Definition.
  */
-enum { Cwsw_Arch };	/* Generic architecture for all MCU architectures */
+enum { Cwsw_Arch = 1 };	/* Generic architecture for all MCU architectures */
 
 /** Target symbol for Get(Cwsw_Arch, xxx) interface */
 #define Cwsw_Arch__Get(a)		Cwsw_Arch__Get_ ## a()
@@ -84,7 +99,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 }
 #endif
 
-// ====	COMPONENT DOCUMENTATION ============================================== {
+// ====	COMPONENT DOCUMENTATION ============================================= {
 #if defined(IN_DOXY)				/* { */
 /* klb: i apologize in advance for burdening your build, by forcing your compiler to consume all of
  * this information every build, every file that includes it. My only justification is that
@@ -163,7 +178,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
  */
 
 #endif								/* } */
-// ==== /COMPONENT DOCUMENTATION ============================================= }
+// ==== /COMPONENT DOCUMENTATION ============================================ }
 
 
 #endif /* CWSW_ARCH_COMMON_H_ */

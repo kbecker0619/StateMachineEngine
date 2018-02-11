@@ -1,0 +1,8 @@
+# Doxyfile for NXP MCP5748G architecture
+
+@INCLUDE = cwsw_arch.doxyfile
+
+PREDEFINED          += XPRJ_Debug_XC_MPC57xx_DevKit=1 
+EXCLUDE				+= cwsw_arch/i386 \
+					   Debug_XC_MPC57xx_DevKit \
+					   Debug_Win_MinGW

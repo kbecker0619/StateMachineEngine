@@ -31,6 +31,7 @@ extern "C" {
 #include <stdint.h>
 
 // ----	Project Headers -------------------------
+#include "cwsw_lib.h"
 
 // ----	Module Headers --------------------------
 #include "../cwsw_arch_common.h"
