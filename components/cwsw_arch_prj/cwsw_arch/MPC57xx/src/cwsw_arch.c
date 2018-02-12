@@ -92,6 +92,7 @@ static bool initialized = false;
 #include "derivative.h"										/* PIT */
 #include "system/int/pit.h"
 #include "system/clk/cwsw_clk.h"							/* peri_clock_gating() */
+#include "system/clk/mode.h"								/* system160mhz() */
 WEAK void xcptn_xmpl(void) {}
 WEAK void peri_clock_gating (void) {}
 uint16_t
@@ -134,21 +135,23 @@ Cwsw_Arch__Init(void)
 
 	do {
 	    //Since We are using PIT- one of the peripherals. We need to enable peripheral clocks.
-	    peri_clock_gating();     /* Configure gating/enabling peripheral(PTI) clocks for modes*/
+	    peri_clock_gating();     /* Configure gating/enabling peripheral(PTI) clocks for modes */
 	                             /* Configuration occurs after mode transition! */
 
 	} while(0);
 
+	do {
+	    system160mhz();
+	    /* Sets clock dividers= max freq,
+	       calls PLL_160MHz function which:
+	       MC_ME.ME: enables all modes for Mode Entry module
+	       Connects XOSC to PLL
+	       PLLDIG: LOLIE=1, PLLCAL3=0x09C3_C000, no sigma delta, 160MHz
+	       MC_ME.DRUN_MC: configures sysclk = PLL
+	       Mode transition: re-enters DRUN which activates PLL=sysclk & peri clks
+	       */
+	} while(0);
 
-
-	/* Core Processor Initialization
-     * forgive this flagrant violation of personal ingenuity, but the names and call order
-     * is borrowed, /FOR NOW/, from MHC. I fully intend to abstract this so it's my own
-     * implementation, not a blatant borrowing of someone else's favored methods.
-     */
-	SYS_CLK_Initialize(NULL);
-	SYS_DEVCON_Initialize(0, NULL);
-	SYS_DEVCON_PerformanceConfig(0);
 	SYS_PORTS_Initialize();
 
 	initialized = true;
