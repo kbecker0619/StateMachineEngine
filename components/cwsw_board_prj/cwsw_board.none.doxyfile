@@ -1,0 +1,9 @@
+# Doxyfile for "none" board, built on top of i386 architecture (i.e., Windows using MinGW and Linux for Linux desktop using GCC)
+
+@INCLUDE = cwsw_board.doxyfile
+
+PREDEFINED          += XPRJ_Debug_Win_MinGW=1 
+EXCLUDE				+= cwsw_arch/MPC57xx \
+					   cwsw_arch/pic32mz \
+					   Debug_XC_MPC57xx_DevKit \
+					   Debug_Win_MinGW
