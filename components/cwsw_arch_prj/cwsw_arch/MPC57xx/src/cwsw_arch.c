@@ -30,8 +30,15 @@
 #include "cwsw_lib.h"
 
 // ----	Module Headers --------------------------
-#include "cwsw_arch.h"		/* main API */
+#include "cwsw_arch.h"										/* main API */
 /* followed by arch-specific stuff */
+#include "system/int/MPC57xx__Interrupt_Init.h"				/* xcptn_xmpl() */
+#include "system/int/intc_SW_mode_isr_vectors_MPC5748G.h"	/* SW_INT_1_init */
+#include "derivative.h"										/* PIT */
+#include "system/int/pit.h"
+#include "system/clk/cwsw_clk.h"							/* peri_clock_gating() */
+#include "system/clk/mode.h"								/* system160mhz() */
+#include "gpio.h"											/* project-specific GPIO API */
 
 
 // ============================================================================
@@ -87,14 +94,8 @@ static bool initialized = false;
  *	The purpose for including this here, is to allow disabling of the actual
  *	MCU support functionality while still allowing the project to build.
  */
-#include "system/int/MPC57xx__Interrupt_Init.h"				/* xcptn_xmpl() */
-#include "system/int/intc_SW_mode_isr_vectors_MPC5748G.h"	/* SW_INT_1_init */
-#include "derivative.h"										/* PIT */
-#include "system/int/pit.h"
-#include "system/clk/cwsw_clk.h"							/* peri_clock_gating() */
-#include "system/clk/mode.h"								/* system160mhz() */
-WEAK void xcptn_xmpl(void) {}
-WEAK void peri_clock_gating (void) {}
+//WEAK void xcptn_xmpl(void) {}
+//WEAK void peri_clock_gating (void) {}
 uint16_t
 Cwsw_Arch__Init(void)
 {
@@ -111,7 +112,7 @@ Cwsw_Arch__Init(void)
 	     *
 	     * this code copied from main() in the NXP's New Project From Example wizard.
 	     */
-	    PIT.MCR.B.MDIS = 0; /* Enable PIT module. NOTE: PIT module must be       */
+	    PIT.MCR.B.MDIS = 0;	/* Enable PIT module. NOTE: PIT module must be       */
 	                        /* enabled BEFORE writing to it's registers.         */
 	                        /* Other cores will write to PIT registers so the    */
 	                        /* PIT is enabled here before starting other cores.  */
@@ -122,12 +123,12 @@ Cwsw_Arch__Init(void)
 	    					 /*        = 40M x 4 / 160M = 160/160 = 1 sec.  */
 
 		PIT1_init(20000000);
-		             /* timeout= 20M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
-		             /*        = 20M x 4 / 160M = 80/160 = 0.5 sec.  */
+		             	 	 /* timeout= 20M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
+		             	 	 /*        = 20M x 4 / 160M = 80/160 = 0.5 sec.  */
 
 		PIT2_init(10000000);
-		             /* timeout= 10M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
-		             /*        = 10M x 4 / 160M = 40/160 = 0.25 sec.  */
+		             	 	 /* timeout= 10M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
+		             	 	 /*        = 10M x 4 / 160M = 40/160 = 0.25 sec.  */
 
 	    SW_INT_1_init();   	 /* Initialize SW INT1 (to be serviced by core 1^h0 (klb)) */
 
@@ -152,7 +153,10 @@ Cwsw_Arch__Init(void)
 	       */
 	} while(0);
 
-	SYS_PORTS_Initialize();
+	do {
+	    initGPIO();         /* Initializes LED, buttons & other general purpose pins for NXP EVB */
+
+	} while(0);
 
 	initialized = true;
 	return 0;
