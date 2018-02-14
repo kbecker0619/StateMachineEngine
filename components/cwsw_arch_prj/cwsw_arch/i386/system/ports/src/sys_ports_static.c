@@ -1,4 +1,4 @@
-/** @file sys_ports_static.c
+/** @file
  *	@brief	One-sentence short description of file.
  *
  *	Description:
@@ -19,6 +19,8 @@
 // ============================================================================
 
 #include "projcfg.h"
+
+#if (USE_SYS_PORTS)					/* { */
 
 // ----	System Headers --------------------------
 
@@ -71,7 +73,7 @@ static char const * const sys_ports_static_RevString = "$Revision: 0123 $";
 */
 void
 SYS_PORTS_Initialize(void)
-{								   
+{
 	UNUSED(sys_ports_static_RevString);
 #	if(0)
 	{
@@ -181,3 +183,5 @@ SYS_PORTS_Initialize(void)
 	}
 #endif
 }
+
+#endif								/* } */

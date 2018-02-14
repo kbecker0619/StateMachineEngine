@@ -1,4 +1,4 @@
-/** @file ports_api.c
+/** @file
  *	@brief	One-sentence short description of file.
  *
  *	Description:

@@ -71,9 +71,9 @@ extern "C" {
  * ANSI/ISO C says that the preprocesser evaluates an undefined symbol as having
  * the value '0' - however, many of the environments i'm targeting, and also many
  * of the static analysis tools, emit warnings about usage of undefined symbols
- * in normal C code - and i have a rather strong aversion to using #if defined(x)
- * mechanisms in normal code. therefore, i'll here define all of the non-active
- * build targets.
+ * in normal C code - and even though i do it when necessary, i have a rather
+ * strong aversion to using #if defined(x) mechanisms in normal code.
+ * therefore, i'll here define all of the non-active build targets.
  * ========================================================================= */
 
 /* ==== One final word ========================================================
@@ -174,7 +174,7 @@ extern "C" {
 	#define USE_SYS_DEVCON				(0)
 	#define USE_SYS_PORTS				(0)
 	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
-	
+
 #endif
 
 #if (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk == pic32mz_ef_sk)
@@ -184,7 +184,7 @@ extern "C" {
 		#define __PIC32M
 		#define __LANGUAGE_ASSEMBLY__
 
-		#define __32MZ1024EFM144__	1	/* used in ports selection */
+		#define __32MZ1024EFM144__		1	/* used in ports selection */
 
 	#endif
 

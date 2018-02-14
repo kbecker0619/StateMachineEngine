@@ -5,7 +5,7 @@
  *	This file defines the additions or variations to the OSAL base implementation.
  *	Where it is logical or possible to implement an OSAL function in a simple form
  *	without an RTOS being present then the function has been defined here and
- *	implemented either here as an inline or #define. Longer functions that are part
+ *	implemented either here as an inline or '#define'. Longer functions that are part
  *	of the basic implementation may also be found in the file osal.c
  *	The best way to consider this file is detailing any deviations from the osal.h
  *	definitions OR as the complete implementation of those functions when pretending

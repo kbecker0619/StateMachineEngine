@@ -1,4 +1,4 @@
-/** @file ctassert.h
+/** @file
  *	@brief	Compile-time assertion capability.
  *
  *	Description:
@@ -54,16 +54,16 @@ extern "C" {
  * will be your compiler's flavor of "invalid array dimension"; if you see this error at the place where you're doing
  * the test, you will know the test failed. \see _CTASSERT() and __CTASSERT().
  *
- * @param test is the logical test that is to be checked for validity.
+ * @param[in] test is the logical test that is to be checked for validity.
  *
  * <dl><dt><b>Usage:</b></dt><dd>CT_ASSERT(<logical_test>);</dd></dl>
  *
- * <dl><dt><b>Example:</b></dt><dd>CT_ASSERT((NUM_OF_ITEMS <= 255) && (sizeof(buffer) >= NUM_OF_ITEMS));</dd></dl>
+ * <dl><dt><b>Example:</b></dt><dd><code>CT_ASSERT((NUM_OF_ITEMS <= 255) && (sizeof(buffer) >= NUM_OF_ITEMS));</code></dd></dl>
  *
  * @note
  *      - Macro only works for compile-time checking.  Run-time checks will not work.
- *      - This can only work where it is legal to declare a variable. Thus, for example, you
- *        cannot use it in a function after a line of executable code.
+ *      - This can only work where it is legal to declare a variable. Thus, for example, in a C89
+ *        project, you cannot use it in a function after a line of executable code.
  */
 #define CT_ASSERT(test)              _CTASSERT(__LINE__, test)
 
@@ -76,8 +76,8 @@ extern "C" {
  * next macro. Without this intermediate macro, the end symbol would be "_CtAssert__LINE__[]", which is not the unique
  * symbol desired.
  *
- * @param UniqueId - a unique identifier, which is used to form the name of the external array.
- * @param test - the logical test that is to be checked for validity.
+ * @param[in] UniqueId - a unique identifier, which is used to form the name of the external array.
+ * @param[in] test - the logical test that is to be checked for validity.
  */
 #define _CTASSERT(UniqueId, test)   __CTASSERT(UniqueId, test)
 
@@ -97,8 +97,8 @@ extern "C" {
  * symbol name of "_CtAssert__LINE__[]", which is not unique if the CT_ASSERT() macro is used multiple times within the
  * same source file.
  *
- * @param UniqueId - a unique identifier, which is used to form the name of the external array.
- * @param test - the logical test that is to be checked for validity.
+ * @param[in] UniqueId - a unique identifier, which is used to form the name of the external array.
+ * @param[in] test - the logical test that is to be checked for validity.
  *
  * @note There are two PC-Lint warnings that are suppressed within this definition. The first, #752,
  *      suppresses a "local declarator 'Symbol' (Location) not referenced" warning, caused because

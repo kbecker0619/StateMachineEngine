@@ -1,4 +1,4 @@
-/** @file osc_none.h
+/** @file
  *	@brief	Defines the Oscillator (OSC) Peripheral Library interface.
  *
  *	Description:

@@ -1,4 +1,5 @@
-/** @file cwsw_lib.h
+
+/** @file
  *	@brief	API for CWSW Library.
  *
  *	Description:
@@ -41,9 +42,6 @@ extern "C" {
 // ============================================================================
 #define SQSP_LIB_H__REVSTRING "$Revision: 0123 $"
 
-/** Unique ID for each and every module */
-enum { kModuleiId_Lib = 0 };
-
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
@@ -56,6 +54,18 @@ enum { kModuleiId_Lib = 0 };
 // ============================================================================
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
+
+/** Module initialization function.
+ *	This function shall be called before the main scheduler is started.
+ *	This function's responsibility is to set up the local vars, to prepare for
+ *	the task function's 1st call (once the scheduler has been started).
+ *
+ *	@returns error code, or 0 for no problem (i.e., success).
+ */
+extern uint16_t 			Cwsw_Lib__Init(void);
+
+/** Target for Get(Cwsw_Lib, Initialized) interface. */
+extern bool 				Cwsw_Lib__Get_Initialized(void);
 
 
 /*	===	definitions common to all environments ================================
@@ -70,9 +80,14 @@ enum { kModuleiId_Lib = 0 };
 /**	Extract the high-order byte out of a 16-bit word. */
 #define MSB_16(word16)	(uint8_t)(((uint16_t)word16 / 256U) & (uint8_t)0xFF)
 
-/** Coerce var to a U8. Usage of this indicates you intend to convert incompatible types. */
+/** Coerce parameter to a U8 (i.e., unsigned byte).
+ *	Usage of this indicates you intend to convert incompatible types, perhaps more clearly than a
+ *	simple cast might.
+ */
 #define TO_U8(a)		(uint8_t)(a)
-/** Coerce var to a S8. Usage of this indicates you intend to convert incompatible types. */
+/** Coerce parameter to a S8 (i.e., signed byte).
+ *	Usage of this indicates you intend to convert incompatible types, perhaps more clearly than a
+ *	simple cast might. */
 #define TO_S8(a)		(int8_t)(a)
 /** Coerce var to a U16. Usage of this indicates you intend to convert incompatible types. */
 #define TO_U16(a)		(uint16_t)(a)
@@ -82,6 +97,16 @@ enum { kModuleiId_Lib = 0 };
 #define TO_U32(a)		(uint32_t)(a)
 /** Coerce var to a S32. Usage of this indicates you intend to convert incompatible types. */
 #define TO_S32(a)		(int32_t)(a)
+
+/** Coerce parameter to a plain-Jane 'int'.
+ *	While many coding standards, including MISRA, specifically prohibit the willy-nilly,
+ *	uncontrolled usage of the built-in canonical types of 'C', nevertheless there are times when
+ *	you may want to use the native format of the CPU's register (which is the definition of 'int').
+ *	One example might be, in a complex formula where the compiler is complaining that transient
+ *	calculations might force a conversion to or from 'int', you can use this to specifically
+ *	suppress the warning. Usage implies that the review board accepts the justification supplied as
+ *	part of the review process.
+ */
 #define TO_INT(a)		(int)(a)
 
 /**	Determine if "val" is in between values "low" and "hi", inclusive.
@@ -91,10 +116,43 @@ enum { kModuleiId_Lib = 0 };
 #define IN_RANGE(val, low, hi)	(((val) <= (low)) && ((val) >= (hi)))
 
 
-#define BIT_TEST(mem, bit)		((mem)&(1U<<(bit)))
+/** @defgroup bitmap_api	Bit Manipulation and Test
+ *	@{
+ */
+/** Extract the value of a specific bit within a scalar bitmap.
+ *	@param[in] mem	A value of any integral type.
+ *	@param[in] bit 	Base-0 bit number.
+ *	@note Does not work on array (vector) bitmaps.
+ *	@ingroup bitmap_api
+ */
+#define BIT_TEST(mem, bit)		!!((mem)&(1U<<(bit)))
+
+/** Set the specified bit in a bitmap.
+ *	@param[in,out] mem	A value of any integral type.
+ *	@param[in] bit	Base-0 bit number.
+ *	@note Does not work on array (vector) bitmaps.
+ *	@ingroup bitmap_api
+ */
 #define BIT_SET(mem, bit)		((mem)|=(1U<<(bit)))
+
+/** Clear (reset) the specified bit in a bitmap.
+ *	@param[in,out] mem	A value of any integral type.
+ *	@param[in] bit	Base-0 bit number.
+ *	@note Does not work on array (vector) bitmaps.
+ *	@ingroup bitmap_api
+ */
 #define BIT_CLR(mem, bit)		((mem)&=~(1U<<(bit)))
+
+/** Flip the value of a specified bit in a bitmap.
+ *	Sets the bit if it was clear (reset) before invocation, or resets the bit if it was set.
+ *	@param[in,out] mem	A value of any integral type.
+ *	@param[in] bit	Base-0 bit number.
+ *	@note Does not work on array (vector) bitmaps.
+ *	@ingroup bitmap_api
+ */
 #define BIT_TOGGLE(mem, bit)	((mem)^=(1U<<(bit)))
+
+/** @} */
 
 
 /** Determine the number of elements in a table */
@@ -136,6 +194,14 @@ enum { kModuleiId_Lib = 0 };
 #endif
 
 
+/** "Chapter Designator" for Get/Set API.
+ *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
+ *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
+ *	Eclipse, NetBeans, etc.), and select Go To Definition.
+ */
+enum { Cwsw_Lib = 0 };	/* CWSW Library */
+
+
 /**	Abstract module initialization.
  *	The intention is, all modules use the same signature for their init
  *	function, so make it more obvious to the code maintainer that we're
@@ -151,143 +217,124 @@ enum { kModuleiId_Lib = 0 };
 typedef uint16_t (*fpInit)(void);
 
 
-/**	Module task function.
+/**	Abstract Module task function.
+ *	The intention is, all modules use the same signature for their task
+ *	function, so make it more obvious to the code maintainer that we're
+ *	using a standardized (template) task function.
+ *
+ *	There is a 2-layer expansion because it is possible the argument could of
+ *	itself be a macro; for example, if the module source, header, and function
+ *	prefixes were all the same, and so a macro was defined to represent that
+ *	module.
  */
 #define Task(instance)	_TASK(instance)
 #define _TASK(instance)	instance ## __Task()
 typedef void (*fpTask)(void);
 
 
-/**	NON-PRODUCTION interface to "get" an internal variable.
- *	This is designed to be a sort of extension of the Init(module) and
- *	Task(module) API; in the same way, you "Get(module, attribute)".
+/**	Get the value of a module's resource or attribute.
+ * <dl><dt><b>Usage:</b></dt><dd>Get(Module, Attribute);</dd></dl>
+ * <dl><dt><b>Example:</b></dt><dd><code>bool is_init = Get(Cwsw_Lib, Initialized);</code></dd></dl>
  */
-#define Get(component, resource)				_GetComp1(component, resource)
-#define _GetComp1(component, resource)			component ## __Get(resource)
+#define Get(component, resource)			_GET1(component, resource)
+#define _GET1(component, resource)			component ## __Get(resource)
 
-#define Set(component, resource, value)			_SetComp1(component, resource, value)
-#define _SetComp1(component, resource, value)	component ## __Set(resource, value)
-
-
-/// throw-away get for global resource
-#define GET(item)				_GET1(item)
-#define _GET1(thing)			GET_ ## thing()
-
-
-#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wvariadic-macros"
-#else
-
-#endif
-/* intended usage would be:
- * a)	SET(Global_Resource, Value);
- * b)	SET(Module, Module_Resource, Value);
- *
- * with a possible permutation (not tested)
- * c)	SET(Module, Module_Array_Resource, index, value);
- *
- * This one is capitalized because it's dangerous (as in, no ability to use a static checker to
- * 100% confirm proper operation)
+/** Set a module's attribute to the specified value.
+ * <dl><dt><b>Usage:</b></dt><dd>Set(Module, Attribute, Value);</dd></dl>
+ * <dl><dt><b>Example:</b></dt><dd><code>Set(AudioMeter, NeedleResponse, Dampening_VU);</code></dd></dl>
  */
-//#define SET(item_or_module, value_or_item...)		SET_ ## item_or_module(## value_or_item)
-#define SET(item, value)		_SET1(item, value)
-#define _SET1(item, value)		SET_ ## item(value)
-#if defined(__GNUC__)	/* --- /GNU Environment ----------------------------- */
-#pragma GCC diagnostic pop
-#endif
+#define Set(component, resource, value)		_SET1(component, resource, value)
+#define _SET1(component, resource, value)	component ## __Set(resource, value)
 
 
-/**	Pre-configured "module" named "Dbg" (Debug) for use with the above Get() API.
- *	To use this, you will need to create a symbol in your module that looks
- *	like "Get_Dbg_resource()". if you want this to be a macro, fine, or a "real"
- *	function, hey, roll with it.
+/** Get the value of a global resource.
+ * <dl><dt><b>Usage:</b></dt><dd>GET(GlobalAttribute);</dd></dl>
+ * <dl><dt><b>Example:</b></dt><dd><code>GET(DiagnosticsMode);</code></dd></dl>
  */
-#define Get_Dbg(resource)			_get_debug(resource)
-#define _get_debug(resource)		Get_Dbg_ ## resource()
+#define GET(item)							_GET2(item)
+#define _GET2(thing)						GET_ ## thing()
+
+
+/** Set the value of a global resource.
+ *	<dl><dt>@b Usage: </dt><dd>SET(GlobalAttribute, Value);</dd></dl>
+ *	<dl><dt>@b Example: </dt><dd><tt>SET(DiagnosticsMode, kDiagMode_Mfg);</tt></dd></dl>
+ */
+#define SET(item, value)					_SET2(item, value)
+#define _SET2(item, value)					SET_ ## item(value)
 
 
 /**	Is specified condition true?
- *	@return #TRUE if condition is true, #FALSE otherwise.
+ *	@return #true if condition is true, #false otherwise.
  */
 #define IS(cond)                (bool)(GET(cond) != false)
 
 
 /*	=== dev-on-PC API =========================================================
  */
+/** @fn dbg_printf(format, args...)
+ *	Redirectable replacement for printf() statement.
+ * 	per https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html, variadics used
+ *	as we're using them here, will break on a non-GNU compiler. buyer beware.
+ */
 #if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wvariadic-macros"
-#else
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wvariadic-macros"
+	#define	dbg_printf(format, args...)	(void)printf(format , ## args)
+	#pragma GCC diagnostic pop
 
-#endif
-
-#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
-/*	per https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html, variadics used
- *	as i'm using them here, will break on a non-GNU compiler. buyer beware.
- */
-#if (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
-#define dbg_printf					printf
-#else
-#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wvariadic-macros"
-#endif
-
-#define	dbg_printf(format, args...)	(void)printf(format , ## args)
-
-#if defined(__GNUC__)	/* --- /GNU Environment ----------------------------- */
-#pragma GCC diagnostic pop
-#endif
-#endif
-
-/*	within eclipse, on windows, using mingw, it seems that stdout
- *	buffering is broken. the advice i've found is to disable said
- *	buffering. this is supposed to do that.
- *
- *	the alternative would be to directly open a console window. this
- *	involves changing .gdbinit and is described at
- *	http://stackoverflow.com/questions/13035075/printf-not-printing-on-console
- *	and
- *	https://mirlab.wordpress.com/2014/02/23/no-console-output-in-eclipse-with-cdt-in-windows/
- */
-#define disable_console_buffering()	setvbuf(stdout, NULL, _IONBF, 0)
-
-/**	when built on a PC, it's likely i want to see module elements that we would
- *	otherwise want to keep secret.
- */
-#define PRIVATE						/* nothing */
+#elif defined(_CVI_) || defined(_MSC_VER)
+	#define dbg_printf					printf
 
 #else
-#define dbg_printf(format, args...)	do {} while(0)
-#define disable_console_buffering()	do {} while(0)
-
-
-/**	when built on a PC, it's likely i want to see module elements that we would
- *	otherwise want to keep secret.
- */
-#define PRIVATE						static
+	#define dbg_printf(format, args...)	do {} while(0)
 
 #endif
 
-#if defined(__GNUC__)	/* --- /GNU Environment ----------------------------- */
-#pragma GCC diagnostic pop
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC)
+	/**	Disable console buffering.
+	 * 	Within eclipse, on Windows, using MinGW, it seems that stdout
+	 *	buffering is broken. The advice I've found is to disable said
+	 *	buffering. This is supposed to do that.
+	 *
+	 *	The alternative would be to directly open a console window; this
+	 *	involves changing .gdbinit and is described at
+	 *	http://stackoverflow.com/questions/13035075/printf-not-printing-on-console
+	 *	and
+	 *	https://mirlab.wordpress.com/2014/02/23/no-console-output-in-eclipse-with-cdt-in-windows/
+	 */
+	#define disable_console_buffering()	setvbuf(stdout, NULL, _IONBF, 0)
+
+#else
+	#define disable_console_buffering()	do {} while(0)
+
 #endif
 
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) || defined(_CVI_) || defined(_MSC_VER)
+	/**	When built on a PC, it's likely I want to see module elements that we would
+	 *	otherwise want to keep secret.
+	 */
+	#define PRIVATE						/* nothing */
 
-/**	Core library init function. Only needs to be called once, probably by main
- *	application (rather than all components which use this core library).
- */
-extern uint16_t Cwsw_Lib__Init(void);
+#else
+	/**	when built on a PC, it's likely i want to see module elements that we would
+	 *	otherwise want to keep secret.
+	 */
+	#define PRIVATE				static
+
+#endif
 
 #include <assert.h>
+/** CWSW assertion check.
+ *	The intent of this function is not exactly the same as that of the canonical assert() statement
+ *	in ISO C; in this implementation, intended as it is for deeply embedded systems, you should be
+ *	able to redirect it to a logging function with breakpoint, or other functionality as
+ *	appropriate.
+ */
 #define cwsw_assert(a)		assert(a)
+
 
 /** Target symbol for Get(Cwsw_Lib, xxx) interface */
 #define Cwsw_Lib__Get(a)	Cwsw_Lib__Get_ ## a()
-
-/** Target for Get(Cwsw_Lib, Initialized) interface */
-extern bool Cwsw_Lib__Get_Initialized(void);
 
 
 #ifdef	__cplusplus

@@ -1,4 +1,4 @@
-/** @file osc_PLLMultiplier_PIC32_2.h
+/** @file
  *	@brief	One-sentence short description of file.
  *
  *	Description:

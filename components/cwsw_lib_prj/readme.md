@@ -1,3 +1,3 @@
-#SQSP Library
+# CWSW Library
 
-This component is at the Services level, and is designed to be core, stateless, utility functions.
+This component is best placed in the Services layer. It contains core, stateless, utility functions that can be called by any application or driver layer module.

@@ -130,9 +130,9 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="Development and debugging on Windows, using MinGW" id="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889" name="Debug_Win_MinGW" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
+				<configuration artifactExtension="exe" artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="Development and debugging on Windows, using MinGW" id="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889" name="Debug_Win_MinGW" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
 					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889." name="/" resourcePath="">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.1802502513" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.1802502513" name="MinGW GCC" resourceTypeBasedDiscovery="false" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug">
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.648194035" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
 							<builder buildPath="${workspace_loc:/cwsw_clock}/Debug_Win_MinGW" id="cdt.managedbuild.builder.gnu.cross.1509616754" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.356234284" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
@@ -253,11 +253,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894.40221277" name="sys_clk_pic32mx_174_274.c" rcbsApplicability="disable" resourcePath="3rdparty/mhc/lib/system/clk/src/sys_clk_pic32mx_174_274.c" toolsToInvoke="cdt.managedbuild.tool.gnu.cross.c.compiler.375952707.49111391">
-						<tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.375952707.49111391" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler.375952707">
-							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2064453024" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-						</tool>
-					</fileInfo>
 					<sourceEntries>
 						<entry excluding="3rdparty/mhc/lib/system/clk/src/sys_clk_pic32mx_174_274.c|3rdparty/mhc/lib/system/clk/src/sys_clk_pic32wk.c|3rdparty/mhc/lib/system/clk/src/sys_clk_pic32mx.c|3rdparty/mhc/lib/system/clk/src/sys_clk_pic32mk.c|3rdparty/mhc/lib/system/command|3rdparty/mhc/lib/system/common|3rdparty/mhc/lib/system/rtcc|3rdparty/mhc/lib/system/wdt|3rdparty/mhc/lib/system/memory|3rdparty/mhc/lib/system/msg|3rdparty/mhc/lib/system/dma|3rdparty/mhc/lib/system/debug|3rdparty/mhc/lib/system/console|3rdparty/mhc/lib/system/devcon/src/sys_devcon_cache_pic32mz.S|3rdparty/mhc/lib/system/devcon/src/sys_devcon_pic32mk.c|3rdparty/mhc/lib/system/devcon/src/sys_devcon_pic32mx.c|3rdparty/mhc/lib/system/fs|3rdparty/mhc/lib/system/random|3rdparty/mhc/lib/system/tmr|3rdparty/mhc/lib/system/touch|ut/tmp.c|ut/cwsw_dio_uir.c|3rdparty/mhc/lib/system.save|3rdparty/cwsw|cwsw_arch.save|cwsw_arch/i386|cwsw_board/none|cwsw_arch/i386/system/clk|cwsw_arch/pic32mz/system/int|cwsw_arch/pic32mz/system/tmr|firmware|cwsw_arch.save/pic_exceptions.c|arch/pic_exceptions.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
@@ -323,8 +318,11 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889.120263600.852608464" name="tmp.c" rcbsApplicability="disable" resourcePath="ut/tmp.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.base.1576553591.218557182">
+						<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1576553591.218557182" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base.1576553591"/>
+					</fileInfo>
 					<sourceEntries>
-						<entry excluding="3rdparty/mhc|ut/cwsw_dio_uir.c|cwsw_board/pic32mz_efm_sk|cwsw_arch.save|firmware|arch/PIC32MZ2048EFM/framework/driver/i2c/src|arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mk.c|cwsw_arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/touch|cwsw_arch/i386/system/clk|arch/PIC32MZ2048EFM/framework/tcpip|arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32c.c|arch/PIC32MZ2048EFM/framework/usb|arch/PIC32MZ2048EFM/framework_mhc|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mx.c|cwsw_arch/pic32mz|cwsw_arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="ut/tmp.c|3rdparty/mhc|ut/cwsw_dio_uir.c|cwsw_board/pic32mz_efm_sk|cwsw_arch.save|firmware|arch/PIC32MZ2048EFM/framework/driver/i2c/src|arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mk.c|cwsw_arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/touch|cwsw_arch/i386/system/clk|arch/PIC32MZ2048EFM/framework/tcpip|arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32c.c|arch/PIC32MZ2048EFM/framework/usb|arch/PIC32MZ2048EFM/framework_mhc|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mx.c|cwsw_arch/pic32mz|cwsw_arch/pic_exceptions.c|arch/PIC32MZ2048EFM/framework/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -368,6 +366,9 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894;cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.29715805;cdt.managedbuild.tool.gnu.c.compiler.input.658686186">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894;cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.1405262894.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1337187968;cdt.managedbuild.tool.gnu.c.compiler.input.1220166782">
