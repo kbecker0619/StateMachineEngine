@@ -19,7 +19,9 @@
 // ============================================================================
 
 #include "projcfg.h"
-#if (XPRJ_Debug_Win_MinGW)			/* { */
+#if !( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) )		/* { */
+#error Unknown CPU Architecture
+#endif															/* } */
 
 // ----	System Headers --------------------------
 #include <stdbool.h>
@@ -124,8 +126,3 @@ Cwsw_Arch__Get_Initialized(void)
 {
 	return initialized;
 }
-
-#else
-#error Unknown CPU Architecture
-
-#endif								/* } */
