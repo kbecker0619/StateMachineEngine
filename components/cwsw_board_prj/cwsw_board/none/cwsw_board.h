@@ -46,11 +46,12 @@ extern "C" {
 #include <stdbool.h>
 
 // ----	Project Headers -------------------------
-/* note: while i personally strongly agree with the coding guideline that says, "no path statements
- * in include statements", i am doing that here in my early attempt to support multiple MCU
- * architectures and multiple boards; in my idea, the include paths specified on the command line
- * should point to the correct architecture family, or board, and the structure underneath that
- * parent should be identical.
+/* note: while i personally strongly agree with the coding guideline that says,
+ * "no path statements in include statements", i am doing that here in my early
+ * attempt to support multiple MCU architectures and multiple boards; in my idea,
+ * the include paths specified on the command line should point to the correct
+ * board family, or board, and the published structure should be identical
+ * across all boards.
  *
  * of course there are other, perhaps better, ways to do this, but this is my path during very early
  * development of my system.
@@ -58,9 +59,12 @@ extern "C" {
 #include "peripheral/ports/ports_api.h"
 
 // ----	Module Headers --------------------------
+#include "../cwsw_board_common.h"
+
 #if (XPRJ_Debug_CVI)
 #include "cwsw_dio_uir.h"		/* CVI's control defines (PANEL_LED1, PANEL_BTN_1, et. al. */
 #endif
+
 
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
@@ -177,7 +181,6 @@ typedef enum eBoardLeds				tBoardLed;
 // ============================================================================
 
 // --- discrete functions -----------------------------------------------------
-extern uint16_t Cwsw_Board__Init(void);
 
 /* Function:
 	void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
