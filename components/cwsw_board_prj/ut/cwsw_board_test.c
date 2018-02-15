@@ -60,7 +60,16 @@ int main(void)
 {
 	UNUSED(cwsw_arch_test_RevString);
 	(void)Init(Cwsw_Lib);		// Cwsw_Lib__Init()
-	(void)Init(Cwsw_Arch);		// Cwsw_Arch__Init()
-	(void)Init(Cwsw_Board);		// Cwsw_Board__Init()
+//	(void)Init(Cwsw_Arch);		// Cwsw_Arch__Init()
+//	(void)Init(Cwsw_Board);		// Cwsw_Board__Init()
 
+//	terminate_requested = false;
+//	while(!terminate_requested) { Task(Csws_Dio_Ut); }	/* Csws_Dio_Ut__Task() */
+	return EXIT_SUCCESS;
+}
+
+void
+EventHandler__evNotInitialized(tEventPayload EventData)
+{
+	UNUSED(EventData);
 }

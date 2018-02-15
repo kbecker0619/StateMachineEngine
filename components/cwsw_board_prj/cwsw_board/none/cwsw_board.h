@@ -259,16 +259,6 @@ extern void Cwsw_Board__UsbVbusSwitchStateSet(tDO_LogicalValues state);
 
 
 // --- targets for get/set/etc macros -----------------------------------------
-/** "Chapter Designator" for Get/Set API.
- *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
- *	to find macros for the Get/Set API; simply highlight the Module argument, and select Go To
- *	Definition.
- */
-enum { Cwsw_Board };	/* "None" board - Windows / Linux Desktop */
-
-
-/** Target symbol for Get(Cwsw_Board, Resource) interface */
-#define Cwsw_Board__Get(resource)				Cwsw_Board__Get_ ## resource()
 
 /** Target symbol for Set(Cwsw_Board, Resource, xxx) interface */
 #define Cwsw_Board__Set(resource, value)		Cwsw_Board__Set_ ## resource(value)

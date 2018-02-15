@@ -86,7 +86,8 @@ extern uint16_t Cwsw_Board__Init(void);
 enum { Cwsw_Board = 2 };	/* Generic architecture for all supported boards */
 
 /** Target symbol for Get(Cwsw_Board, xxx) interface */
-#define Cwsw_Board__Get(a)		Cwsw_Board__Get_ ## a()
+#define Cwsw_Board__Get(resource)				Cwsw_Board__Get_ ## resource()
+
 
 /** Target for Get(Cwsw_Board, Initialized) interface */
 extern bool 					Cwsw_Board__Get_Initialized(void);
