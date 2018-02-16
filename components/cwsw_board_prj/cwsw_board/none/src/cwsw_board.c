@@ -45,9 +45,8 @@
 #include "peripheral/ports/ports_api.h"
 
 // ----	Module Headers --------------------------
+#include "cwsw_arch.h"
 #include "cwsw_board.h"
-#include "../cwsw_arch_common.h"
-
 
 
 // ============================================================================
@@ -61,11 +60,6 @@
 // ============================================================================
 // ----	Global Variables ------------------------------------------------------
 // ============================================================================
-
-#include "system_definitions.h"
-/* Structure to hold the object handles for the modules in the system. */
-SYSTEM_OBJECTS sysObj;
-
 
 // ============================================================================
 // ----	Module-level Variables ------------------------------------------------
@@ -117,30 +111,34 @@ Cwsw_Board__Init(void)
 {
 	tEventPayload ev = {0};
 
-	if(Get(Cwsw_Arch, Initialized))
+	if(!Get(Cwsw_Arch, Initialized))
 	{
-		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-		#pragma GCC diagnostic push
-		#pragma GCC diagnostic ignored "-Wpedantic"
-		#endif
-
-		dbg_printf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, bsp_RevString, __FUNCTION__);
-
-		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
-		#pragma GCC diagnostic pop
-		#endif
-
-		Set(Cwsw_Board, UsbVbus, kLogicalOff);	// Cwsw_Board__UsbVbusSwitchStateSet()
-		SET(kBoardLed1, kLogicalOff);
-		SET(kBoardLed2, kLogicalOff);
-		SET(kBoardLed3, kLogicalOff);
-
-		initialized = true;
-		return 0;
+		PostEvent(evNotInitialized, ev);
+		return 1;
 	}
 
-	PostEvent(evNotInitialized, ev);
-	return 1;
+	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wpedantic"
+	#endif
+
+	dbg_printf(
+			"\tModule ID %i\t%s\t%s\n"
+			"\tEntering %s()\n\n",
+			Cwsw_Board, __FILE__, bsp_RevString,
+			__FUNCTION__);
+
+	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+	#pragma GCC diagnostic pop
+	#endif
+
+	Set(Cwsw_Board, UsbVbus, kLogicalOff);	// Cwsw_Board__UsbVbusSwitchStateSet()
+	SET(kBoardLed1, kLogicalOff);
+	SET(kBoardLed2, kLogicalOff);
+	SET(kBoardLed3, kLogicalOff);
+
+	initialized = true;
+	return 0;
 }
 
 bool

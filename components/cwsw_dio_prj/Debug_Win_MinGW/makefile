@@ -9,13 +9,16 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include ut/subdir.mk
--include cwsw_lib/src/subdir.mk
 -include cwsw_bsp/src/subdir.mk
 -include cwsw_board/none/src/subdir.mk
 -include cwsw_arch/i386/system/ports/src/subdir.mk
 -include cwsw_arch/i386/system/clk/src/subdir.mk
 -include cwsw_arch/i386/src/subdir.mk
 -include cwsw_arch/i386/peripheral/ports/subdir.mk
+-include cwsw_arch/MPC57xx/system/int/subdir.mk
+-include cwsw_arch/MPC57xx/system/clk/subdir.mk
+-include cwsw_arch/MPC57xx/src/subdir.mk
+-include cwsw_arch/MPC57xx/Project_Settings/Startup_Code/subdir.mk
 -include 3rdparty/cwsw/lib/system/int/subdir.mk
 -include 3rdparty/cwsw/gen/subdir.mk
 -include subdir.mk

@@ -15,12 +15,15 @@ C_DEPS :=
 SUBDIRS := \
 3rdparty/cwsw/gen \
 3rdparty/cwsw/lib/system/int \
+cwsw_arch/MPC57xx/Project_Settings/Startup_Code \
+cwsw_arch/MPC57xx/src \
+cwsw_arch/MPC57xx/system/clk \
+cwsw_arch/MPC57xx/system/int \
 cwsw_arch/i386/peripheral/ports \
 cwsw_arch/i386/src \
 cwsw_arch/i386/system/clk/src \
 cwsw_arch/i386/system/ports/src \
 cwsw_board/none/src \
 cwsw_bsp/src \
-cwsw_lib/src \
 ut \
 

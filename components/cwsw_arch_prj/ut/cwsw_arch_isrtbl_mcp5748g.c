@@ -19,7 +19,9 @@
 // ============================================================================
 
 #include "projcfg.h"
-#if (XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#if !(XPRJ_Debug_XC_MPC57xx_DevKit)	/* { */
+#error Not using MCP57xx CPU Architecture
+#endif								/* } */
 
 // ----	System Headers --------------------------
 
@@ -89,10 +91,3 @@ SW_INT_1_init(void)
 //	INTC.PSR[1].B.PRC_SELN = 0x4; /* IRQ sent to Core 1 */ /* klb: in this iteration, we want to begin our support for Calypso w/ CORE0 only */
 	INTC.PSR[1].B.PRIN =0x0F; /* IRQ priority = 15 (15 = highest) */
 }
-
-
-
-#else								/* } { */
-#pragma message "Not using MCP57xx CPU Architecture"
-
-#endif								/* } */

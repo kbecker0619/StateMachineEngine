@@ -1,0 +1,9 @@
+# Doxyfile for NXP MCP5748G Dev Kit board
+
+@INCLUDE = cwsw_board.doxyfile
+
+PREDEFINED          += XPRJ_Debug_XC_MPC57xx_DevKit=1 
+EXCLUDE				+= cwsw_arch/i386 \
+					   cwsw_arch/pic32mz \
+					   Debug_XC_MPC57xx_DevKit \
+					   Debug_Win_MinGW

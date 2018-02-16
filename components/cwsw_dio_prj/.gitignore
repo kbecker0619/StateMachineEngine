@@ -61,3 +61,4 @@ cwsw_extensions.7z
 cvibuild.*
 /Debug_Win_MinGW/
 /Debug_Linux_GCC/
+/Debug_Win_MZ2048EFM/

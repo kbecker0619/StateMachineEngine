@@ -144,6 +144,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
  *	TBD
  *
  *	@section arch_terms						Terms, Acronyms, Abbreviations
+ *	TBD
  */
 
 /**	\page Arch_Design						Architecture Subsystem Design
@@ -204,18 +205,18 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 *	The component layout in your workspace looks like this:
 	 *	@code{.sh}
 
-	cwsw_arch_prj/
-	├── cwsw_arch
-	│   ├── i386
-	│   │   └── ...
-	│   ├── MPC57xx
-	│   │   ├── ...
-	│   └── pic32mz
-	│       └── ...
-	├── doc
-	│   ├── dox
-	│   └── images
-	└── ut
+		cwsw_arch_prj/
+		├── cwsw_arch
+		│   ├── i386
+		│   │   └── ...
+		│   ├── MPC57xx
+		│   │   ├── ...
+		│   └── pic32mz
+		│       └── ...
+		├── doc
+		│   ├── dox
+		│   └── images
+		└── ut
 
 	 *	@endcode
 	 *	@note This component is presently under construction; as support is added
@@ -274,23 +275,25 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 		$ git add cwsw_arch
 
 		$ tree -dL 4
-		../..
-		├── components
-		│   ├── cwsw_arch_prj
-		│   ├── cwsw_board_prj
-		│   └── cwsw_lib_prj
-		└── cwsw_example_prj
-		    ├── appl_swc
-		    ├── cfg
-		    ├── drivers
-		    │   └── cwsw_arch -> ../../components/cwsw_arch_prj/cwsw_arch
-		    ├── libs
-		    ├── os
-		    ├── rte
-		    └── services
+		(workspace)
+	 	├── components
+	 	│   ├── cwsw_arch_prj
+	 	│   ├── cwsw_board_prj
+	 	│   └── cwsw_lib_prj
+	 	├── cwsw_example_proj
+	 	│   ├── appl_swc
+	 	│   ├── cfg
+	 	│   ├── drivers
+		│   │   └── cwsw_arch -> ../../components/cwsw_arch_prj/cwsw_arch
+		│   ├── libs
+		│   ├── os
+		│   ├── rte
+	 	│   └── services
+	 	├── doc
+	 	└── ut
 
 	 *	@endcode
-	 *	@note The placement above, in the <code> cwsw_arch </code> folder, is
+	 *	@note The placement above, in the <code> drivers </code> folder, is
 	 *	only a suggestion. Wherever you locate it, if you are using filesystem
 	 *	symlinks, it is important to use relative symlinks to maintain
 	 *	portability from one dev system to another. <em>(If you are using a
@@ -312,7 +315,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 *	@section update_includes			Update Includes paths
 	 *	@subsection update_includes_paths	Include Paths
 	 *	Update your build system to add the relative paths to the selected
-	 *	architecture folder in the <code>cwsw_lib</code> folder. @b Note this is
+	 *	architecture folder in the <code>cwsw_arch</code> folder. @b Note this is
 	 *	different than in other CWSW components; this path is one level "deeper."
 	 *
 	 *	To clarify what you're looking for, here is the annotation for each of

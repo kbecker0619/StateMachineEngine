@@ -153,8 +153,6 @@ typedef enum eBoardLeds					tBoardLed;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-extern uint16_t Cwsw_Board__Init(void);
-
 /* Function:
     void Cwsw_Board__UsbVbusSwitchStateSet(tBrdUsbVbusSwitchState state);
 
