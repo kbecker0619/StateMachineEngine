@@ -25,6 +25,7 @@
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
 #include "cwsw_arch.h"
+#include "cwsw_eventsim.h"
 
 // ----	Module Headers --------------------------
 #include "cwsw_board.h"
@@ -47,10 +48,27 @@
 // ============================================================================
 static char const * const cwsw_arch_test_RevString = "$Revision: 0123 $";
 
+static bool terminate_requested = true;
+
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
+
+void
+board_ut__Task(void)
+{
+//	if(GET(SetEventSeen))
+//	{
+//		bool a = GET(activity1ind);
+//		SET(BspHeartbeatInd, a);		/* Cwsw_Bsp__Set_BspActivity2() */
+//		SET(BspActivity2, GET(activity2ind));
+//		SET(BspActivity3, GET(activity3ind));
+//		SET(SetEventSeen, false);
+//	}
+//	Task(Heartbeat);
+}
+
 
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
@@ -58,18 +76,30 @@ static char const * const cwsw_arch_test_RevString = "$Revision: 0123 $";
 
 int main(void)
 {
+	int retcode = EXIT_SUCCESS;
 	UNUSED(cwsw_arch_test_RevString);
-	(void)Init(Cwsw_Lib);		// Cwsw_Lib__Init()
-//	(void)Init(Cwsw_Arch);		// Cwsw_Arch__Init()
-//	(void)Init(Cwsw_Board);		// Cwsw_Board__Init()
 
-//	terminate_requested = false;
-//	while(!terminate_requested) { Task(Csws_Dio_Ut); }	/* Csws_Dio_Ut__Task() */
+	/* provoke a NotInit event*/
+	(void)Init(Cwsw_Board);		// Cwsw_Board__Init()
+	if(retcode == EXIT_SUCCESS)	retcode = Init(Cwsw_Lib);		// Cwsw_Lib__Init()
+	if(retcode == EXIT_SUCCESS)	retcode = Init(Cwsw_Arch);		// Cwsw_Arch__Init()
+	if(retcode == EXIT_SUCCESS)	retcode = Init(Cwsw_Board);		// Cwsw_Board__Init()
+
+	if(retcode == EXIT_SUCCESS)	terminate_requested = false;
+	while(!terminate_requested) { Task(board_ut); }	/* board_ut__Task() */
 	return EXIT_SUCCESS;
 }
 
+/** Global handler for simulated even evNotInitialized.
+ *	Because this UT environment is supremely simple, I have intimate knowledge that this event
+ *	was posted because I wanted to test my error handling. Because I intentionally provoked an
+ *	exception, I am here taking the unconventional step of restoring normal behavior without any
+ *	other examination.
+ *	@param EventData	Unused in this error handler.
+ */
 void
 EventHandler__evNotInitialized(tEventPayload EventData)
 {
 	UNUSED(EventData);
+	terminate_requested = false;
 }

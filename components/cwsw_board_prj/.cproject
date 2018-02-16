@@ -165,7 +165,17 @@
 		<project id="cwsw_board.cdt.managedbuild.target.gnu.exe.1008657737" name="Executable" projectType="cdt.managedbuild.target.gnu.exe"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/cwsw_board"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/cwsw_board"/>
+		</configuration>
+		<configuration configurationName="Debug_Win_MinGW">
+			<resource resourceType="PROJECT" workspacePath="/cwsw_board"/>
+		</configuration>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400;cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1227239049;cdt.managedbuild.tool.gnu.c.compiler.input.2072253529">

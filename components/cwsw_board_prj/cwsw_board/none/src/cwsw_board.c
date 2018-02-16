@@ -122,7 +122,11 @@ Cwsw_Board__Init(void)
 	#pragma GCC diagnostic ignored "-Wpedantic"
 	#endif
 
-	dbg_printf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, bsp_RevString, __FUNCTION__);
+	dbg_printf(
+			"\tModule ID %i\t%s\t%s\n"
+			"\tEntering %s()\n\n",
+			Cwsw_Board, __FILE__, bsp_RevString,
+			__FUNCTION__);
 
 	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 	#pragma GCC diagnostic pop

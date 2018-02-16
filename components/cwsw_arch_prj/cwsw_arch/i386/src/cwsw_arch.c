@@ -100,7 +100,6 @@ Cwsw_Arch__Init(void)
 			Cwsw_Arch, __FILE__, cwsw_arch_RevString,
 			__FUNCTION__);
 
-
 	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 	#pragma GCC diagnostic pop
 	#endif
