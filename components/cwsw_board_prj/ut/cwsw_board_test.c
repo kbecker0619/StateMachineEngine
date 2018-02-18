@@ -21,7 +21,11 @@
 #include "projcfg.h"
 
 // ----	System Headers --------------------------
-#include <stdio.h>
+#include <stdbool.h>	/* true, false */
+#include <stdint.h>
+#include <limits.h>		/* CHAR_BITS */
+#include <ctype.h>		/* iswhite() */
+#include <string.h>		/* strlen(), size_t */
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
@@ -35,6 +39,9 @@
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
+
+enum eButtons { kButton1, kButton2, kButton3, kNumButtons };
+
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
@@ -56,6 +63,19 @@ static bool terminate_requested = true;
 #define SET_SetEventSeen(val)		do { seteventseen = (val); } while(0)
 static bool seteventseen = false;
 
+/** event data for EventSeen tracking.
+ *	admittedly a stupid implementation, but it's good enough for this level of
+ *	dev / unit testing. very much not thread safe, very much fragile.
+ * @param ev
+ */
+static struct sEventData {
+	uint8_t EventType;
+	union uEventData {
+		tEventPayload btn;
+		uint8_t nothing;
+	} event_data;
+} event_data;
+
 // ==== /Targets for Get/Set APIs =========================================== }
 
 
@@ -63,30 +83,137 @@ static bool seteventseen = false;
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
 
+/** Event handler for button-press events.
+ *	This is on the border between UT environs that aren't hooked to a UI or an external dev board,
+ *	and the portion of the lib and UT that are common across UT envs. Within this function, we
+ *	simply repost the event the LW/CVI event so we can use a common event handler.
+ *
+ *	This can't be static storage scope because of API (which i don't want to change just to hide
+ *	from public view this function for a one-off unit test)
+ *	@param ev
+ */
+void
+EventHandler__evButtonPressed(tEventPayload ev)
+{
+	event_data.EventType = 0;	/* for now, simple button event */
+	event_data.event_data.btn.evId = ev.evId;
+	switch(ev.evInt)
+	{
+	case 1:
+		event_data.event_data.btn.evInt = evButtonCommit;
+		break;
+	default:
+		event_data.event_data.btn.evInt = evButtonReleased;
+		break;
+	}
+	SET(SetEventSeen, event_data.EventType);
+}
+
+/** Simulate input events.
+ *	This function ONLY useful for and only active in environments that are not
+ *	connected to a physical board.
+ *
+ *	This version specifically simulates only digital inputs; specifically,
+ *	button presses. The version here handles only 1 button, but i plan to
+ *	add 2 more buttons "RSN" (Real Soon Now).
+ *
+ *	My scheme for debouncing is to "shift in" a new sample; when there are 1
+ *	full byte's worth of bits that are the same, that value is taken.
+ *
+ *	We post an event on change; init / ambient / quiescent is concsidered to be
+ *	logic 0 / off / open, so we won't post any notifications until the 1st
+ *	recognized press.
+ *
+ *	The source for these button-press samples is a string defined here in this
+ *	function (at the top), because i am in intimate control of this string, i
+ *	can enforce the rule that says the characters in the string shall be only
+ *	"0", "1", or " " characters. "0" is a logic level 0 ( in my simulation, this
+ *	is off, open, quiescent, ambient), 1 is logic 1 (on, closed, energized,
+ *	active, asserted) and whitespace is used for grouping bit samples.
+ *
+ *	Because, in this UT environ, there is no time base and i am directly single
+ *	-stepping through the code, i'm not terribly worried about other than happy-
+ *	path button processing. in my original vision, i would expect this task to
+ *	be called at approximately a 1-ms rate, such that a valid sample could be
+ *	had in as little as 8 ms.
+ */
 static void
 SimulateInputs__Task(void)
 {
-	/* my scheme for debouncing is to "shift in" a new sample; when there are 1 full byte's worth of
-	 * bits that are the same, that value is taken.
-	 * each button-press sample is 32 bits, but in this UT, we stop processing as soon as we have
-	 * a valid sample.
-	 * because, in this UT environ, there is no time base and i am directly single-stepping through
-	 * the code, i'm not terribly worried about other than happy-path button processing. in my
-	 * original vision, i would expect this task to be called at approximately a 1-ms rate, such
-	 * that a valid sample could be had in as little as 8 ms.
-	 */
 
-	static uint8_t button_1[] = {
-	/*   01234567012345670123456701234567 */
-		"01010011111110000001111100000001",		/* 1st button press input data: no valid button press */
+	static char const * const button_samples[kNumButtons] = {
+	/*   01234567 01234567 01234567 01234567 */
+
+//		"11111111 01101001"
+//		"11111111 1100"
+//		"01010011 11111000 00011111 00000001"		/* 3rd button press: no valid button press */
+//		"00000000"									/* 2nd button press: valid switch release */
+		"11111111"									/* 1st button press: valid switch press */
+		" "											/* false 1st sample to test whitespace handling */
+	,
+	0,	/* button 2 data */
+	0	/* button 3 data */
 	};
 
-	static int b1row  = TABLE_SIZE(button_1);	/* which button press sequence are we inspecting? */
-	static int b1samp = strlen(button_1[0]);	/* which sample are we processing? */
-	static uint8_t accumulator_count = CHAR_BITS;
+//	static int b1row = TABLE_SIZE(button_samples);	/* which button press sequence are we inspecting? start w/ end of table */
+	static size_t b1_sample_idx = 0;				/* which sample are we processing? */
+	static int accumulator_count = 0;
+	/** Bit sample accumulator. Sized to hold 1 button event's worth of history */
+	static uint16_t accumulator = 0;		/* this needs to be an unsigned, because C guarantees
+											 * suitability for bitmaps only for unsigned types; this,
+											 * however, requires some casting below because transient ops
+											 * are handled as ints. the initialization here is meaningless;
+											 * if it were simply declared, because it's static, the c
+											 * startup code will initialize it to 0, but then the analysis
+											 * tools would complain. even if you use a version of the
+											 * startup code that doesn't initialize uninitialized vars to 0,
+											 * even then it wouldn't be a problem, because  we don't inspect
+											 * it until we've shifted in a full byte's worth of bit samples.
+											 */
+	static bool last_switch_value = false;	/* for this stage of dev, i want a notification when
+											 * one full sample of ambient readings has been decoded,
+											 * for initialization purposes.
+											 */
 
-	UNUSED(b1row);
+	int sample;
+	if(!b1_sample_idx)	/* if we have run out of button event data ... */
+	{
+		b1_sample_idx = strlen(button_samples[kButton1]);	/* ... reset sample index */
+	}
 
+	do {
+		sample = button_samples[kButton1][--b1_sample_idx];
+	} while(isblank(sample) && b1_sample_idx);
+	if(isblank(sample))	sample = '0';					/* if the last sample was whitespace, supply a default */
+	sample -= '0';										/* convert my sample to binary, independent of character set, encoding scheme, etc. */
+	accumulator = TO_U16(accumulator << 1U);			/* make room for the new sample. ok to push old bits off the left end */
+	accumulator = TO_U16(accumulator | (sample & 1));	/* add in new sample */
+
+	if(--accumulator_count < 1)
+	{
+		/* have enough samples for a valid debounced return value, so  analyze
+		 */
+		if( ((LSB_16(accumulator) & 0xFF) == 0xFF) ||
+			((LSB_16(accumulator) | 0x00) == 0x00) )
+		{
+			if((LSB_16(accumulator) == 0xFFU) != last_switch_value)		/* detect change in state */
+			{
+				tEventPayload ev;
+				/* set last recognized value 1st, as convenience (so i can use it next) */
+				last_switch_value = (LSB_16(accumulator) == 0xFFU);
+
+				/* post event */
+				ev.evId = kButton1;				/* which button has the event? for common handler */
+				ev.evInt = last_switch_value;
+				PostEvent(evButtonPressed, ev);
+			}
+
+			/* always reset bit accum count for next button event, even if the current recognized
+			 * button state is the same as the last one
+			 */
+			accumulator_count = CHAR_BIT;
+		}
+	}
 }
 static void
 board_ut__Task(void)

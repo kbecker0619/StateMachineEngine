@@ -188,7 +188,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
  *	didn't feel IDE-specific instructions were required.
  *
  *	Integration Steps:
- *	-# [Share the Source](#source_share)
+ *	-# [Share the Source](#arch_source_share)
  *	-# [Add Dependencies](#add_depends)
  *	-# [Update Includes paths](#update_includes)
  *	-# [Configuration](#comp_configuration)
@@ -197,7 +197,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
  */
 
 	/**	@page Arch_Integration				Integrating the Reusable Component
-	 *	@section source_share				Share the Source
+	 *	@section arch_source_share			Share the Source
 	 *	Designed to be a reusable component, the CWSW Architecture component is
 	 *	organized into a reusable section, and requires additional project-
 	 *	specific configuration items in the project.

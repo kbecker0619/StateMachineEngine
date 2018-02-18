@@ -101,18 +101,18 @@ Cwsw_Lib__Get_Initialized(void)
  * 		@subpage Lib_Integration
  */
 
-/**	@page Lib_Introduction					Introduction to the Library core component
+/**	@page Lib_Introduction						Introduction to the Library core component
  *	@tableofcontents
  *	The Library contains stateless utility APIs usable by all SW modules, but especially designed
  *	for support of the CWSW reusable components.
  *
- *	@section lib_related_docs				Applicable Documents
+ *	@section lib_related_docs					Applicable Documents
  *	@TBD
  *
- *	@section lib_terms						Terms, Acronyms, Abbreviations
+ *	@section lib_terms							Terms, Acronyms, Abbreviations
  */
 
-/** @page Lib_Design						Library Subsystem Design
+/** @page Lib_Design							Library Subsystem Design
  *	@tableofcontents
  *		@subpage Lib_Responsibilities \n
  *		@subpage Lib_Constraints \n
@@ -125,7 +125,7 @@ Cwsw_Lib__Get_Initialized(void)
  *		@subpage Lib_Dsm \n
  */
 
-/**	@page Lib_Integration					Integrating the Reusable Component
+/**	@page Lib_Integration						Integrating the Reusable Component
  *	@tableofcontents
  *	To add the facilities of the CWSW Lib component to your project, follow these steps.
  *
@@ -136,7 +136,7 @@ Cwsw_Lib__Get_Initialized(void)
  *	didn't feel IDE-specific instructions were required.
  *
  *	Integration Steps:
- *	-# [Share the Source](#source_share)
+ *	-# [Share the Source](#lib_source_share)
  *	-# [Update Includes paths](#update_includes)
  *	-# [Configuration](#lib_configuration)
  *	-# [Update Initialization Code](#init_code)
@@ -144,7 +144,7 @@ Cwsw_Lib__Get_Initialized(void)
  */
 
 	/**	@page Lib_Integration
-	 *	@section source_share				Share the Source
+	 *	@section lib_source_share				Share the Source
 	 *	Designed to be a reusable component, the CWSW Library is organized into a reusable section, and
 	 *	requires additional project-specific configuration items in the project.
 	 *
@@ -229,7 +229,7 @@ Cwsw_Lib__Get_Initialized(void)
 	 */
 
 	/**	@page Lib_Integration
-	 *	@section update_includes			Update the Includes Paths
+	 *	@section update_includes				Update the Includes Paths
 	 *	Update your build system to add the relative path to the <code>cwsw_lib</code> folder. To
 	 *	clarify what you're looking for, here is the annotation for each of the files in the
 	 *	library project.
@@ -284,7 +284,7 @@ Cwsw_Lib__Get_Initialized(void)
 	 */
 
 	/**	@page Lib_Integration
-	 *	@section lib_configuration			Configure the Reusable Component
+	 *	@section lib_configuration				Configure the Reusable Component
 	 *	If the CWSW Library finds certain symbols defined on the compiler command line, some minor
 	 *	optional functionality is enabled.
 	 *
@@ -300,7 +300,7 @@ Cwsw_Lib__Get_Initialized(void)
 	 */
 
 	/**	@page Lib_Integration
-	 *	@section init_code					Initialize the Reusable Component
+	 *	@section init_code						Initialize the Reusable Component
 	 *	As of the time of this writing, there is little actual initialization required by the
 	 *	Library component itself; however, some functionality does check to see that the library
 	 *	is initialized before it works correctly.
