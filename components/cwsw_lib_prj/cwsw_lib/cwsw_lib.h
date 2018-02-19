@@ -1,4 +1,3 @@
-
 /** @file
  *	@brief	API for CWSW Library.
  *

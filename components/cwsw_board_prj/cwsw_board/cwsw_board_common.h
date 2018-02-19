@@ -197,7 +197,7 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
  *	are so close that I didn't feel IDE-specific instructions were required.
  *
  *	Integration Steps:
- *	-# [Share the Source](#source_share)
+ *	-# [Share the Source](#bd_source_share)
  *	-# [Add Dependencies](#add_depends)
  *	-# [Update Includes paths](#update_includes)
  *	-# [Configuration](#comp_configuration)
@@ -206,7 +206,7 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
  */
 
 	/**	@page Board_Integration
-	 *	@section source_share					Share the Source
+	 *	@section bd_source_share				Share the Source
 	 *	Designed to be a reusable component, the CWSW Board component is
 	 *	organized into a reusable section, and requires additional project-
 	 *	specific configuration items in the project.
