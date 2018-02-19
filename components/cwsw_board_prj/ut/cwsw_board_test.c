@@ -41,6 +41,7 @@
 // ============================================================================
 
 enum eButtons { kButton1, kButton2, kButton3, kNumButtons };
+enum eEventDataTypes { kButtonPressEvent };
 
 
 // ============================================================================
@@ -59,9 +60,10 @@ static char const * const cwsw_arch_test_RevString = "$Revision: 0123 $";
 static bool terminate_requested = true;
 
 // ==== Targets for Get/Set APIs ============================================ {
+// ----	EventSeen API -------------------------------------------------- {
+static bool seteventseen = false;
 #define GET_SetEventSeen()			!(!(seteventseen))
 #define SET_SetEventSeen(val)		do { seteventseen = (val); } while(0)
-static bool seteventseen = false;
 
 /** event data for EventSeen tracking.
  *	admittedly a stupid implementation, but it's good enough for this level of
@@ -75,6 +77,17 @@ static struct sEventData {
 		uint8_t nothing;
 	} event_data;
 } event_data;
+// ----	/EventSeen API ------------------------------------------------- }
+
+// ----	LED API -------------------------------------------------------- {
+/* In this UT environ, the LEDs are considered global resources, "owned" by the Board,
+ * which can be set (written to) by any application-layer module.
+ */
+#define SET_BspHeartbeatInd(value)	Set(Cwsw_Bsp, BspHeartbeatInd, value)
+#define SET_BspActivity2(value)		Set(Cwsw_Bsp, BspActivity2, value)
+#define SET_BspActivity3(value)		Set(Cwsw_Bsp, BspActivity3, value)
+
+// ----	/LED API ------------------------------------------------------- }
 
 // ==== /Targets for Get/Set APIs =========================================== }
 
@@ -90,12 +103,14 @@ static struct sEventData {
  *
  *	This can't be static storage scope because of API (which i don't want to change just to hide
  *	from public view this function for a one-off unit test)
- *	@param ev
+ *	@param ev Event Data.
+ *	- evId contains the ID of the button whose event is being posted.
+ *	- evInt contains the button state being communicated.
  */
 void
 EventHandler__evButtonPressed(tEventPayload ev)
 {
-	event_data.EventType = 0;	/* for now, simple button event */
+	event_data.EventType = kButtonPressEvent;
 	event_data.event_data.btn.evId = ev.evId;
 	switch(ev.evInt)
 	{
@@ -106,7 +121,14 @@ EventHandler__evButtonPressed(tEventPayload ev)
 		event_data.event_data.btn.evInt = evButtonReleased;
 		break;
 	}
-	SET(SetEventSeen, event_data.EventType);
+	SET(SetEventSeen, true);
+}
+
+void
+EventHandler__evTerminateRequested(tEventPayload ev)
+{
+	UNUSED(ev);
+	terminate_requested = true;
 }
 
 /** Simulate input events.
@@ -140,14 +162,13 @@ EventHandler__evButtonPressed(tEventPayload ev)
 static void
 SimulateInputs__Task(void)
 {
-
 	static char const * const button_samples[kNumButtons] = {
 	/*   01234567 01234567 01234567 01234567 */
 
-//		"11111111 01101001"
-//		"11111111 1100"
-//		"01010011 11111000 00011111 00000001"		/* 3rd button press: no valid button press */
-//		"00000000"									/* 2nd button press: valid switch release */
+		"11111111 01101001"
+		"11111111 1100"
+		"01010011 11111000 00011111 00000001"		/* 3rd button press: no valid button press */
+		"00000000"									/* 2nd button press: valid switch release */
 		"11111111"									/* 1st button press: valid switch press */
 		" "											/* false 1st sample to test whitespace handling */
 	,
@@ -156,9 +177,10 @@ SimulateInputs__Task(void)
 	};
 
 //	static int b1row = TABLE_SIZE(button_samples);	/* which button press sequence are we inspecting? start w/ end of table */
-	static size_t b1_sample_idx = 0;				/* which sample are we processing? */
+	static size_t button_sample_idx = 0;			/* which sample are we processing? */
 	static int accumulator_count = 0;
-	/** Bit sample accumulator. Sized to hold 1 button event's worth of history */
+
+	/* Bit sample accumulator. Sized to hold 1 button event's worth of history */
 	static uint16_t accumulator = 0;		/* this needs to be an unsigned, because C guarantees
 											 * suitability for bitmaps only for unsigned types; this,
 											 * however, requires some casting below because transient ops
@@ -176,20 +198,34 @@ SimulateInputs__Task(void)
 											 */
 
 	int sample;
-	if(!b1_sample_idx)	/* if we have run out of button event data ... */
+	if(!button_sample_idx)	/* if we have run out of button event data ... */
 	{
-		b1_sample_idx = strlen(button_samples[kButton1]);	/* ... reset sample index */
+		static int loop_ct_until_terminate = 2;
+		button_sample_idx = strlen(button_samples[kButton1]);	/* ... reset sample index */
+		if(!--loop_ct_until_terminate)
+		{
+			tEventPayload ev = {0};
+			PostEvent(evTerminateRequested, ev);
+		}
 	}
 
 	do {
-		sample = button_samples[kButton1][--b1_sample_idx];
-	} while(isblank(sample) && b1_sample_idx);
+		sample = button_samples[kButton1][--button_sample_idx];
+	} while(isblank(sample) && button_sample_idx);
 	if(isblank(sample))	sample = '0';					/* if the last sample was whitespace, supply a default */
 	sample -= '0';										/* convert my sample to binary, independent of character set, encoding scheme, etc. */
 	accumulator = TO_U16(accumulator << 1U);			/* make room for the new sample. ok to push old bits off the left end */
 	accumulator = TO_U16(accumulator | (sample & 1));	/* add in new sample */
 
-	if(--accumulator_count < 1)
+	if(--accumulator_count < 1)		/* by design, ok to roll down past 0. if this happens, we'll
+									 * simply transition into a mode where we now inspect the
+									 * sample accumulator w/ each new sample, and we'll reset & exit
+									 * once we get a valid switch press.
+									 * The only weakness here would be if there were so many noisy
+									 * samples that the accumulator rolled back to the reinit
+									 * value, and, even then, it would only skip this analysis
+									 * until the accumulator got back down to 0.
+									 */
 	{
 		/* have enough samples for a valid debounced return value, so  analyze
 		 */
@@ -215,6 +251,11 @@ SimulateInputs__Task(void)
 		}
 	}
 }
+
+/** Unit Test Task Function.
+ *	This task is not required to be called at any frequency or period other than, "as fast as
+ *	possible." It would work well if it were called on a 1-ms time base.
+ */
 static void
 board_ut__Task(void)
 {
@@ -228,11 +269,25 @@ board_ut__Task(void)
 	 */
 	if(GET(SetEventSeen))
 	{
+		/* business logic, react to observed event
+		 */
+		switch(event_data.EventType)
+		{
+		case kButtonPressEvent:
+			SET(kBoardLed1,
+				(event_data.event_data.btn.evInt) == evButtonCommit ?
+					kLogicalOn : kLogicalOff);
+			break;
+
+		default:
+			break;
+		}
+
 //		bool a = GET(activity1ind);
 //		SET(BspHeartbeatInd, a);		/* Cwsw_Bsp__Set_BspActivity2() */
 //		SET(BspActivity2, GET(activity2ind));
 //		SET(BspActivity3, GET(activity3ind));
-//		SET(SetEventSeen, false);
+		SET(SetEventSeen, false);
 	}
 //	Task(Heartbeat);
 }

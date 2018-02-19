@@ -57,7 +57,7 @@ extern "C" {
  *	One suggestion: if you want a generic event handler, you can then put a unique identifier
  *	(as in, the event, cause, reason, etc. code) into the evId field.
  */
-typedef struct {
+typedef struct eEventPayload  {
 	uint16_t	evId;	// for unit test, i need to know the event id. this is super-simplistic pseudo-eventing system anyway, solely for purpose of illustrating possibilities
 	uint32_t	evInt;
 } tEventPayload;
