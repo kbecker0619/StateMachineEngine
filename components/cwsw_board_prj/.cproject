@@ -159,6 +159,199 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552" moduleId="org.eclipse.cdt.core.settings" name="Debug_XC_MPC57xx_DevKit">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.freescale.s32ds.cdt.core.errorParsers.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.freescale.s32ds.cdt.core.errorParsers.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="elf" artifactName="${ProjName}" buildArtefactType="com.freescale.s32ds.cross.gnu.e200.buildArtefact.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=com.freescale.s32ds.cross.gnu.e200.buildArtefact.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="Development and debugging on Windows and Linux desktop, using NXP Build Tools" errorParsers="org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.VCErrorParser" id="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552" name="Debug_XC_MPC57xx_DevKit" parent="cdt.managedbuild.config.gnu.exe.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552." name="/" resourcePath="">
+						<toolChain id="com.freescale.s32ds.cross.gnu.e200.toolChain.851359982" name="Standard S32DS toolchain for E200" superClass="com.freescale.s32ds.cross.gnu.e200.toolChain">
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.compiler.path.1325664556" name="Path" superClass="com.freescale.s32ds.cross.gnu.e200.option.compiler.path"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.prefix.1771493397" name="Prefix" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.prefix"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.ar.923232776" name="Archiver" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.ar"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.objcopy.1521070852" name="Hex/Bin converter" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.objcopy"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.addtools.printsize.760711667" name="Print size" superClass="com.freescale.s32ds.cross.gnu.e200.option.addtools.printsize"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.size.874501596" name="Size command" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.size"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.objdump.886777143" name="Listing generator" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.objdump"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.addtools.createflash.689196842" name="Create flash image" superClass="com.freescale.s32ds.cross.gnu.e200.option.addtools.createflash"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.addtools.createlisting.1351097849" name="Create extended listing" superClass="com.freescale.s32ds.cross.gnu.e200.option.addtools.createlisting"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.addtools.spt.assembler.593567241" name="SPT tools enablement" superClass="com.freescale.s32ds.cross.gnu.e200.option.addtools.spt.assembler"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.spt.path.1460469760" name="SPT tools path" superClass="com.freescale.s32ds.cross.gnu.e200.option.spt.path"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.disabled_hosted.920798431" name="disabled_hosted" superClass="com.freescale.s32ds.cross.gnu.e200.disabled_hosted"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.family.1236054859" name="Target processor" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.family"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.mvle.424771907" name="VLE mode" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.mvle"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.mregnames.941533983" name="Allow symbolic names for registers" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.mregnames"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.endianness.1056370198" name="Machine endianness" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.endianness"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.fp.hard.1220239818" name="Use hardware floating point" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.fp.hard"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.libraries.1688997146" name="Libraries support" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.libraries" value="com.freescale.s32ds.cross.gnu.e200.option.target.libraries.ewl_c9x_noio" valueType="enumerated"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.sp.1170157474" name="Signal Processing" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.sp"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.sysroot.1412411658" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.sysroot" value="--sysroot=&quot;${VLE_EWL_DIR}&quot;" valueType="string"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.1124274272" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
+							<builder buildPath="${workspace_loc:/cwsw_board}/Debug_XC_MPC57xx_DevKit" id="com.freescale.s32ds.cross.gnu.builder.2008588241" keepEnvironmentInBuildfile="false" name="FSL Make Builder" superClass="com.freescale.s32ds.cross.gnu.builder"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.1558685814" name="Standard S32DS C Compiler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler">
+								<option id="gnu.c.compiler.option.include.paths.1827226697" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/ut&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/MPC57xx&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/MPC57xx/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C/include/pa&quot;"/>
+								</option>
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.2081479189" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="XPRJ_Debug_XC_MPC57xx_DevKit=1"/>
+									<listOptionValue builtIn="false" value="MPC574xG=1"/>
+									<listOptionValue builtIn="false" value="START_FROM_FLASH=1"/>
+									<listOptionValue builtIn="false" value="TURN_ON_CPU0=1"/>
+									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
+								</option>
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1703847860" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.debugging.level.3044760" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.optimization.functionsections.971331840" name="Function sections (-ffunction-sections)" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.optimization.functionsections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.optimization.datasections.359045645" name="Data sections (-fdata-sections)" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.optimization.datasections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.debugging.format.1474588752" name="Debug format" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.debugging.format" useByScannerDiscovery="true"/>
+								<option id="gnu.c.compiler.option.dialect.std.629204641" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.dialect.flags.729458145" name="Other dialect flags" superClass="gnu.c.compiler.option.dialect.flags" useByScannerDiscovery="true" value="-std=gnu11" valueType="string"/>
+								<option id="gnu.c.compiler.option.warnings.pedantic.72328064" name="Pedantic (-pedantic)" superClass="gnu.c.compiler.option.warnings.pedantic" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="gnu.c.compiler.option.warnings.extrawarn.1693718002" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="gnu.c.compiler.option.warnings.wconversion.1043916615" name="Implicit conversion warnings (-Wconversion)" superClass="gnu.c.compiler.option.warnings.wconversion" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.option.target.libraries.950827103" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.option.target.libraries" useByScannerDiscovery="false" value="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.option.target.libraries.ewl_c9x_noio" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.option.target.sysroot.465442276" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.option.target.sysroot" useByScannerDiscovery="false" value="--sysroot=&quot;${VLE_EWL_DIR}&quot;" valueType="string"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.warnings.missingdeclaration.1849152739" name="Warn on undeclared global function (-Wmissing-declaration)" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.warnings.missingdeclaration" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1399420310" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler.477487973" name="Standard S32DS C++ Compiler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler">
+								<option id="gnu.cpp.compiler.option.optimization.level.491875217" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.debugging.level.636627574" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.optimization.functionsections.1708482559" name="Function sections (-ffunction-sections)" superClass="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.optimization.functionsections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.optimization.datasections.1439705738" name="Data sections (-fdata-sections)" superClass="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.optimization.datasections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.debugging.format.1569064196" name="Debug format" superClass="com.freescale.s32ds.cross.gnu.tool.cpp.compiler.option.debugging.format" useByScannerDiscovery="true"/>
+								<option id="gnu.cpp.compiler.option.include.paths.440229395" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C/include/pa&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C++/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C++/include/pa&quot;"/>
+								</option>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler.option.target.libraries.1846848757" superClass="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler.option.target.libraries" useByScannerDiscovery="false" value="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler.option.target.libraries.ewl_c9x_noio" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler.option.target.sysroot.1954116986" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler.option.target.sysroot" useByScannerDiscovery="false" value="--sysroot=&quot;${VLE_EWL_DIR}&quot;" valueType="string"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.c.linker.1306777257" name="Standard S32DS C Linker" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.linker">
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.linker.option.gcsections.204817993" name="Remove unused sections (-Xlinker --gc-sections)" superClass="com.freescale.s32ds.cross.gnu.tool.c.linker.option.gcsections" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.c.linker.option.scriptfile.1107388804" name="Script files (-T)" superClass="com.freescale.s32ds.cross.gnu.tool.c.linker.option.scriptfile" useByScannerDiscovery="false" valueType="stringList">
+									<listOptionValue builtIn="false" value="${ProjDirPath}/cwsw_arch/MPC57xx/Project_Settings/Linker_Files/libs.ld"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/MPC57xx/Project_Settings/Linker_Files/mem.ld&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/MPC57xx/Project_Settings/Linker_Files/sections.ld&quot;"/>
+								</option>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.c.linker.option.target.libraries.1882234072" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.linker.option.target.libraries" useByScannerDiscovery="false" value="com.freescale.s32ds.cross.gnu.e200.tool.c.linker.option.target.libraries.ewl_c9x_noio" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.c.linker.option.target.sysroot.130950320" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.linker.option.target.sysroot" useByScannerDiscovery="false" value="--sysroot=&quot;${VLE_EWL_DIR}&quot;" valueType="string"/>
+								<inputType id="com.freescale.s32ds.cross.gnu.tool.c.linker.inputType.scriptfile.534955548" superClass="com.freescale.s32ds.cross.gnu.tool.c.linker.inputType.scriptfile"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker.1056106438" name="Standard S32DS C++ Linker" superClass="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker">
+								<option id="com.freescale.s32ds.cross.gnu.tool.cpp.linker.option.gcsections.1714638088" name="Remove unused sections (-Xlinker --gc-sections)" superClass="com.freescale.s32ds.cross.gnu.tool.cpp.linker.option.gcsections" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker.option.target.libraries.501428765" superClass="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker.option.target.libraries" value="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker.option.target.libraries.ewl_c9x_noio" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker.option.target.sysroot.827717444" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker.option.target.sysroot" value="--sysroot=&quot;${VLE_EWL_DIR}&quot;" valueType="string"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.archiver.1627602821" name="Standard S32DS Archiver" superClass="com.freescale.s32ds.cross.gnu.e200.tool.archiver"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.assembler.627550538" name="Standard S32DS Assembler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.assembler">
+								<option id="gnu.both.asm.option.include.paths.820063857" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C/include/pa&quot;"/>
+								</option>
+								<option id="com.freescale.s32ds.cross.gnu.tool.assembler.usepreprocessor.671588012" name="Use preprocessor" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.usepreprocessor" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option defaultValue="gnu.c.optimization.level.none" id="com.freescale.s32ds.cross.gnu.tool.assembler.option.optimization.level.1962726726" name="Optimization Level" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.assembler.option.debugging.level.495319371" name="Debug Level" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.libraries.385870437" superClass="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.libraries" useByScannerDiscovery="false" value="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.libraries.ewl_c9x_noio" valueType="enumerated"/>
+								<option id="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.sysroot.726599536" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.tool.assembler.option.target.sysroot" useByScannerDiscovery="false" value="--sysroot=&quot;${VLE_EWL_DIR}&quot;" valueType="string"/>
+								<option id="com.freescale.s32ds.cross.gnu.tool.assembler.option.defs.666545747" name="Defined symbols (-D)" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.option.defs" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="MPC574xG=1"/>
+									<listOptionValue builtIn="false" value="TURN_ON_CPU0=1"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.672735521" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.861584688" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.createflash.1565178870" name="Standard S32DS Create Flash Image" superClass="com.freescale.s32ds.cross.gnu.e200.tool.createflash"/>
+							<tool id="com.freescale.s32ds.cross.gnu.tool.createlisting.1635326284" name="Standard S32DS Create Listing" superClass="com.freescale.s32ds.cross.gnu.tool.createlisting">
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.source.978491452" name="Display source (--source|-S)" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.source" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.allheaders.603507732" name="Display all headers (--all-headers|-x)" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.allheaders" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.demangle.155442348" name="Demangle names (--demangle|-C)" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.demangle" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.linenumbers.1405113142" name="Display line numbers (--line-numbers|-l)" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.linenumbers" value="true" valueType="boolean"/>
+								<option id="com.freescale.s32ds.cross.gnu.option.createlisting.wide.1047206136" name="Wide lines (--wide|-w)" superClass="com.freescale.s32ds.cross.gnu.option.createlisting.wide" value="true" valueType="boolean"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.tool.printsize.475481180" name="Standard S32DS Print Size" superClass="com.freescale.s32ds.cross.gnu.tool.printsize">
+								<option id="com.freescale.s32ds.cross.gnu.option.printsize.format.84170696" name="Size format" superClass="com.freescale.s32ds.cross.gnu.option.printsize.format"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.c.preprocessor.1708111440" name="Standard S32DS C Preprocessor" superClass="com.freescale.s32ds.cross.gnu.c.preprocessor"/>
+							<tool id="com.freescale.s32ds.cross.gnu.cpp.preprocessor.621752078" name="Standard S32DS C++ Preprocessor" superClass="com.freescale.s32ds.cross.gnu.cpp.preprocessor"/>
+							<tool id="com.freescale.s32ds.cross.gnu.disassembler.1554600810" name="Standard S32DS Disassembler" superClass="com.freescale.s32ds.cross.gnu.disassembler"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.spt.assembler.1487768490" name="SPT Assembler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.spt.assembler"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.spt.disassembler.126973992" name="SPT Disassembler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.spt.disassembler"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.spt.preprocessor.96150351" name="SPT Preprocessor" superClass="com.freescale.s32ds.cross.gnu.e200.tool.spt.preprocessor"/>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552.1612493612" name="/" resourcePath="cwsw_arch/i386">
+						<toolChain id="com.freescale.s32ds.cross.gnu.e200.toolChain.222117620" name="Standard S32DS toolchain for E200" superClass="com.freescale.s32ds.cross.gnu.e200.toolChain" unusedChildren="">
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.compiler.path.1325664556.212450857" name="Path" superClass="com.freescale.s32ds.cross.gnu.e200.option.compiler.path.1325664556"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.prefix.1771493397.796263181" name="Prefix" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.prefix.1771493397"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.ar.923232776.928178014" name="Archiver" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.ar.923232776"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.objcopy.1521070852.984812935" name="Hex/Bin converter" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.objcopy.1521070852"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.addtools.printsize.760711667.232890925" name="Print size" superClass="com.freescale.s32ds.cross.gnu.e200.option.addtools.printsize.760711667"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.size.874501596.248043761" name="Size command" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.size.874501596"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.command.objdump.886777143.1727980964" name="Listing generator" superClass="com.freescale.s32ds.cross.gnu.e200.option.command.objdump.886777143"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.addtools.createflash.689196842.1402194056" name="Create flash image" superClass="com.freescale.s32ds.cross.gnu.e200.option.addtools.createflash.689196842"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.addtools.createlisting.1351097849.1994173753" name="Create extended listing" superClass="com.freescale.s32ds.cross.gnu.e200.option.addtools.createlisting.1351097849"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.addtools.spt.assembler.593567241.1153960197" name="SPT tools enablement" superClass="com.freescale.s32ds.cross.gnu.e200.option.addtools.spt.assembler.593567241"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.spt.path.1460469760.1906226045" name="SPT tools path" superClass="com.freescale.s32ds.cross.gnu.e200.option.spt.path.1460469760"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.disabled_hosted.920798431.2009268159" name="disabled_hosted" superClass="com.freescale.s32ds.cross.gnu.e200.disabled_hosted.920798431"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.family.1236054859.2022887489" name="Target processor" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.family.1236054859"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.mvle.424771907.811003171" name="VLE mode" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.mvle.424771907"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.mregnames.941533983.191105145" name="Allow symbolic names for registers" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.mregnames.941533983"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.endianness.1056370198.288414914" name="Machine endianness" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.endianness.1056370198"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.fp.hard.1220239818.2076536811" name="Use hardware floating point" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.fp.hard.1220239818"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.libraries.1688997146.780027482" name="Libraries support" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.libraries.1688997146"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.sp.1170157474.997787530" name="Signal Processing" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.sp.1170157474"/>
+							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.sysroot.1412411658.1582088407" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.sysroot.1412411658"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.1443162510" name="Standard S32DS C Compiler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.1558685814">
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1424997619" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler.1777869526" name="Standard S32DS C++ Compiler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.cpp.compiler.477487973"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.c.linker.864615222" name="Standard S32DS C Linker" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.linker.1306777257"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker.559550908" name="Standard S32DS C++ Linker" superClass="com.freescale.s32ds.cross.gnu.e200.tool.cpp.linker.1056106438"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.archiver.1566854873" name="Standard S32DS Archiver" superClass="com.freescale.s32ds.cross.gnu.e200.tool.archiver.1627602821"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.assembler.1770236361" name="Standard S32DS Assembler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.assembler.627550538">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1168819668" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+								<inputType id="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile.26137234" superClass="com.freescale.s32ds.cross.gnu.tool.assembler.inputType.asmfile"/>
+							</tool>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.createflash.316920775" name="Standard S32DS Create Flash Image" superClass="com.freescale.s32ds.cross.gnu.e200.tool.createflash.1565178870"/>
+							<tool id="com.freescale.s32ds.cross.gnu.tool.createlisting.1302066723" name="Standard S32DS Create Listing" superClass="com.freescale.s32ds.cross.gnu.tool.createlisting.1635326284"/>
+							<tool id="com.freescale.s32ds.cross.gnu.tool.printsize.523709428" name="Standard S32DS Print Size" superClass="com.freescale.s32ds.cross.gnu.tool.printsize.475481180"/>
+							<tool id="com.freescale.s32ds.cross.gnu.c.preprocessor.706378691" name="Standard S32DS C Preprocessor" superClass="com.freescale.s32ds.cross.gnu.c.preprocessor.1708111440"/>
+							<tool id="com.freescale.s32ds.cross.gnu.cpp.preprocessor.844186133" name="Standard S32DS C++ Preprocessor" superClass="com.freescale.s32ds.cross.gnu.cpp.preprocessor.621752078"/>
+							<tool id="com.freescale.s32ds.cross.gnu.disassembler.997943877" name="Standard S32DS Disassembler" superClass="com.freescale.s32ds.cross.gnu.disassembler.1554600810"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.spt.assembler.492758221" name="SPT Assembler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.spt.assembler.1487768490"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.spt.disassembler.1176990108" name="SPT Disassembler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.spt.disassembler.126973992"/>
+							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.spt.preprocessor.509091793" name="SPT Preprocessor" superClass="com.freescale.s32ds.cross.gnu.e200.tool.spt.preprocessor.96150351"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="cwsw_arch/i386|cwsw_arch/pic32mz|cwsw_board/pic32mz_efm_sk" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="cwsw_board.cdt.managedbuild.target.gnu.exe.1008657737" name="Executable" projectType="cdt.managedbuild.target.gnu.exe"/>
@@ -175,9 +368,16 @@
 			<resource resourceType="PROJECT" workspacePath="/cwsw_board"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552;cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552.;com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.1558685814;cdt.managedbuild.tool.gnu.c.compiler.input.1399420310">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400;cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1227239049;cdt.managedbuild.tool.gnu.c.compiler.input.2072253529">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552;cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.1543822552.;cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1676901019;cdt.managedbuild.tool.gnu.c.compiler.input.1110068498">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.exe.release.1367042527;cdt.managedbuild.config.gnu.exe.release.1367042527.;cdt.managedbuild.tool.gnu.c.compiler.exe.release.1068967362;cdt.managedbuild.tool.gnu.c.compiler.input.20447800">
@@ -187,5 +387,4 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

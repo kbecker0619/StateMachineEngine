@@ -137,9 +137,9 @@ Cwsw_Lib__Get_Initialized(void)
  *
  *	Integration Steps:
  *	-# [Share the Source](#lib_source_share)
- *	-# [Update Includes paths](#update_includes)
+ *	-# [Update Includes paths](#lib_update_includes)
  *	-# [Configuration](#lib_configuration)
- *	-# [Update Initialization Code](#init_code)
+ *	-# [Update Initialization Code](#lib_init_code)
  *	-# Optional APIs.
  */
 
@@ -229,7 +229,7 @@ Cwsw_Lib__Get_Initialized(void)
 	 */
 
 	/**	@page Lib_Integration
-	 *	@section update_includes				Update the Includes Paths
+	 *	@section lib_update_includes			Update the Includes Paths
 	 *	Update your build system to add the relative path to the <code>cwsw_lib</code> folder. To
 	 *	clarify what you're looking for, here is the annotation for each of the files in the
 	 *	library project.
@@ -300,7 +300,7 @@ Cwsw_Lib__Get_Initialized(void)
 	 */
 
 	/**	@page Lib_Integration
-	 *	@section init_code						Initialize the Reusable Component
+	 *	@section lib_init_code					Initialize the Reusable Component
 	 *	As of the time of this writing, there is little actual initialization required by the
 	 *	Library component itself; however, some functionality does check to see that the library
 	 *	is initialized before it works correctly.

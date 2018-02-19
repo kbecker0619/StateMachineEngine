@@ -198,10 +198,10 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
  *
  *	Integration Steps:
  *	-# [Share the Source](#bd_source_share)
- *	-# [Add Dependencies](#add_depends)
- *	-# [Update Includes paths](#update_includes)
- *	-# [Configuration](#comp_configuration)
- *	-# [Update Initialization Code](#init_code)
+ *	-# [Add Dependencies](#bd_add_depends)
+ *	-# [Update Includes paths](#bd_update_includes)
+ *	-# [Configuration](#bd_comp_configuration)
+ *	-# [Update Initialization Code](#bd_init_code)
  *	-# Optional APIs.
  */
 
@@ -304,7 +304,7 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 */
 
 	/**	@page Board_Integration
-	 *	@section add_depends					Add Component Dependencies
+	 *	@section bd_add_depends					Add Component Dependencies
 	 *
 	 *	The <code>cwsw_board</code> component has the following dependencies
 	 *	to other cwsw components:
@@ -348,8 +348,8 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 */
 
 	/**	@page Board_Integration
-	 *	@section update_includes				Update Includes paths
-	 *	@subsection update_includes_paths		Include Paths
+	 *	@section bd_update_includes				Update Includes paths
+	 *	@subsection bd_update_includes_paths	Include Paths
 	 *	Update your build system to add the relative paths to the selected
 	 *	architecture folder in the <code>cwsw_board</code> folder. @b Note this
 	 *	is different than in most other CWSW components; this path is one level
@@ -380,7 +380,7 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 *	@image html doc/images/eclipse_add_includes_path.png			"Example Includes Path"
 	 *	\n
 	 *
-	 *	@subsection exclude_undesireables		Exclude Undesired Boards
+	 *	@subsection bd_exclude_undesireables		Exclude Undesired Boards
 	 *	Because (at least a portion of) the API that faces "upwards" must be
 	 *	the same across all supported architectures, multiple definitions of
 	 *	those API functions will exist unless those modules are excluded from
@@ -399,7 +399,7 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 */
 
 	/**	@page Board_Integration
-	 *	@section comp_configuration				Configure the Reusable Component and its dependencies
+	 *	@section bd_comp_configuration			Configure the Reusable Component and its dependencies
 	 *	In some or the supported architectures, no configuration beyond what
 	 *	has already been described is necessary. In some others, additional
 	 *	items may need to be configured.
@@ -411,7 +411,7 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 */
 
 	/**	@page Board_Integration					Integrating the Reusable Component
-	 *	@section init_code						Update application's initialization code
+	 *	@section bd_init_code					Update application's initialization code
 	 *	At the time of this writing, none of the supported boards require any
 	 *	secondary initialization (e.g., initialization calls made after the
 	 *	scheduler is started).

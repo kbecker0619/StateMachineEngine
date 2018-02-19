@@ -189,10 +189,10 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
  *
  *	Integration Steps:
  *	-# [Share the Source](#arch_source_share)
- *	-# [Add Dependencies](#add_depends)
- *	-# [Update Includes paths](#update_includes)
- *	-# [Configuration](#comp_configuration)
- *	-# [Update Initialization Code](#init_code)
+ *	-# [Add Dependencies](#arch_add_depends)
+ *	-# [Update Includes paths](#arch_update_includes)
+ *	-# [Configuration](#arch_comp_configuration)
+ *	-# [Update Initialization Code](#arch_init_code)
  *	-# Optional APIs.
  */
 
@@ -303,7 +303,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 */
 
 	/**	@page Arch_Integration
-	 *	@section add_depends				Add Component Dependencies
+	 *	@section arch_add_depends			Add Component Dependencies
 	 *
 	 *	The <code>cwsw_arch</code> component has only one dependency to any
 	 *	other cwsw component: to <code>cwsw_lib</code>. To integrate this
@@ -312,8 +312,8 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 */
 
 	/**	@page Arch_Integration
-	 *	@section update_includes			Update Includes paths
-	 *	@subsection update_includes_paths	Include Paths
+	 *	@section arch_update_includes		Update Includes paths
+	 *	@subsection arch_update_includes_paths	Include Paths
 	 *	Update your build system to add the relative paths to the selected
 	 *	architecture folder in the <code>cwsw_arch</code> folder. @b Note this is
 	 *	different than in other CWSW components; this path is one level "deeper."
@@ -344,7 +344,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 *	@image html doc/images/eclipse_add_includes_path.png			"Example Includes Path"
 	 *	\n
 	 *
-	 *	@subsection exclude_undesireables	Exclude Optional Architectures
+	 *	@subsection arch_exclude_undesireables	Exclude Optional Architectures
 	 *	Because (at least a portion of) the API that faces "upwards" must be
 	 *	the same across all supported architectures, multiple definitions of
 	 *	those API functions will exist unless those modules are excluded from
@@ -363,7 +363,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 */
 
 	/**	@page Arch_Integration
-	 *	@section comp_configuration			Configure the Reusable Component and its dependencies
+	 *	@section arch_comp_configuration		Configure the Reusable Component and its dependencies
 	 *	In some or the supported architectures, no configuration beyond what
 	 *	has already been described is necessary. In some others, additional
 	 *	items may need to be configured.
@@ -374,8 +374,8 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 *	+ #define entries in the file "projcfg.h"
 	 */
 
-	/**	@page Arch_Integration				Integrating the Reusable Component
-	 *	@section init_code					Update application's initialization code
+	/**	@page Arch_Integration
+	 *	@section arch_init_code					Update application's initialization code
 	 *	At the time of this writing, none of the supported architectures require
 	 *	any secondary initialization (e.g., initialization calls made after the
 	 *	scheduler is started).

@@ -2,3 +2,5 @@
 /doxygen/
 /Debug_Win_MinGW/
 /doxygen_log.txt
+/Debug_XC_MPC57xx_DevKit/
+/arch_settings.xml

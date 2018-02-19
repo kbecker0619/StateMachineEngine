@@ -367,16 +367,16 @@
 								<option id="gnu.c.compiler.option.warnings.pedantic.1491755943" name="Pedantic (-pedantic)" superClass="gnu.c.compiler.option.warnings.pedantic" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.warnings.missingdeclaration.727702308" name="Warn on undeclared global function (-Wmissing-declaration)" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.warnings.missingdeclaration" useByScannerDiscovery="true" value="true" valueType="boolean"/>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1801818943" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="XPRJ_Debug_XC_MPC57xx_DevKit=1"/>
 									<listOptionValue builtIn="false" value="MPC574xG=1"/>
 									<listOptionValue builtIn="false" value="START_FROM_FLASH=1"/>
 									<listOptionValue builtIn="false" value="TURN_ON_CPU0=1"/>
+									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.paths.1327293220" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/ut&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/MPC57xx&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_arch/cwsw_arch/MPC57xx/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/MPC57xx/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${VLE_EWL_DIR}/EWL_C/include/pa&quot;"/>
