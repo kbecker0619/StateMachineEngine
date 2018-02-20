@@ -323,6 +323,7 @@
 							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.libraries.1688997146.780027482" name="Libraries support" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.libraries.1688997146"/>
 							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.sp.1170157474.997787530" name="Signal Processing" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.sp.1170157474"/>
 							<option id="com.freescale.s32ds.cross.gnu.e200.option.target.sysroot.1412411658.1582088407" name="Sysroot" superClass="com.freescale.s32ds.cross.gnu.e200.option.target.sysroot.1412411658"/>
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
 							<tool id="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.1443162510" name="Standard S32DS C Compiler" superClass="com.freescale.s32ds.cross.gnu.e200.tool.c.compiler.1558685814">
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1424997619" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -346,7 +347,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="cwsw_arch/i386|cwsw_arch/pic32mz|cwsw_board/pic32mz_efm_sk" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="cwsw_board/none|cwsw_arch/i386|cwsw_arch/pic32mz|cwsw_board/pic32mz_efm_sk" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -365,6 +366,9 @@
 			<resource resourceType="PROJECT" workspacePath="/cwsw_board"/>
 		</configuration>
 		<configuration configurationName="Debug_Win_MinGW">
+			<resource resourceType="PROJECT" workspacePath="/cwsw_board"/>
+		</configuration>
+		<configuration configurationName="Debug_XC_MPC57xx_DevKit">
 			<resource resourceType="PROJECT" workspacePath="/cwsw_board"/>
 		</configuration>
 	</storageModule>

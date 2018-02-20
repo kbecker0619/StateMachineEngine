@@ -40,10 +40,19 @@ extern "C" {
 // ============================================================================
 #define CWSW_BOARD_CWSW_BOARD_COMMON_H__REVSTRING "$Revision: 0123 $"
 
+/** Logical values for the LEDs and switches.
+ *	Note the actual wiring on the board, or the polarity of the driver, might be inverted;
+ *	that connection is made at the driver level, not the board level.
+ */
+enum eDO_Logical_Values { kLogicalOff, kLogicalOn };
+
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
+
+typedef enum eDO_Logical_Values		tDO_LogicalValues;
+
 
 // ============================================================================
 // ----	Public Variables ------------------------------------------------------
@@ -58,6 +67,9 @@ extern "C" {
  *	This function's responsibility is to set up the local vars, and manage the
  *	necessary HW, to prepare for the task function's 1st call (once the
  *	scheduler has been started).
+ *
+ * This function "connects" the board to the CPU.
+ * It knows nothing about the application.
  *
  *	This function shall be called before the main scheduler is started.
  *
@@ -86,12 +98,11 @@ extern uint16_t Cwsw_Board__Init(void);
 enum { Cwsw_Board = 2 };	/* Generic architecture for all supported boards */
 
 /** Target symbol for Get(Cwsw_Board, xxx) interface */
-#define Cwsw_Board__Get(resource)				Cwsw_Board__Get_ ## resource()
+#define Cwsw_Board__Get(resource)		Cwsw_Board__Get_ ## resource()
 
 
 /** Target for Get(Cwsw_Board, Initialized) interface */
-extern bool 					Cwsw_Board__Get_Initialized(void);
-
+extern bool 							Cwsw_Board__Get_Initialized(void);
 
 // ==== /Targets for Get/Set APIs =========================================== }
 

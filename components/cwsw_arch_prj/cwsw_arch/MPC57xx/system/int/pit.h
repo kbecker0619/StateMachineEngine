@@ -8,7 +8,7 @@
 #ifndef PIT_H_
 #define PIT_H_
 
-#include "project.h"
+#include "system/ports/project.h"
 
 extern void PIT0_init(uint32_t);
 
