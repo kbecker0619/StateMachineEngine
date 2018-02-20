@@ -38,7 +38,7 @@
 #include "system/int/pit.h"
 #include "system/clk/cwsw_clk.h"							/* peri_clock_gating() */
 #include "system/clk/mode.h"								/* system160mhz() */
-#include "gpio.h"											/* project-specific GPIO API */
+#include "io/gpio.h"										/* project-specific GPIO API */
 
 
 // ============================================================================
