@@ -104,6 +104,18 @@ enum { Cwsw_Board = 2 };	/* Generic architecture for all supported boards */
 /** Target for Get(Cwsw_Board, Initialized) interface */
 extern bool 							Cwsw_Board__Get_Initialized(void);
 
+
+/* "short cut" targets for resources considered to be Global (shared) Resources.
+ *	Simply redirect them to the actual public interface.
+ */
+#define SET_kBoardLed1(onoff)					Set(Cwsw_Board, kBoardLed1, onoff)
+#define SET_kBoardLed2(onoff)					Set(Cwsw_Board, kBoardLed2, onoff)
+#define SET_kBoardLed3(onoff)					Set(Cwsw_Board, kBoardLed3, onoff)
+
+
+/** Target symbol for Set(Cwsw_Board, Resource, xxx) interface */
+#define Cwsw_Board__Set(resource, value)		Cwsw_Board__Set_ ## resource(value)
+
 // ==== /Targets for Get/Set APIs =========================================== }
 
 #ifdef	__cplusplus

@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+emf_facet_default_eobject_viewer=org.eclipse.gmt.modisco.infra.browser.opener.BrowserOpener
+emf_facet_default_epackage_viewer=org.eclipse.gmt.modisco.infra.browser.opener.BrowserOpener
+emf_facet_default_resource_viewer=org.eclipse.gmt.modisco.infra.browser.opener.BrowserOpener

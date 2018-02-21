@@ -34,7 +34,7 @@
 /* followed by arch-specific stuff */
 #include "system/int/MPC57xx__Interrupt_Init.h"				/* xcptn_xmpl() */
 #include "system/int/intc_SW_mode_isr_vectors_MPC5748G.h"	/* SW_INT_1_init */
-#include "derivative.h"										/* PIT */
+#include "MPC5748G.h"										/* PIT */
 #include "system/int/pit.h"
 #include "system/clk/cwsw_clk.h"							/* peri_clock_gating() */
 #include "system/clk/mode.h"								/* system160mhz() */

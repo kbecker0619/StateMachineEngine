@@ -1,0 +1,27 @@
+20:45:21 **** Build of configuration Debug_XC_MPC57xx_DevKit for project cwsw_board ****
+make -j4 all 
+Building file: ../cwsw_arch/MPC57xx/src/cwsw_arch.c
+Building file: ../cwsw_arch/MPC57xx/Project_Settings/Startup_Code/startup.S
+Building file: ../cwsw_arch/MPC57xx/system/clk/cwsw_clk.c
+Executing target #2 ../cwsw_arch/MPC57xx/src/cwsw_arch.c
+Executing target #1 ../cwsw_arch/MPC57xx/Project_Settings/Startup_Code/startup.S
+Executing target #3 ../cwsw_arch/MPC57xx/system/clk/cwsw_clk.c
+Invoking: Standard S32DS C Compiler
+powerpc-eabivle-gcc "@cwsw_arch/MPC57xx/src/cwsw_arch.args" -MMD -MP -MF"cwsw_arch/MPC57xx/src/cwsw_arch.d" -MT"cwsw_arch/MPC57xx/src/cwsw_arch.o" -c -o "cwsw_arch/MPC57xx/src/cwsw_arch.o" "../cwsw_arch/MPC57xx/src/cwsw_arch.c"
+Invoking: Standard S32DS Assembler
+powerpc-eabivle-gcc "@cwsw_arch/MPC57xx/Project_Settings/Startup_Code/startup.args" -c -o "cwsw_arch/MPC57xx/Project_Settings/Startup_Code/startup.o" "../cwsw_arch/MPC57xx/Project_Settings/Startup_Code/startup.S"
+Invoking: Standard S32DS C Compiler
+powerpc-eabivle-gcc "@cwsw_arch/MPC57xx/system/clk/cwsw_clk.args" -MMD -MP -MF"cwsw_arch/MPC57xx/system/clk/cwsw_clk.d" -MT"cwsw_arch/MPC57xx/system/clk/cwsw_clk.o" -c -o "cwsw_arch/MPC57xx/system/clk/cwsw_clk.o" "../cwsw_arch/MPC57xx/system/clk/cwsw_clk.c"
+/bin/sh: powerpc-eabivle-gcc: command not found
+/bin/sh: powerpc-eabivle-gcc: command not found
+make: *** [cwsw_arch/MPC57xx/Project_Settings/Startup_Code/subdir.mk:29: cwsw_arch/MPC57xx/Project_Settings/Startup_Code/startup.o] Error 127
+make: *** Waiting for unfinished jobs....
+make: *** [cwsw_arch/MPC57xx/system/clk/subdir.mk:42: cwsw_arch/MPC57xx/system/clk/cwsw_clk.o] Error 127
+Building file: ../cwsw_arch/MPC57xx/system/clk/mode.c
+Executing target #4 ../cwsw_arch/MPC57xx/system/clk/mode.c
+Invoking: Standard S32DS C Compiler
+powerpc-eabivle-gcc "@cwsw_arch/MPC57xx/system/clk/mode.args" -MMD -MP -MF"cwsw_arch/MPC57xx/system/clk/mode.d" -MT"cwsw_arch/MPC57xx/system/clk/mode.o" -c -o "cwsw_arch/MPC57xx/system/clk/mode.o" "../cwsw_arch/MPC57xx/system/clk/mode.c"
+/bin/sh: powerpc-eabivle-gcc: command not found
+make: *** [cwsw_arch/MPC57xx/system/clk/subdir.mk:50: cwsw_arch/MPC57xx/system/clk/mode.o] Error 127
+/bin/sh: powerpc-eabivle-gcc: command not found
+make: *** [cwsw_arch/MPC57xx/src/subdir.mk:35: cwsw_arch/MPC57xx/src/cwsw_arch.o] Error 127

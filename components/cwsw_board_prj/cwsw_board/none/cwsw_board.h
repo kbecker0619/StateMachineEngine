@@ -240,19 +240,6 @@ extern void Cwsw_Board__UsbVbusSwitchStateSet(tDO_LogicalValues state);
 
 // --- targets for get/set/etc macros -----------------------------------------
 
-/** Target symbol for Set(Cwsw_Board, Resource, xxx) interface */
-#define Cwsw_Board__Set(resource, value)		Cwsw_Board__Set_ ## resource(value)
-
-
-
-/* "short cut" targets for resources considered to be Global (shared) Resources.
- *	Simply redirect them to the actual public interface.
- */
-#define SET_kBoardLed1(onoff)					Set(Cwsw_Board, kBoardLed1, onoff)
-#define SET_kBoardLed2(onoff)					Set(Cwsw_Board, kBoardLed2, onoff)
-#define SET_kBoardLed3(onoff)					Set(Cwsw_Board, kBoardLed3, onoff)
-
-
 /* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface */
 #define Cwsw_Board__Set_UsbVbus(value)			Cwsw_Board__UsbVbusSwitchStateSet(value)
 

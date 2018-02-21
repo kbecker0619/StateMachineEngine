@@ -7,7 +7,8 @@
 
 #include "gpio.h"
 
-void initGPIO(void)
+void
+initGPIO(void)
 {
 	/* LEDS on CalypsoEVB */
 	SIUL2.MSCR[PA10].B.SSS = 0;			/* Pin functionality as GPIO */
@@ -72,16 +73,18 @@ void initGPIO(void)
 
 }
 
-void GPIO_toggle(uint16_t GPIO, uint32_t TOGGLES, uint32_t DELAY)
+void
+GPIO_toggle(uint16_t GPIO, uint32_t TOGGLES, uint32_t DELAY)
 {
-  uint32_t i, j;
+	uint32_t i, j;
 
-  SIUL2.MSCR[GPIO].B.OBE   = 1;
-  for(i=0;i<TOGGLES*2;i++)
-  {
-   for(j=0;j<DELAY;j++);
-   SIUL2.GPDO[GPIO].R ^= 1;
-  }
+	SIUL2.MSCR[GPIO].B.OBE = 1;
+	for(i = 0; i < TOGGLES * 2; i++)
+	{
+		for(j = 0; j < DELAY; j++)
+			;
+		SIUL2.GPDO[GPIO].R ^= 1;
+	}
 }
 
 void DebounceDelay(void)

@@ -47,12 +47,22 @@ extern "C" {
 
 // ----	Module Headers --------------------------
 #include "../cwsw_board_common.h"
+#include "io/gpio.h"				/* for access to the DevKit's LED & BTN assignments */
 
 
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
 #define CWSW_BOARD_MPC5748G_DEVKIT_CWSW_BOARD_H__REVSTRING "$Revision: 0123 $"
+
+/** CWSW-common LED assignments */
+enum eBoardLeds
+{
+	kBoardLed1,		/* connected to LED_DS4 */
+	kBoardLed2,		/* connected to LED_DS5 */
+	kBoardLed3, 	/* connected to LED_DS6 */
+	kBoardNumLeds = 3
+};
 
 
 // ============================================================================
@@ -71,6 +81,15 @@ extern "C" {
 // ==== /Discrete Functions ================================================= }
 
 // ==== Targets for Get/Set APIs ============================================ {
+/* Target for some of the expansions to the Set(Cwsw_Board, Resource, xxx) interface. */
+#define Cwsw_Board__Set_kBoardLed1(value)		do { /* todo: connect to GPIO */ } while(0)
+#define Cwsw_Board__Set_kBoardLed2(value)		do { /* todo: connect to GPIO */ } while(0)
+#define Cwsw_Board__Set_kBoardLed3(value)		do { /* todo: connect to GPIO */ } while(0)
+
+/* Target for some of the expansions to the Get(Cwsw_Board, Resource) interface. */
+#define Cwsw_Board__Get_kBrdSwitch1()			(0 /* todo: connect to GPIO */)
+#define Cwsw_Board__Get_kBoardLed1()			(0 /* todo: connect to GPIO */)
+
 // ==== /Targets for Get/Set APIs =========================================== }
 
 

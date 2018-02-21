@@ -25,7 +25,7 @@
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
 #include "cwsw_eventsim.h"
-#include "peripheral/ports/ports_api.h"
+#include "io/gpio.h"
 
 // ----	Module Headers --------------------------
 #include "cwsw_arch.h"
@@ -86,7 +86,6 @@ Cwsw_Board__Init(void)
 	#pragma GCC diagnostic pop
 	#endif
 
-	Set(Cwsw_Board, UsbVbus, kLogicalOff);	// Cwsw_Board__UsbVbusSwitchStateSet()
 	SET(kBoardLed1, kLogicalOff);
 	SET(kBoardLed2, kLogicalOff);
 	SET(kBoardLed3, kLogicalOff);
