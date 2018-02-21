@@ -64,3 +64,7 @@ components/cwsw_clock_prj/cvibuild.cwsw_clock/build.ini
 components/cwsw_clock_prj/arch/PIC32MZ2048EFM/framework_mhc
 /components/cwsw_arch_prj/doxygen_log.txt
 components/cwsw_arch_prj/xfr.xml
+components/wsCwsw_Lib_MPC57xx_W7/.metadata/.plugins/org.eclipse.cdt.codan.ui/dialog_settings.xml
+components/wsCwsw_Lib_MPC57xx_W7/.metadata/.plugins/org.eclipse.core.resources/.root/7.tree
+components/wsCwsw_Lib_MPC57xx_W7/.metadata/.plugins/org.eclipse.debug.ui/dialog_settings.xml
+components/wsCwsw_Lib_MPC57xx_W7/.metadata/.plugins/org.eclipse.ltk.ui.refactoring/dialog_settings.xml
