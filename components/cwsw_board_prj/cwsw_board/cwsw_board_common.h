@@ -415,10 +415,10 @@ extern bool 							Cwsw_Board__Get_Initialized(void);
 	 *	has already been described is necessary. In some others, additional
 	 *	items may need to be configured.
 	 *
-	 *	If the configurations are configured via #define symbols, there are two
+	 *	If the configurations are configured via preprocessor defines, there are two
 	 *	easy methods of accomplishing this:
 	 *	+ command-line defines
-	 *	+ #define entries in the file "projcfg.h"
+	 *	+ preprocessor defines in the file "projcfg.h"
 	 */
 
 	/**	@page Board_Integration					Integrating the Reusable Component
