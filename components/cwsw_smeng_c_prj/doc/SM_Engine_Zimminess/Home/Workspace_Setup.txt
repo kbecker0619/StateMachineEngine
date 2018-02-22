@@ -34,7 +34,7 @@ MSYS=winsymlinks:native
 Neon / s32ds / 
 
 as i did [[Home:Architecture Setup|here]] with NetBeans, recommend to add an env-var, 
-	MPC57xx''_XC_HOME=G:\_Programs\NXP\S32DS_Power_v2017.R1''
+	''MPC57xx_XC_HOME=G:\_Programs\NXP\S32DS_Power_v2017.R1''
 	(or wherever)
 
 at the time of this implementation (today, 12:30 PM), Eclipse' PATH statement was
