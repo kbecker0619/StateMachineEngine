@@ -34,11 +34,11 @@
 /* followed by arch-specific stuff */
 #include "system/int/MPC57xx__Interrupt_Init.h"				/* xcptn_xmpl() */
 #include "system/int/intc_SW_mode_isr_vectors_MPC5748G.h"	/* SW_INT_1_init */
-#include "derivative.h"										/* PIT */
+#include "MPC5748G.h"										/* PIT */
 #include "system/int/pit.h"
 #include "system/clk/cwsw_clk.h"							/* peri_clock_gating() */
 #include "system/clk/mode.h"								/* system160mhz() */
-#include "gpio.h"											/* project-specific GPIO API */
+#include "io/gpio.h"										/* project-specific GPIO API */
 
 
 // ============================================================================
@@ -103,8 +103,8 @@ Cwsw_Arch__Init(void)
 	UNUSED(cwsw_arch_RevString);
 	// for desktop use, there's really not much to do here.
 
-	do {						/* enabled interrupts. This is done 1st in NXP example code. */
-		xcptn_xmpl();           /* Configure and Enable Interrupts */
+	do {					/* enabled interrupts. This is done 1st in NXP example code. */
+		xcptn_xmpl();       /* Configure and Enable Interrupts */
 
 	    /* klb: specifically call interrupt init functions for this demonstration project.
 	     * not sure i'm doing it right, i am still exploring, and at the time i'm writing this,
@@ -123,21 +123,21 @@ Cwsw_Arch__Init(void)
 	    					 /*        = 40M x 4 / 160M = 160/160 = 1 sec.  */
 
 		PIT1_init(20000000);
-		             	 	 /* timeout= 20M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
-		             	 	 /*        = 20M x 4 / 160M = 80/160 = 0.5 sec.  */
+		             	 	/* timeout= 20M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
+		             	 	/*        = 20M x 4 / 160M = 80/160 = 0.5 sec.  */
 
 		PIT2_init(10000000);
-		             	 	 /* timeout= 10M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
-		             	 	 /*        = 10M x 4 / 160M = 40/160 = 0.25 sec.  */
+		             	 	/* timeout= 10M  PITclks x 4 sysclks/1 PITclk x 1 sec/160Msysck */
+		             	 	/*        = 10M x 4 / 160M = 40/160 = 0.25 sec.  */
 
-	    SW_INT_1_init();   	 /* Initialize SW INT1 (to be serviced by core 1^h0 (klb)) */
+	    SW_INT_1_init();   	/* Initialize SW INT1 (to be serviced by core 1^h0 (klb)) */
 
 	} while(0);
 
 	do {
 	    //Since We are using PIT- one of the peripherals. We need to enable peripheral clocks.
-	    peri_clock_gating();     /* Configure gating/enabling peripheral(PTI) clocks for modes */
-	                             /* Configuration occurs after mode transition! */
+	    peri_clock_gating();	/* Configure gating/enabling peripheral(PTI) clocks for modes */
+	                            /* Configuration occurs after mode transition! */
 
 	} while(0);
 

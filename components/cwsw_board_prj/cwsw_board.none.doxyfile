@@ -5,7 +5,9 @@
 PREDEFINED          += XPRJ_Debug_Win_MinGW=1
 
 INPUT				+= cwsw_arch/i386 \
-					   cwsw_board/none
+					   cwsw_arch/cwsw_arch_common.h \
+					   cwsw_board/none \
+					   cwsw_board/cwsw_board_common.h
 
 EXCLUDE				+= Debug_XC_MPC57xx_DevKit \
 					   Debug_Win_MinGW

@@ -1,4 +1,4 @@
-# CWSW MCU Architecture Support
+# CWSW Board Support
 
 This project provides standardized support for project boards. Some examples provide support for 
 some manufacturer's Easy Start or demonstrator boards. Where possible, it simply provides a 

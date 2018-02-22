@@ -31,7 +31,7 @@
 
 // ----	Module Headers --------------------------
 #include "cwsw_arch.h"
-#include "gpio.h"
+#include "io/gpio.h"
 
 
 // ============================================================================
@@ -59,31 +59,43 @@
 // ============================================================================
 
 /** @b Default, weakly-bound interrupt handler for PIT 0.
+ *	This function calls a project-specific function, then clears the interrupt.
  */
 WEAK void
 PIT0_isr(void)
 {
-	static uint8_t counter=0; /* Increment ISR counter */
-
-	counter++;
-	LED_DS4 = ~LED_DS4; /* Toggle DS4 LED port */
-	if(counter == 4)
+	if(0)
 	{
-		counter = 0;
-		INTC_SSCIR1=0x02;
+		static uint8_t counter=0; /* Increment ISR counter */
+
+		counter++;
+		LED_DS4 = ~LED_DS4; /* Toggle DS4 LED port */
+		if(counter == 4)
+		{
+			counter = 0;
+			INTC_SSCIR1=0x02;
+		}
 	}
+
 	PIT.TIMER[0].TFLG.R = 1; /* Clear interrupt flag */
 }
 
+/** @b Default, weakly-bound interrupt handler for PIT 2.
+ *	This function calls a project-specific function, then clears the interrupt.
+ */
 WEAK void
 PIT2_isr(void)
 {
-	LED_DS6 = ~LED_DS6; /* Toggle DS6 LED port */
+	if(0)
+	{
+		LED_DS6 = ~LED_DS6; /* Toggle DS6 LED port */
+	}
 	PIT.TIMER[2].TFLG.R = 1; /* Clear interrupt flag */
 }
 
 
 /** @b Default, weakly-bound initialization for SW 1 interrupts.
+ *	This function calls a project-specific function, then clears the interrupt.
  */
 WEAK void
 SW_INT_1_init(void)

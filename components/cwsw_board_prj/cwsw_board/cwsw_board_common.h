@@ -40,10 +40,19 @@ extern "C" {
 // ============================================================================
 #define CWSW_BOARD_CWSW_BOARD_COMMON_H__REVSTRING "$Revision: 0123 $"
 
+/** Logical values for the LEDs and switches.
+ *	Note the actual wiring on the board, or the polarity of the driver, might be inverted;
+ *	that connection is made at the driver level, not the board level.
+ */
+enum eDO_Logical_Values { kLogicalOff, kLogicalOn };
+
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
+
+typedef enum eDO_Logical_Values		tDO_LogicalValues;
+
 
 // ============================================================================
 // ----	Public Variables ------------------------------------------------------
@@ -58,6 +67,9 @@ extern "C" {
  *	This function's responsibility is to set up the local vars, and manage the
  *	necessary HW, to prepare for the task function's 1st call (once the
  *	scheduler has been started).
+ *
+ * This function "connects" the board to the CPU.
+ * It knows nothing about the application.
  *
  *	This function shall be called before the main scheduler is started.
  *
@@ -86,12 +98,23 @@ extern uint16_t Cwsw_Board__Init(void);
 enum { Cwsw_Board = 2 };	/* Generic architecture for all supported boards */
 
 /** Target symbol for Get(Cwsw_Board, xxx) interface */
-#define Cwsw_Board__Get(resource)				Cwsw_Board__Get_ ## resource()
+#define Cwsw_Board__Get(resource)		Cwsw_Board__Get_ ## resource()
 
 
 /** Target for Get(Cwsw_Board, Initialized) interface */
-extern bool 					Cwsw_Board__Get_Initialized(void);
+extern bool 							Cwsw_Board__Get_Initialized(void);
 
+
+/* "short cut" targets for resources considered to be Global (shared) Resources.
+ *	Simply redirect them to the actual public interface.
+ */
+#define SET_kBoardLed1(onoff)					Set(Cwsw_Board, kBoardLed1, onoff)
+#define SET_kBoardLed2(onoff)					Set(Cwsw_Board, kBoardLed2, onoff)
+#define SET_kBoardLed3(onoff)					Set(Cwsw_Board, kBoardLed3, onoff)
+
+
+/** Target symbol for Set(Cwsw_Board, Resource, xxx) interface */
+#define Cwsw_Board__Set(resource, value)		Cwsw_Board__Set_ ## resource(value)
 
 // ==== /Targets for Get/Set APIs =========================================== }
 
@@ -198,10 +221,10 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
  *
  *	Integration Steps:
  *	-# [Share the Source](#bd_source_share)
- *	-# [Add Dependencies](#add_depends)
- *	-# [Update Includes paths](#update_includes)
- *	-# [Configuration](#comp_configuration)
- *	-# [Update Initialization Code](#init_code)
+ *	-# [Add Dependencies](#bd_add_depends)
+ *	-# [Update Includes paths](#bd_update_includes)
+ *	-# [Configuration](#bd_comp_configuration)
+ *	-# [Update Initialization Code](#bd_init_code)
  *	-# Optional APIs.
  */
 
@@ -304,7 +327,7 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 */
 
 	/**	@page Board_Integration
-	 *	@section add_depends					Add Component Dependencies
+	 *	@section bd_add_depends					Add Component Dependencies
 	 *
 	 *	The <code>cwsw_board</code> component has the following dependencies
 	 *	to other cwsw components:
@@ -348,8 +371,8 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 */
 
 	/**	@page Board_Integration
-	 *	@section update_includes				Update Includes paths
-	 *	@subsection update_includes_paths		Include Paths
+	 *	@section bd_update_includes				Update Includes paths
+	 *	@subsection bd_update_includes_paths	Include Paths
 	 *	Update your build system to add the relative paths to the selected
 	 *	architecture folder in the <code>cwsw_board</code> folder. @b Note this
 	 *	is different than in most other CWSW components; this path is one level
@@ -380,7 +403,7 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 *	@image html doc/images/eclipse_add_includes_path.png			"Example Includes Path"
 	 *	\n
 	 *
-	 *	@subsection exclude_undesireables		Exclude Undesired Boards
+	 *	@subsection bd_exclude_undesireables		Exclude Undesired Boards
 	 *	Because (at least a portion of) the API that faces "upwards" must be
 	 *	the same across all supported architectures, multiple definitions of
 	 *	those API functions will exist unless those modules are excluded from
@@ -399,19 +422,19 @@ extern bool 					Cwsw_Board__Get_Initialized(void);
 	 */
 
 	/**	@page Board_Integration
-	 *	@section comp_configuration				Configure the Reusable Component and its dependencies
+	 *	@section bd_comp_configuration			Configure the Reusable Component and its dependencies
 	 *	In some or the supported architectures, no configuration beyond what
 	 *	has already been described is necessary. In some others, additional
 	 *	items may need to be configured.
 	 *
-	 *	If the configurations are configured via #define symbols, there are two
+	 *	If the configurations are configured via preprocessor defines, there are two
 	 *	easy methods of accomplishing this:
 	 *	+ command-line defines
-	 *	+ #define entries in the file "projcfg.h"
+	 *	+ preprocessor defines in the file "projcfg.h"
 	 */
 
 	/**	@page Board_Integration					Integrating the Reusable Component
-	 *	@section init_code						Update application's initialization code
+	 *	@section bd_init_code					Update application's initialization code
 	 *	At the time of this writing, none of the supported boards require any
 	 *	secondary initialization (e.g., initialization calls made after the
 	 *	scheduler is started).

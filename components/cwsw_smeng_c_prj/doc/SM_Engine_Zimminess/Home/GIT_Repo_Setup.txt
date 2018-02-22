@@ -9,8 +9,8 @@ In my main personal dev environment, I have a Windows 7 VM, w/ Drive E: as the m
 
 Within that, I had begun developing my basic library:
 {{{code: lang="sh" linenumbers="True"
-$ tree ../PersonalDev -d
-../PersonalDev
+$ tree PersonalDev -d
+PersonalDev
 ├── components
 │   ├── cwsw_clock_prj
 │   │   ├── cwsw_clock

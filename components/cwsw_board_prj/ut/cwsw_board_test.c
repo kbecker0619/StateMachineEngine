@@ -62,7 +62,22 @@ static bool terminate_requested = true;
 // ==== Targets for Get/Set APIs ============================================ {
 // ----	EventSeen API -------------------------------------------------- {
 static bool seteventseen = false;
+/** Set the EventSeen flag.
+ *	In this stupid-simple design, the board-level drivers communicate with the
+ *	higher code by sending events, but the main loop needs to know when to
+ *	handle the events. This macro sets the "EventSeen" flag to let the main
+ *	loop know it has to launch some worker functions to act on the event.
+ *	@note In this design, there isn't an event-seen "stack" - we handle one
+ *	event at a time. So, for example, in this unit test, because the simulated-
+ *	inputs DI task processes all buttons within the same iteration, if there
+ *	are multiple button events in the same loop, only the last one posted will
+ *	be "remembered."
+ */
 #define GET_SetEventSeen()			!(!(seteventseen))
+
+/** Get the status of the EventSeen flag.
+ *
+ */
 #define SET_SetEventSeen(val)		do { seteventseen = (val); } while(0)
 
 /** event data for EventSeen tracking.
@@ -96,7 +111,7 @@ static struct sEventData {
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
 
-/** Event handler for button-press events.
+/** Event handler for button-press events (#evButtonPressed).
  *	This is on the border between UT environs that aren't hooked to a UI or an external dev board,
  *	and the portion of the lib and UT that are common across UT envs. Within this function, we
  *	simply repost the event the LW/CVI event so we can use a common event handler.
@@ -124,6 +139,8 @@ EventHandler__evButtonPressed(tEventPayload ev)
 	SET(SetEventSeen, true);
 }
 
+/** Event handler for application Termination Requested events (#evTerminateRequested).
+ */
 void
 EventHandler__evTerminateRequested(tEventPayload ev)
 {
@@ -165,89 +182,95 @@ SimulateInputs__Task(void)
 	static char const * const button_samples[kNumButtons] = {
 	/*   01234567 01234567 01234567 01234567 */
 
-		"11111111 01101001"
+		"11111111 01101001"							/* button 1 data. the length of this data is what determines the terminate request */
 		"11111111 1100"
 		"01010011 11111000 00011111 00000001"		/* 3rd button press: no valid button press */
 		"00000000"									/* 2nd button press: valid switch release */
 		"11111111"									/* 1st button press: valid switch press */
 		" "											/* false 1st sample to test whitespace handling */
 	,
-	0,	/* button 2 data */
-	0	/* button 3 data */
+	"00000000 11111111",							/* button 2 data */
+	"00000000 11111111 11111110 01111111"			/* button 3 data */
 	};
 
-//	static int b1row = TABLE_SIZE(button_samples);	/* which button press sequence are we inspecting? start w/ end of table */
-	static size_t button_sample_idx = 0;			/* which sample are we processing? */
-	static int accumulator_count = 0;
+	static size_t button_sample_idx[kNumButtons] = {0};	/* which sample are we processing? */
+	static int accumulator_count[kNumButtons] = {0};
 
 	/* Bit sample accumulator. Sized to hold 1 button event's worth of history */
-	static uint16_t accumulator = 0;		/* this needs to be an unsigned, because C guarantees
-											 * suitability for bitmaps only for unsigned types; this,
-											 * however, requires some casting below because transient ops
-											 * are handled as ints. the initialization here is meaningless;
-											 * if it were simply declared, because it's static, the c
-											 * startup code will initialize it to 0, but then the analysis
-											 * tools would complain. even if you use a version of the
-											 * startup code that doesn't initialize uninitialized vars to 0,
-											 * even then it wouldn't be a problem, because  we don't inspect
-											 * it until we've shifted in a full byte's worth of bit samples.
-											 */
-	static bool last_switch_value = false;	/* for this stage of dev, i want a notification when
-											 * one full sample of ambient readings has been decoded,
-											 * for initialization purposes.
-											 */
+	static uint16_t accumulator[kNumButtons] = {0};	/* this needs to be an unsigned, because C guarantees
+													 * suitability for bitmaps only for unsigned types; this,
+													 * however, requires some casting below because transient ops
+													 * are handled as ints. the initialization here is meaningless;
+													 * if it were simply declared, because it's static, the c
+													 * startup code will initialize it to 0, but then the analysis
+													 * tools would complain. even if you use a version of the
+													 * startup code that doesn't initialize uninitialized vars to 0,
+													 * even then it wouldn't be a problem, because  we don't inspect
+													 * it until we've shifted in a full byte's worth of bit samples.
+													 */
+	static bool last_switch_value[kNumButtons] = {0};	/* for this stage of dev, i want a notification when
+													 * one full sample of ambient readings has been decoded,
+													 * for initialization purposes.
+													 */
 
 	int sample;
-	if(!button_sample_idx)	/* if we have run out of button event data ... */
-	{
-		static int loop_ct_until_terminate = 2;
-		button_sample_idx = strlen(button_samples[kButton1]);	/* ... reset sample index */
-		if(!--loop_ct_until_terminate)
-		{
-			tEventPayload ev = {0};
-			PostEvent(evTerminateRequested, ev);
-		}
-	}
+	int button_row;									/* which button press sequence are we inspecting? start w/ end of table */
 
-	do {
-		sample = button_samples[kButton1][--button_sample_idx];
-	} while(isblank(sample) && button_sample_idx);
-	if(isblank(sample))	sample = '0';					/* if the last sample was whitespace, supply a default */
-	sample -= '0';										/* convert my sample to binary, independent of character set, encoding scheme, etc. */
-	accumulator = TO_U16(accumulator << 1U);			/* make room for the new sample. ok to push old bits off the left end */
-	accumulator = TO_U16(accumulator | (sample & 1));	/* add in new sample */
-
-	if(--accumulator_count < 1)		/* by design, ok to roll down past 0. if this happens, we'll
-									 * simply transition into a mode where we now inspect the
-									 * sample accumulator w/ each new sample, and we'll reset & exit
-									 * once we get a valid switch press.
-									 * The only weakness here would be if there were so many noisy
-									 * samples that the accumulator rolled back to the reinit
-									 * value, and, even then, it would only skip this analysis
-									 * until the accumulator got back down to 0.
-									 */
+	for(button_row = TABLE_SIZE(button_samples); button_row--; )
 	{
-		/* have enough samples for a valid debounced return value, so  analyze
-		 */
-		if( ((LSB_16(accumulator) & 0xFF) == 0xFF) ||
-			((LSB_16(accumulator) | 0x00) == 0x00) )
+		if(!button_sample_idx[button_row])												/* if we have run out of button event data ... */
 		{
-			if((LSB_16(accumulator) == 0xFFU) != last_switch_value)		/* detect change in state */
+			static int loop_ct_until_terminate = 2;
+			button_sample_idx[button_row] = strlen(button_samples[button_row]);			/* ... reset sample index */
+			if( (!button_row) && (!--loop_ct_until_terminate) )
 			{
-				tEventPayload ev;
-				/* set last recognized value 1st, as convenience (so i can use it next) */
-				last_switch_value = (LSB_16(accumulator) == 0xFFU);
-
-				/* post event */
-				ev.evId = kButton1;				/* which button has the event? for common handler */
-				ev.evInt = last_switch_value;
-				PostEvent(evButtonPressed, ev);
+				tEventPayload ev = {0};
+				PostEvent(evTerminateRequested, ev);
 			}
+		}
 
-			/* always reset bit accum count for next button event, even if the current recognized
-			 * button state is the same as the last one
+		do {		/* acquire new bit sample */
+			do {
+				sample = button_samples[button_row][--button_sample_idx[button_row]];
+			} while(isblank(sample) && button_sample_idx[button_row]);
+			if(isblank(sample))	sample = '0';											/* if the last sample was whitespace, supply a default */
+			sample -= '0';																/* convert my sample to binary, independent of character set, encoding scheme, etc. */
+			accumulator[button_row] = TO_U16(accumulator[button_row] << 1U);			/* make room for the new sample. ok to push old bits off the left end */
+			accumulator[button_row] = TO_U16(accumulator[button_row] | (sample & 1));	/* add in new sample */
+		} while(0);
+
+		if(--accumulator_count[button_row] < 1)	/* by design, ok to roll down past 0. if this happens, we'll
+												 * simply transition into a mode where we now inspect the
+												 * sample accumulator w/ each new sample, and we'll reset & exit
+												 * once we get a valid switch press.
+												 * The only weakness here would be if there were so many noisy
+												 * samples that the accumulator rolled back to the reinit
+												 * value, and, even then, it would only skip this analysis
+												 * until the accumulator got back down to 0.
+												 */
+		{
+			/* have enough samples for a valid debounced return value, so  analyze
 			 */
-			accumulator_count = CHAR_BIT;
+			if( ((LSB_16(accumulator[button_row]) & 0xFF) == 0xFF) ||
+				((LSB_16(accumulator[button_row]) | 0x00) == 0x00) )
+			{
+				if((LSB_16(accumulator[button_row]) == 0xFFU) != last_switch_value[button_row])		/* detect change in state */
+				{
+					tEventPayload ev;
+					/* set last recognized value 1st, as convenience (so i can use it next) */
+					last_switch_value[button_row] = (LSB_16(accumulator[button_row]) == 0xFFU);
+
+					/* post event */
+					ev.evId = TO_U16(button_row);				/* which button has the event? for common handler */
+					ev.evInt = last_switch_value[button_row];
+					PostEvent(evButtonPressed, ev);
+				}
+
+				/* always reset bit accum count for next button event, even if the current recognized
+				 * button state is the same as the last one
+				 */
+				accumulator_count[button_row] = CHAR_BIT;
+			}
 		}
 	}
 }
@@ -309,7 +332,7 @@ int main(void)
 	if(retcode == EXIT_SUCCESS)	retcode = Init(Cwsw_Board);		// Cwsw_Board__Init()
 
 	if(retcode == EXIT_SUCCESS)	terminate_requested = false;
-	while(!terminate_requested) { Task(board_ut); }	/* board_ut__Task() */
+	while(!terminate_requested) { Task(board_ut); }				// board_ut__Task()
 	return EXIT_SUCCESS;
 }
 

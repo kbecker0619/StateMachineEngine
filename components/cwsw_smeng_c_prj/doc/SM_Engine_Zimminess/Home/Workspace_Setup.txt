@@ -33,6 +33,16 @@ MSYS=winsymlinks:native
 ===== Eclipse =====
 Neon / s32ds / 
 
+as i did [[Home:Architecture Setup|here]] with NetBeans, recommend to add an env-var, 
+	''MPC57xx_XC_HOME=G:\_Programs\NXP\S32DS_Power_v2017.R1''
+	(or wherever)
+
+at the time of this implementation (today, 12:30 PM), Eclipse' PATH statement was
+	''G:\_Programs\NXP\S32DS_Power_v2017.R1\Cross_Tools\powerpc-eabivle-4_9\bin;G:\_Programs\NXP\S32DS_Power_v2017.R1\utils\msys32\usr\bin;G:\_Programs\NXP\S32DS_Power_v2017.R1\eclipse\..\S32DS\SPT\bin; G:/_Programs/NXP/S32DS_Power_v2017.R1/eclipse/jre/bin/client;G:/_Programs/NXP/S32DS_Power_v2017.R1/eclipse/jre/bin; G:/_Programs/NXP/S32DS_Power_v2017.R1/eclipse/jre/lib/i386; C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;G:\_Programs\doxygen\bin;G:\_Programs\CodeBlocks\MinGW\bin;G:\_Programs\Sophos\Sophos SSL VPN Client\bin;G:\_Programs\Expat 2.2.0;C:\_Programs\Graphviz2.38\bin;G:\_Programs\TortoiseGit\bin;G:\_Programs\Git\cmd;G:\_Programs\Microchip\xc32\v1.44\bin;C:\Users\kbecker\AppData\Roaming\Dashlane\5.6.0.15520\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\kbecker\AppData\Roaming\Dashlane\5.6.0.15520\ucrt;G:\_Programs\NXP\S32DS_Power_v2017.R1\eclipse''
+
+After correction, Eclipse' PATH statement was
+	''${MPC57xx_XC_HOME}\Cross_Tools\powerpc-eabivle-4_9\bin;${MPC57xx_XC_HOME}\utils\msys32\usr\bin;${MPC57xx_XC_HOME}\S32DS\SPT\bin;${MPC57xx_XC_HOME}/eclipse/jre/bin/client;${MPC57xx_XC_HOME}/eclipse/jre/bin;${MPC57xx_XC_HOME}/eclipse/jre/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;G:\_Programs\doxygen\bin;G:\_Programs\CodeBlocks\MinGW\bin;G:\_Programs\Sophos\Sophos SSL VPN Client\bin;G:\_Programs\Expat 2.2.0;C:\_Programs\Graphviz2.38\bin;G:\_Programs\TortoiseGit\bin;G:\_Programs\Git\cmd;G:\_Programs\Microchip\xc32\v1.44\bin;C:\Users\kbecker\AppData\Roaming\Dashlane\5.6.0.15520\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\kbecker\AppData\Roaming\Dashlane\5.6.0.15520\ucrt;${MPC57xx_XC_HOME}\eclipse''
+
 To all configurations, add command-line define ''XPRJ_${ConfigName}''
 
 
