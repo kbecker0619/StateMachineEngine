@@ -1,10 +1,12 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:cwsw_clock Debug_Win_MinGW,org.eclipse.launchbar.core.descriptorType.default\:cwsw_lib.exe,org.eclipse.launchbar.core.descriptorType.default\:cwsw_smeng_c.exe
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:hello_pll_interrupt_LaunchGroup,org.eclipse.launchbar.core.descriptorType.default\:hello_pll_interrupt_Z4_1_Debug,org.eclipse.launchbar.core.descriptorType.default\:cwsw_board Debug_XC_MPC57xx_DevKit
 eclipse.preferences.version=1
 org.eclipse.launchbar.core.descriptorType.default\:atmel_arccore_os_simple_iii_Debug/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:atmel_arccore_os_simple_iv\ Debug_Win_MinGW/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:atmel_arccore_os_simple_iv\ Debug_Win_MinGW/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:cwsw_board\ Debug_XC_MPC57xx_DevKit/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:cwsw_board\ Debug_XC_MPC57xx_DevKit/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:cwsw_clock\ Debug_Win_MinGW/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:cwsw_clock\ Debug_Win_MinGW/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:cwsw_smeng_c.exe/activeLaunchMode=debug
