@@ -152,8 +152,18 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.2130482199" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="cdt.managedbuild.config.gnu.exe.debug.907018451.1785641400.344177500" name="/" resourcePath="cwsw_board/mpc5748g_devkit">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.314458431" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base" unusedChildren="">
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.828794927" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base.1871306346"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.412248648" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base.1657088403"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1683563225" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1525725268"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.617855063" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1227239049"/>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1824488430" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base.1427234908"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1379540789" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.2130482199"/>
+						</toolChain>
+					</folderInfo>
 					<sourceEntries>
-						<entry excluding="cwsw_arch/pic32mz|cwsw_arch/MPC57xx|cwsw_board/pic32mz_efm_sk" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="cwsw_board/mpc5748g_devkit|cwsw_arch/pic32mz|cwsw_arch/MPC57xx|cwsw_board/pic32mz_efm_sk" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -168,9 +178,6 @@
 					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
 					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="com.freescale.s32ds.cdt.core.errorParsers.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="com.freescale.s32ds.cdt.core.errorParsers.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
-					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
