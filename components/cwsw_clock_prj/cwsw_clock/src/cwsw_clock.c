@@ -3,7 +3,7 @@
  *
  *	Description:
  *
- *	Copyright (c) 2017 Kevin L. Becker. All rights reserved.
+ *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
  *	Created on: Sep 1, 2016
@@ -77,7 +77,8 @@ tCwswClockTics Cwsw__Clock(void)
 
 #endif
 
-uint16_t Cwsw_Clock__Init(void)
+uint16_t
+Cwsw_Clock__Init(void)
 {
 	UNUSED(cwsw_clock_RevString);
 	cwsw_assert(Get(Cwsw_Lib, Initialized));
@@ -98,7 +99,8 @@ uint16_t Cwsw_Clock__Init(void)
 	return 0;
 }
 
-bool Cwsw_Clock__Get_Initialized(void)
+bool
+Cwsw_Clock__Get_Initialized(void)
 {
 	return initialized;
 }
@@ -188,16 +190,16 @@ bool Cwsw_Clock__Get_Initialized(void)
  *	are so close that I didn't feel IDE-specific instructions were required.
  *
  *	Integration Steps:
- *	-# [Share the Source](#cs_source_share)
- *	-# [Add Dependencies](#cs_add_depends)
- *	-# [Update Includes paths](#cs_update_includes)
- *	-# [Configuration](#cs_comp_configuration)
- *	-# [Update Initialization Code](#cs_init_code)
+ *	-# [Share the Source](#clk_source_share)
+ *	-# [Add Dependencies](#clk_add_depends)
+ *	-# [Update Includes paths](#clk_update_includes)
+ *	-# [Configuration](#clk_comp_configuration)
+ *	-# [Update Initialization Code](#clk_init_code)
  *	-# Optional APIs.
  */
 
 	/**	@page Clock_Integration
-	 *	@section cs_source_share				Share the Source
+	 *	@section clk_source_share				Share the Source
 	 *	Designed to be a reusable component, the CWSW Clock Services component is
 	 *	organized into a reusable section, and requires additional project-
 	 *	specific configuration items in the project.
@@ -205,23 +207,24 @@ bool Cwsw_Clock__Get_Initialized(void)
 	 *	The component layout in your workspace looks like this:
 	 *	@code{.sh}
 
-		cwsw_Clock_prj/
-		├── cwsw_Clock Services
-		│   ├── none
-		│   └── pic32mz_efm_sk
+		cwsw_clock_prj/
+		├── cwsw_clock
+		│   └── src
 		├── doc
 		│   └── images
 		└── ut
 
 	 *	@endcode
 	 *	@note This component is presently under construction; as support is added
-	 *	for additional project Clock Servicess, the exact form of the directory tree
-	 *	shown above may change.
+	 *	for additional project Clock Services, the exact form of the directory
+	 *	tree shown above may change.
 	 *	@note Some features have been omitted for clarity.
 	 *
-	 *	The <code>cwsw_Clock_prj</code> directory is the home to the various
+	 *	The <code>cwsw_clock_prj</code> directory is the home to the various
 	 *	project-management files (such as the Doxygen configuration, the Eclipse
 	 *	project files, etc.), and is the parent for the component.
+	 *
+	 *	//1
 	 *
 	 *	The <code>ut</code> directory is the source for the developer workspace
 	 *	for this reusable component, and illustrates how to configure the
@@ -295,7 +298,7 @@ bool Cwsw_Clock__Get_Initialized(void)
 	 */
 
 	/**	@page Clock_Integration
-	 *	@section cs_add_depends					Add Component Dependencies
+	 *	@section clk_add_depends					Add Component Dependencies
 	 *
 	 *	The <code>cwsw_Clock Services</code> component has the following dependencies
 	 *	to other cwsw components:
@@ -339,8 +342,8 @@ bool Cwsw_Clock__Get_Initialized(void)
 	 */
 
 	/**	@page Clock_Integration
-	 *	@section cs_update_includes				Update Includes paths
-	 *	@subsection cs_update_includes_paths	Include Paths
+	 *	@section clk_update_includes				Update Includes paths
+	 *	@subsection clk_update_includes_paths	Include Paths
 	 *	Update your build system to add the relative paths to the selected
 	 *	architecture folder in the <code>cwsw_Clock Services</code> folder. @b Note this
 	 *	is different than in most other CWSW components; this path is one level
@@ -371,7 +374,7 @@ bool Cwsw_Clock__Get_Initialized(void)
 	 *	@image html doc/images/eclipse_add_includes_path.png			"Example Includes Path"
 	 *	\n
 	 *
-	 *	@subsection cs_exclude_undesireables		Exclude Undesired Clock Servicess
+	 *	@subsection clk_exclude_undesireables		Exclude Undesired Clock Servicess
 	 *	Because (at least a portion of) the API that faces "upwards" must be
 	 *	the same across all supported architectures, multiple definitions of
 	 *	those API functions will exist unless those modules are excluded from
@@ -390,7 +393,7 @@ bool Cwsw_Clock__Get_Initialized(void)
 	 */
 
 	/**	@page Clock_Integration
-	 *	@section cs_comp_configuration			Configure the Reusable Component and its dependencies
+	 *	@section clk_comp_configuration			Configure the Reusable Component and its dependencies
 	 *	In some or the supported architectures, no configuration beyond what
 	 *	has already been described is necessary. In some others, additional
 	 *	items may need to be configured.
@@ -402,7 +405,7 @@ bool Cwsw_Clock__Get_Initialized(void)
 	 */
 
 	/**	@page Clock_Integration					Integrating the Reusable Component
-	 *	@section cs_init_code					Update application's initialization code
+	 *	@section clk_init_code					Update application's initialization code
 	 *	At the time of this writing, none of the supported Clock Servicess require any
 	 *	secondary initialization (e.g., initialization calls made after the
 	 *	scheduler is started).

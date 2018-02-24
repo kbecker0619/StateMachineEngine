@@ -341,7 +341,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 *
 	 *	To illustrate how this might be done in an Eclipse-based project, see
 	 *	the following screen capture: \n
-	 *	@image html doc/images/eclipse_add_includes_path.png			"Example Includes Path"
+	 *	@image html eclipse_add_includes_path.png			"Example Includes Path"
 	 *	\n
 	 *
 	 *	@subsection arch_exclude_undesireables	Exclude Optional Architectures
@@ -353,7 +353,7 @@ extern bool 					Cwsw_Arch__Get_Initialized(void);
 	 *	In Eclipse and IDEs derived from it, the easiest way to do this is to
 	 *	specifically exclude a folder from the Project Properties dialog. Here
 	 *	is an example: \n
-	 *	@image html doc/images/eclipse_exclude_folder_from_build.png	"Exclude Directory Item from Build"
+	 *	@image html eclipse_exclude_folder_from_build.png	"Exclude Directory Item from Build"
 	 *	This same "exclude" checkbox appears in multiple places in the project
 	 *	properties dialog.
 	 *
