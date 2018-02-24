@@ -35,7 +35,7 @@
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-#include "system/tmr/src/sys_tmr_local.h"
+//#include "system/tmr/src/sys_tmr_local.h"
 
 // ----	Module Headers --------------------------
 
@@ -58,10 +58,10 @@
 static char const * const sys_tmr_RevString = "$Revision: 0123 $";
 
 /* System timer instance */
-static SYS_TMR_OBJECT           sSysTmrObject = { 0 };
+//static SYS_TMR_OBJECT           sSysTmrObject = { 0 };
 
 /* Client object array */
-static SYS_TMR_CLIENT_OBJECT    sClientObjects [ SYS_TMR_MAX_CLIENT_OBJECTS ];
+//static SYS_TMR_CLIENT_OBJECT    sClientObjects [ SYS_TMR_MAX_CLIENT_OBJECTS ];
 
 
 // ============================================================================
@@ -84,13 +84,13 @@ static SYS_TMR_CLIENT_OBJECT    sClientObjects [ SYS_TMR_MAX_CLIENT_OBJECTS ];
  *
  * Remarks:
  *	None.
-*/
-static __inline__ bool
-_UserGblLockCreate(void)
-{
-    // create the shared Data Lock
-    return OSAL_SEM_Create(&sSysTmrObject.userSem, OSAL_SEM_TYPE_BINARY, 1, 1) == OSAL_RESULT_TRUE;
-}
+ */
+//static __inline__ bool
+//_UserGblLockCreate(void)
+//{
+//    // create the shared Data Lock
+//    return OSAL_SEM_Create(&sSysTmrObject.userSem, OSAL_SEM_TYPE_BINARY, 1, 1) == OSAL_RESULT_TRUE;
+//}
 
 
 // ============================================================================

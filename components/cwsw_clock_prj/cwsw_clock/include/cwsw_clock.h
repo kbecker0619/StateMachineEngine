@@ -28,7 +28,7 @@ extern "C" {
 #include "projcfg.h"
 
 // ----	System Headers --------------------------
-#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
 // defer to Windows. Their clock interface returns units of ms.
 #include <time.h>
 
@@ -58,7 +58,7 @@ enum { kModuleiId_Clock = 1 };
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
-#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
 /*	building on windows, for windows, we can take advantage of MinGW's
  *	time.h...
  */
@@ -85,17 +85,17 @@ typedef long tCwswClockTics;
  *
  *	@note Intended invocation is via "Init(Cwsw_Clock);"
  */
-extern uint16_t				Cwsw_Clock__Init(void);
+extern uint16_t									Cwsw_Clock__Init(void);
 
 /** Target symbol for Get(Cwsw_Clock, xxx) interface */
-#define Get__Cwsw_Clock(a)	Cwsw_Clock__Get_ ## a()
+#define Get__Cwsw_Clock(a)						Cwsw_Clock__Get_ ## a()
 
 /** Target for Get(Cwsw_Clock, Initialized) interface */
-extern bool 				Cwsw_Clock__Get_Initialized(void);
+extern bool 									Cwsw_Clock__Get_Initialized(void);
 
 
-#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) || (XPRJ_DEBUG_CVI)
-#define Cwsw__Clock()	(tCwswClockTics)(clock())
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI)
+#define Cwsw__Clock()							(tCwswClockTics)(clock())
 
 #else
 extern tCwswClockTics	Cwsw__Clock(void);

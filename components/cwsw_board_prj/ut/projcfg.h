@@ -53,7 +53,8 @@ extern "C" {
  *	Note the name of this define is specifically chosen for cross-platform
  *	Compatibility, for example with MPLAB X.
  *
- *	Within MPLAB X, the equivalent mechanism is to detect the command-line define "XPRJ_<config>",
+ *	Within the NetBeans IDE used by MPLAB X, the equivalent mechanism is to
+ *	detect off the command-line define "XPRJ_<config>",
  *		"#if defined(XPRJ_Debug)"
  *
  *	Note the name of the default configuration created by MPLAB X' New Project
@@ -285,10 +286,6 @@ extern "C" {
 
 #endif
 #endif
-
-
-//	=== dev-on-PC API =========================================================
-
 
 
 // define specifically for Eclipse CDT parser

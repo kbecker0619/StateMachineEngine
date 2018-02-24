@@ -18,36 +18,36 @@
 
 int main(void)
 {
-	tCwswClockTics start, stop, et;
-	tCwswClockTics tmr;
+//	tCwswClockTics start, stop, et;
+//	tCwswClockTics tmr;
 
-	(void) Init(BSP);
 	(void) Init(Cwsw_Lib);
-	(void) Init(Cwsw_Clock);
-
-	(void)puts("CWSW Clock Library Unit Test");
-
-	start = GET(SYSTEM_TIME);
-	do { } while(GET(SYSTEM_TIME) == start);
-	stop = GET(SYSTEM_TIME);
-	et = Cwsw_ElapsedTimeMs(start, stop);
-	(void)printf("%i\n", (unsigned)et);
-
-	Cwsw_SetTimerVal(&tmr, 5);
-	do
-	{
-		et = Cwsw_GetTimeLeft(tmr);
-	} while(et > 0);
-
-	start = GET(SYSTEM_TIME); Cwsw_SetTimerVal(&tmr, 5);
-	do {} while(!HAS_TIMER_EXPIRED(tmr));
-	et = Cwsw_ElapsedTimeMs(start, tmr);
-	(void)printf("%i\n", (unsigned)et);
-
-	start = GET(SYSTEM_TIME); Cwsw_SetTimerVal(&tmr, 5);
-	do {} while(!TM(tmr));
-	et = Cwsw_ElapsedTimeMs(start, tmr);
-	(void)printf("%i\n", (unsigned)et);
+	(void) Init(BSP);
+//	(void) Init(Cwsw_Clock);
+//
+//	(void)puts("CWSW Clock Library Unit Test");
+//
+//	start = GET(SYSTEM_TIME);
+//	do { } while(GET(SYSTEM_TIME) == start);
+//	stop = GET(SYSTEM_TIME);
+//	et = Cwsw_ElapsedTimeMs(start, stop);
+//	(void)printf("%i\n", (unsigned)et);
+//
+//	Cwsw_SetTimerVal(&tmr, 5);
+//	do
+//	{
+//		et = Cwsw_GetTimeLeft(tmr);
+//	} while(et > 0);
+//
+//	start = GET(SYSTEM_TIME); Cwsw_SetTimerVal(&tmr, 5);
+//	do {} while(!HAS_TIMER_EXPIRED(tmr));
+//	et = Cwsw_ElapsedTimeMs(start, tmr);
+//	(void)printf("%i\n", (unsigned)et);
+//
+//	start = GET(SYSTEM_TIME); Cwsw_SetTimerVal(&tmr, 5);
+//	do {} while(!TM(tmr));
+//	et = Cwsw_ElapsedTimeMs(start, tmr);
+//	(void)printf("%i\n", (unsigned)et);
 
 	return EXIT_SUCCESS;
 }
