@@ -262,9 +262,9 @@ extern void BSP_Initialize(void);
 
 // --- targets for get/set/etc macros -----------------------------------------
 /** "Chapter Designator" for Get/Set API.
- *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
- *	to find macros for the Get/Set API; simply highlight the Module argument, and select Go To
- *	Definition.
+ *	Intentionally unused symbol, designed to get you to the correct starting
+ *	point, when you want to find macros for the Get/Set API; simply highlight
+ *	the Module argument, and select Go To Definition.
  */
 enum { Cwsw_Board };	/* PIC32 MZ EZ Board */
 

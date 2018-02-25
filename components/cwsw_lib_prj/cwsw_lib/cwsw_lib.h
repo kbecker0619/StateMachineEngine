@@ -194,9 +194,10 @@ extern bool 				Cwsw_Lib__Get_Initialized(void);
 
 
 /** "Chapter Designator" for Get/Set API.
- *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
- *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
- *	Eclipse, NetBeans, etc.), and select Go To Definition.
+ *	Intentionally unused symbol, designed to get you to the correct starting
+ *	point, when you want to find macros for the Get/Set API; simply highlight
+ *	the Module argument in your IDE (e.g, Eclipse, NetBeans, etc.), and select
+ *	Go To Definition.
  */
 enum { Cwsw_Lib = 0 };	/* CWSW Library */
 
@@ -322,14 +323,37 @@ typedef void (*fpTask)(void);
 
 #endif
 
-#include <assert.h>
-/** CWSW assertion check.
- *	The intent of this function is not exactly the same as that of the canonical assert() statement
- *	in ISO C; in this implementation, intended as it is for deeply embedded systems, you should be
- *	able to redirect it to a logging function with breakpoint, or other functionality as
- *	appropriate.
+/** @fn cwsw_assert(condition_to_test, optional_description...)
+ *	CWSW assertion check.
+ *	The intent of this assertion is not exactly the same as that of the
+ *	canonical assert() statement in ISO C; in this implementation, intended as
+ *	it is for deeply embedded systems, you should be able to redirect it to a
+ *	logging function with breakpoint, or other functionality as appropriate.
+ *
+ *	We implement the API as a macro so that we have access to the preprocessor's
+ *	predefined symbols.
+ *
+ *	Some coding standards (especially those safety- and security-related)
+ *	advocate that at least some types of assertions should always be defined, as
+ *	opposed to the canonical "assert" which disappears if #NDEBUG is defined.
+ *	For this reason, this macro always evaluates its arguments, in all
+ *	environments.
+ *
+ *	@note per https://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html, variadics
+ *	used as we're using them here, will break on a non-GNU compiler. buyer beware.
  */
-#define cwsw_assert(a)		assert(a)
+#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+//	#pragma GCC diagnostic push
+//	#pragma GCC diagnostic ignored "-Wvariadic-macros"
+	#define	cwsw_assert(test, descrip)	do { if(!(test)) { cwsw_assert_helper(#test, __FILE__, __LINE__, descrip); } } while(0)
+//	#pragma GCC diagnostic pop
+
+#else
+	#pragma message "cwsw_assert() not defined"
+
+#endif
+
+extern void cwsw_assert_helper(char const * const test, char const * const filename, int const lineno, char const * const descrip);
 
 
 /** Target symbol for Get(Cwsw_Lib, xxx) interface */

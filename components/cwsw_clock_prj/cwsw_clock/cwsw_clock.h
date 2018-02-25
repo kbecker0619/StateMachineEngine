@@ -114,9 +114,10 @@ extern tCwswClockTics	Cwsw__Clock(void);
 // ==== Targets for Get/Set APIs ============================================ {
 
 /** "Chapter Designator" for Get/Set API.
- *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
- *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
- *	Eclipse, NetBeans, etc.), and select Go To Definition.
+ *	Intentionally unused symbol, designed to get you to the correct starting
+ *	point, when you want to find macros for the Get/Set API; simply highlight
+ *	the Module argument in your IDE (e.g, Eclipse, NetBeans, etc.), and select
+ *	Go To Definition.
  */
 enum { Cwsw_Clock = 3 };	/* Generic architecture for all supported boards */
 
@@ -145,10 +146,10 @@ enum { Cwsw_Clock = 3 };	/* Generic architecture for all supported boards */
 #define Cwsw_GetTimeLeft(timer)					Cwsw_ElapsedTimeMs(Cwsw__Clock(), timer)
 
 /**	Set the duration of a timer.
- *	@param timer - a reference to the specified timer.
- *	@param duration - the duration of the timer. Negative values are not possible.
+ *	@param[out]	timer - a reference to the specified timer.
+ *	@param[in]	duration - the duration of the timer. Negative values are not possible.
  */
-#define Cwsw_SetTimerVal(ptimer, duration)		do { *ptimer = Cwsw__Clock() + (duration); } while(0)
+#define Cwsw_Timer__Set(ptimer, duration)		do { *ptimer = Cwsw__Clock() + (duration); } while(0)
 
 
 /**	Get the current system time, in ms.
