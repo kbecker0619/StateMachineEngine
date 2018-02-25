@@ -83,6 +83,7 @@ Cwsw_Lib__Init(void)
 		#pragma GCC diagnostic pop
 		#endif
 	}
+
 	initialized = true;
 	return 0;
 }

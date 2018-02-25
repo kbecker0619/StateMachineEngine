@@ -89,7 +89,11 @@ Cwsw_Clock__Init(void)
 		#pragma GCC diagnostic ignored "-Wpedantic"
 		#endif
 
-		dbg_printf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, cwsw_clock_RevString, __FUNCTION__);
+		dbg_printf(
+				"\tModule ID %i\t%s\t%s\n"
+				"\tEntering %s()\n\n",
+				Cwsw_Clock, __FILE__, cwsw_clock_RevString,
+				__FUNCTION__);
 
 		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 		#pragma GCC diagnostic pop
@@ -238,7 +242,8 @@ Cwsw_Clock__Get_Initialized(void)
 	 *	The design intent is for this folder to be shared into your project's
 	 *	directory structure.
 	 *	-	@b Preferred: If your code management system can share folders
-	 *		(e.g., PVCS / Dimensions, MKS), this might be a good solution; else,
+	 *		(e.g., PVCS / Dimensions, MKS, svn 'externals'), this might be a
+	 *		good solution; else,
 	 *	-	@b Symlinks: filesystem symlinks are supported by GIT, with
 	 *		appropriate configuration options set properly.
 	 *	-	Example:\n
@@ -306,6 +311,7 @@ Cwsw_Clock__Get_Initialized(void)
 	 *		integration instructions [here](@ref Lib_Integration).
 	 *	-	<code>cwsw_arch</code>. To integrate this component, refer to the
 	 *		integration instructions [here](@ref Arch_Integration).
+	 *	-	board
 	 *
 	 *	Here is one example of how to do this, using the Cygwin command line:
 	 *	@code
@@ -335,6 +341,40 @@ Cwsw_Clock__Get_Initialized(void)
 		    ├── os
 		    ├── rte
 		    └── services
+
+
+
+
+
+
+$ ln -s ../cwsw_arch_prj/cwsw_arch cwsw_arch
+
+kbecker@PC-013071C /cygdrive/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj
+$ ln -s ../cwsw_board_prj/cwsw_board cwsw_board
+
+kbecker@PC-013071C /cygdrive/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj
+$ tree -dL 2
+.
+├── cwsw_arch -> ../cwsw_arch_prj/cwsw_arch
+├── cwsw_board -> ../cwsw_board_prj/cwsw_board
+├── cwsw_bsp
+│   ├── include
+│   └── src
+├── cwsw_clock
+│   ├── include
+│   └── src
+├── cwsw_lib -> ../cwsw_lib_prj/cwsw_lib
+├── Debug_Win_MinGW
+│   ├── arch
+│   ├── cwsw_bsp
+│   ├── cwsw_clock
+│   ├── cwsw_lib
+│   └── ut
+├── doc
+└── ut
+
+17 directories
+
 
 	 *	@endcode
 	 *

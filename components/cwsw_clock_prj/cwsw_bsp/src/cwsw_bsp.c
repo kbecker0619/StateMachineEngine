@@ -68,14 +68,3 @@ static char const * const cwsw_bsp_RevString = "$Revision: 0123 $";
  */
 //#include "system/system.h"					/* API as defined by MHC. Note that including any part of the path, violates all kinds of coding rules (including my own personal rules) */
 //#include "system/devcon/sys_devcon.h"		/* SYS_DEVCON_Initialize() */
-uint16_t
-BSP__Init(void)
-{
-	UNUSED(cwsw_bsp_RevString);
-
-	/* the following, for now, are taken from the Harmony project */
-//	SYS_Initialize ( NULL );
-
-
-	return 0;
-}

@@ -1,0 +1,14 @@
+# Doxyfile for "pc" clock services, 
+#	built on top of i386 architecture and "none" board
+#	(i.e., Windows using MinGW and Linux for Linux desktop using GCC)
+
+@INCLUDE = cwsw_clock.doxyfile
+
+PREDEFINED          +=	XPRJ_Debug_Win_MinGW=1
+
+INPUT				+=	cwsw_arch/i386 \
+						cwsw_arch/cwsw_arch_common.h \
+						cwsw_board/none \
+						cwsw_board/cwsw_board_common.h
+
+EXCLUDE				+= 

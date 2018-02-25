@@ -1,4 +1,4 @@
-/** @file driver_common.h
+/** @file projevtnames.h
  *	@brief	One-sentence short description of file.
  *
  *	Description:
@@ -6,7 +6,7 @@
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
- *	Created on: Dec 25, 2017
+ *	Created on: Jan 20, 2018
  *	Author: kbecker
  *
  *	Current:
@@ -14,8 +14,8 @@
  *	$Date: $
  */
 
-#ifndef ARCH_PIC32MZ2048EFM_FRAMEWORK_DRIVER_DRIVER_COMMON_H_
-#define ARCH_PIC32MZ2048EFM_FRAMEWORK_DRIVER_DRIVER_COMMON_H_
+#ifndef UT_PROJEVTNAMES_H_
+#define UT_PROJEVTNAMES_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -26,7 +26,6 @@ extern "C" {
 // ============================================================================
 
 // ----	System Headers --------------------------
-#include <stdint.h>		/* klb: uintptr_t */
 
 // ----	Project Headers -------------------------
 
@@ -36,37 +35,27 @@ extern "C" {
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
-#define ARCH_PIC32MZ2048EFM_FRAMEWORK_DRIVER_DRIVER_COMMON_H__REVSTRING "$Revision: 0123 $"
+#define UT_PROJEVTNAMES_H__REVSTRING "$Revision: 0123 $"
+
+/** Project-specific list of events.
+ * This list must be contained inside the enumeration; the name of the enumeration tag is
+ * significant, and it is highly recommended the 1st enum (value of 0) should be reserved for No
+ * Event. Other than that,
+ */
+enum eProjectEvents {
+	evNoEvent,				//!< reserved value, used for initialization
+	evNotInit,              //!< evNotInit
+	evButtonPressed,
+	evButtonCommit,			//!< debounced press event
+	evButtonReleased,
+	evUpdateUi,
+	evTerminateRequested
+};
 
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
-
-/* Device Handle
-
-  Summary:
-    Handle to an opened device driver.
-
-  Description:
-    This handle identifies the open instance of a device driver.  It must be
-    passed to all other driver routines (except the initialization, deinitialization,
-    or power routines) to identify the caller.
-
-  Remarks:
-    Every application or module that wants to use a driver must first call
-    the driver's open routine.  This is the only routine that is absolutely
-    required for every driver.
-
-    If a driver is unable to allow an additional module to use it, it must then
-    return the special value DRV_HANDLE_INVALID.  Callers should check the
-    handle returned for this value to ensure this value was not returned before
-    attempting to call any other driver routines using the handle.
-*/
-
-typedef uintptr_t DRV_HANDLE;
-
-
 
 // ============================================================================
 // ----	Public Variables ------------------------------------------------------
@@ -77,8 +66,14 @@ typedef uintptr_t DRV_HANDLE;
 // ============================================================================
 
 
+extern void EventHandler__evNotInitialized		(tEventPayload EventData);
+extern void EventHandler__evTerminateRequested	(tEventPayload EventData);
+extern void EventHandler__evButtonCommit		(tEventPayload EventData);
+extern void EventHandler__evButtonPressed		(tEventPayload EventData);
+extern void EventHandler__evButtonReleased		(tEventPayload EventData);
+
 #ifdef	__cplusplus
 }
 #endif
 
-#endif /* ARCH_PIC32MZ2048EFM_FRAMEWORK_DRIVER_DRIVER_COMMON_H_ */
+#endif /* UT_PROJEVTNAMES_H_ */

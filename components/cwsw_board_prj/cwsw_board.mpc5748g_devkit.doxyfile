@@ -11,3 +11,5 @@ INPUT				+= cwsw_arch/MPC57xx \
  
 EXCLUDE				+= Debug_XC_MPC57xx_DevKit \
 					   Debug_Win_MinGW
+
+IMAGE_PATH          +=	doc/arch/images

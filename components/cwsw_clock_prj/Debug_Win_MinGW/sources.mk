@@ -13,15 +13,11 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-arch/PIC32MZ2048EFM/app \
-arch/PIC32MZ2048EFM/app/framework/system/ports \
-arch/PIC32MZ2048EFM/app/system_config/bsp \
-arch/PIC32MZ2048EFM/app/system_config \
-arch/PIC32MZ2048EFM/framework/system/clk/src \
-arch/PIC32MZ2048EFM/framework/system/devcon/src \
-arch/PIC32MZ2048EFM/framework/system/int/src \
-arch/PIC32MZ2048EFM/framework/system/tmr/src \
-cwsw_bsp/src \
+cwsw_arch/i386/peripheral/ports \
+cwsw_arch/i386/src \
+cwsw_arch/i386/system/clk/src \
+cwsw_arch/i386/system/ports/src \
+cwsw_board/none/src \
 cwsw_clock/src \
 cwsw_lib/src \
 ut \
