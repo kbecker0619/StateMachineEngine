@@ -4,7 +4,7 @@ Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clo
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
-Number of Files = 9
+Number of Files = 11
 Target Type = "Executable"
 Flags = 16
 
@@ -33,8 +33,32 @@ Project Flags = 0
 Folder = "Include Files"
 
 [File 0003]
-File Type = "CSource"
+File Type = "Include"
 Res Id = 3
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "../cwsw_arch_prj/cwsw_arch/i386/cwsw_arch.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/i386/cwsw_a"
+Path Line0002 = "rch.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0004]
+File Type = "Include"
+Res Id = 4
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "../cwsw_board_prj/cwsw_board/none/cwsw_board.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_board_prj/cwsw_board/none/cwsw"
+Path Line0002 = "_board.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0005]
+File Type = "CSource"
+Res Id = 5
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "cwsw_clock/src/cwsw_clock.c"
@@ -45,9 +69,9 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0004]
+[File 0006]
 File Type = "Include"
-Res Id = 4
+Res Id = 6
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "cwsw_clock/include/cwsw_clock.h"
@@ -57,9 +81,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0005]
+[File 0007]
 File Type = "CSource"
-Res Id = 5
+Res Id = 7
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/cwsw_clock_test.c"
@@ -69,9 +93,9 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0006]
+[File 0008]
 File Type = "CSource"
-Res Id = 6
+Res Id = 8
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "../cwsw_lib_prj/cwsw_lib/src/cwsw_lib.c"
@@ -82,9 +106,9 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0007]
+[File 0009]
 File Type = "Include"
-Res Id = 7
+Res Id = 9
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "../cwsw_lib_prj/cwsw_lib/include/cwsw_lib.h"
@@ -94,9 +118,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0008]
+[File 0010]
 File Type = "Include"
-Res Id = 8
+Res Id = 10
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/projcfg.h"
@@ -105,9 +129,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0009]
+[File 0011]
 File Type = "Unknown"
-Res Id = 9
+Res Id = 11
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/readme.md"
@@ -149,6 +173,10 @@ Include Path 2 Is Rel = True
 Include Path 2 Rel To = "Project"
 Include Path 2 Rel Path = "cwsw_clock/include"
 Include Path 2 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/include"
+Include Path 3 Is Rel = False
+Include Path 3 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/i386"
+Include Path 4 Is Rel = False
+Include Path 4 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_board_prj/cwsw_board/none"
 
 [Create Executable]
 Executable File_Debug Is Rel = True
