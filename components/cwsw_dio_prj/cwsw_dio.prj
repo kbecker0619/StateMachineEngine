@@ -4,7 +4,7 @@ Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_dio.p
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
-Number of Files = 23
+Number of Files = 24
 Target Type = "Executable"
 Flags = 16
 
@@ -267,6 +267,18 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
+[File 0024]
+File Type = "Include"
+Res Id = 24
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "../cwsw_clock_prj/cwsw_clock/cwsw_clock.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/cwsw_cloc"
+Path Line0002 = "k.h"
+Exclude = False
+Project Flags = 0
+Folder = "Not In A Folder"
+
 [Folders]
 Instrument Files Folder Not Added Yet = True
 Folder 0 = "Include Files"
@@ -310,6 +322,8 @@ Include Path 6 Line0001 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/compo
 Include Path 6 Line0002 = "/cwsw/lib"
 Include Path 7 Is Rel = False
 Include Path 7 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut"
+Include Path 8 Is Rel = False
+Include Path 8 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock"
 
 [Create Executable]
 Executable File_Debug Is Rel = True

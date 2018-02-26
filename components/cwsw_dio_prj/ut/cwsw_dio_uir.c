@@ -24,7 +24,7 @@ int main (int argc, char *argv[])
 }
 #endif   /* formerly excluded lines */
 
-extern void Csws_Dio_Ut__Task(void);
+extern void Dio_Ut__Task(void);
 
 int
 CVICALLBACK cbOnBtnQuit (

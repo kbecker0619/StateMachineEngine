@@ -50,13 +50,20 @@ static bool terminate_requested = false;
 /* for now, i'm cheating - do as i say, not as i do - because i want to break up each task's
  * functionality into a standalone module. if this sticks, i'll make more formal.
  */
+#if ( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) )		/* { */
 extern void ms1__Task(void);
+
+#elif (XPRJ_Debug_CVI)
+#define ms1__Task()		do {} while(0)
+
+#endif															/* } */
+
 
 void
 Dio_Ut__Task(void)
 {
 
-	tCwswClockTics start, overrun;
+	tCwswClockTics start, overrun, nowtm;
 	static tCwswClockTics tmr5ms = 0, tmr10ms = 0, tmr20ms = 0,
 			tmr50ms = 0, tmr100ms = 0, tmr500ms = 0;
 	UNUSED(tmr10ms); UNUSED(tmr20ms); UNUSED(tmr50ms);
@@ -67,11 +74,17 @@ Dio_Ut__Task(void)
 	 */
 	do {				/* do time keeping */
 		start = GET(SYSTEM_TIME);
-		do { } while(GET(SYSTEM_TIME) == start);
+
+		/* empirical debugging in VM on MinGW: if we've already exceede the overrun value, there's
+		 * no sense whatsoever in looping until the current time tics over. just get on with it.
+		 */
+		if(!TM(overrun)) do { } while(GET(SYSTEM_TIME) == start);
+
 		/* reset start time for duration of this iteration, so we can institute task-overrun
 		 * checking.
 		 */
 		start = GET(SYSTEM_TIME);
+		Cwsw_Timer__Set(&overrun, 15);
 	} while(0);
 
 	do {				/* execute 1-ms tasks. */
@@ -89,47 +102,64 @@ Dio_Ut__Task(void)
 						 */
 		{
 			cwsw_assert(GET(SYSTEM_TIME) == start, "Task Functions exceeded alloted time");
+		} else {
+			if(TM(overrun))
+			{
+				nowtm = GET(SYSTEM_TIME);
+				cwsw_assert(!TM(overrun), "Task Functions exceeded alloted time");
+				/* now, compare "overrun" with "nowtm" */
+			}
 		}
 
 	} while(0);
 
 	if(TM(tmr10ms)) {	/* check if we should execute, and do if so, the 10 ms tasks */
+		SET(tmr10ms, 10);
 		if(0)
 		{
-			SET(tmr10ms, 10);
 			cwsw_assert(GET(SYSTEM_TIME) == start, "Task Functions exceeded alloted time");
+		} else {
+			cwsw_assert(!TM(overrun), "Task Functions exceeded alloted time");
 		}
 	} while(0);
 
 	if(TM(tmr20ms)) {	/* check if we should execute, and do if so, the 20 ms tasks */
+		SET(tmr20ms, 20);
 		if(0)
 		{
-			SET(tmr20ms, 20);
 			cwsw_assert(GET(SYSTEM_TIME) == start, "Task Functions exceeded alloted time");
+		} else {
+			cwsw_assert(!TM(overrun), "Task Functions exceeded alloted time");
 		}
 	} while(0);
 
 	if(TM(tmr50ms)) {	/* check if we should execute, and do if so, the 50 ms tasks */
+		SET(tmr50ms, 50);
 		if(0)
 		{
-			SET(tmr50ms, 50);
 			cwsw_assert(GET(SYSTEM_TIME) == start, "Task Functions exceeded alloted time");
+		} else {
+			cwsw_assert(!TM(overrun), "Task Functions exceeded alloted time");
 		}
 	} while(0);
 
 	if(TM(tmr100ms)) {	/* check if we should execute, and do if so, the 100 ms tasks */
+		SET(tmr100ms, 100);
 		if(0)
 		{
-			SET(tmr100ms, 100);
 			cwsw_assert(GET(SYSTEM_TIME) == start, "Task Functions exceeded alloted time");
+		} else {
+			cwsw_assert(!TM(overrun), "Task Functions exceeded alloted time");
 		}
 	} while(0);
 
 	if(TM(tmr500ms)) {	/* check if we should execute, and do if so, the 500 ms tasks */
+		SET(tmr500ms, 500);
 		if(0)
 		{
-			SET(tmr500ms, 500);
 			cwsw_assert(GET(SYSTEM_TIME) == start, "Task Functions exceeded alloted time");
+		} else {
+			cwsw_assert(!TM(overrun), "Task Functions exceeded alloted time");
 		}
 	} while(0);
 

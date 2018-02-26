@@ -19,7 +19,7 @@
 // ============================================================================
 
 #include "projcfg.h"
-#if !( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) )		/* { */
+#if !( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) || (XPRJ_Debug_CVI) )		/* { */
 #error Unknown CPU Architecture
 #endif															/* } */
 
@@ -104,11 +104,11 @@ Cwsw_Arch__Init(void)
 	#pragma GCC diagnostic pop
 	#endif
 
-    /* Core Processor Initialization
-     * forgive this flagrant violation of personal ingenuity, but the names and call order is
-     * borrowed, /FOR NOW/, from MHC. I fully intend to absract this so it's my own implementation,
-     * not a blatant borrowing of someone else's favored methods.
-     */
+	/* Core Processor Initialization
+	 * forgive this flagrant violation of personal ingenuity, but the names and call order is
+	 * borrowed, /FOR NOW/, from MHC. I fully intend to absract this so it's my own implementation,
+	 * not a blatant borrowing of someone else's favored methods.
+	 */
 	SYS_CLK_Initialize( NULL );
 	SYS_DEVCON_Initialize(0, NULL);
 	SYS_DEVCON_PerformanceConfig(0);

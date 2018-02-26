@@ -107,7 +107,7 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
 	volatile uint16_t delay = 0;
 
 	dbg_printf(
-		"Assertion failed: %s, file: %s, line: %i\nDescription: %s\n\n",
+		"\nAssertion failed: \"%s\", file::line: %s::%i\nDescription: %s\n\n",
 		test, filename, lineno, descrip);
 
 	while(--delay);
