@@ -212,8 +212,8 @@ enum { Cwsw_Lib = 0 };	/* CWSW Library */
  *	prefixes were all the same, and so a macro was defined to represent that
  *	module.
  */
-#define Init(instance)	_INIT(instance)
-#define _INIT(instance)	instance ## __Init()
+#define Init(instance)						_INIT(instance)
+#define _INIT(instance)						instance ## __Init()
 typedef uint16_t (*fpInit)(void);
 
 
@@ -227,8 +227,8 @@ typedef uint16_t (*fpInit)(void);
  *	prefixes were all the same, and so a macro was defined to represent that
  *	module.
  */
-#define Task(instance)	_TASK(instance)
-#define _TASK(instance)	instance ## __Task()
+#define Task(instance)						_TASK(instance)
+#define _TASK(instance)						instance ## __Task()
 typedef void (*fpTask)(void);
 
 
@@ -266,7 +266,7 @@ typedef void (*fpTask)(void);
 /**	Is specified condition true?
  *	@return #true if condition is true, #false otherwise.
  */
-#define IS(cond)                (bool)(GET(cond) != false)
+#define IS(cond)      						(bool)(GET(cond) != false)
 
 
 /*	=== dev-on-PC API =========================================================
@@ -279,7 +279,7 @@ typedef void (*fpTask)(void);
 #if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wvariadic-macros"
-	#define	dbg_printf(format, args...)	(void)printf(format , ## args)
+	#define	dbg_printf(format, args...)	(void)printf(format, ## args)
 	#pragma GCC diagnostic pop
 
 #elif defined(_CVI_) || defined(_MSC_VER)
@@ -319,7 +319,7 @@ typedef void (*fpTask)(void);
 	/**	when built on a PC, it's likely i want to see module elements that we would
 	 *	otherwise want to keep secret.
 	 */
-	#define PRIVATE				static
+	#define PRIVATE						static
 
 #endif
 
@@ -357,7 +357,7 @@ extern void cwsw_assert_helper(char const * const test, char const * const filen
 
 
 /** Target symbol for Get(Cwsw_Lib, xxx) interface */
-#define Cwsw_Lib__Get(a)	Cwsw_Lib__Get_ ## a()
+#define Cwsw_Lib__Get(a)				Cwsw_Lib__Get_ ## a()
 
 
 #ifdef	__cplusplus
