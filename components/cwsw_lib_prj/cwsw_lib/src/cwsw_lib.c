@@ -101,7 +101,7 @@ Cwsw_Lib__Get_Initialized(void)
  * @param[in]	lineno 		The line number in the file that held the failed assertion.
  * @param[in]	descript	The user-supplied description that augments the assertion notice. Suitable for a logging statement.
  */
-WEAK void
+void
 cwsw_assert_helper(char const * const test, char const * const filename, int const lineno, char const * const descrip)
 {
 	volatile uint16_t delay = 0;

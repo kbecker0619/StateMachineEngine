@@ -81,7 +81,7 @@ uint16_t
 Cwsw_Clock__Init(void)
 {
 	UNUSED(cwsw_clock_RevString);
-	cwsw_assert(Get(Cwsw_Lib, Initialized));
+	cwsw_assert(Get(Cwsw_Lib, Initialized), "CWSW Library Not Initialized");
 	if( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC) || (XPRJ_Debug_CVI) )
 	{
 		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
