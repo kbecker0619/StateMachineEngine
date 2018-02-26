@@ -11,15 +11,11 @@ RM := rm -rf
 -include ut/subdir.mk
 -include cwsw_lib/src/subdir.mk
 -include cwsw_clock/src/subdir.mk
--include cwsw_bsp/src/subdir.mk
--include arch/PIC32MZ2048EFM/framework/system/tmr/src/subdir.mk
--include arch/PIC32MZ2048EFM/framework/system/int/src/subdir.mk
--include arch/PIC32MZ2048EFM/framework/system/devcon/src/subdir.mk
--include arch/PIC32MZ2048EFM/framework/system/clk/src/subdir.mk
--include arch/PIC32MZ2048EFM/app/system_config/bsp/subdir.mk
--include arch/PIC32MZ2048EFM/app/system_config/subdir.mk
--include arch/PIC32MZ2048EFM/app/framework/system/ports/subdir.mk
--include arch/PIC32MZ2048EFM/app/subdir.mk
+-include cwsw_board/none/src/subdir.mk
+-include cwsw_arch/i386/system/ports/src/subdir.mk
+-include cwsw_arch/i386/system/clk/src/subdir.mk
+-include cwsw_arch/i386/src/subdir.mk
+-include cwsw_arch/i386/peripheral/ports/subdir.mk
 -include subdir.mk
 -include objects.mk
 

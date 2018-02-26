@@ -83,6 +83,7 @@ Cwsw_Lib__Init(void)
 		#pragma GCC diagnostic pop
 		#endif
 	}
+
 	initialized = true;
 	return 0;
 }
@@ -92,6 +93,26 @@ Cwsw_Lib__Get_Initialized(void)
 {
 	return initialized;
 }
+
+/** Helper function for CWSW Assert statement.
+ *
+ * @param[in]	test		The stringified text of the the test that failed the assertion
+ * @param[in]	filename	The name of the file that held the failed assertion.
+ * @param[in]	lineno 		The line number in the file that held the failed assertion.
+ * @param[in]	descript	The user-supplied description that augments the assertion notice. Suitable for a logging statement.
+ */
+void
+cwsw_assert_helper(char const * const test, char const * const filename, int const lineno, char const * const descrip)
+{
+	volatile uint16_t delay = 0;
+
+	dbg_printf(
+		"Assertion failed: %s, file: %s, line: %i\nDescription: %s\n\n",
+		test, filename, lineno, descrip);
+
+	while(--delay);
+}
+
 
 // ====	COMPONENT DOCUMENTATION ============================================== {
 #if defined(IN_DOXY)				/* { */

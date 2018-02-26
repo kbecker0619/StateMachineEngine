@@ -91,9 +91,10 @@ extern uint16_t Cwsw_Board__Init(void);
 
 // ==== Targets for Get/Set APIs ============================================ {
 /** "Chapter Designator" for Get/Set API.
- *	Intentionally unused symbol, designed to get you to the correct starting point, when you want
- *	to find macros for the Get/Set API; simply highlight the Module argument in your IDE (e.g,
- *	Eclipse, NetBeans, etc.), and select Go To Definition.
+ *	Intentionally unused symbol, designed to get you to the correct starting
+ *	point, when you want to find macros for the Get/Set API; simply highlight
+ *	the Module argument in your IDE (e.g, Eclipse, NetBeans, etc.), and select
+ *	Go To Definition.
  */
 enum { Cwsw_Board = 2 };	/* Generic architecture for all supported boards */
 

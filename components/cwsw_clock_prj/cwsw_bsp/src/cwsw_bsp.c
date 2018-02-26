@@ -23,7 +23,7 @@
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-#include "system/common/sys_module.h"			/* SYS_Initialize() */
+//#include "system/common/sys_module.h"			/* SYS_Initialize() */
 
 // ----	Module Headers --------------------------
 #include "cwsw_bsp.h"
@@ -66,16 +66,5 @@ static char const * const cwsw_bsp_RevString = "$Revision: 0123 $";
  *
  * @return
  */
-#include "system/system.h"					/* API as defined by MHC. Note that including any part of the path, violates all kinds of coding rules (including my own personal rules) */
-#include "system/devcon/sys_devcon.h"		/* SYS_DEVCON_Initialize() */
-uint16_t
-BSP__Init(void)
-{
-	UNUSED(cwsw_bsp_RevString);
-
-	/* the following, for now, are taken from the Harmony project */
-	SYS_Initialize ( NULL );
-
-
-	return 0;
-}
+//#include "system/system.h"					/* API as defined by MHC. Note that including any part of the path, violates all kinds of coding rules (including my own personal rules) */
+//#include "system/devcon/sys_devcon.h"		/* SYS_DEVCON_Initialize() */

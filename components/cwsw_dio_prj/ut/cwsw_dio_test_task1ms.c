@@ -1,4 +1,4 @@
-/** @file
+/** @file cwsw_dio_test_task1ms.c
  *	@brief	One-sentence short description of file.
  *
  *	Description:
@@ -6,7 +6,7 @@
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
- *	Created on: Jan 27, 2018
+ *	Created on: Feb 25, 2018
  *	Author: kbecker
  *
  *	Current:
@@ -21,19 +21,15 @@
 #include "projcfg.h"
 
 // ----	System Headers --------------------------
-#include <stdbool.h>	/* true, false */
-#include <stdint.h>
-#include <limits.h>		/* CHAR_BITS */
-#include <ctype.h>		/* iswhite() */
 #include <string.h>		/* strlen(), size_t */
+#include <ctype.h>		/* iswhite() */
+#include <limits.h>		/* CHAR_BITS */
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
-#include "cwsw_arch.h"
-#include "cwsw_eventsim.h"
+#include "cwsw_board.h"
 
 // ----	Module Headers --------------------------
-#include "cwsw_board.h"
 
 
 // ============================================================================
@@ -43,12 +39,27 @@
 /** Establish app-specific aliased names for buttons provided by Board component.
  */
 enum eButtons { kButton1, kButton2, kButton3, kNumButtons };
-enum eEventDataTypes { kButtonPressEvent };
+
+enum eButtonPressEventTypes
+{
+	kButtonPressNoEvent,		//!< No button event observed.
+	kButtonPressReleaseEvent, 	//!< Button release event observed. Intentionally ordered this way to be offset-of-one from observed button state.
+	kButtonPressPressEvent		//!< Button press event observed. Intentionally ordered this way to be offset-of-one from observed button state.
+};
 
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
+
+typedef enum eButtons				tButtons;
+typedef enum eButtonPressEventTypes tButtonPressEventTypes;
+
+typedef struct sSimInputHaps {
+	uint8_t eventhap;		/* intended to be tButtonPressEventTypes */
+	uint8_t eventbutton;	/* intended to be tButtons */
+} tSimInputHaps;
+
 
 // ============================================================================
 // ----	Global Variables ------------------------------------------------------
@@ -57,113 +68,38 @@ enum eEventDataTypes { kButtonPressEvent };
 // ============================================================================
 // ----	Module-level Variables ------------------------------------------------
 // ============================================================================
-static char const * const cwsw_arch_test_RevString = "$Revision: 0123 $";
-
-static bool terminate_requested = true;
-
-// ==== Targets for Get/Set APIs ============================================ {
-// ----	EventSeen API -------------------------------------------------- {
-static bool seteventseen = false;
-/** Set the EventSeen flag.
- *	In this stupid-simple design, the board-level drivers communicate with the
- *	higher code by sending events, but the main loop needs to know when to
- *	handle the events. This macro sets the "EventSeen" flag to let the main
- *	loop know it has to launch some worker functions to act on the event.
- *	@note In this design, there isn't an event-seen "stack" - we handle one
- *	event at a time. So, for example, in this unit test, because the simulated-
- *	inputs DI task processes all buttons within the same iteration, if there
- *	are multiple button events in the same loop, only the last one posted will
- *	be "remembered."
- */
-#define GET_SetEventSeen()			!(!(seteventseen))
-
-/** Get the status of the EventSeen flag.
- *
- */
-#define SET_SetEventSeen(val)		do { seteventseen = (val); } while(0)
-
-/** event data for EventSeen tracking.
- *	admittedly a stupid implementation, but it's good enough for this level of
- *	dev / unit testing. very much not thread safe, very much fragile.
- * @param ev
- */
-static struct sEventData {
-	uint8_t EventType;
-	union uEventData {
-		tEventPayload btn;
-		uint8_t nothing;
-	} event_data;
-} event_data;
-// ----	/EventSeen API ------------------------------------------------- }
-
-// ----	LED API -------------------------------------------------------- {
-/* In this UT environ, the LEDs are considered global resources, "owned" by the Board,
- * which can be set (written to) by any application-layer module.
- */
-#define SET_BspHeartbeatInd(value)	Set(Cwsw_Bsp, BspHeartbeatInd, value)
-#define SET_BspActivity2(value)		Set(Cwsw_Bsp, BspActivity2, value)
-#define SET_BspActivity3(value)		Set(Cwsw_Bsp, BspActivity3, value)
-
-// ----	/LED API ------------------------------------------------------- }
-
-// ==== /Targets for Get/Set APIs =========================================== }
+static char const * const cwsw_dio_test_task1ms_RevString = "$Revision: 0123 $";
 
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
 
-/** Event handler for button-press events (#evButtonPressed).
- *	This is on the border between UT environs that aren't hooked to a UI or an external dev board,
- *	and the portion of the lib and UT that are common across UT envs. Within this function, we
- *	simply repost the event the LW/CVI event so we can use a common event handler.
+/** Convert boolean / binary button state (on/off) to Button Press Event type.
  *
- *	This can't be static storage scope because of API (which i don't want to change just to hide
- *	from public view this function for a one-off unit test)
- *	@param ev Event Data.
- *	- evId contains the ID of the button whose event is being posted.
- *	- evInt contains the button state being communicated.
+ * @return
  */
-void
-EventHandler__evButtonPressed(tEventPayload ev)
-{
-	event_data.EventType = kButtonPressEvent;
-	event_data.event_data.btn.evId = ev.evId;
-	switch(ev.evInt)
-	{
-	case 1:
-		event_data.event_data.btn.evInt = evButtonCommit;
-		break;
-	default:
-		event_data.event_data.btn.evInt = evButtonReleased;
-		break;
-	}
-	SET(SetEventSeen, true);
-}
+#define TO_ButtonPressEventType(buttonstate)	TO_U8(!(!buttonstate) + 1)
 
-/** Event handler for application Termination Requested events (#evTerminateRequested).
- */
-void
-EventHandler__evTerminateRequested(tEventPayload ev)
-{
-	UNUSED(ev);
-	terminate_requested = true;
-}
+
+// ============================================================================
+// ----	Public Functions ------------------------------------------------------
+// ============================================================================
 
 /** Simulate input events.
  *	This function ONLY useful for and only active in environments that are not
  *	connected to a physical board.
  *
- *	This version specifically simulates only digital inputs; specifically,
- *	button presses. The version here handles only 1 button, but i plan to
- *	add 2 more buttons "RSN" (Real Soon Now).
+ *	This version simulates only digital inputs; specifically, button presses.
+ *	The version here handles only 1 button, but i plan to add 2 more buttons
+ *	"RSN" (Real Soon Now).
  *
  *	My scheme for debouncing is to "shift in" a new sample; when there are 1
  *	full byte's worth of bits that are the same, that value is taken.
  *
- *	We post an event on change; init / ambient / quiescent is considered to be
- *	logic 0 / off / open, so we won't post any notifications until the 1st
- *	recognized press.
+ *	In contrast to the UT on the Board component, here, we are not @em posting
+ *	an event; instead, our return value indicates what happened, if anything,
+ *	and the [out] parameter says which button saw the event.
  *
  *	The source for these button-press samples is a string defined here in this
  *	function (at the top), because i am in intimate control of this string, i
@@ -178,8 +114,8 @@ EventHandler__evTerminateRequested(tEventPayload ev)
  *	be called at approximately a 1-ms rate, such that a valid sample could be
  *	had in as little as 8 ms.
  */
-static void
-SimulateInputs__Task(void)
+static tSimInputHaps
+SimulateInputs(void)
 {
 	static char const * const button_samples[kNumButtons] = {
 	/*   01234567 01234567 01234567 01234567 */
@@ -217,6 +153,7 @@ SimulateInputs__Task(void)
 
 	int sample;
 	int button_row;									/* which button press sequence are we inspecting? start w/ end of table */
+	tSimInputHaps rv = {0};							/* Return Value */
 
 	for(button_row = TABLE_SIZE(button_samples); button_row--; )
 	{
@@ -226,8 +163,7 @@ SimulateInputs__Task(void)
 			button_sample_idx[button_row] = strlen(button_samples[button_row]);			/* ... reset sample index */
 			if( (!button_row) && (!--loop_ct_until_terminate) )
 			{
-				tEventPayload ev = {0};
-				PostEvent(evTerminateRequested, ev);
+				/* suggested: post an event here that says, "i'm out of inputs" */
 			}
 		}
 
@@ -258,96 +194,70 @@ SimulateInputs__Task(void)
 			{
 				if((LSB_16(accumulator[button_row]) == 0xFFU) != last_switch_value[button_row])		/* detect change in state */
 				{
-					tEventPayload ev;
 					/* set last recognized value 1st, as convenience (so i can use it next) */
 					last_switch_value[button_row] = (LSB_16(accumulator[button_row]) == 0xFFU);
 
-					/* post event */
-					ev.evId = TO_U16(button_row);				/* which button has the event? for common handler */
-					ev.evInt = last_switch_value[button_row];
-					PostEvent(evButtonPressed, ev);
+					/* in the original (board component) code, i posted a switch event here */
+					rv.eventbutton = TO_U8(button_row);				/* which button has the event? for common handler */
+					rv.eventhap = TO_ButtonPressEventType(last_switch_value[button_row]);
+					return rv;	/* early exit, intentionally don't process other inputs */
 				}
 
 				/* always reset bit accum count for next button event, even if the current recognized
-				 * button state is the same as the last one
+				 * button state is the same as the last one. in other words, once a valid button
+				 * event is recognized, begin accumulating samples on an empty accumulator.
 				 */
 				accumulator_count[button_row] = CHAR_BIT;
 			}
 		}
 	}
+	return rv;
 }
 
-/** Unit Test Task Function.
- *	This task is not required to be called at any frequency or period other than, "as fast as
- *	possible." It would work well if it were called on a 1-ms time base.
- */
-static void
-board_ut__Task(void)
-{
-	/* because this is a single-thread app, sans ability to be manipulated from the outside
-	 * (remember, this is a UT designed to prove the basics of support, not be fancy in any way
-	 * about elegant ways to solve a problem), execute here a task designed to simulate inputs
-	 */
-	Task(SimulateInputs);
-
-	/* now, execute the process-inputs / reaction steps
-	 */
-	if(GET(SetEventSeen))
-	{
-		/* business logic, react to observed event
-		 */
-		switch(event_data.EventType)
-		{
-		case kButtonPressEvent:
-			SET(kBoardLed1,
-				(event_data.event_data.btn.evInt) == evButtonCommit ?
-					kLogicalOn : kLogicalOff);
-			break;
-
-		default:
-			break;
-		}
-
-//		bool a = GET(activity1ind);
-//		SET(BspHeartbeatInd, a);		/* Cwsw_Bsp__Set_BspActivity2() */
-//		SET(BspActivity2, GET(activity2ind));
-//		SET(BspActivity3, GET(activity3ind));
-		SET(SetEventSeen, false);
-	}
-//	Task(Heartbeat);
-}
-
-
-// ============================================================================
-// ----	Public Functions ------------------------------------------------------
-// ============================================================================
-
-int main(void)
-{
-	int retcode = EXIT_SUCCESS;
-	UNUSED(cwsw_arch_test_RevString);
-
-	/* provoke a NotInit event*/
-	(void)Init(Cwsw_Board);		// Cwsw_Board__Init()
-	if(retcode == EXIT_SUCCESS)	retcode = Init(Cwsw_Lib);		// Cwsw_Lib__Init()
-	if(retcode == EXIT_SUCCESS)	retcode = Init(Cwsw_Arch);		// Cwsw_Arch__Init()
-	if(retcode == EXIT_SUCCESS)	retcode = Init(Cwsw_Board);		// Cwsw_Board__Init()
-
-	if(retcode == EXIT_SUCCESS)	terminate_requested = false;
-	while(!terminate_requested) { Task(board_ut); }				// board_ut__Task()
-	return EXIT_SUCCESS;
-}
-
-/** Global handler for simulated even evNotInitialized.
- *	Because this UT environment is supremely simple, I have intimate knowledge that this event
- *	was posted because I wanted to test my error handling. Because I intentionally provoked an
- *	exception, I am here taking the unconventional step of restoring normal behavior without any
- *	other examination.
- *	@param EventData	Unused in this error handler.
+/** 1-ms task for DIO Demonstration Project.
+ *	If this looks strangely familiar, it's probably because I'm stealing the appropriate UT code
+ *	from the Board component.
  */
 void
-EventHandler__evNotInitialized(tEventPayload EventData)
+ms1__Task(void)
 {
-	UNUSED(EventData);
-	terminate_requested = false;
+	tSimInputHaps whathappened = SimulateInputs();
+	switch(whathappened.eventhap)
+	{
+	case kButtonPressPressEvent:
+		switch(whathappened.eventbutton)
+		{
+		case kBoardLed1:
+			SET(kBoardLed1, kLogicalOn);
+			break;
+		case kBoardLed2:
+			SET(kBoardLed2, kLogicalOn);
+			break;
+		case kBoardLed3:
+			SET(kBoardLed3, kLogicalOn);
+			break;
+		}
+		break;
+
+	case kButtonPressReleaseEvent:
+		switch(whathappened.eventbutton)
+		{
+		case kBoardLed1:
+			SET(kBoardLed1, kLogicalOff);
+			break;
+		case kBoardLed2:
+			SET(kBoardLed2, kLogicalOff);
+			break;
+		case kBoardLed3:
+			SET(kBoardLed3, kLogicalOff);
+			break;
+		}
+		break;
+
+	case kButtonPressNoEvent:
+	default:
+		cwsw_assert(1, "No error");
+		break;
+
+	}
 }

@@ -12,17 +12,32 @@
 #include <stdlib.h>
 
 #include "cwsw_lib.h"
-#include "cwsw_bsp.h"
+#include "cwsw_arch.h"
+#include "cwsw_board.h"
 #include "cwsw_clock.h"		/* hmmm, in LabWindows/CVI, the nesting seems to cause breakage. need to directly include the main API */
-#include "clock_if.h"
+//#include "clock_if.h"
+#include "cwsw_eventsim.h"
+
+uint16_t
+BSP__Init(void)
+{
+	uint16_t ret = 0;
+
+	if(!ret)	Init(Cwsw_Lib);			// Cwsw_Lib__Init(), cannot fail, so no consequence to discarding return value
+	if(!ret)	ret = Init(Cwsw_Arch);
+	if(!ret)	ret = Init(Cwsw_Board);
+	return ret;
+}
 
 int main(void)
 {
 	tCwswClockTics start, stop, et;
 	tCwswClockTics tmr;
 
-	(void) Init(BSP);
-	(void) Init(Cwsw_Lib);
+	UNUSED(stop);
+	UNUSED(et);
+
+	(void) Init(BSP);			// BSP__Init(), my local shortcut for all of the "unininteresting" stuff
 	(void) Init(Cwsw_Clock);
 
 	(void)puts("CWSW Clock Library Unit Test");
@@ -51,3 +66,10 @@ int main(void)
 
 	return EXIT_SUCCESS;
 }
+
+void
+EventHandler__evNotInitialized		(tEventPayload EventData)
+{
+	UNUSED(EventData);
+}
+
