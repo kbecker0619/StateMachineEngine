@@ -9,9 +9,9 @@ Active Project = 1
 Project 0001 = "cwsw_dio.prj"
 Drag Bar Left = 205
 Window Top = 57
-Window Left = 32
+Window Left = 6
 Window Bottom = 753
-Window Right = 1239
+Window Right = 1018
 Maximized = False
 Maximized Children = True
 Max Number Of Errors = 20
@@ -48,8 +48,8 @@ Disk Date = 3602461065
 In Projects = "1,"
 Window Top = 86
 Window Left = 38
-Window Z-Order = 1
-Source Window State = "1,87,87,87,21,27,27,0,0,135,0,0,0,0,0,30,25,0,41,39,266,623,1,0,"
+Window Z-Order = 2
+Source Window State = "1,87,87,87,21,27,27,0,0,80,0,0,0,0,0,16,25,0,27,58,266,623,1,0,"
 Breakpoint 0001 = "41,0,enabled,"
 Breakpoint 0002 = "114,0,enabled,"
 Breakpoint 0003 = "117,0,enabled,"
@@ -92,12 +92,12 @@ Source Window State = "1,139,139,139,4,14,14,0,3,80,0,0,0,0,0,18,137,0,139,4,296
 [File 0005]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut/cwsw_dio_test.c"
 File Type = "CSource"
-Disk Date = 3602456436
+Disk Date = 3602498641
 In Projects = "1,"
 Window Top = 56
 Window Left = 8
-Window Z-Order = 4
-Source Window State = "1,52,52,52,55,71,55,0,0,80,0,0,0,0,0,13,59,0,81,37,221,623,1,0,"
+Window Z-Order = 1
+Source Window State = "1,52,52,52,55,71,55,0,0,107,0,0,0,0,0,30,62,0,65,37,221,623,1,0,"
 
 [File 0006]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_arch/i386/src/cws"
@@ -146,7 +146,7 @@ Disk Date = 3599470353
 In Projects = "1,"
 Window Top = 86
 Window Left = 38
-Window Z-Order = 2
+Window Z-Order = 3
 Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,18,6,0,0,0,296,623,1,0,"
 
 [File 0011]
@@ -179,13 +179,13 @@ Window Top = 30
 Window Left = 8
 Window Height = 401
 Window Width = 623
-Window Z-Order = 3
+Window Z-Order = 4
 
 [File 0014]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/cwsw_lib/src/cwsw_lib."
 Path Line0002 = "c"
 File Type = "CSource"
-Disk Date = 3602429912
+Disk Date = 3602492755
 In Projects = "1,"
 Window Top = 58
 Window Left = 23

@@ -63,7 +63,7 @@ void
 Dio_Ut__Task(void)
 {
 
-	tCwswClockTics start, overrun, nowtm;
+	tCwswClockTics start, overrun = 0, nowtm;
 	static tCwswClockTics tmr5ms = 0, tmr10ms = 0, tmr20ms = 0,
 			tmr50ms = 0, tmr100ms = 0, tmr500ms = 0;
 	UNUSED(tmr10ms); UNUSED(tmr20ms); UNUSED(tmr50ms);

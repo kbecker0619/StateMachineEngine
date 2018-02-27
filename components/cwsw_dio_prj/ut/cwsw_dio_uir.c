@@ -38,7 +38,7 @@ CVICALLBACK cbOnBtnQuit (
 			QuitUserInterface (0);
 			break;
 		case EVENT_IDLE:
-			Task(Csws_Dio_Ut);
+			Task(Dio_Ut);
 			break;
 	}
 	return 0;
@@ -85,7 +85,7 @@ CVICALLBACK cbTaskTimer (int panel, int control, int event, void *callbackData, 
 		switch (event)
 		{
 			case EVENT_TIMER_TICK:
-				Task(Csws_Dio_Ut);
+				Task(Dio_Ut);
 				break;
 		}
 
