@@ -9,7 +9,21 @@
 #include <iostream>
 using namespace std;
 
+#include "projcfg.h"
+#include "cwsw_lib.h"
+
+
+uint16_t
+BSP__Init(void)
+{
+
+}
 int main() {
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+
+	(void) Init(BSP);		// BSP__Init().	because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
+
+
+
 	return 0;
 }

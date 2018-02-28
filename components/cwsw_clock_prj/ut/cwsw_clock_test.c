@@ -14,8 +14,7 @@
 #include "cwsw_lib.h"
 #include "cwsw_arch.h"
 #include "cwsw_board.h"
-#include "cwsw_clock.h"		/* hmmm, in LabWindows/CVI, the nesting seems to cause breakage. need to directly include the main API */
-//#include "clock_if.h"
+#include "cwsw_clock.h"
 #include "cwsw_eventsim.h"
 
 uint16_t
@@ -48,18 +47,18 @@ int main(void)
 	et = Cwsw_ElapsedTimeMs(start, stop);
 	(void)printf("%i\n", (unsigned)et);
 
-	Cwsw_SetTimerVal(&tmr, 5);
+	Cwsw_Timer__Set(&tmr, 5);
 	do
 	{
 		et = Cwsw_GetTimeLeft(tmr);
 	} while(et > 0);
 
-	start = GET(SYSTEM_TIME); Cwsw_SetTimerVal(&tmr, 5);
+	start = GET(SYSTEM_TIME); Set(Cwsw_Timer, &tmr, 5);
 	do {} while(!HAS_TIMER_EXPIRED(tmr));
 	et = Cwsw_ElapsedTimeMs(start, tmr);
 	(void)printf("%i\n", (unsigned)et);
 
-	start = GET(SYSTEM_TIME); Cwsw_SetTimerVal(&tmr, 5);
+	start = GET(SYSTEM_TIME); Set(Cwsw_Timer, &tmr, 5);
 	do {} while(!TM(tmr));
 	et = Cwsw_ElapsedTimeMs(start, tmr);
 	(void)printf("%i\n", (unsigned)et);
