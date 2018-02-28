@@ -202,7 +202,7 @@ main(int argc, char *argv[])
 		while(!terminate_requested) { Task(Dio_Ut); }	/* Dio_Ut__Task() */
 	}
 #endif
-
+	(void) puts("DIO Unit Test finished");
 	return EXIT_SUCCESS;
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>cwsw_dio_demo</name>
+	<name>cwsw_evqueue</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -20,19 +20,8 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>3rdparty/mhc/lib/system/clk</name>
-			<type>2</type>
-			<locationURI>PARENT-4-PROJECT_LOC/_Programs/Microchip/harmony/v2_05/framework/system/clk</locationURI>
-		</link>
-		<link>
-			<name>3rdparty/mhc/lib/system/common</name>
-			<type>2</type>
-			<locationURI>PARENT-4-PROJECT_LOC/_Programs/Microchip/harmony/v2_05/framework/system/common</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
