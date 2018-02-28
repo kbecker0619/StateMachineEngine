@@ -163,11 +163,11 @@ extern bool 				Cwsw_Lib__Get_Initialized(void);
 //! This version is provided for compilers that do not provide an intrinsic version.
 //! \note This version is \b UNSAFE in that it has side effects (it evaluates one or more arguments more than once)
 #if defined(_MSC_VER)
-    // msvc has max/min in stdlib, gnuc evidently doesn't
-    #define MAX(a, b)	max(a, b)
+	// msvc has max/min in stdlib, gnuc evidently doesn't
+	#define MAX(a, b)	max(a, b)
 
 #else
-    #define MAX(a, b)   (((a) > (b)) ? (a) : (b))
+	#define MAX(a, b)   (((a) > (b)) ? (a) : (b))
 
 #endif
 
@@ -176,11 +176,11 @@ extern bool 				Cwsw_Lib__Get_Initialized(void);
 //! This version is provided for compilers that do not provide an intrinsic version.
 //! \note This version is \b UNSAFE in that it has side effects (it evaluates one or more arguments more than once)
 #if defined(_MSC_VER)
-    // msvc has max/min intrinsics in stdlib, gnuc evidently doesn't
-    #define MIN(a, b)   min(a, b)
+	// msvc has max/min intrinsics in stdlib, gnuc evidently doesn't
+	#define MIN(a, b)   min(a, b)
 
 #else
-    #define MIN(a, b)   (((a) < (b)) ? (a) : (b))
+	#define MIN(a, b)   (((a) < (b)) ? (a) : (b))
 
 #endif
 
@@ -345,15 +345,14 @@ typedef void (*fpTask)(void);
 #if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 //	#pragma GCC diagnostic push
 //	#pragma GCC diagnostic ignored "-Wvariadic-macros"
-	#define	cwsw_assert(test, descrip)	do { if(!(test)) { cwsw_assert_helper(#test, __FILE__, __LINE__, descrip); } } while(0)
-//	#pragma GCC diagnostic pop
-
-#else
-	#pragma message "cwsw_assert() not defined"
-
 #endif
 
+#define	cwsw_assert(test, descrip)	do { if(!(test)) { cwsw_assert_helper(#test, __FILE__, __LINE__, descrip); } } while(0)
 extern void cwsw_assert_helper(char const * const test, char const * const filename, int const lineno, char const * const descrip);
+
+#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
+//	#pragma GCC diagnostic pop
+#endif
 
 
 /** Target symbol for Get(Cwsw_Lib, xxx) interface */

@@ -63,12 +63,6 @@ static char const * const cwsw_bsp_RevString = "$Revision: 0123 $";
 
 static bool initialized = false;
 
-bool activity1ind = false;
-bool activity2ind = false;
-bool activity3ind = false;
-bool seteventseen = false;
-
-
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
@@ -101,16 +95,17 @@ Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff)
 	Set(Cwsw_Board, kBoardLed3, onoff);
 }
 
-
+#include "cwsw_clock.h"
 void
 Heartbeat__Task(void)
 {
-	static int taskct = 0;
-	if(++taskct > 100)
+	static tCwswClockTics heartbeat_timer= 0;
+
+	if(TM(heartbeat_timer))
 	{
 		tDO_LogicalValues curstate = Get(Cwsw_Board, kBoardLed1);
+		Cwsw_Timer__Set(&heartbeat_timer, 1000);
 		Set(Cwsw_Board, kBoardLed1, !curstate);
-		taskct = 0;
 	}
 }
 
@@ -122,20 +117,9 @@ Heartbeat__Task(void)
 void
 EventHandler__evButtonCommit(tEventPayload EventData)
 {
-	/* control (as in, which button) is passed in evId field.
-	 * state of control is passed in evInt field.
+	/* simply to test it out, forward to the other event handler.
 	 */
-	int sw = EventData.evId;
-	bool st = !!TO_INT(EventData.evInt) ? kLogicalOn : kLogicalOff;
-
-	switch(sw)
-	{
-	case kBrdSwitch1:	activity1ind = st;	seteventseen = true;	break;
-	case kBrdSwitch2:   activity2ind = st;	seteventseen = true;	break;
-	case kBrdSwitch3:   activity3ind = st;	seteventseen = true;	break;
-
-	default:			break;
-	}
+	PostEvent(evButtonPressed, EventData);
 }
 
 

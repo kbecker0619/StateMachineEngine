@@ -28,6 +28,7 @@
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
 #include "cwsw_board.h"
+#include "cwsw_eventsim.h"
 
 // ----	Module Headers --------------------------
 
@@ -38,13 +39,11 @@
 
 /** Establish app-specific aliased names for buttons provided by Board component.
  */
-enum eButtons { kButton1, kButton2, kButton3, kNumButtons };
-
-enum eButtonPressEventTypes
-{
-	kButtonPressNoEvent,		//!< No button event observed.
-	kButtonPressReleaseEvent, 	//!< Button release event observed. Intentionally ordered this way to be offset-of-one from observed button state.
-	kButtonPressPressEvent		//!< Button press event observed. Intentionally ordered this way to be offset-of-one from observed button state.
+enum eButtons {
+	kButton1 = kBrdSwitch1,
+	kButton2 = kBrdSwitch2,
+	kButton3 = kBrdSwitch3,
+	kNumButtons = kBrdNumSwitches
 };
 
 
@@ -53,12 +52,12 @@ enum eButtonPressEventTypes
 // ============================================================================
 
 typedef enum eButtons				tButtons;
-typedef enum eButtonPressEventTypes tButtonPressEventTypes;
 
-typedef struct sSimInputHaps {
-	uint8_t eventhap;		/* intended to be tButtonPressEventTypes */
-	uint8_t eventbutton;	/* intended to be tButtons */
-} tSimInputHaps;
+typedef struct sButtonEvent {
+	bool				ButtonEventSeen;
+	tButtons			WhichButton;
+	tDO_LogicalValues	NewValue;
+} tButtonEvent;
 
 
 // ============================================================================
@@ -68,38 +67,42 @@ typedef struct sSimInputHaps {
 // ============================================================================
 // ----	Module-level Variables ------------------------------------------------
 // ============================================================================
-static char const * const cwsw_dio_test_task1ms_RevString = "$Revision: 0123 $";
+
+static tButtonEvent tbe = {0};
 
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
 
-/** Convert boolean / binary button state (on/off) to Button Press Event type.
- *
- * @return
- */
-#define TO_ButtonPressEventType(buttonstate)	TO_U8(!(!buttonstate) + 1)
-
-
 // ============================================================================
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
 
-/** Simulate input events.
+void
+EventHandler__evButtonPressed		(tEventPayload EventData)
+{
+	cwsw_assert(!tbe.ButtonEventSeen, "Previous button event not yet purged");
+	tbe.ButtonEventSeen = true;
+	tbe.WhichButton = EventData.evId;
+	tbe.NewValue = !!EventData.evInt;
+}
+
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC)		/* { */
+#define SimulateButtonInputs__Task()	SimulateButtonInputs()
+/** Simulate button input events.
  *	This function ONLY useful for and only active in environments that are not
  *	connected to a physical board.
  *
  *	This version simulates only digital inputs; specifically, button presses.
- *	The version here handles only 1 button, but i plan to add 2 more buttons
- *	"RSN" (Real Soon Now).
  *
  *	My scheme for debouncing is to "shift in" a new sample; when there are 1
  *	full byte's worth of bits that are the same, that value is taken.
  *
- *	In contrast to the UT on the Board component, here, we are not @em posting
- *	an event; instead, our return value indicates what happened, if anything,
- *	and the [out] parameter says which button saw the event.
+ *	In order to separate the DI activity from the task(s) that manage the DI
+ *	activity, and also, to allow "easy" variations such as a LabWindows/CVI UI
+ *	front-end, this function posts a CWSW event as soon as it sees a debounced
+ *	state change.
  *
  *	The source for these button-press samples is a string defined here in this
  *	function (at the top), because i am in intimate control of this string, i
@@ -114,8 +117,8 @@ static char const * const cwsw_dio_test_task1ms_RevString = "$Revision: 0123 $";
  *	be called at approximately a 1-ms rate, such that a valid sample could be
  *	had in as little as 8 ms.
  */
-static tSimInputHaps
-SimulateInputs(void)
+void
+SimulateButtonInputs(void)
 {
 	static char const * const button_samples[kNumButtons] = {
 	/*   01234567 01234567 01234567 01234567 */
@@ -152,10 +155,13 @@ SimulateInputs(void)
 													 */
 
 	int sample;
-	int button_row;									/* which button press sequence are we inspecting? start w/ end of table */
-	tSimInputHaps rv = {0};							/* Return Value */
+	static int button_row = TABLE_SIZE(button_samples);	/* which button press sequence are we inspecting? start w/ end of table */
 
-	for(button_row = TABLE_SIZE(button_samples); button_row--; )
+	for( ; button_row--; )	/* loop through all buttons, from high to low. note this algorithm stops
+							 * the loop on this iteration as soon as we recognize a button event,
+							 * but we pick it up from the next button on the next iteration. at the
+							 * bottom of the loop, after we fall out, we reset the row counter.
+							 */
 	{
 		if(!button_sample_idx[button_row])												/* if we have run out of button event data ... */
 		{
@@ -164,6 +170,8 @@ SimulateInputs(void)
 			if( (!button_row) && (!--loop_ct_until_terminate) )
 			{
 				/* suggested: post an event here that says, "i'm out of inputs" */
+				tEventPayload ev = {0};
+				PostEvent(evTerminateRequested, ev);
 			}
 		}
 
@@ -194,13 +202,15 @@ SimulateInputs(void)
 			{
 				if((LSB_16(accumulator[button_row]) == 0xFFU) != last_switch_value[button_row])		/* detect change in state */
 				{
+					tEventPayload ev;
+
 					/* set last recognized value 1st, as convenience (so i can use it next) */
 					last_switch_value[button_row] = (LSB_16(accumulator[button_row]) == 0xFFU);
 
-					/* in the original (board component) code, i posted a switch event here */
-					rv.eventbutton = TO_U8(button_row);				/* which button has the event? for common handler */
-					rv.eventhap = TO_ButtonPressEventType(last_switch_value[button_row]);
-					return rv;	/* early exit, intentionally don't process other inputs */
+					/* post event */
+					ev.evId = TO_U16(button_row);				/* which button has the event? for common handler */
+					ev.evInt = last_switch_value[button_row];
+					PostEvent(evButtonPressed, ev);
 				}
 
 				/* always reset bit accum count for next button event, even if the current recognized
@@ -208,11 +218,36 @@ SimulateInputs(void)
 				 * event is recognized, begin accumulating samples on an empty accumulator.
 				 */
 				accumulator_count[button_row] = CHAR_BIT;
+				return;											/* early exit, intentionally don't process other inputs */
 			}
 		}
 	}
-	return rv;
+	button_row = TABLE_SIZE(button_samples);
+	return;
 }
+
+#else
+#define SimulateButtonInputs__Task()	do {} while(0)
+
+
+#endif		/* } */
+
+bool
+GET_ButtonEvent(void)
+{
+	bool be;
+	Task(SimulateButtonInputs);
+
+	be = tbe.ButtonEventSeen;
+	if(be)
+	{
+		tbe.ButtonEventSeen = false;
+	}
+	return be;
+}
+
+#define GET_WhichButton()	(tbe.WhichButton)
+#define GET_ButtonState()	(tbe.NewValue)
 
 /** 1-ms task for DIO Demonstration Project.
  *	If this looks strangely familiar, it's probably because I'm stealing the appropriate UT code
@@ -221,43 +256,24 @@ SimulateInputs(void)
 void
 ms1__Task(void)
 {
-	tSimInputHaps whathappened = SimulateInputs();
-	switch(whathappened.eventhap)
+	bool btnev = GET(ButtonEvent);
+	if(!btnev)
 	{
-	case kButtonPressPressEvent:
-		switch(whathappened.eventbutton)
-		{
-		case kBoardLed1:
-			SET(kBoardLed1, kLogicalOn);
-			break;
-		case kBoardLed2:
-			SET(kBoardLed2, kLogicalOn);
-			break;
-		case kBoardLed3:
-			SET(kBoardLed3, kLogicalOn);
-			break;
-		}
-		break;
+		return;
+	}
 
-	case kButtonPressReleaseEvent:
-		switch(whathappened.eventbutton)
-		{
-		case kBoardLed1:
-			SET(kBoardLed1, kLogicalOff);
-			break;
-		case kBoardLed2:
-			SET(kBoardLed2, kLogicalOff);
-			break;
-		case kBoardLed3:
-			SET(kBoardLed3, kLogicalOff);
-			break;
-		}
+	switch(GET(WhichButton))
+	{
+	case kButton1:
+		if(GET(ButtonState)) { SET(kBoardLed1, kLogicalOn); } else { SET(kBoardLed1, kLogicalOff); }
 		break;
-
-	case kButtonPressNoEvent:
+	case kButton2:
+		if(GET(ButtonState)) { SET(kBoardLed2, kLogicalOn); } else { SET(kBoardLed2, kLogicalOff); }
+		break;
+	case kButton3:
+		if(GET(ButtonState)) { SET(kBoardLed3, kLogicalOn); } else { SET(kBoardLed3, kLogicalOff); }
+		break;
 	default:
-		cwsw_assert(1, "No error");
 		break;
-
 	}
 }
