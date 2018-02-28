@@ -48,6 +48,7 @@ CVICALLBACK cbOnBtnQuit (
  * the starter kit board.
  */
 #include "cwsw_eventsim.h"
+#include "cwsw_board.h"
 int
 CVICALLBACK cbOnBtn (
 	int panel, int control, int event,
@@ -60,9 +61,16 @@ CVICALLBACK cbOnBtn (
 	UNUSED(callbackData);
 	UNUSED(eventData1);
 	UNUSED(eventData2);
+
+	/* convert the LabWindows/CVI control to the board switch number */
+	control =	(control == PANEL_BTN_1) ? kBrdSwitch1 :
+				(control == PANEL_BTN_2) ? kBrdSwitch2 :
+				(control == PANEL_BTN_3) ? kBrdSwitch3 : control;
+
 	switch (event)
 	{
 		case EVENT_COMMIT:
+		case EVENT_LEFT_CLICK:
 			ev.evId = control;
 			(void)GetCtrlVal(panelHandle, control, &ev.evInt);
 			PostEvent(evButtonCommit, ev);
@@ -77,20 +85,22 @@ CVICALLBACK cbOnBtn (
 int
 CVICALLBACK cbTaskTimer (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)
 {
+	// for debugging purposes only
+	(void)SuspendTimerCallbacks();
+
 	if(Get(Cwsw_Bsp, Initialized))
 	{
-		// for debugging purposes only
-		(void)SuspendTimerCallbacks();
-
 		switch (event)
 		{
-			case EVENT_TIMER_TICK:
-				Task(Dio_Ut);
-				break;
+		case EVENT_TIMER_TICK:
+			Task(Dio_Ut);
+			break;
+		default:
+			break;
 		}
-
-		(void)ResumeTimerCallbacks();
 	}
+
+	(void)ResumeTimerCallbacks();
 	return 0;
 }
 

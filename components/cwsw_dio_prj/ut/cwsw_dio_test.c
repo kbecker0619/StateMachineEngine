@@ -47,18 +47,20 @@ static bool terminate_requested = false;
 #define SET_tmr500ms(val)	Set(Cwsw_Timer, &tmr500ms, val)
 
 
+/** Event handler for application Termination Requested events (#evTerminateRequested).
+ */
+void
+EventHandler__evTerminateRequested(tEventPayload ev)
+{
+	UNUSED(ev);
+	terminate_requested = true;
+}
+
+
 /* for now, i'm cheating - do as i say, not as i do - because i want to break up each task's
  * functionality into a standalone module. if this sticks, i'll make more formal.
  */
-#if ( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_Linux_GCC) )		/* { */
 extern void ms1__Task(void);
-
-#elif (XPRJ_Debug_CVI)
-#define ms1__Task()		do {} while(0)
-
-#endif															/* } */
-
-
 void
 Dio_Ut__Task(void)
 {
@@ -173,7 +175,9 @@ APP_Initialize(void)
 }
 
 
+#if (XPRJ_Debug_CVI)
 extern int panelHandle;
+#endif
 
 int
 main(int argc, char *argv[])
