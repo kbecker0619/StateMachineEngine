@@ -99,8 +99,7 @@ APP_DATA appData;
 
 
 /* Application's LED Task Function */
-#include "cwsw_bsp.h"	// tDO_LogicalValues
-#include "cwsw_board.h"	// kBoardLed1
+#include "cwsw_board.h"	// tDO_LogicalValues, kBoardLed1
 
 void
 Heartbeat__Task(void)

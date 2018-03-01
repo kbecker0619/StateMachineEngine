@@ -2,7 +2,7 @@
 #	built on top of i386 architecture and "none" board
 #	(i.e., Windows using MinGW and Linux for Linux desktop using GCC)
 
-@INCLUDE = cwsw_clock.doxyfile
+@INCLUDE			=	cwsw_evqueue.doxyfile
 
 PREDEFINED          +=	XPRJ_Debug_Win_MinGW=1
 

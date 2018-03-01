@@ -41,7 +41,7 @@ extern "C" {
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
-#include "cwsw_board.h"		/* tDO_LogicalValues */
+//#include "cwsw_board.h"		/* tDO_LogicalValues */
 
 // ----	Module Headers --------------------------
 
@@ -84,6 +84,7 @@ typedef enum eBspIndictorLed tBspIndicatorLed;
 
 extern uint16_t BSP__Init(void);
 extern bool Cwsw_Bsp__Get_Initialized(void);
+extern void Evq_Ut__Task(void);
 
 
 /** Target symbol for GET(BspSwitch1) */
@@ -109,9 +110,9 @@ extern bool seteventseen;
 
 
 /* Target for some of the expansions to the Set(Cwsw_Bsp, Resource, xxx) interface. */
-extern void Cwsw_Bsp__Set_BspHeartbeatInd(tDO_LogicalValues onoff);
-extern void Cwsw_Bsp__Set_BspActivity2(tDO_LogicalValues onoff);
-extern void Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff);
+//extern void Cwsw_Bsp__Set_BspHeartbeatInd(tDO_LogicalValues onoff);
+//extern void Cwsw_Bsp__Set_BspActivity2(tDO_LogicalValues onoff);
+//extern void Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff);
 
 
 /* Targets for expansion of SET(GlobalResource, Value) interface.
