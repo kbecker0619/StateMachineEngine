@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><SharedRoot><SharedProperty id="com.pemicro.debug.gdbjtag.ppc.gdbClientExecutable" value="G:\_Programs\NXP\S32DS_Power_v2017.R1\Cross_Tools\powerpc-eabivle-4_9\bin\${cross_prefix}gdb${cross_suffix}"/></SharedRoot>

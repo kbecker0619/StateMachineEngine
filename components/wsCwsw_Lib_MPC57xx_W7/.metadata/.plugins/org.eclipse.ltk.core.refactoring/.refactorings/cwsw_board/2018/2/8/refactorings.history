@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;cwsw_board/cwsw_board.mcp57xx.doxyfile&apos; to &apos;cwsw_board.mpc5748g_devkit.doxyfile&apos;" description="Rename resource &apos;cwsw_board.mcp57xx.doxyfile&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="cwsw_board.mcp57xx.doxyfile" name="cwsw_board.mpc5748g_devkit.doxyfile" stamp="1519205484576" updateReferences="true"/>
+</session>
