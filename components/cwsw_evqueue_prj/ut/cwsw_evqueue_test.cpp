@@ -16,7 +16,7 @@ using namespace std;
 
 
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+//	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 
 	(void) Init(BSP);		// BSP__Init().	because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
 

@@ -107,7 +107,7 @@ extern "C" {
  *      for example, you would place multiple CT_ASSERT() statements on the same line, or if the same
  *      check appeared at the same line number in two different files.
  */
-#define __CTASSERT(UniqueId, test)    /*lint --e{752} -e{762} */extern unsigned char _CtAssert##UniqueId[(test)]
+#define __CTASSERT(UniqueId, test)    /*lint --e{752} -e{762} */extern unsigned char _CtAssert##UniqueId[(test)];(void)_CtAssert##UniqueId
 
 
 #ifdef	__cplusplus

@@ -99,7 +99,7 @@ Cwsw_Lib__Get_Initialized(void)
  * @param[in]	test		The stringified text of the the test that failed the assertion
  * @param[in]	filename	The name of the file that held the failed assertion.
  * @param[in]	lineno 		The line number in the file that held the failed assertion.
- * @param[in]	descript	The user-supplied description that augments the assertion notice. Suitable for a logging statement.
+ * @param[in]	descrip	The user-supplied description that augments the assertion notice. Suitable for a logging statement.
  */
 void
 cwsw_assert_helper(char const * const test, char const * const filename, int const lineno, char const * const descrip)
@@ -128,7 +128,7 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
  *	for support of the CWSW reusable components.
  *
  *	@section lib_related_docs					Applicable Documents
- *	@TBD
+ *	TBD
  *
  *	@section lib_terms							Terms, Acronyms, Abbreviations
  */

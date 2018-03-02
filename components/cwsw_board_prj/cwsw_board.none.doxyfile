@@ -2,14 +2,14 @@
 
 @INCLUDE = cwsw_board.doxyfile
 
-PREDEFINED          += XPRJ_Debug_Win_MinGW=1
+PREDEFINED          +=	XPRJ_Debug_Win_MinGW=1
 
-INPUT				+= cwsw_arch/i386 \
-					   cwsw_arch/cwsw_arch_common.h \
-					   cwsw_board/none \
-					   cwsw_board/cwsw_board_common.h
+INPUT				+=	cwsw_arch/i386 \
+						cwsw_arch/cwsw_arch_common.h \
+						cwsw_board/none \
+						cwsw_board/cwsw_board_common.h
 
-EXCLUDE				+= Debug_XC_MPC57xx_DevKit \
-					   Debug_Win_MinGW
+EXCLUDE				+=	Debug_XC_MPC57xx_DevKit \
+						Debug_Win_MinGW
 
 IMAGE_PATH          +=	doc/arch/images

@@ -40,7 +40,7 @@ extern "C" {
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-#include "cwsw_lib.h"
+//#include "cwsw_lib.h"
 //#include "cwsw_board.h"		/* tDO_LogicalValues */
 
 // ----	Module Headers --------------------------
@@ -82,9 +82,14 @@ typedef enum eBspIndictorLed tBspIndicatorLed;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
+// ==== Discrete Functions ================================================== {
 extern uint16_t BSP__Init(void);
 extern bool Cwsw_Bsp__Get_Initialized(void);
 extern void Evq_Ut__Task(void);
+// ==== /Discrete Functions ================================================= }
+
+// ==== Targets for Get/Set APIs ============================================ {
+// ==== /Targets for Get/Set APIs =========================================== }
 
 
 /** Target symbol for GET(BspSwitch1) */

@@ -36,13 +36,13 @@
 #include "cwsw_lib.h"			/* foundational, cwsw-common stuff */
 #include "cwsw_eventsim.h"
 
-//#include "cwsw_arch.h"			/* which MCU are we using? should be set by command-line include paths */
-//#include "cwsw_board.h"			/* which board are we using? each board is built upon a specific MCU. path to this folder should be set by command-line include paths */
+//#include "cwsw_arch.h" 		/* which MCU are we using? should be set by command-line include paths */
+//#include "cwsw_board.h" 		/* which board are we using? each board is built upon a specific MCU. path to this folder should be set by command-line include paths */
 //#include "cwsw_clock.h"
 
 // ----	Module Headers --------------------------
 #include "bsp.h"				/* how are we using this board? yes, conceptually, a bsp could support multiple boards and/or MCUs, but that's not where we are at this moment. this file will be project-specific */
-//#include "system/int/sys_int.h"	/* todo: refactor this out. BSP should be going through board and/or arch, not skipping a layer and going right to interrupts */
+#include "cwsw_evqueue.h"
 
 
 // ============================================================================
@@ -63,6 +63,7 @@
 static char const * const cwsw_bsp_RevString = "$Revision: 0123 $";
 
 static bool initialized = false;
+
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
@@ -117,6 +118,7 @@ Heartbeat__Task(void)
 void
 EventHandler__evButtonCommit(tEventPayload EventData)
 {
+	UNUSED(EventData);
 	/* simply to test it out, forward to the other event handler.
 	 */
 //	PostEvent(evButtonPressed, EventData);
@@ -138,61 +140,60 @@ EventHandler__evButtonCommit(tEventPayload EventData)
  *
  * @return
  */
-//#include "system/system.h"			/* API as defined by MHC. Note that including any part of the path, violates all kinds of coding rules (including my own personal rules) */
-//#include "system_definitions.h"		/* sysObj */
-//#include "system/int/sys_int.h"
-//#include "app.h"
+
+
+//!  Size of event queue for the CLSA Position Sensor state machine.
+enum { CLSA_PS_SC_EVENT_SIZE = 5 };
+
+/**
+ * Event queue for the CLSA state machines.
+ * In the Unit Test environment, there are guards on either side to address a concern about the State Engine's
+ * Post-Event functionality. We need data to prove or disprove the existence of a buffer-bounds violation.
+ */
+typedef struct {
+#if defined(UT_ENVIRONMENT)
+    unsigned short  lowguard;
+#endif
+    tEvQ_Event      event_queue[CLSA_PS_SC_EVENT_SIZE];
+#if defined(UT_ENVIRONMENT)
+    unsigned short  higuard;
+#endif
+} tEventQueueContainer;
+
+#if defined(UT_ENVIRONMENT)
+#define EVENT_QUEUE_DEFAULT     {0xDead, {(tEvQ_Event)0U}, 0xBeef}
+#else
+#define EVENT_QUEUE_DEFAULT     {{(tEvQ_Event)0U}}
+#endif
+
+//! Motor Controller Event Queue.
+PRIVATE tEventQueueContainer    Mc_Event_Queue = EVENT_QUEUE_DEFAULT;
+
+
 uint16_t
 BSP__Init(void)
 {
+	uint16_t rv = 0;
 	UNUSED(cwsw_bsp_RevString);
-//	UNUSED(ind_led_map);
 
-	(void) Init(Cwsw_Lib);				/* Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules */
+	if(!rv)	rv = Init(Cwsw_Lib);				/* Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules */
+	if(!rv)	rv = Init(Cwsw_EvQueue);			// Cwsw_EvQ__Init()
+	if(!rv)	rv = Cwsw_EvQ__FlushEvents(NULL);
+	cwsw_assert(rv == 1, "Invalid Flush Event Return Code");
 
-#	if(!XPRJ_pic32mz_ef_sk) || ( (XPRJ_pic32mz_ef_sk == pic32mz_ef_sk) && (1) )
+	if(rv)
 	{
-		do {	    /* Core Processor Initialization */
-//			(void) Init(Cwsw_Arch);		// Cwsw_Arch__Init()
-		} while(0);
+	    CT_ASSERT(CLSA_PS_SC_EVENT_SIZE == TABLE_SIZE(Mc_Event_Queue.event_queue));
+	    Mc_Sm_Control.Queue_Size     	= CLSA_MC_SC_EVENT_SIZE;
+		Mc_Sm_Control.Event_Queue_Ptr 	= Mc_Event_Queue.event_queue;
+	    Mc_Sm_Control.Queue_Size     	= CLSA_MC_SC_EVENT_SIZE;
 
-		do {		/* Board Support Package Initialization */
-//			(void) Init(Cwsw_Board);	// Cwsw_Board__Init()
+	    everything is broken
 
-		} while(0);
+	    STATE_MACHINE_INITIALIZE(Mc_Sm_Control);		// Start the state machine
 
-		do {		/* Initialize Drivers */
-
-		} while(0);
-
-		do {		/* Initialize System Services */
-//		    SYS_INT_Initialize();
-		} while(0);
-
-		do {		/* Initialize Middleware */
-//			sysObj.drvTmr0 = DRV_TMR_Initialize(DRV_TMR_INDEX_0, (SYS_MODULE_INIT *)&drvTmr0InitData);
-
-//			SYS_INT_VectorPrioritySet(INT_VECTOR_T1, INT_PRIORITY_LEVEL1);
-//			SYS_INT_VectorSubprioritySet(INT_VECTOR_T1, INT_SUBPRIORITY_LEVEL0);
-		} while(0);
-
-		do {		/* Enable Global Interrupts */
-//			SYS_INT_Enable();
-		} while(0);
-
-		do {		/* Initialize the Application */
-//			APP_Initialize();
-		} while(0);
 	}
-#	else
-	{
-		/* for now, simply defer to the MHC-generated code
-		 */
-		SYS_Initialize(NULL);
-	}
-#endif
-
-	initialized = true;
+	if(!rv)	initialized = true;
 	return 0;
 }
 
