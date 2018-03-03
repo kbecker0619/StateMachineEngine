@@ -115,14 +115,14 @@ Heartbeat__Task(void)
  *	This handler is intended to be the same, whether you're getting input from the console, from a LW/CVI panel, etc.
  * 	Within this handler, all you should do is set the flags used by the "business logic" in the task function(s).
  */
-void
-EventHandler__evButtonCommit(tEventPayload EventData)
-{
-	UNUSED(EventData);
+//void
+//EventHandler__evButtonCommit(tEventPayload EventData)
+//{
+//	UN-USED(EventData);
 	/* simply to test it out, forward to the other event handler.
 	 */
 //	PostEvent(evButtonPressed, EventData);
-}
+//}
 
 
 // ============================================================================
@@ -143,32 +143,12 @@ EventHandler__evButtonCommit(tEventPayload EventData)
 
 
 //!  Size of event queue for the CLSA Position Sensor state machine.
-enum { CLSA_PS_SC_EVENT_SIZE = 5 };
-
-/**
- * Event queue for the CLSA state machines.
- * In the Unit Test environment, there are guards on either side to address a concern about the State Engine's
- * Post-Event functionality. We need data to prove or disprove the existence of a buffer-bounds violation.
- */
-typedef struct {
-#if defined(UT_ENVIRONMENT)
-    unsigned short  lowguard;
-#endif
-    tEvQ_Event      event_queue[CLSA_PS_SC_EVENT_SIZE];
-#if defined(UT_ENVIRONMENT)
-    unsigned short  higuard;
-#endif
-} tEventQueueContainer;
-
-#if defined(UT_ENVIRONMENT)
-#define EVENT_QUEUE_DEFAULT     {0xDead, {(tEvQ_Event)0U}, 0xBeef}
-#else
-#define EVENT_QUEUE_DEFAULT     {{(tEvQ_Event)0U}}
-#endif
+enum { CLSA_MC_SC_EVENT_SIZE = 5 };
 
 //! Motor Controller Event Queue.
-PRIVATE tEventQueueContainer    Mc_Event_Queue = EVENT_QUEUE_DEFAULT;
+PRIVATE tEvQ_Event	 Mc_Event_Queue[CLSA_MC_SC_EVENT_SIZE] = {0};
 
+PRIVATE tEvQueueCtrl Mc_Sm_Control;
 
 uint16_t
 BSP__Init(void)
@@ -176,21 +156,26 @@ BSP__Init(void)
 	uint16_t rv = 0;
 	UNUSED(cwsw_bsp_RevString);
 
-	if(!rv)	rv = Init(Cwsw_Lib);				/* Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules */
-	if(!rv)	rv = Init(Cwsw_EvQueue);			// Cwsw_EvQ__Init()
+	if(!rv)	rv = Init(Cwsw_Lib);			// Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules 
+	
+	/* test error usage 1 */
 	if(!rv)	rv = Cwsw_EvQ__FlushEvents(NULL);
-	cwsw_assert(rv == 1, "Invalid Flush Event Return Code");
 
-	if(rv)
+	/* test error usage 2 */
+	rv = Cwsw_EvQ__InitEvQ(&Mc_Sm_Control, Mc_Event_Queue, CLSA_MC_SC_EVENT_SIZE);
+
+	if(!rv)	rv = Init(Cwsw_EvQ);			// Cwsw_EvQ__Init()
+	cwsw_assert(rv == kEvQ_BadQueue, "Invalid Flush Event Return Code");
+
+	if(rv && Get(Cwsw_EvQ, Initialized))
 	{
-	    CT_ASSERT(CLSA_PS_SC_EVENT_SIZE == TABLE_SIZE(Mc_Event_Queue.event_queue));
-	    Mc_Sm_Control.Queue_Size     	= CLSA_MC_SC_EVENT_SIZE;
-		Mc_Sm_Control.Event_Queue_Ptr 	= Mc_Event_Queue.event_queue;
-	    Mc_Sm_Control.Queue_Size     	= CLSA_MC_SC_EVENT_SIZE;
+		uint8_t a = CLSA_MC_SC_EVENT_SIZE;
+		uint8_t b = TABLE_SIZE(Mc_Event_Queue);
+		CT_ASSERT(a == b);
+//	    CT_ASSERT(CLSA_MC_SC_EVENT_SIZE == TABLE_SIZE(Mc_Event_Queue));
+	    rv = Cwsw_EvQ__InitEvQ(&Mc_Sm_Control, Mc_Event_Queue, CLSA_MC_SC_EVENT_SIZE);
 
-	    everything is broken
-
-	    STATE_MACHINE_INITIALIZE(Mc_Sm_Control);		// Start the state machine
+//	    STATE_MACHINE_INITIALIZE(Mc_Sm_Control);		// Start the state machine
 
 	}
 	if(!rv)	initialized = true;

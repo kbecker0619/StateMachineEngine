@@ -1,10 +1,10 @@
 [Project Header]
 Version = 710
-Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_evq.prj"
+Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evq.prj"
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
-Number of Files = 9
+Number of Files = 12
 Target Type = "Executable"
 Flags = 16
 
@@ -14,7 +14,7 @@ Res Id = 1
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "bsp/src/bsp.c"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/bsp/src/bsp.c"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/bsp/src/bsp.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -26,7 +26,7 @@ Res Id = 2
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "bsp/bsp.h"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/bsp/bsp.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/bsp/bsp.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -37,7 +37,8 @@ Res Id = 3
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "cwsw_lib/ctassert.h"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_lib/ctassert.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/ctassert."
+Path Line0002 = "h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -48,66 +49,104 @@ Res Id = 4
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "cwsw_lib/cwsw_eventsim.h"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_lib/cwsw_eventsim"
-Path Line0002 = ".h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/cwsw_even"
+Path Line0002 = "tsim.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
 [File 0005]
-File Type = "CSource"
+File Type = "Include"
 Res Id = 5
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "ut/cwsw_evq_uir.c"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/ut/cwsw_evq_uir.c"
-Exclude = False
-Compile Into Object File = False
-Project Flags = 0
-Folder = "Source Files"
-
-[File 0006]
-File Type = "Include"
-Res Id = 6
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "ut/cwsw_evq_uir.h"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/ut/cwsw_evq_uir.h"
+Path Rel Path = "ut/cwsw_evq_proj.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/cwsw_evq_proj.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0007]
-File Type = "User Interface Resource"
-Res Id = 7
-Path Is Rel = True
-Path Rel To = "Project"
-Path Rel Path = "ut/cwsw_evq_uir.uir"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/ut/cwsw_evq_uir.uir"
-Exclude = False
-Project Flags = 0
-Folder = "User Interface Files"
-
-[File 0008]
+[File 0006]
 File Type = "CSource"
-Res Id = 8
+Res Id = 6
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "cwsw_lib/src/cwsw_lib.c"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_lib/src/cwsw_lib."
-Path Line0002 = "c"
+Path Rel Path = "ut/cwsw_evq_uir.c"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/cwsw_evq_uir.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0009]
+[File 0007]
 File Type = "Include"
+Res Id = 7
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/cwsw_evq_uir.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/cwsw_evq_uir.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0008]
+File Type = "User Interface Resource"
+Res Id = 8
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/cwsw_evq_uir.uir"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/cwsw_evq_uir.ui"
+Path Line0002 = "r"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+
+[File 0009]
+File Type = "CSource"
 Res Id = 9
 Path Is Rel = True
 Path Rel To = "Project"
+Path Rel Path = "cwsw_evqueue/src/cwsw_evqueue.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evqueue/src/c"
+Path Line0002 = "wsw_evqueue.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+
+[File 0010]
+File Type = "Include"
+Res Id = 10
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_evqueue/cwsw_evqueue.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evqueue/cwsw_"
+Path Line0002 = "evqueue.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0011]
+File Type = "CSource"
+Res Id = 11
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_lib/src/cwsw_lib.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/src/cwsw_"
+Path Line0002 = "lib.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+
+[File 0012]
+File Type = "Include"
+Res Id = 12
+Path Is Rel = True
+Path Rel To = "Project"
 Path Rel Path = "cwsw_lib/cwsw_lib.h"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_lib/cwsw_lib.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/cwsw_lib."
+Path Line0002 = "h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -157,16 +196,25 @@ Include Path 7 Is Rel = False
 Include Path 7 = "/c/Users/kbecker/_projects/PersonalDev/cwsw_lib/components/cwsw_dio_prj/ut"
 Include Path 8 Is Rel = False
 Include Path 8 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock"
+Include Path 9 Is Rel = True
+Include Path 9 Rel To = "Project"
+Include Path 9 Rel Path = "cwsw_evqueue"
+Include Path 9 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evqueue"
+Include Path 10 Is Rel = True
+Include Path 10 Rel To = "Project"
+Include Path 10 Rel Path = "ut"
+Include Path 10 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut"
 
 [Create Executable]
 Executable File_Debug Is Rel = True
 Executable File_Debug Rel To = "Project"
 Executable File_Debug Rel Path = "cwsw_evq_uir_dbg.exe"
-Executable File_Debug = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_evq_uir_dbg.exe"
+Executable File_Debug Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evq_uir_dbg.e"
+Executable File_Debug Line0002 = "xe"
 Executable File_Release Is Rel = True
 Executable File_Release Rel To = "Project"
 Executable File_Release Rel Path = "cwsw_evq_uir.exe"
-Executable File_Release = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_evq_uir.exe"
+Executable File_Release = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evq_uir.exe"
 Icon File Is Rel = False
 Icon File = ""
 Application Title = ""

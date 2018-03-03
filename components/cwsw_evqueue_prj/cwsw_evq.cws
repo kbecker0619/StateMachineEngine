@@ -1,6 +1,6 @@
 [Workspace Header]
 Version = 710
-Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_evq.cws"
+Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evq.cws"
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
@@ -8,10 +8,10 @@ Number of Projects = 1
 Active Project = 1
 Project 0001 = "cwsw_evq.prj"
 Drag Bar Left = 275
-Window Top = 76
-Window Left = 12
-Window Bottom = 728
-Window Right = 1101
+Window Top = 74
+Window Left = 16
+Window Bottom = 719
+Window Right = 1105
 Maximized = False
 Maximized Children = True
 Max Number Of Errors = 20
@@ -25,7 +25,7 @@ Hide Windows = False
 Global Hot Key = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 4
+Number of Opened Files = 6
 Window Confinement Region Enabled = True
 MainColumnWidth = 186
 FileDateColumnWidth = 70
@@ -41,7 +41,8 @@ Batch Build Release = False
 Batch Build Debug = False
 
 [File 0001]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/ut/cwsw_evq_uir.uir"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/cwsw_evq_uir.ui"
+Path Line0002 = "r"
 File Type = "User Interface Resource"
 Disk Date = 3599468237
 In Projects = "1,"
@@ -49,90 +50,123 @@ Window Top = 30
 Window Left = 8
 Window Height = 401
 Window Width = 623
-Window Z-Order = 4
+Window Z-Order = 6
 
 [File 0002]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/ut/cwsw_evq_uir.c"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/cwsw_evq_uir.c"
 File Type = "CSource"
-Disk Date = 3602711366
+Disk Date = 3602713440
 In Projects = "1,"
 Window Top = 30
 Window Left = 8
 Window Z-Order = 1
-Source Window State = "1,74,75,74,8,8,8,0,0,108,0,0,0,0,0,27,42,0,55,12,401,623,1,0,"
-Breakpoint 0001 = "30,0,enabled,"
-Breakpoint 0002 = "32,0,enabled,"
-Breakpoint 0003 = "47,0,enabled,"
+Source Window State = "1,74,75,74,8,8,8,0,0,108,0,0,0,0,0,26,51,0,64,12,401,623,1,0,"
+Breakpoint 0001 = "36,0,enabled,"
+Breakpoint 0002 = "39,0,enabled,"
+Breakpoint 0003 = "41,0,enabled,"
 Breakpoint 0004 = "56,0,enabled,"
-Breakpoint 0005 = "72,0,enabled,"
-Breakpoint 0006 = "74,0,disabled,"
+Breakpoint 0005 = "65,0,enabled,"
+Breakpoint 0006 = "72,0,enabled,"
+Breakpoint 0007 = "74,0,disabled,"
+Breakpoint 0008 = "84,0,enabled,"
 
 [File 0003]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/ut/cwsw_evq_uir.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/cwsw_evq_uir.h"
 File Type = "Include"
 Disk Date = 3602680118
 In Projects = "1,"
 Window Top = 58
 Window Left = 23
-Window Z-Order = 3
+Window Z-Order = 5
 Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,25,18,0,26,20,401,623,1,0,"
 
 [File 0004]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/bsp/src/bsp.c"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/bsp/src/bsp.c"
 File Type = "CSource"
-Disk Date = 3602711356
+Disk Date = 3602930121
 In Projects = "1,"
 Window Top = 30
 Window Left = 8
 Window Z-Order = 2
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,16,0,0,15,13,266,623,1,0,"
+Source Window State = "1,173,173,173,43,69,43,0,0,80,0,0,0,0,0,16,176,0,188,0,266,623,1,0,"
 
 [File 0005]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/bsp/bsp.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/bsp/bsp.h"
 File Type = "Include"
-Disk Date = 3602711199
+Disk Date = 3602930122
 In Projects = "1,"
 Window Top = 58
 Window Left = 23
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,16,0,0,0,0,266,623,1,0,"
+Window Z-Order = 4
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,16,35,0,57,49,266,623,1,0,"
 
 [File 0006]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_lib/src/cwsw_lib."
-Path Line0002 = "c"
-File Type = "CSource"
-Disk Date = 3602644986
-In Projects = "1,"
-Window Top = 86
-Window Left = 38
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,16,0,0,0,0,266,623,1,0,"
-
-[File 0007]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_lib/ctassert.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/ctassert."
+Path Line0002 = "h"
 File Type = "Include"
-Disk Date = 3601418947
+Disk Date = 3602929982
 In Projects = "1,"
 Window Top = 114
 Window Left = 53
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,16,0,0,0,0,266,623,1,0,"
+Source Window State = "1,109,109,109,8,18,18,0,0,80,0,0,0,0,0,16,92,58,115,103,266,623,1,0,"
 
-[File 0008]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_lib/cwsw_eventsim"
-Path Line0002 = ".h"
+[File 0007]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/cwsw_even"
+Path Line0002 = "tsim.h"
 File Type = "Include"
 Disk Date = 3602277047
 In Projects = "1,"
 Window Top = 142
 Window Left = 68
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,16,0,0,0,0,266,623,1,0,"
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,266,623,1,0,"
+
+[File 0008]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/src/cwsw_"
+Path Line0002 = "lib.c"
+File Type = "CSource"
+Disk Date = 3602898557
+In Projects = "1,"
+Window Top = 86
+Window Left = 38
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,266,623,1,0,"
 
 [File 0009]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue/cwsw_lib/cwsw_lib.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/cwsw_lib."
+Path Line0002 = "h"
 File Type = "Include"
 Disk Date = 3602644986
 In Projects = "1,"
 Window Top = 30
 Window Left = 8
-Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,16,0,0,0,0,266,623,1,0,"
+Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,266,623,1,0,"
+
+[File 0010]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evqueue/cwsw_"
+Path Line0002 = "evqueue.h"
+File Type = "Include"
+Disk Date = 3602926560
+In Projects = "1,"
+Window Top = 30
+Window Left = 8
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,15,0,0,0,0,251,623,1,0,"
+
+[File 0011]
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/cwsw_evq_proj.h"
+File Type = "Include"
+Disk Date = 3602891785
+In Projects = "1,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0012]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evqueue/src/c"
+Path Line0002 = "wsw_evqueue.c"
+File Type = "CSource"
+Disk Date = 3602926845
+In Projects = "1,"
+Window Top = 58
+Window Left = 23
+Window Z-Order = 3
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,15,0,0,0,0,251,623,1,0,"
 
 [Build Options 0001]
 Generate Browse Info = True

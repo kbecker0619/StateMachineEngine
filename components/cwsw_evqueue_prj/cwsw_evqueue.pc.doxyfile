@@ -11,4 +11,4 @@ INPUT				+=	cwsw_arch/i386 \
 						cwsw_board/none \
 						cwsw_board/cwsw_board_common.h
 
-EXCLUDE				+= 
+EXCLUDE				+= ut/cwsw_evq_uir.c

@@ -150,8 +150,8 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
  *	@tableofcontents
  *	To add the facilities of the CWSW Lib component to your project, follow these steps.
  *
- *	@Note Author's note: These steps are generic for all IDEs; however, the specific details
- *	(e.g., screeh shots) are oriented toward IDEs based on Eclipse, such as NXP S32DS; ARM DS-5; or
+ *	@note Author's note: These steps are generic for all IDEs; however, the specific details
+ *	(e.g., screen shots) are oriented toward IDEs based on Eclipse, such as NXP S32DS; ARM DS-5; or
  *	TI's Code Composer.
  *	While I have implemented these steps in Microchip's MPLAB v4.x, the steps are so close that I
  *	didn't feel IDE-specific instructions were required.
@@ -335,12 +335,12 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
 	 *	CWSW modules: <code>Init(Component)</code>. This is optional, but when used, looks like
 	 *	this:
 	 *	@code{.c}
-	 *	void main(void)
-	 *	{
-	 *		(void)Init(Cwsw_Lib);
-	 *		... more initilization
-	 *		... main code follows ...
-	 *	}
+		void main(void)
+		{
+			(void)Init(Cwsw_Lib);
+			... more initilization
+			... main code follows ...
+		}
 	 *	@endcode
 	 */
 

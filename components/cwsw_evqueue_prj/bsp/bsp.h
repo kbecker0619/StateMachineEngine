@@ -42,6 +42,7 @@ extern "C" {
 // ----	Project Headers -------------------------
 //#include "cwsw_lib.h"
 //#include "cwsw_board.h"		/* tDO_LogicalValues */
+#include "cwsw_evqueue.h"
 
 // ----	Module Headers --------------------------
 

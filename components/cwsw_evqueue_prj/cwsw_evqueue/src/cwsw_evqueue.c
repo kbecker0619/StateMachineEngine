@@ -73,7 +73,7 @@ Cwsw_EvQ__Init(void)
 		dbg_printf(
 				"\tModule ID %i\t%s\t%s\n"
 				"\tEntering %s()\n\n",
-				Cwsw_EvQueue, __FILE__, cwsw_evqueue_RevString,
+				Cwsw_EvQ, __FILE__, cwsw_evqueue_RevString,
 				__FUNCTION__);
 
 		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
@@ -86,7 +86,7 @@ Cwsw_EvQ__Init(void)
 	}
 
 	initialized = true;
-	return 0;
+	return kEvQ_NoError;
 }
 
 bool
@@ -101,23 +101,37 @@ Cwsw_EvQ__Get_Initialized(void)
  *  empty the current queue of all pending events, one important opportunity is
  *  at module initialization.
  *
- *  @param		control_ptr Pointer to the current state control structure
- *	@returns Error code, where 0 is no error.
- *	1 Invalid control struct
+ *  @param[in,out]	pEvQueue	Pointer to the current event buffer control structure
+ *	@returns		Error code, enumeration of type tEvQ_ErrorCodes.
  */
 uint16_t
-Cwsw_EvQ__FlushEvents( tEvQueue *pEvQueue )
+Cwsw_EvQ__FlushEvents(tEvQueueCtrl * const pEvQueue)
 {
-	if(!pEvQueue)
-	{
-		return 1;
-	}
+	if(!pEvQueue) 		{ return kEvQ_BadQueue; }
+	if(!initialized)	{ return kEvQ_NotInitialized; }
 
 	pEvQueue->Read_Ptr = pEvQueue->Event_Queue_Ptr;
 	pEvQueue->Write_Ptr = pEvQueue->Event_Queue_Ptr;
 	pEvQueue->Queue_Count = 0;
 
-	return 0;
+	return kEvQ_NoError;
+}
+
+uint16_t
+Cwsw_EvQ__InitEvQ(
+	tEvQueueCtrl *pEvQueueCtrl,
+	tEvQ_EvQueue const pEvQueue,
+	uint8_t const EvQueueSz)
+{
+	if(!pEvQueueCtrl)	{ return kEvQ_BadCtrl; }
+	if(!pEvQueue)		{ return kEvQ_BadQueue; }
+	if(!EvQueueSz)		{ return kEvQ_BadQueue; }
+	if(!initialized)	{ return kEvQ_NotInitialized; }
+
+	pEvQueueCtrl->Queue_Size		= EvQueueSz;
+	pEvQueueCtrl->Event_Queue_Ptr	= pEvQueue;
+
+	return kEvQ_NoError;
 }
 
 
@@ -130,5 +144,7 @@ Cwsw_EvQ__FlushEvents( tEvQueue *pEvQueue )
  *	Because i'm not supremely conscious of data size, i'm making the eventy type to be a U16, though
  *	this is defined in a per-project configuration file and could be a U8 if you're concerned about
  *	size.
+ *
+ *	dependencies: lib. UT depends on arch, board, but this is not imposed on the evq.
  */
 #endif																	/* } */
