@@ -1,0 +1,6 @@
+/Debug/
+/Debug_Win_MinGW/
+cvibuild.cwsw_evq
+*.cdb
+*.exe
+doxygen

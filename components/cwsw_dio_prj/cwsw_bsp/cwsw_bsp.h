@@ -109,7 +109,6 @@ extern bool seteventseen;
 
 
 /* Target for some of the expansions to the Set(Cwsw_Bsp, Resource, xxx) interface. */
-#include "cwsw_bsp.h"		/* tDO_LogicalValues */
 extern void Cwsw_Bsp__Set_BspHeartbeatInd(tDO_LogicalValues onoff);
 extern void Cwsw_Bsp__Set_BspActivity2(tDO_LogicalValues onoff);
 extern void Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff);

@@ -87,6 +87,10 @@ typedef enum eDO_Logical_Values		tDO_LogicalValues;
  */
 extern uint16_t Cwsw_Board__Init(void);
 
+/** Target for Get(Cwsw_Board, Initialized) interface */
+extern bool 							Cwsw_Board__Get_Initialized(void);
+
+
 // ==== /Discrete Functions ================================================= }
 
 // ==== Targets for Get/Set APIs ============================================ {
@@ -101,9 +105,6 @@ enum { Cwsw_Board = 2 };	/* Generic architecture for all supported boards */
 /** Target symbol for Get(Cwsw_Board, xxx) interface */
 #define Cwsw_Board__Get(resource)		Cwsw_Board__Get_ ## resource()
 
-
-/** Target for Get(Cwsw_Board, Initialized) interface */
-extern bool 							Cwsw_Board__Get_Initialized(void);
 
 
 /* "short cut" targets for resources considered to be Global (shared) Resources.
