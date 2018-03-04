@@ -20,6 +20,10 @@
 
 // ----	System Headers --------------------------
 #include <stdbool.h>
+#include <stddef.h>		/* ssize_t */
+#if defined(_CVI_)
+typedef signed int ssize_t;
+#endif
 
 // ----	Project Headers -------------------------
 
@@ -55,11 +59,6 @@ static bool initialized = false;
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
 
-/**	Static initialization of the Event Queue.
- *	This function is intended to be called during the application-initialization
- *	phase, and is only the 1st initialization function that needs to be called.
- * @returns	Error code, where 0 is no error.
- */
 uint16_t
 Cwsw_EvQ__Init(void)
 {
@@ -96,44 +95,86 @@ Cwsw_EvQ__Get_Initialized(void)
 }
 
 
-/**	Clear (empty) the event queue.
- *  While there might be a number of reasons why the developer may want to
- *  empty the current queue of all pending events, one important opportunity is
- *  at module initialization.
- *
- *  @param[in,out]	pEvQueue	Pointer to the current event buffer control structure
- *	@returns		Error code, enumeration of type tEvQ_ErrorCodes.
- */
-uint16_t
-Cwsw_EvQ__FlushEvents(tEvQueueCtrl * const pEvQueue)
-{
-	if(!pEvQueue) 		{ return kEvQ_BadQueue; }
-	if(!initialized)	{ return kEvQ_NotInitialized; }
-
-	pEvQueue->Read_Ptr = pEvQueue->Event_Queue_Ptr;
-	pEvQueue->Write_Ptr = pEvQueue->Event_Queue_Ptr;
-	pEvQueue->Queue_Count = 0;
-
-	return kEvQ_NoError;
-}
-
-uint16_t
+tEvQ_ErrorCodes
 Cwsw_EvQ__InitEvQ(
 	tEvQueueCtrl *pEvQueueCtrl,
 	tEvQ_EvQueue const pEvQueue,
 	uint8_t const EvQueueSz)
 {
-	if(!pEvQueueCtrl)	{ return kEvQ_BadCtrl; }
-	if(!pEvQueue)		{ return kEvQ_BadQueue; }
-	if(!EvQueueSz)		{ return kEvQ_BadQueue; }
-	if(!initialized)	{ return kEvQ_NotInitialized; }
+	// check preconditions, in order of priority
+	if(!initialized)				{ return kEvQ_NotInitialized; }		// has component init happened?
+	if(!pEvQueueCtrl)				{ return kEvQ_BadCtrl; }			// is control structure valid?
+	if(!pEvQueue)					{ return kEvQ_BadQueue; }			// is event buffer valid?
+	if(!EvQueueSz)					{ return kEvQ_BadQueue; }			// is event buffer valid?
 
 	pEvQueueCtrl->Queue_Size		= EvQueueSz;
 	pEvQueueCtrl->Event_Queue_Ptr	= pEvQueue;
+	pEvQueueCtrl->Queue_Count		= 0;
+	pEvQueueCtrl->Read_Ptr			= pEvQueue;
+	pEvQueueCtrl->Write_Ptr			= pEvQueue;
 
 	return kEvQ_NoError;
 }
 
+
+tEvQ_ErrorCodes
+Cwsw_EvQ__FlushEvents(tEvQueueCtrl * const pEvQueueCtrl)
+{
+	// check preconditions, in order of priority
+	if(!initialized)					{ return kEvQ_NotInitialized; }
+	if(!pEvQueueCtrl) 					{ return kEvQ_BadCtrl; }
+	if(!pEvQueueCtrl->Event_Queue_Ptr)	{ return kEvQ_BadQueue; }
+	if(!pEvQueueCtrl->Queue_Size)		{ return kEvQ_BadQueue; }
+
+	pEvQueueCtrl->Read_Ptr = pEvQueueCtrl->Event_Queue_Ptr;
+	pEvQueueCtrl->Write_Ptr = pEvQueueCtrl->Event_Queue_Ptr;
+	pEvQueueCtrl->Queue_Count = 0;
+
+	return kEvQ_NoError;
+}
+
+
+tEvQ_ErrorCodes
+Cwsw_EvQ__PostEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event ev)
+{
+	bool isthereroom;
+	ssize_t writerange;
+	
+	// check preconditions, in order of priority
+	if(!initialized)							{ return kEvQ_NotInitialized; }
+	if(!pEvQueueCtrl)							{ return kEvQ_BadCtrl; }
+	if(!pEvQueueCtrl->Event_Queue_Ptr)			{ return kEvQ_BadQueue; }
+	if(!pEvQueueCtrl->Queue_Size)				{ return kEvQ_BadQueue; }
+	if(!pEvQueueCtrl->Write_Ptr)				{ return kEvQ_BadCtrl; }
+
+	writerange = pEvQueueCtrl->Write_Ptr - pEvQueueCtrl->Event_Queue_Ptr;
+	if(writerange < 0)							{ return kEvQ_BadCtrl; }
+	if(writerange >= pEvQueueCtrl->Queue_Size)	{ return kEvQ_QueueFull; }
+
+	isthereroom = (pEvQueueCtrl->Queue_Count < pEvQueueCtrl->Queue_Size);
+	if(!isthereroom)							{ return kEvQ_QueueFull; }
+
+	if(!ev)										{ return kEvQ_BadEvent; }
+
+	do {
+		int crit = Cwsw_Critical_Protect(0);
+		// add the item to the queue
+		*( pEvQueueCtrl->Write_Ptr++ ) = ev;
+
+		// adjust the count
+		pEvQueueCtrl->Queue_Count++;
+
+		// check for overflow
+		if ( pEvQueueCtrl->Write_Ptr > ( pEvQueueCtrl->Event_Queue_Ptr + pEvQueueCtrl->Queue_Size ))
+		{
+			// reset it to beginning
+			pEvQueueCtrl->Write_Ptr = pEvQueueCtrl->Event_Queue_Ptr;
+		}
+		crit = Cwsw_Critical_Release(crit);
+	} while(0);
+
+	return kEvQ_NoError;
+}
 
 #if defined(IN_DOXY)													/* { */
 /** A FIFO queue. No prioritization. No restriction on the number of distinc queues, since the

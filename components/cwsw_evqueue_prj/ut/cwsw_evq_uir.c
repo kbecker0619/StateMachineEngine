@@ -29,20 +29,24 @@ int main (int argc, char *argv[])
 int CVICALLBACK cbPanel (int panel, int event, void *callbackData,
 		int eventData1, int eventData2)
 {
+	static int initialized = 0;
 	switch (event)
 	{
-		case EVENT_GOT_FOCUS:
+	case EVENT_GOT_FOCUS:
+		if(!initialized)
+		{
+			initialized = !Init(BSP);	// BSP__Init().	because in the cwsw world, the bsp depends upon the cwsw lib, initialization of cwsw_lib is done in the bsp init
+		}
+		break;
+	case EVENT_LOST_FOCUS:
 
-			break;
-		case EVENT_LOST_FOCUS:
+		break;
+	case EVENT_CLOSE:
+		QuitUserInterface (0);
+		break;
+	default:
 
-			break;
-		case EVENT_CLOSE:
-			QuitUserInterface (0);
-			break;
-		default:
-
-			break;
+		break;
 	}
 	return 0;
 }

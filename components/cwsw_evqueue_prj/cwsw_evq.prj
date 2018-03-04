@@ -4,7 +4,7 @@ Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_e
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
-Number of Files = 12
+Number of Files = 13
 Target Type = "Executable"
 Flags = 16
 
@@ -147,6 +147,17 @@ Path Rel To = "Project"
 Path Rel Path = "cwsw_lib/cwsw_lib.h"
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_lib/cwsw_lib."
 Path Line0002 = "h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0013]
+File Type = "Include"
+Res Id = 13
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ut/projcfg.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/ut/projcfg.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
