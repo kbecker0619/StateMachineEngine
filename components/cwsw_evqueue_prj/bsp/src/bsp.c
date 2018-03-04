@@ -156,13 +156,13 @@ BSP__Init(void)
 
 	do {		// test component API before initialization
 		rv = Cwsw_EvQ__InitEvQ(NULL, NULL, 0);
-		cwsw_assert(rv == kEvQ_NotInitialized, "Queue Not Initialized");
+		cwsw_assert(rv == kEvQ_Err_NotInitialized, "Queue Not Initialized");
 
 		rv = Cwsw_EvQ__FlushEvents(NULL);
-		cwsw_assert(rv == kEvQ_NotInitialized, "Queue Not Initialized");
+		cwsw_assert(rv == kEvQ_Err_NotInitialized, "Queue Not Initialized");
 
 		rv = Cwsw_EvQ__PostEvent(NULL, 0);
-		cwsw_assert(rv == kEvQ_NotInitialized, "Queue Not Initialized");
+		cwsw_assert(rv == kEvQ_Err_NotInitialized, "Queue Not Initialized");
 
 	} while(0);
 
@@ -171,56 +171,56 @@ BSP__Init(void)
 		if(!rv)
 		{
 			rv = Cwsw_EvQ__InitEvQ(NULL, NULL, 0);
-			cwsw_assert(rv == kEvQ_BadCtrl, "Bad Control Structure");
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
 
 			rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, NULL, 0);
-			cwsw_assert(rv == kEvQ_BadQueue, "Bad Queue");
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
 			rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, ut_evq1_evbuf, 0);
-			cwsw_assert(rv == kEvQ_BadQueue, "Bad Queue");
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
 
 			rv = Cwsw_EvQ__FlushEvents(NULL);
-			cwsw_assert(rv == kEvQ_BadCtrl, "Bad Control Structure");
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
 			rv = Cwsw_EvQ__FlushEvents(&ut_evq1_ctrl);
-			cwsw_assert(rv == kEvQ_BadQueue, "Bad Queue");
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
 
 			rv = Cwsw_EvQ__PostEvent(NULL, 0);
-			cwsw_assert(rv == kEvQ_BadCtrl, "Bad Control Structure");
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
 			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
-			cwsw_assert(rv == kEvQ_BadQueue, "Bad Queue");
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
 		}
 	} while(0);
 
 	do {		// initialize ev queue, then invalidate it and test various API with bad params
 		do {	// invalidate queue size
 			rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, ut_evq1_evbuf, CLSA_MC_SC_EVENT_SIZE);
-			cwsw_assert(rv == kEvQ_NoError, "Failed Initialization");
+			cwsw_assert(rv == kEvQ_Err_NoError, "Failed Initialization");
 
 			ut_evq1_ctrl.Queue_Size = 0;
 			rv = Cwsw_EvQ__FlushEvents(&ut_evq1_ctrl);
-			cwsw_assert(rv == kEvQ_BadQueue, "Bad Queue");
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
 			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
-			cwsw_assert(rv == kEvQ_BadQueue, "Bad Queue");
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
 		} while(0);
 
 		do {	// invalidate write pointer
 			rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, ut_evq1_evbuf, CLSA_MC_SC_EVENT_SIZE);
-			cwsw_assert(rv == kEvQ_NoError, "Failed Initialization");
+			cwsw_assert(rv == kEvQ_Err_NoError, "Failed Initialization");
 
 			ut_evq1_ctrl.Write_Ptr = NULL;
 			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
-			cwsw_assert(rv == kEvQ_BadCtrl, "Bad Control Structure");
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
 
 			ut_evq1_ctrl.Write_Ptr = ut_evq1_ctrl.Event_Queue_Ptr - 1;
 			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
-			cwsw_assert(rv == kEvQ_BadCtrl, "Bad Control Structure");
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
 
 			// todo: not sure i want this to be the return code if the write pointer is beyond the buffer size
 			ut_evq1_ctrl.Write_Ptr = ut_evq1_ctrl.Event_Queue_Ptr + ut_evq1_ctrl.Queue_Size;
 			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
-			cwsw_assert(rv == kEvQ_QueueFull, "Event Queue Full");
+			cwsw_assert(rv == kEvQ_Err_QueueFull, "Event Queue Full");
 
 			rv = Cwsw_EvQ__FlushEvents(&ut_evq1_ctrl);		// resets write pointer, so there should be no problem upon return
-			cwsw_assert(rv == kEvQ_NoError, "Failed Initialization");
+			cwsw_assert(rv == kEvQ_Err_NoError, "Failed Initialization");
 		} while(0);
 	} while(0);
 
@@ -244,27 +244,31 @@ Evq_Ut__Task(void)
 
 	do {		// fill up queue, check response
 		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
-		cwsw_assert(rv == kEvQ_BadEvent, "Bad Event");
+		cwsw_assert(rv == kEvQ_Err_BadEvent, "Bad Event");
 
 		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 256);	// ALLOW THE COMPILER WARNING HERE
-		cwsw_assert(rv == kEvQ_BadEvent, "Bad Event");
+		cwsw_assert(rv == kEvQ_Err_BadEvent, "Bad Event");
 
 		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 1);
-		cwsw_assert(rv == kEvQ_NoError, "");
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
 
 		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 2);
-		cwsw_assert(rv == kEvQ_NoError, "");
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
 
 		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 3);
-		cwsw_assert(rv == kEvQ_NoError, "");
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
 
 		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 4);
-		cwsw_assert(rv == kEvQ_NoError, "");
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
 
 		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 5);
-		cwsw_assert(rv == kEvQ_NoError, "");
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
 
 		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 6);
-		cwsw_assert(rv == kEvQ_QueueFull, "Queue Full");
+		cwsw_assert(rv == kEvQ_Err_QueueFull, "Queue Full");
+	} while(0);
+
+	do {		// extract & push events
+
 	} while(0);
 }

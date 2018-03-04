@@ -85,7 +85,7 @@ Cwsw_EvQ__Init(void)
 	}
 
 	initialized = true;
-	return kEvQ_NoError;
+	return kEvQ_Err_NoError;
 }
 
 bool
@@ -102,10 +102,10 @@ Cwsw_EvQ__InitEvQ(
 	uint8_t const EvQueueSz)
 {
 	// check preconditions, in order of priority
-	if(!initialized)				{ return kEvQ_NotInitialized; }		// has component init happened?
-	if(!pEvQueueCtrl)				{ return kEvQ_BadCtrl; }			// is control structure valid?
-	if(!pEvQueue)					{ return kEvQ_BadQueue; }			// is event buffer valid?
-	if(!EvQueueSz)					{ return kEvQ_BadQueue; }			// is event buffer valid?
+	if(!initialized)				{ return kEvQ_Err_NotInitialized; }		// has component init happened?
+	if(!pEvQueueCtrl)				{ return kEvQ_Err_BadCtrl; }			// is control structure valid?
+	if(!pEvQueue)					{ return kEvQ_Err_BadQueue; }			// is event buffer valid?
+	if(!EvQueueSz)					{ return kEvQ_Err_BadQueue; }			// is event buffer valid?
 
 	pEvQueueCtrl->Queue_Size		= EvQueueSz;
 	pEvQueueCtrl->Event_Queue_Ptr	= pEvQueue;
@@ -113,7 +113,7 @@ Cwsw_EvQ__InitEvQ(
 	pEvQueueCtrl->Read_Ptr			= pEvQueue;
 	pEvQueueCtrl->Write_Ptr			= pEvQueue;
 
-	return kEvQ_NoError;
+	return kEvQ_Err_NoError;
 }
 
 
@@ -121,16 +121,16 @@ tEvQ_ErrorCodes
 Cwsw_EvQ__FlushEvents(tEvQueueCtrl * const pEvQueueCtrl)
 {
 	// check preconditions, in order of priority
-	if(!initialized)					{ return kEvQ_NotInitialized; }
-	if(!pEvQueueCtrl) 					{ return kEvQ_BadCtrl; }
-	if(!pEvQueueCtrl->Event_Queue_Ptr)	{ return kEvQ_BadQueue; }
-	if(!pEvQueueCtrl->Queue_Size)		{ return kEvQ_BadQueue; }
+	if(!initialized)					{ return kEvQ_Err_NotInitialized; }
+	if(!pEvQueueCtrl) 					{ return kEvQ_Err_BadCtrl; }
+	if(!pEvQueueCtrl->Event_Queue_Ptr)	{ return kEvQ_Err_BadQueue; }
+	if(!pEvQueueCtrl->Queue_Size)		{ return kEvQ_Err_BadQueue; }
 
 	pEvQueueCtrl->Read_Ptr = pEvQueueCtrl->Event_Queue_Ptr;
 	pEvQueueCtrl->Write_Ptr = pEvQueueCtrl->Event_Queue_Ptr;
 	pEvQueueCtrl->Queue_Count = 0;
 
-	return kEvQ_NoError;
+	return kEvQ_Err_NoError;
 }
 
 
@@ -139,22 +139,22 @@ Cwsw_EvQ__PostEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event ev)
 {
 	bool isthereroom;
 	ssize_t writerange;
-	
+
 	// check preconditions, in order of priority
-	if(!initialized)							{ return kEvQ_NotInitialized; }
-	if(!pEvQueueCtrl)							{ return kEvQ_BadCtrl; }
-	if(!pEvQueueCtrl->Event_Queue_Ptr)			{ return kEvQ_BadQueue; }
-	if(!pEvQueueCtrl->Queue_Size)				{ return kEvQ_BadQueue; }
-	if(!pEvQueueCtrl->Write_Ptr)				{ return kEvQ_BadCtrl; }
+	if(!initialized)							{ return kEvQ_Err_NotInitialized; }
+	if(!pEvQueueCtrl)							{ return kEvQ_Err_BadCtrl; }
+	if(!pEvQueueCtrl->Event_Queue_Ptr)			{ return kEvQ_Err_BadQueue; }
+	if(!pEvQueueCtrl->Queue_Size)				{ return kEvQ_Err_BadQueue; }
+	if(!pEvQueueCtrl->Write_Ptr)				{ return kEvQ_Err_BadCtrl; }
 
 	writerange = pEvQueueCtrl->Write_Ptr - pEvQueueCtrl->Event_Queue_Ptr;
-	if(writerange < 0)							{ return kEvQ_BadCtrl; }
-	if(writerange >= pEvQueueCtrl->Queue_Size)	{ return kEvQ_QueueFull; }
+	if(writerange < 0)							{ return kEvQ_Err_BadCtrl; }
+	if(writerange >= pEvQueueCtrl->Queue_Size)	{ return kEvQ_Err_QueueFull; }
 
 	isthereroom = (pEvQueueCtrl->Queue_Count < pEvQueueCtrl->Queue_Size);
-	if(!isthereroom)							{ return kEvQ_QueueFull; }
+	if(!isthereroom)							{ return kEvQ_Err_QueueFull; }
 
-	if(!ev)										{ return kEvQ_BadEvent; }
+	if(!ev)										{ return kEvQ_Err_BadEvent; }
 
 	do {
 		int crit = Cwsw_Critical_Protect(0);
@@ -173,8 +173,46 @@ Cwsw_EvQ__PostEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event ev)
 		crit = Cwsw_Critical_Release(crit);
 	} while(0);
 
-	return kEvQ_NoError;
+	return kEvQ_Err_NoError;
 }
+
+
+tEvQ_ErrorCodes
+Cwsw_EvQ__GetEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event *pEv)
+{
+	tEvQ_Event ev = kEvQ_Ev_None;
+
+	// check preconditions, in order of priority
+	if(!initialized)							{ return kEvQ_Err_NotInitialized; }
+	if(!pEvQueueCtrl)							{ return kEvQ_Err_BadCtrl; }
+	if(!pEvQueueCtrl->Event_Queue_Ptr)			{ return kEvQ_Err_BadQueue; }
+	if(!pEvQueueCtrl->Queue_Size)				{ return kEvQ_Err_BadQueue; }
+	if(!pEvQueueCtrl->Read_Ptr)					{ return kEvQ_Err_BadCtrl; }
+
+	// are there any entries
+	if(pEvQueueCtrl->Queue_Count != 0)
+	{
+		int crit = Cwsw_Critical_Protect(0);
+
+		// decrement the count
+		pEvQueueCtrl->Queue_Count--;
+
+		// get the event/increment the pointer
+		ev = *(pEvQueueCtrl->Read_Ptr++);
+
+		// check for overflow
+		if(pEvQueueCtrl->Read_Ptr > (pEvQueueCtrl->Event_Queue_Ptr + pEvQueueCtrl->Queue_Size))
+		{
+			// reset it to beginning
+			pEvQueueCtrl->Read_Ptr = pEvQueueCtrl->Event_Queue_Ptr;
+		}
+		crit = Cwsw_Critical_Release(crit);
+	}
+
+	// return the event
+	return ev;
+}
+
 
 #if defined(IN_DOXY)													/* { */
 /** A FIFO queue. No prioritization. No restriction on the number of distinc queues, since the

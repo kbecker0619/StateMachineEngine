@@ -44,23 +44,30 @@ extern "C" {
 // ============================================================================
 #define CWSW_EVQUEUE_H__REVSTRING "$Revision: 0123 $"
 
+/** Error codes returned by Event Queue API.
+ */
 enum eEvQ_ErrorCodes {
-	kEvQ_NoError,
-	kEvQ_BadCtrl,			//!< Bad or invalid control struct.
-	kEvQ_BadQueue,			//!< Bad or invalid event queue.
-	kEvQ_BadEvent,			//!< Bad or invalid event.
-	kEvQ_QueueFull,			//!< Queue full, cannot add new event to queue.
-	kEvQ_NotInitialized		//!< Event Queue component not initialized.
+	kEvQ_Err_NoError,
+	kEvQ_Err_BadCtrl,			//!< Bad or invalid control struct.
+	kEvQ_Err_BadQueue,			//!< Bad or invalid event queue.
+	kEvQ_Err_BadEvent,			//!< Bad or invalid event.
+	kEvQ_Err_QueueFull,			//!< Queue full, cannot add new event to queue.
+	kEvQ_Err_NotInitialized		//!< Event Queue component not initialized.
 };
+
+
+/** Reserved event value. In the CWSW Event Queue system, this indicates "no event." */
+enum { kEvQ_Ev_None };
 
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
+/** Error codes returned by Event Queue API. */
 typedef enum eEvQ_ErrorCodes tEvQ_ErrorCodes;
 
-/**	Event queue buffer for the CLSA state machines.
+/**	Event queue buffer for projects that use the CWSW Event Queue.
  *	By design, this buffer must be an independent entity from the control
  *	structure with which it is associated. There needs to be a 1:1 correlation
  *	between the control structure, and the buffer it's controlling; however,
@@ -135,6 +142,17 @@ extern tEvQ_ErrorCodes Cwsw_EvQ__FlushEvents(tEvQueueCtrl * const pEvQueueCtrl);
  *	@returns Error code, enumeration of type tEvQ_ErrorCodes.
  */
 extern tEvQ_ErrorCodes Cwsw_EvQ__PostEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event ev);
+
+/** Retrieve the current event.
+ *	Depletes the event count in the queue by one event.
+ *
+ *	@param pEvQueueCtrl[in,out]	Pointer to the current event buffer control structure.
+ *	@param ev[out]				Pointer to the event returned.
+ *	@returns Error code, enumeration of type tEvQ_ErrorCodes. For an empty queue,
+ *			no error is returned.
+ */
+extern tEvQ_ErrorCodes Cwsw_EvQ__GetEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event *pEv);
+
 
 // ==== /Discrete Functions ================================================= }
 
