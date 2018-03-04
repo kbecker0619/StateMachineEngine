@@ -114,6 +114,35 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
 }
 
 
+PRIVATE int protection_count = 0;
+int Cwsw_Critical_Protect(int param)
+{
+	UNUSED(param);
+	cwsw_assert(protection_count >= 0, "Invalid Critical Section Protection Count");
+	if(protection_count)
+	{
+		// no need to engage protection, it's already protected
+	}
+	else
+	{
+		// todo: engage protection (e.g., disable interrupts, or specific interrupts anyway)
+	}
+	return ++protection_count;
+}
+
+int Cwsw_Critical_Release(int param)
+{
+	UNUSED(param);
+	cwsw_assert(protection_count > 0, "Invalid Critical Section Protection Count");		// must have valid count, and must have previously engaged protection
+	if(!--protection_count)
+	{
+		// protection count now zero, disengage protection in some way
+		// todo: disengage protection (e.g., reenable the disabled, etc.)
+	}
+	return protection_count;
+}
+
+
 // ====	COMPONENT DOCUMENTATION ============================================== {
 #if defined(IN_DOXY)				/* { */
 /**	\page Lib_Head Reusable Component : CWSW Library
