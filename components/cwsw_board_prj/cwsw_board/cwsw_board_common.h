@@ -272,7 +272,7 @@ enum { Cwsw_Board = 2 };	/* Generic architecture for all supported boards */
 	 *		(e.g., PVCS / Dimensions, MKS), this might be a good solution; else,
 	 *	-	@b Symlinks: filesystem symlinks are supported by GIT, with
 	 *		appropriate configuration options set properly.
-	 *	-	Example:\n
+	 *	-	Example (using symlinks):\n
 	 *	Given the following workspace directory structure:
 	 *	@code{.sh}
 
@@ -293,7 +293,8 @@ enum { Cwsw_Board = 2 };	/* Generic architecture for all supported boards */
 	 *	@endcode
 	 *	Execute the following. @note This example is given using Cygwin; the same
 	 *	command line verbatim would be done in Git Bash.\n
-	 *	Also, 7-Zip and many other methods exist in Windows to create symbolic links.
+	 *	Also, 7-Zip can create symlinks, and there are other methods in Windows to create symbolic
+	 *	links.
 	 *
 	 *	@code{.sh}
 

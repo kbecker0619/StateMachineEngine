@@ -144,7 +144,7 @@ int Cwsw_Critical_Release(int param)
 
 
 // ====	COMPONENT DOCUMENTATION ============================================== {
-#if defined(IN_DOXY)				/* { */
+#if defined(IN_DOXY)													/* { */
 /**	\page Lib_Head Reusable Component : CWSW Library
  * 		@subpage Lib_Introduction \n
  * 		@subpage Lib_Design \n
@@ -224,7 +224,7 @@ int Cwsw_Critical_Release(int param)
 	 *		might be a good solution; else,
 	 *	-	filesystem symlinks are supported by GIT, with appropriate configuration options set
 	 *		properly.
-	 *	-	Example:\n
+	 *	-	Example (using symlinks):\n
 	 *	Given the following workspace directory structure:
 	 *	@code{.sh}
 	 *	$ tree -dL 2
@@ -245,8 +245,9 @@ int Cwsw_Critical_Release(int param)
 	 *	└── ut
 	 *	@endcode
 	 *	Execute the following. @note This example is given using Cygwin; the same command line
-	 *	verbatim would be done in Git Bash.\n Also, 7-Zip and many other methods exist in Windows to
-	 *	create symbolic links.
+	 *	verbatim would be done in Git Bash.\n
+	 *	Also, 7-Zip can create symlinks, and there are other methods in Windows to create symbolic
+	 *	links.
 	 *
 	 *	@code{.sh}
 	 *	$ cd cwsw_example_proj/libs/
@@ -373,6 +374,6 @@ int Cwsw_Critical_Release(int param)
 	 *	@endcode
 	 */
 
-#endif								/* } */
+#endif																	/* } */
 // ==== /COMPONENT DOCUMENTATION ============================================= }
 
