@@ -6,3 +6,5 @@
 /cwsw_smeng_c.vcproj.user
 /cvibuild.cwsw_smeng_c/
 *.cdb
+doxygen
+/doxygen_log.txt

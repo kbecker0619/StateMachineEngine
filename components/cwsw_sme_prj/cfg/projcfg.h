@@ -1,9 +1,9 @@
 /** @file projcfg.h
- *	@brief	One-sentence short description of file.
+ *	@brief	Project Configuration for CWSW DIO Library Unit test environment
  *
  *	Description:
  *
- *	Copyright (c) Kevin L. Becker. All rights reserved.
+ *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *
  *	Original:
  *	Created on: Sep 4, 2016
@@ -39,7 +39,7 @@ extern "C" {
 // ============================================================================
 #define PROJCFG_H__REVSTRING "$Revision: 09042016 $"
 
-
+// ==== PROJECT-INVARIANT CONSTANTS ========================================= {
 /* ==== A WORD ABOUT BUILD TARGETS ============================================
  *	Within Eclipse, the configuration is available as an IDE variable named
  *		"${ConfigName}"
@@ -53,8 +53,7 @@ extern "C" {
  *	Note the name of this define is specifically chosen for cross-platform
  *	Compatibility, for example with MPLAB X.
  *
- *	Within the NetBeans IDE used by MPLAB X, the equivalent mechanism is to
- *	detect off the command-line define "XPRJ_<config>",
+ *	Within MPLAB X, the equivalent mechanism is to detect the command-line define "XPRJ_<config>",
  *		"#if defined(XPRJ_Debug)"
  *
  *	Note the name of the default configuration created by MPLAB X' New Project
@@ -68,13 +67,19 @@ extern "C" {
  *	to the console.
  * ========================================================================= */
 
-/*	==== A FOLLOW-UP WORD ABOUT BUILD TARGETS ==================================
- * ANSI/ISO C says that the preprocesser evaluates and undefined symbol as having
+/* ==== A FOLLOW-UP WORD ABOUT BUILD TARGETS ==================================
+ * ANSI/ISO C says that the preprocesser evaluates an undefined symbol as having
  * the value '0' - however, many of the environments i'm targeting, and also many
- * of the static analysis tools, emit warnings about usage of undefined symbols.
- * in normal C code - and i have a rather strong aversion to using #if defined(x)
- * mechanisms in normal code. therefore, i'll here define all of the non-active
- * build targets.
+ * of the static analysis tools, emit warnings about usage of undefined symbols
+ * in normal C code - and even though i do it when necessary, i have a rather
+ * strong aversion to using #if defined(x) mechanisms in normal code.
+ * therefore, i'll here define all of the non-active build targets.
+ * ========================================================================= */
+
+/* ==== One final word ========================================================
+ * This section is intended to be pristine and unchanged for all projects.
+ * Configuration-specific defines (aka options specific to one of these Build
+ * Targets) should be done in a followup section below.
  * ========================================================================= */
 /* Configuration Check */
 #if defined(XPRJ_Debug)
@@ -94,38 +99,109 @@ extern "C" {
 	/* This is the configuration intended for development & debugging in a Linux VM */
 	/* The 1st is intended to debug on a PowerPC Target from a Linux development environment */
 	/* The 2nd (Desktop) is intended for building within S32DS on Linux for a Linux debugging session */
-	#define	XPRJ_Debug_CVI			0
-	#define	XPRJ_Debug_MSC			0
-	#define	XPRJ_Debug_Win_MinGW 	0
+	#define	XPRJ_Debug_CVI				0
+	#define	XPRJ_Debug_MSC				0
+	#define	XPRJ_Debug_Win_MinGW 		0
 
 #elif defined(XPRJ_Debug_Win_MinGW)
 	/* This is the configuration intended for development on Windows, using the MinGW tool suite */
-	#define XPRJ_Debug_MSC			0
-	#define	XPRJ_Debug_CVI			0
-	#define XPRJ_Debug_Linux_GCC	0
+	#define XPRJ_Debug_Linux_GCC		0
+	#define XPRJ_Debug_MSC				0
+	#define	XPRJ_Debug_CVI				0
+	#define XPRJ_Debug_Win_MZ2048EFM	0
 
 #elif defined(XPRJ_Debug_Cx_AtmelSamv71)
 	/* This configuration is intended for the Atmel SAMV71 Xplained Ultra board */
 
-#elif (XPRJ_Debug_MSC)
+#elif defined(XPRJ_Debug_Win_MZ2048EFM) || defined(XPRJ_pic32mz_ef_sk)
+	#define pic32mz_ef_sk				1
+	#define Debug_MZ2048EFM				1
+	#define XPRJ_Debug_Linux_GCC		0
+	#define XPRJ_Debug_Win_MinGW		0
+	#define XPRJ_Debug_MSC				0
+	#define	XPRJ_Debug_CVI				0
+
+#elif defined(XPRJ_Debug_MSC)
 	/* Visual Studio 8, which is decidedly shy of C11 */
 	/* NOTE: VS8 does not ship w/ headers <stdint.h> or <stdbool.h>, so i found alternate versions
 	 * and copied them into my install directory. i happened to find some web sites w/ versions
 	 * that claimed to work w/ VS8 or VS10, but you could also probably pull them from any other
-	 * compiler you may have installed
+	 * compiler you may have installed.
 	 */
 	#define XPRJ_Debug_Win_MinGW	false
 	#define	XPRJ_Debug_CVI			false
 
-#elif (_CVI_)
-	#define	XPRJ_Debug_CVI			1
-	#define	XPRJ_Debug_MSC			0
-	#define	XPRJ_Debug_Win_MinGW 	0
-	#define XPRJ_Debug_Linux_GCC	0
+#elif defined(_CVI_)
+	#define	XPRJ_Debug_CVI				1
+	#define	XPRJ_Debug_MSC				0
+	#define	XPRJ_Debug_Win_MinGW 		0
+	#define XPRJ_Debug_Linux_GCC		0
+	#define XPRJ_pic32mz_ef_sk			0
 
 #else
 #error Must define Eclipse symbol XPRJ_${ConfigName}
 
+#endif
+
+// ====	/PROJECT-INVARIANT CONSTANTS ======================================== }
+
+// ==== PROJECT SPECIFIC CONSTANTS ========================================== {
+#if (XPRJ_Debug_Win_MinGW)
+	#define __PIC32MZ__					/* TODO: ABSTRACT AWAY PIC32MZ STUFF. this, for plib_ports.h */
+	#define __32MZ2048EFM144__			/* and this, for ports_p32xxx.h */
+
+	/* enable or disable individual architectural features */
+	#define USE_SYS_CLK					false
+	#define USE_SYS_DEVCON				false
+	#define USE_SYS_PORTS				true
+
+#endif
+
+#if (XPRJ_Debug_Linux_GCC)
+	/* enable or disable individual architectural features */
+	#define USE_SYS_CLK					false
+	#define USE_SYS_DEVCON				false
+	#define USE_SYS_PORTS				true
+
+#else
+
+#endif
+
+#if (XPRJ_Debug_CVI)
+	// use cwsw simulated events to achieve separation between UI panels
+	#define USE_SIMULATED_EVENTS		(1)
+	#define USE_SYS_CLK					(0)
+	#define USE_SYS_DEVCON				(0)
+	#define USE_SYS_PORTS				(0)
+	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
+
+#endif
+
+#if (XPRJ_Debug_Win_MZ2048EFM) || (XPRJ_pic32mz_ef_sk == pic32mz_ef_sk)
+	/* define stuff that MPLAB defines on the command line */
+//    #define pic32mz_ef_sk               (1)
+	#if !defined(__PIC32M)
+		#define __PIC32M
+		#define __LANGUAGE_ASSEMBLY__
+
+		#define __32MZ1024EFM144__		1	/* used in ports selection */
+
+	#endif
+
+	/* enable or disable individual architectural features */
+	#define USE_SYS_CLK					false
+	#define USE_SYS_DEVCON				false
+	#define USE_SYS_PORTS				true
+
+#else
+
+#endif
+
+
+#if (USE_SYS_DEVCON)
+	#if !(USE_SYS_CLK)
+		#error DEVCON depends on CLK functionality
+	#endif
 #endif
 
 
@@ -151,6 +227,7 @@ extern "C" {
 
 	#endif
 #endif
+// ==== /PROJECT SPECIFIC CONSTANTS ========================================= }
 
 
 // ============================================================================
