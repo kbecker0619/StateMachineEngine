@@ -1,12 +1,12 @@
-/** @file cwsw_evq_proj.h
+/** @file fsm_extensions.h
  *	@brief	One-sentence short description of file.
  *
  *	Description:
  *
- *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
+ *	Copyright (c) 2017 Kevin L. Becker. All rights reserved.
  *
  *	Original:
- *	Created on: Mar 2, 2018
+ *	Created on: Jan 25, 2017
  *	Author: kbecker
  *
  *	Current:
@@ -14,8 +14,8 @@
  *	$Date: $
  */
 
-#ifndef CWSW_EVQ_PROJ_H_
-#define CWSW_EVQ_PROJ_H_
+#ifndef INCLUDE_FSM_EXTENSIONS_H_
+#define INCLUDE_FSM_EXTENSIONS_H_
 
 #ifdef	__cplusplus
 extern "C" {
@@ -26,43 +26,39 @@ extern "C" {
 // ============================================================================
 
 // ----	System Headers --------------------------
-#include <stdint.h>
 
 // ----	Project Headers -------------------------
 
 // ----	Module Headers --------------------------
+#include "../../cwsw_sme/include/cwsw_smengine.h"
 
 
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
-#define CWSW_EVQ_PROJ_H__REVSTRING "$Revision: 0123 $"
-
-/** Compile-time calibration to enable guards on either side of the Event Queue
- *	buffer. This is a debugging aid used to detect buffer underrun or overrun.
- *
- *	Disable guard band: Default; symbol not defined, or defined as 0 or false.
- *	Enable guard band:	Symbol defined with a value of 1 or true.
- */
-//#define ENABLE_EVQ_GUARDS		1
+#define INCLUDE_FSM_EXTENSIONS_H__REVSTRING "$Revision: 0123 $"
 
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
 // ============================================================================
 
-/**	The data type for the events used in the Event Queue.
- *	With the present container, there can be a maximum of 255 distinct events
- *	per event queue (it is possible for each event queue to have a distinct
- *	list of events, or, one or more event queues could use the same list of
- *	defined events.
- *
- *	Value 0 is reserved for queue management (and, because the State Machine
- *	Engine uses this event queue, it also uses value 0 for its own purposes).
- *
- *	If you use a different base type, it should be an unsigned integral type.
+/**	Pointer-to-function type for StateEngine Transition Actions, and null value.
  */
-typedef unsigned char tEvQ_Event;
+//! @{
+typedef void (*TRANSITION_ACTION_TYPE)(void);
+#define NULL_TRANSITION_ACTION      (TRANSITION_ACTION_TYPE)0
+//! @}
+
+/**	Pointer-to-function type for StateEngine Transition Guard functions, and
+ * 	null value.
+ * 	@return Boolean, where FALSE prohibits a transition and TRUE allows the
+ * 	transition.
+ */
+//! @{
+typedef bool (*GUARD_FUNC_TYPE)(void);
+#define NULL_GUARD_FUNC             (GUARD_FUNC_TYPE)0
+//! @}
 
 
 // ============================================================================
@@ -73,9 +69,15 @@ typedef unsigned char tEvQ_Event;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
+//! Initialize the State Machine used in our module.
+#define FSM_INIT(sm)		Fsm_InitStateMachine(&sm)
+
+//! Execute one iteration of the State Machine.
+#define FSM_EXEC(sm)		Fsm__Execute(&sm)
+
 
 #ifdef	__cplusplus
 }
 #endif
 
-#endif /* CWSW_EVQ_PROJ_H_ */
+#endif /* INCLUDE_FSM_EXTENSIONS_H_ */

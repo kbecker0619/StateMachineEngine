@@ -27,11 +27,10 @@
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-#include "cwsw_lib.h"
-#include "cwsw_smengine.h"
+#include "../../cwsw_sme/include/cwsw_smengine.h"
 
-// ----	Module Headers --------------------------
-#include "cwsw_smengine_prv.h"
+#include "../../cwsw_sme/src/cwsw_smengine_prv.h"
+#include "cwsw_lib.h"
 
 
 // ============================================================================

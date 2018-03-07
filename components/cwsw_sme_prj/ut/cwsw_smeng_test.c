@@ -11,9 +11,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../cwsw_sme/include/cwsw_smengine.h"
 #include "cwsw_lib.h"
 #include "cwsw_clock.h"
-#include "cwsw_smengine.h"
 #include "cwsw_eventsim.h"
 
 #include "coinopcoffeemachine.h"

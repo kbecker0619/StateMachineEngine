@@ -106,7 +106,7 @@ Csws_Sme_Ut__Task(void)
 
 
 // ====	STATE MACHINE STUFF (could be in a separate module) =======================================
-#include "fsm_extensions.h"
+#include "../cwsw_sme/include/fsm_extensions.h"
 
 
 // ============================================================================
