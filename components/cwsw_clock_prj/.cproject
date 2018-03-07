@@ -130,6 +130,9 @@
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.648194035" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
 							<builder buildPath="${workspace_loc:/cwsw_clock}/Debug_Win_MinGW" id="cdt.managedbuild.builder.gnu.cross.1509616754" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.356234284" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
+								<option id="gnu.both.asm.option.include.paths.1567394907" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cfg&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.107635580" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.1701861046" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
@@ -146,6 +149,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_clock&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_arch/i386&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_board/none&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cfg&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.138776766" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
@@ -167,11 +171,6 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.172678148" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1077664332.796820889.44122615" name="cwsw_board.c" rcbsApplicability="disable" resourcePath="cwsw_board/none/src/cwsw_board.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1626387176.817534057">
-						<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1626387176.817534057" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1626387176">
-							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.859820182" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-						</tool>
-					</fileInfo>
 					<sourceEntries>
 						<entry excluding="cwsw_bsp|cwsw_board/pic32mz_efm_sk|cwsw_board/mpc5748g_devkit|cwsw_arch/pic32mz|cwsw_arch/MPC57xx|arch/PIC32MZ2048EFM|arch/PIC32MZ2048EFM/framework/tcpip|arch/PIC32MZ2048EFM/framework/driver/i2c/src|arch/pic_exceptions.c|arch/pic_interrupts.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mk.c|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32c.c|arch/PIC32MZ2048EFM/framework/usb|arch/PIC32MZ2048EFM/framework_mhc|arch/PIC32MZ2048EFM/framework/system/devcon/src/sys_devcon_pic32mx.c|arch/PIC32MZ2048EFM/framework/system/touch|arch/PIC32MZ2048EFM/framework/test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
