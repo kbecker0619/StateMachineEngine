@@ -12,12 +12,21 @@
 #include <stdlib.h>
 
 #include "cwsw_lib.h"
+#include "cwsw_eventsim.h"
+
+void
+EventHandler__evTerminateRequested(tEventPayload EventData)
+{
+	UNUSED(EventData);
+	(void)puts("Goodbye Cruel World!");
+}
+
 
 int main(void)
 {
-
+	tEventPayload ev = {0};
 	(void) Init(Cwsw_Lib);
 
-	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	PostEvent(evTerminateRequested, ev);
 	return EXIT_SUCCESS;
 }

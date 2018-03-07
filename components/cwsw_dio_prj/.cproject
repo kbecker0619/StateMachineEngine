@@ -153,9 +153,9 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_bsp&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/cwsw/gen&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/cwsw/gen/bsp&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/3rdparty/cwsw/lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_clock&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cfg&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.138776766" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>

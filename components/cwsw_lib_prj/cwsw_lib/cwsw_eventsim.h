@@ -95,13 +95,22 @@ typedef enum eProjectEvents tProjectEvents;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-/*	Posting an event.
- * 	These macros are designed to look like posting to the user (client), and
- * 	a handler/callback to the subscriber. Unlike some event systems, we don't
- * 	specify a handler, because we don't care who all subscribes to our data.
- * 	as implemented now, there is one C *symbol* that must be defined; however,
- * 	it could be a function that forwards the event to other handlers, or a
- * 	macro that iterates through an array, or ...
+/**	"Post" an event.
+ * 	This mechanism is intended to provide a very simple mechanism to send a
+ * 	message to an independent part of your software.
+ *
+ * 	This is an undirected, unqueued "event". It calls the specified event
+ * 	handler immediately. Because of this, the recommendation is that the handler
+ * 	should be very short, perhaps only setting a flag that is processed by the
+ * 	receiver of the event.
+ *
+ * 	These macros are designed to look to the sender like a simple event posting,
+ * 	and to the subscriber (receiver), an event handler or callback.
+ *
+ * 	Unlike some event systems, we don't specify a handler, because we don't care
+ * 	who all subscribes to our data. As implemented now, there is one C *symbol*
+ * 	that must be defined; however, it could be a function that forwards the event
+ * 	to other handlers, or a macro that iterates through an array, or ...
  */
 #if (USE_SIMULATED_EVENTS)
 #define PostEvent(ev, evpayload)		_post_event(ev, evpayload)
