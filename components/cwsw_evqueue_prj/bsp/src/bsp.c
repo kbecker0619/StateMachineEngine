@@ -133,12 +133,6 @@ Heartbeat__Task(void)
  * Yes, we realize that we're misusing the name "BSP"; here, it's much more generalized than the
  * word actually refers to.
  *
- * For the structure of this, since we're developing it as we try to get a generalized architecture
- * that "works" with Linux and Windows apps compiled w/ GCC; the Microchip Harmony; Atmel ASF;
- * IAR StarterKit SR730-SK; NXP Calypso, and AUTOSAR, we're taking the general structure and order
- * of things from the Harmony framework, and then morphing as appropriate.
- *
- * @return
  */
 
 
@@ -146,9 +140,9 @@ Heartbeat__Task(void)
 enum { CLSA_MC_SC_EVENT_SIZE = 5 };
 
 //! Motor Controller Event Queue.
-PRIVATE tEvQ_Event	 Mc_Event_Queue[CLSA_MC_SC_EVENT_SIZE] = {0};
+PRIVATE tEvQ_Event	 ut_evq1_evbuf[CLSA_MC_SC_EVENT_SIZE] = {0};
 
-PRIVATE tEvQueueCtrl Mc_Sm_Control;
+PRIVATE tEvQueueCtrl ut_evq1_ctrl;
 
 uint16_t
 BSP__Init(void)
@@ -156,31 +150,86 @@ BSP__Init(void)
 	uint16_t rv = 0;
 	UNUSED(cwsw_bsp_RevString);
 
-	if(!rv)	rv = Init(Cwsw_Lib);			// Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules 
-	
-	/* test error usage 1 */
-	if(!rv)	rv = Cwsw_EvQ__FlushEvents(NULL);
+	do {		// initialize dependencies
+		if(!rv)	rv = Init(Cwsw_Lib);			// Cwsw_Lib__Init(). board independent, arch independent, for some environs, inits things used by following modules
+	} while(0);
 
-	/* test error usage 2 */
-	rv = Cwsw_EvQ__InitEvQ(&Mc_Sm_Control, Mc_Event_Queue, CLSA_MC_SC_EVENT_SIZE);
+	do {		// test component API before initialization
+		rv = Cwsw_EvQ__InitEvQ(NULL, NULL, 0);
+		cwsw_assert(rv == kEvQ_Err_NotInitialized, "Queue Not Initialized");
 
-	if(!rv)	rv = Init(Cwsw_EvQ);			// Cwsw_EvQ__Init()
-	cwsw_assert(rv == kEvQ_BadQueue, "Invalid Flush Event Return Code");
+		rv = Cwsw_EvQ__FlushEvents(NULL);
+		cwsw_assert(rv == kEvQ_Err_NotInitialized, "Queue Not Initialized");
 
-	if(rv && Get(Cwsw_EvQ, Initialized))
-	{
-		uint8_t a = CLSA_MC_SC_EVENT_SIZE;
-		uint8_t b = TABLE_SIZE(Mc_Event_Queue);
-		CT_ASSERT(a == b);
-//	    CT_ASSERT(CLSA_MC_SC_EVENT_SIZE == TABLE_SIZE(Mc_Event_Queue));
-	    rv = Cwsw_EvQ__InitEvQ(&Mc_Sm_Control, Mc_Event_Queue, CLSA_MC_SC_EVENT_SIZE);
+		rv = Cwsw_EvQ__PostEvent(NULL, 0);
+		cwsw_assert(rv == kEvQ_Err_NotInitialized, "Queue Not Initialized");
 
-//	    STATE_MACHINE_INITIALIZE(Mc_Sm_Control);		// Start the state machine
+	} while(0);
 
-	}
+	do {		// initialize component, but not ev queue, test various API
+		rv = Init(Cwsw_EvQ);			// Cwsw_EvQ__Init()
+		if(!rv)
+		{
+			rv = Cwsw_EvQ__InitEvQ(NULL, NULL, 0);
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
+
+			rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, NULL, 0);
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
+			rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, ut_evq1_evbuf, 0);
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
+
+			rv = Cwsw_EvQ__FlushEvents(NULL);
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
+			rv = Cwsw_EvQ__FlushEvents(&ut_evq1_ctrl);
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
+
+			rv = Cwsw_EvQ__PostEvent(NULL, 0);
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
+			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
+		}
+	} while(0);
+
+	do {		// initialize ev queue, then invalidate it and test various API with bad params
+		do {	// invalidate queue size
+			rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, ut_evq1_evbuf, CLSA_MC_SC_EVENT_SIZE);
+			cwsw_assert(rv == kEvQ_Err_NoError, "Failed Initialization");
+
+			ut_evq1_ctrl.Queue_Size = 0;
+			rv = Cwsw_EvQ__FlushEvents(&ut_evq1_ctrl);
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
+			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
+			cwsw_assert(rv == kEvQ_Err_BadQueue, "Bad Queue");
+		} while(0);
+
+		do {	// invalidate write pointer
+			rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, ut_evq1_evbuf, CLSA_MC_SC_EVENT_SIZE);
+			cwsw_assert(rv == kEvQ_Err_NoError, "Failed Initialization");
+
+			ut_evq1_ctrl.Write_Ptr = NULL;
+			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
+
+			ut_evq1_ctrl.Write_Ptr = ut_evq1_ctrl.Event_Queue_Ptr - 1;
+			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
+			cwsw_assert(rv == kEvQ_Err_BadCtrl, "Bad Control Structure");
+
+			// todo: not sure i want this to be the return code if the write pointer is beyond the buffer size
+			ut_evq1_ctrl.Write_Ptr = ut_evq1_ctrl.Event_Queue_Ptr + ut_evq1_ctrl.Queue_Size;
+			rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
+			cwsw_assert(rv == kEvQ_Err_QueueFull, "Event Queue Full");
+
+			rv = Cwsw_EvQ__FlushEvents(&ut_evq1_ctrl);		// resets write pointer, so there should be no problem upon return
+			cwsw_assert(rv == kEvQ_Err_NoError, "Failed Initialization");
+		} while(0);
+	} while(0);
+
+	// correctly initialize ev q, then get on w/ life.
+	rv = Cwsw_EvQ__InitEvQ(&ut_evq1_ctrl, ut_evq1_evbuf, CLSA_MC_SC_EVENT_SIZE);
 	if(!rv)	initialized = true;
 	return 0;
 }
+
 
 bool
 Cwsw_Bsp__Get_Initialized(void)
@@ -191,5 +240,35 @@ Cwsw_Bsp__Get_Initialized(void)
 void
 Evq_Ut__Task(void)
 {
+	tEvQ_ErrorCodes rv;
 
+	do {		// fill up queue, check response
+		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 0);
+		cwsw_assert(rv == kEvQ_Err_BadEvent, "Bad Event");
+
+		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 256);	// ALLOW THE COMPILER WARNING HERE
+		cwsw_assert(rv == kEvQ_Err_BadEvent, "Bad Event");
+
+		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 1);
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
+
+		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 2);
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
+
+		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 3);
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
+
+		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 4);
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
+
+		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 5);
+		cwsw_assert(rv == kEvQ_Err_NoError, "");
+
+		rv = Cwsw_EvQ__PostEvent(&ut_evq1_ctrl, 6);
+		cwsw_assert(rv == kEvQ_Err_QueueFull, "Queue Full");
+	} while(0);
+
+	do {		// extract & push events
+
+	} while(0);
 }

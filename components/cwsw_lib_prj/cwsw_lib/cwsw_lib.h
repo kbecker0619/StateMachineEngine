@@ -66,6 +66,9 @@ extern uint16_t 			Cwsw_Lib__Init(void);
 /** Target for Get(Cwsw_Lib, Initialized) interface. */
 extern bool 				Cwsw_Lib__Get_Initialized(void);
 
+extern int Cwsw_Critical_Protect(int param);
+extern int Cwsw_Critical_Release(int param);
+
 
 /*	===	definitions common to all environments ================================
  */

@@ -114,8 +114,37 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
 }
 
 
+PRIVATE int protection_count = 0;
+int Cwsw_Critical_Protect(int param)
+{
+	UNUSED(param);
+	cwsw_assert(protection_count >= 0, "Invalid Critical Section Protection Count");
+	if(protection_count)
+	{
+		// no need to engage protection, it's already protected
+	}
+	else
+	{
+		// todo: engage protection (e.g., disable interrupts, or specific interrupts anyway)
+	}
+	return ++protection_count;
+}
+
+int Cwsw_Critical_Release(int param)
+{
+	UNUSED(param);
+	cwsw_assert(protection_count > 0, "Invalid Critical Section Protection Count");		// must have valid count, and must have previously engaged protection
+	if(!--protection_count)
+	{
+		// protection count now zero, disengage protection in some way
+		// todo: disengage protection (e.g., reenable the disabled, etc.)
+	}
+	return protection_count;
+}
+
+
 // ====	COMPONENT DOCUMENTATION ============================================== {
-#if defined(IN_DOXY)				/* { */
+#if defined(IN_DOXY)													/* { */
 /**	\page Lib_Head Reusable Component : CWSW Library
  * 		@subpage Lib_Introduction \n
  * 		@subpage Lib_Design \n
@@ -195,7 +224,7 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
 	 *		might be a good solution; else,
 	 *	-	filesystem symlinks are supported by GIT, with appropriate configuration options set
 	 *		properly.
-	 *	-	Example:\n
+	 *	-	Example (using symlinks):\n
 	 *	Given the following workspace directory structure:
 	 *	@code{.sh}
 	 *	$ tree -dL 2
@@ -216,8 +245,9 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
 	 *	└── ut
 	 *	@endcode
 	 *	Execute the following. @note This example is given using Cygwin; the same command line
-	 *	verbatim would be done in Git Bash.\n Also, 7-Zip and many other methods exist in Windows to
-	 *	create symbolic links.
+	 *	verbatim would be done in Git Bash.\n
+	 *	Also, 7-Zip can create symlinks, and there are other methods in Windows to create symbolic
+	 *	links.
 	 *
 	 *	@code{.sh}
 	 *	$ cd cwsw_example_proj/libs/
@@ -344,6 +374,6 @@ cwsw_assert_helper(char const * const test, char const * const filename, int con
 	 *	@endcode
 	 */
 
-#endif								/* } */
+#endif																	/* } */
 // ==== /COMPONENT DOCUMENTATION ============================================= }
 
