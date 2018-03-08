@@ -1,5 +1,5 @@
 /** @file projcfg.h
- *	@brief	Project Configuration for CWSW DIO Library Unit test environment
+ *	@brief	Project Configuraton for CWSW State Machine Engine Unit test environment
  *
  *	Description:
  *

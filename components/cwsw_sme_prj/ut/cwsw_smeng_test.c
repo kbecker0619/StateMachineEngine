@@ -11,12 +11,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../cwsw_sme/include/cwsw_smengine.h"
 #include "cwsw_lib.h"
-#include "cwsw_clock.h"
 #include "cwsw_eventsim.h"
 
-#include "coinopcoffeemachine.h"
 
 #if (XPRJ_DEBUG_CVI)
 	#include <cvirte.h>
@@ -37,30 +34,30 @@ int main(int argc, char *argv[])
 	(void)puts("CWSW State Machine Engine Unit Test");
 
 	(void) Init(Cwsw_Lib);
-	(void) Init(Cwsw_Clock);
+//	(void) Init(Cwsw_Clock);
 
 	/* error handling check - execute task before initialized */
-	Task(Csws_Sme_Ut);
-	(void) Init(Cwsw_Sme_Ut);
-	while(!terminate_requested) { Task(Csws_Sme_Ut); }
-
-	/* reset termination request, enter "normal" initialization task, working into normal tasking */
-
-	#if (XPRJ_DEBUG_CVI)
-	do {
-		static int panelHandle;
-		if (InitCVIRTE (0, argv, 0) == 0) 											{ return -1;	/* out of memory */ }
-		if ((panelHandle = LoadPanel (0, "lw_coinopcoffeemachine.uir", PANEL)) < 0) { return -1; }
-		DisplayPanel (panelHandle);
-		RunUserInterface ();
-		DiscardPanel (panelHandle);
-	} while(0);
-
-	#else
-	terminate_requested = false;
-	while(!terminate_requested) { Task(Csws_Sme_Ut); }
-
-	#endif
+//	Task(Csws_Sme_Ut);
+//	(void) Init(Cwsw_Sme_Ut);
+//	while(!terminate_requested) { Task(Csws_Sme_Ut); }
+//
+//	/* reset termination request, enter "normal" initialization task, working into normal tasking */
+//
+//	#if (XPRJ_DEBUG_CVI)
+//	do {
+//		static int panelHandle;
+//		if (InitCVIRTE (0, argv, 0) == 0) 											{ return -1;	/* out of memory */ }
+//		if ((panelHandle = LoadPanel (0, "lw_coinopcoffeemachine.uir", PANEL)) < 0) { return -1; }
+//		DisplayPanel (panelHandle);
+//		RunUserInterface ();
+//		DiscardPanel (panelHandle);
+//	} while(0);
+//
+//	#else
+//	terminate_requested = false;
+//	while(!terminate_requested) { Task(Csws_Sme_Ut); }
+//
+//	#endif
 	return EXIT_SUCCESS;
 }
 
@@ -68,7 +65,7 @@ void
 EventHandler__evNotInit(tEventPayload EventData)
 {
 	UNUSED(EventData);
-	dprintf("\t%s\n", "Application Not Initialized Correctly, Terminating");
+	dbg_printf("\t%s\n", "Application Not Initialized Correctly, Terminating");
 	terminate_requested = true;
 }
 
@@ -76,7 +73,7 @@ void
 EventHandler__evTerminateRequested	(tEventPayload EventData)
 {
 	UNUSED(EventData);
-	dprintf("\n\t%s\n", "End of demonstration\n");
+	dbg_printf("\n\t%s\n", "End of demonstration\n");
 	terminate_requested = true;
 	#if(XPRJ_DEBUG_CVI)
 	{

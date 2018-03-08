@@ -140,10 +140,10 @@
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.paths.1936482230" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_smeng_c/cwsw_lib/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/ut&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_smeng_c/include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/cwsw_smeng_c/cwsw_clock/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_sme&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cfg&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.dialect.std.542736835" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.dialect.flags.342118431" name="Other dialect flags" superClass="gnu.c.compiler.option.dialect.flags" useByScannerDiscovery="true" value="-std=gnu11" valueType="string"/>
@@ -163,8 +163,13 @@
 					</folderInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.878615293" name="lw_coinopcoffeemachine.h" rcbsApplicability="disable" resourcePath="ut/lw_coinopcoffeemachine.h" toolsToInvoke=""/>
 					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.1701493765" name="lw_coinopcoffeemachine.uir" rcbsApplicability="disable" resourcePath="ut/lw_coinopcoffeemachine.uir" toolsToInvoke=""/>
+					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.896157202" name="coinsensor.c" rcbsApplicability="disable" resourcePath="ut/coinsensor.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676.1394360136">
+						<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676.1394360136" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676">
+							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.356091449" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
-						<entry excluding="ut/lw_coinopcoffeemachine.h|ut/lw_coinopcoffeemachine.c|include|ut/lw_coinopcoffeemachine.uir|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="ut/coinsensor.c|ut/coinopcoffeemachine.c|ut/lw_coinopcoffeemachine.h|ut/lw_coinopcoffeemachine.c|include|ut/lw_coinopcoffeemachine.uir|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
@@ -188,18 +193,18 @@
 			<resource resourceType="PROJECT" workspacePath="/cwsw_smeng_c"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418;cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676;cdt.managedbuild.tool.gnu.c.compiler.input.228882008">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941;cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1001285790;cdt.managedbuild.tool.gnu.c.compiler.input.635634206">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.976784622;cdt.managedbuild.config.gnu.mingw.exe.release.976784622.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.960939374;cdt.managedbuild.tool.gnu.c.compiler.input.2055701906">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418;cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676;cdt.managedbuild.tool.gnu.c.compiler.input.228882008">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
-	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>

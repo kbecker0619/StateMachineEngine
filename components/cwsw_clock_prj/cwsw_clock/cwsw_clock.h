@@ -119,7 +119,7 @@ extern tCwswClockTics	Cwsw__Clock(void);
  *	the Module argument in your IDE (e.g, Eclipse, NetBeans, etc.), and select
  *	Go To Definition.
  */
-enum { Cwsw_Clock = 3 };	/* Generic architecture for all supported boards */
+enum { Cwsw_Clock = 3 };
 
 
 /** Target symbol for Get(Cwsw_Clock, xxx) interface */

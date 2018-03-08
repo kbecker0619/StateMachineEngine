@@ -1,7 +1,10 @@
-/** @file projevtnames.h
- *	@brief	One-sentence short description of file.
+/** @file
+ *	@brief	PROJECT-SPECIFIC list of events.
  *
  *	Description:
+ *	This file is intended to contain one thing, and one thing only: an enumerated list of events
+ *	for the project, that are to be used in the super-minimalist simulated-event-handling
+ *	mechanism used in the CWSW UT environment.
  *
  *	Copyright (c) 2018 Kevin L. Becker. All rights reserved.
  *

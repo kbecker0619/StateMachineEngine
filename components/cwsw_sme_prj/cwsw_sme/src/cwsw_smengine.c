@@ -24,13 +24,16 @@
 // ----	Include Files ---------------------------------------------------------
 // ============================================================================
 
+#include "projcfg.h"
+
 // ----	System Headers --------------------------
 
 // ----	Project Headers -------------------------
-#include "../../cwsw_sme/include/cwsw_smengine.h"
+#include "cwsw_smengine.h"
 
-#include "../../cwsw_sme/src/cwsw_smengine_prv.h"
+// ----	Module Headers --------------------------
 #include "cwsw_lib.h"
+#include "cwsw_smengine_prv.h"
 
 
 // ============================================================================
@@ -76,7 +79,7 @@ Fsm_InitStateMachine(tFsmStateControl *pStateCtrl)
 	#pragma GCC diagnostic ignored "-Wpedantic"
 	#endif
 
-	dprintf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, stateengine_RevString, __FUNCTION__);
+	dbg_printf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, stateengine_RevString, __FUNCTION__);
 
 	#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 	#pragma GCC diagnostic pop

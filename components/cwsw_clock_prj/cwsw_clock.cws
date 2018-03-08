@@ -9,9 +9,9 @@ Active Project = 1
 Project 0001 = "cwsw_clock.prj"
 Drag Bar Left = 205
 Window Top = 56
-Window Left = 32
-Window Bottom = 752
-Window Right = 1239
+Window Left = 16
+Window Bottom = 701
+Window Right = 1105
 Maximized = False
 Maximized Children = True
 Max Number Of Errors = 20
@@ -25,7 +25,7 @@ Hide Windows = False
 Global Hot Key = False
 Break At First Statement = True
 Sort Type = "File Name"
-Number of Opened Files = 2
+Number of Opened Files = 8
 Window Confinement Region Enabled = True
 MainColumnWidth = 186
 FileDateColumnWidth = 70
@@ -43,62 +43,62 @@ Batch Build Debug = False
 [File 0001]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/ut/cwsw_clock_test.c"
 File Type = "CSource"
-Disk Date = 3602369520
+Disk Date = 3603231591
 In Projects = "1,"
 Window Top = 58
 Window Left = 23
 Window Z-Order = 2
-Source Window State = "1,44,47,44,4,4,4,0,0,80,0,0,0,0,0,25,19,0,48,4,401,623,1,0,"
+Source Window State = "1,44,47,44,4,4,4,0,0,80,0,0,0,0,0,25,1,0,13,9,401,623,1,0,"
 Breakpoint 0001 = "50,0,enabled,"
 
 [File 0002]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/src/cwsw_"
+Path Line0002 = "clock.c"
+File Type = "CSource"
+Disk Date = 3603235216
+In Projects = "1,"
+Window Top = 142
+Window Left = 68
+Window Z-Order = 8
+Source Window State = "1,83,96,83,18,18,18,0,0,80,0,0,0,0,0,25,13,0,25,14,401,623,1,0,"
+
+[File 0003]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/include/c"
 Path Line0002 = "lock_if.h"
 File Type = "Include"
-Disk Date = 3602369440
+Disk Date = 0
 In Projects = "1,"
 Window Top = 86
 Window Left = 38
 Source Window State = "1,32,33,32,0,0,0,0,0,0,0,0,0,0,0,0,24,0,55,0,401,623,1,0,"
 
-[File 0003]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_lib/include/cta"
-Path Line0002 = "ssert.h"
-File Type = "Include"
-Disk Date = 0
-In Projects = "1,"
-Window Top = 170
-Window Left = 83
-Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,45,0,0,0,401,623,1,0,"
-
 [File 0004]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/src/cwsw_"
-Path Line0002 = "clock.c"
-File Type = "CSource"
-Disk Date = 3602361980
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/i386/cwsw_a"
+Path Line0002 = "rch.h"
+File Type = "Include"
+Disk Date = 3601418945
 In Projects = "1,"
-Window Top = 142
-Window Left = 68
-Window Z-Order = 1
-Source Window State = "1,83,96,83,18,18,18,0,0,135,0,0,0,0,0,30,13,0,25,9,401,623,1,0,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0005]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/include/c"
-Path Line0002 = "wsw_clock.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_board_prj/cwsw_board/none/cwsw"
+Path Line0002 = "_board.h"
 File Type = "Include"
-Disk Date = 0
+Disk Date = 3602277047
 In Projects = "1,"
-Window Top = 114
-Window Left = 53
-Source Window State = "1,64,64,64,16,30,30,0,0,0,0,0,0,0,0,0,52,0,71,30,401,623,1,0,"
+Window Z-Order = 1
+Source Window State = "1,0,0,0,0,0,0,0,0,118,0,0,0,0,0,26,89,0,96,18,0,0,0,0,"
 
 [File 0006]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/src/cwsw_lib."
 Path Line0002 = "c"
 File Type = "CSource"
-Disk Date = 3602335060
+Disk Date = 3603235216
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Window Top = 114
+Window Left = 53
+Window Z-Order = 6
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,15,102,0,38,8,251,623,1,0,"
 
 [File 0007]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/include/cwsw_"
@@ -111,35 +111,69 @@ Window Left = 68
 Source Window State = "1,43,46,43,0,0,0,0,0,0,0,0,0,0,0,0,11,0,49,0,401,623,1,0,"
 
 [File 0008]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/ut/projcfg.h"
-File Type = "Include"
-Disk Date = 3602191845
-In Projects = "1,"
-Window Top = 86
-Window Left = 38
-Source Window State = "1,29,30,29,0,0,0,0,0,0,0,0,0,0,0,0,9,0,29,0,401,623,1,0,"
-
-[File 0009]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/ut/readme.md"
 File Type = "Unknown"
 Disk Date = 3599082878
 In Projects = "1,"
 
-[File 0010]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/i386/cwsw_a"
-Path Line0002 = "rch.h"
+[File 0009]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_arch_prj/cwsw_arch/i386/periph"
+Path Line0002 = "eral/ports/ports_api.h"
 File Type = "Include"
-Disk Date = 3601418945
+Disk Date = 3600119082
+In Projects = ""
+Window Top = 56
+Window Left = 8
+Window Z-Order = 4
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,15,37,0,44,9,251,623,1,0,"
+
+[File 0010]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/cwsw_eventsim"
+Path Line0002 = ".h"
+File Type = "Include"
+Disk Date = 3603259042
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
 [File 0011]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_board_prj/cwsw_board/none/cwsw"
-Path Line0002 = "_board.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_clock/cwsw_cloc"
+Path Line0002 = "k.h"
 File Type = "Include"
-Disk Date = 3602277047
+Disk Date = 3602662775
 In Projects = "1,"
-Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+Window Top = 30
+Window Left = 8
+Window Z-Order = 7
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,15,14,0,27,9,251,623,1,0,"
+
+[File 0012]
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cfg/projcfg.h"
+File Type = "Include"
+Disk Date = 3602644986
+In Projects = "1,"
+Window Top = 58
+Window Left = 23
+Window Z-Order = 3
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,15,24,0,43,40,251,623,1,0,"
+
+[File 0013]
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cfg/projevtnames.h"
+File Type = "Include"
+Disk Date = 3602644986
+In Projects = "1,"
+Window Top = 86
+Window Left = 38
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,15,0,0,12,22,251,623,1,0,"
+
+[File 0014]
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_clock_prj/cwsw_lib/ctassert.h"
+File Type = "Include"
+Disk Date = 3603231598
+In Projects = ""
+Window Top = 142
+Window Left = 68
+Window Z-Order = 5
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,15,0,0,0,0,251,623,1,0,"
 
 [Build Options 0001]
 Generate Browse Info = True

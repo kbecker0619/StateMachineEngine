@@ -22,7 +22,7 @@ BSP__Init(void)
 {
 	uint16_t ret = 0;
 
-	if(!ret)	Init(Cwsw_Lib);			// Cwsw_Lib__Init(), cannot fail, so no consequence to discarding return value
+	if(!ret)	Init(Cwsw_Lib);			// Cwsw_Lib__Init()
 	if(!ret)	ret = Init(Cwsw_Arch);
 	if(!ret)	ret = Init(Cwsw_Board);
 	return ret;
@@ -36,7 +36,7 @@ int main(void)
 	UNUSED(stop);
 	UNUSED(et);
 
-	(void) Init(BSP);			// BSP__Init(), my local shortcut for all of the "unininteresting" stuff
+	(void) Init(BSP);					// BSP__Init(), my local shortcut for all of the "unininteresting" stuff
 	(void) Init(Cwsw_Clock);
 
 	(void)puts("CWSW Clock Library Unit Test");
