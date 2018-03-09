@@ -9,7 +9,7 @@
 #include "coinsensor.h"				/* so we can drive the coin sensor object from the UI */
 
 
-#if 0
+#if _CVI_
 int main (int argc, char *argv[])
 {
 	int panelHandle;
@@ -17,6 +17,12 @@ int main (int argc, char *argv[])
 		return -1;	/* out of memory */
 	if ((panelHandle = LoadPanel (0, "lw_coinopcoffeemachine.uir", PANEL)) < 0)
 		return -1;
+		
+	if(Init(Sme_Ut))
+	{
+
+	}
+
 	DisplayPanel (panelHandle);
 	RunUserInterface ();
 	DiscardPanel (panelHandle);

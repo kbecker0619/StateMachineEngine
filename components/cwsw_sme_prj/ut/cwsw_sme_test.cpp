@@ -8,11 +8,12 @@
  ============================================================================
  */
 
+#include <sme_test.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "cwsw_sme_test.h"
 #include "cwsw_eventsim.h"
+#include "sme_test.h"
 
 
 #if (XPRJ_DEBUG_CVI)
@@ -37,7 +38,6 @@ int main(int argc, char *argv[])
 	{
 
 	}
-	(void) Init(Cwsw_Lib);
 //	(void) Init(Cwsw_Clock);
 
 	/* error handling check - execute task before initialized */
@@ -109,12 +109,3 @@ EventHandler__evUpdateUi(tEventPayload EventData)
 #endif
 }
 
-uint16_t
-Sme_Ut__Init(void)
-{
-	uint16_t rv = 0;
-
-	if(!rv)	rv = Init(Cwsw_Lib);
-
-	return rv;
-}

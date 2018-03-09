@@ -206,9 +206,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.288368371" name="cwsw_sme_test.c" rcbsApplicability="disable" resourcePath="ut/cwsw_sme_test.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676.1879852941">
-						<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676.1879852941" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676"/>
-					</fileInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.878615293" name="lw_coinopcoffeemachine.h" rcbsApplicability="disable" resourcePath="ut/lw_coinopcoffeemachine.h" toolsToInvoke=""/>
 					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.1701493765" name="lw_coinopcoffeemachine.uir" rcbsApplicability="disable" resourcePath="ut/lw_coinopcoffeemachine.uir" toolsToInvoke=""/>
 					<sourceEntries>

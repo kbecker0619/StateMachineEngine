@@ -23,20 +23,19 @@
 // ============================================================================
 
 #include "projcfg.h"
-#if 0
 // ----	System Headers --------------------------
 #if (XPRJ_Debug_CVI)
 #include <cvirte.h>
 #include <userint.h>
 #endif
 
+#if 0
 // ----	Project Headers -------------------------
 #endif
 
 // ----	Module Headers --------------------------
-#include "cwsw_sme_test.h"
+#include "sme_test.h"
 
-#if 0		/*{*/
 #include "lw_coinopcoffeemachine.h"
 
 
@@ -123,13 +122,13 @@ int CVICALLBACK cbOnTimerTic (int panel, int control, int event,
 }
 
 #endif
-#endif		/*}*/
+
 
 uint16_t
 Sme_Ut__Init(void)
 {
 	uint16_t rv = 0;
-//	UNUSED(panelHandle);
+	UNUSED(panelHandle);
 
 	if(!rv)	rv = Init(Cwsw_Lib);
 

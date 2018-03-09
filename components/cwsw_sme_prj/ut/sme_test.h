@@ -14,9 +14,12 @@
  *	$Date: $
  */
 
-#ifndef UT_CWSW_SME_TEST_H_
-#define UT_CWSW_SME_TEST_H_
+#ifndef UT_SME_TEST_H_
+#define UT_SME_TEST_H_
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 // ============================================================================
 // ----	Include Files ---------------------------------------------------------
@@ -57,5 +60,8 @@
 extern uint16_t Sme_Ut__Init(void);
 
 
-#endif /* UT_CWSW_SME_TEST_H_ */
+#ifdef	__cplusplus
+}
+#endif
 
+#endif /* UT_SME_TEST_H_ */
