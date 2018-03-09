@@ -24,10 +24,10 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.708094938" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug">
 								<option id="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level.404094226" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level.1763277385" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.preprocessor.def.1796128542" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+								<option id="gnu.cpp.compiler.option.preprocessor.def.1796128542" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.include.paths.140154735" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+								<option id="gnu.cpp.compiler.option.include.paths.140154735" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/ut&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_sme&quot;"/>
@@ -93,10 +93,10 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.1506917053" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release">
 								<option id="gnu.cpp.compiler.mingw.exe.release.option.optimization.level.2017778291" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.mingw.exe.release.option.debugging.level.2803329" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.preprocessor.def.1315203666" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+								<option id="gnu.cpp.compiler.option.preprocessor.def.1315203666" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.include.paths.373609774" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+								<option id="gnu.cpp.compiler.option.include.paths.373609774" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/ut&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_sme&quot;"/>
@@ -162,10 +162,10 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.1902673807" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug">
 								<option id="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level.1289879063" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level.1337831280" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.option.preprocessor.def.1752979246" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
+								<option id="gnu.cpp.compiler.option.preprocessor.def.1752979246" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.include.paths.934818566" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+								<option id="gnu.cpp.compiler.option.include.paths.934818566" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/ut&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_sme&quot;"/>
@@ -206,6 +206,9 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.288368371" name="cwsw_sme_test.c" rcbsApplicability="disable" resourcePath="ut/cwsw_sme_test.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676.1879852941">
+						<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676.1879852941" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.982365676"/>
+					</fileInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.878615293" name="lw_coinopcoffeemachine.h" rcbsApplicability="disable" resourcePath="ut/lw_coinopcoffeemachine.h" toolsToInvoke=""/>
 					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.1701493765" name="lw_coinopcoffeemachine.uir" rcbsApplicability="disable" resourcePath="ut/lw_coinopcoffeemachine.uir" toolsToInvoke=""/>
 					<sourceEntries>

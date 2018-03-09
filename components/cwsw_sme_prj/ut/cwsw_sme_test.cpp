@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "cwsw_lib.h"
+#include "cwsw_sme_test.h"
 #include "cwsw_eventsim.h"
 
 
@@ -33,6 +33,10 @@ int main(int argc, char *argv[])
 
 	(void)puts("CWSW State Machine Engine Unit Test");
 
+	if(Init(Sme_Ut))
+	{
+
+	}
 	(void) Init(Cwsw_Lib);
 //	(void) Init(Cwsw_Clock);
 
@@ -105,3 +109,12 @@ EventHandler__evUpdateUi(tEventPayload EventData)
 #endif
 }
 
+uint16_t
+Sme_Ut__Init(void)
+{
+	uint16_t rv = 0;
+
+	if(!rv)	rv = Init(Cwsw_Lib);
+
+	return rv;
+}

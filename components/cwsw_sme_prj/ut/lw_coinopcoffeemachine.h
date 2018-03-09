@@ -6,7 +6,9 @@
 /*          of this include file.                                         */
 /**************************************************************************/
 
+#if (XPRJ_Debug_CVI)
 #include <userint.h>
+#endif
 
 #ifdef __cplusplus
     extern "C" {
@@ -26,11 +28,12 @@
           /* (no menu bars in the resource file) */
 
 
-     /* Callback Prototypes: */ 
-
+     /* Callback Prototypes: */
+#if (XPRJ_Debug_CVI)
 int  CVICALLBACK cbOnCoinInserted(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK cbOnTimerTic(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK QuitCallback(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+#endif
 
 
 #ifdef __cplusplus

@@ -33,9 +33,11 @@ cbOnCoinInserted (int panel, int control, int event, void *callbackData, int eve
 	case EVENT_COMMIT:
 		// pretend to make the coin-insertion sensor to sense an object.
 		// Detach in this way, so that we can provide alternate "physical" interfaces
-		ev.evId = evCoinInsertionSensed;
+		ev.evId = 0;
 		ev.evInt = 25;
+#if 0    /* formerly excluded lines */
 		PostEvent(evCoinInsertionSensed, ev);
+#endif   /* formerly excluded lines */
 		break;
 
 	default:

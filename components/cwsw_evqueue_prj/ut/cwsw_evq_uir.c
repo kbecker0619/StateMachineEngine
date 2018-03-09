@@ -88,6 +88,7 @@ int CVICALLBACK cbTaskTimer (int panel, int control, int event,
 			Task(Evq_Ut);
 			break;
 		}
+
 	(void)ResumeTimerCallbacks();
 	return 0;
 }
