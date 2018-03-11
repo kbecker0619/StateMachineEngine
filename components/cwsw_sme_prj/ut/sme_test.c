@@ -29,14 +29,13 @@
 #include <userint.h>
 #endif
 
-#if 0
 // ----	Project Headers -------------------------
-#endif
 
 // ----	Module Headers --------------------------
 #include "sme_test.h"
-
 #include "lw_coinopcoffeemachine.h"
+
+#include "coinopcoffeemachine.h"
 
 
 // ============================================================================
@@ -131,6 +130,14 @@ Sme_Ut__Init(void)
 	UNUSED(panelHandle);
 
 	if(!rv)	rv = Init(Cwsw_Lib);
+	if(!rv)	rv = Init(CoffeeMac);	// CoffeeMac__Init()
 
 	return rv;
+}
+
+
+void
+Sme_Ut__Task(void)
+{
+	Task(CoffeeMac);				// CoffeeMac__Task()
 }

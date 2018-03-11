@@ -44,8 +44,7 @@ extern "C" {
 // ============================================================================
 #define CWSW_EVQUEUE_H__REVSTRING "$Revision: 0123 $"
 
-/** Error codes returned by Event Queue API.
- */
+/** Error codes returned by Event Queue API. */
 enum eEvQ_ErrorCodes {
 	kEvQ_Err_NoError,
 	kEvQ_Err_BadCtrl,			//!< Bad or invalid control struct.
@@ -56,7 +55,10 @@ enum eEvQ_ErrorCodes {
 };
 
 
-/** Reserved event value. In the CWSW Event Queue system, this indicates "no event." */
+/** Reserved event value.
+ * In the CWSW Event Queue system, this indicates "no event,"
+ * and is intended to evaluate as a type tEvQ_Event
+ */
 enum { kEvQ_Ev_None };
 
 
@@ -143,16 +145,30 @@ extern tEvQ_ErrorCodes Cwsw_EvQ__FlushEvents(tEvQueueCtrl * const pEvQueueCtrl);
  */
 extern tEvQ_ErrorCodes Cwsw_EvQ__PostEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event ev);
 
-/** Retrieve the current event.
- *	Depletes the event count in the queue by one event.
+/** Retrieve the current event, with error status.
+ *	Decrements the event count in the queue by one event.
  *
- *	@param pEvQueueCtrl[in,out]	Pointer to the current event buffer control structure.
- *	@param ev[out]				Pointer to the event returned.
+ *	@param [in,out]	pEvQueueCtrl	Pointer to the current event buffer control structure.
+ *	@param [out]	pEv				Pointer to the event returned.
  *	@returns Error code, enumeration of type tEvQ_ErrorCodes. For an empty queue,
- *			no error is returned.
+ *			kEvQ_Err_NoError is returned. If an error is detected, pEv is not updated.
  */
 extern tEvQ_ErrorCodes Cwsw_EvQ__GetEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event *pEv);
 
+/** Get the current event.
+ *	Target for the GetEvQ(Event) API.
+ *
+ *	@param [in,out]	pEvQueueCtrl	Pointer to the current event buffer control structure.
+ *	@returns						Next event from queue, kEvQ_Ev_None if the queue was empty.
+ */
+extern tEvQ_Event Cwsw_EvQ__Get_Event(tEvQueueCtrl *pEvQueueCtrl);
+
+/** Get the number of events still pending in the specified event queue.
+ *
+ * @param[in] pEvQueueCtrl Pointer to queue's control structure.
+ * @returns Number of events held by queue.
+ */
+extern size_t Cwsw_EvQ__Get_NumEvents(tEvQueueCtrl *pEvQueueCtrl);
 
 // ==== /Discrete Functions ================================================= }
 
@@ -165,6 +181,12 @@ extern tEvQ_ErrorCodes Cwsw_EvQ__GetEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event
  *	Go To Definition.
  */
 enum { Cwsw_EvQ = 4 };	/* Component ID for Event Queue */
+
+/** Expansion of GetEvQ() API */
+#define GetEvQ(pQ, what)			Cwsw_EvQ__Get_ ## what(pQ)
+
+/** Expansion of PostEvQ() API */
+#define PostEvQ(pQ, ev)				Cwsw_EvQ__PostEvent(pQ, ev)
 
 /** Target symbol for Get(Cwsw_Board, xxx) interface */
 #define Cwsw_EvQ__Get(resource)		Cwsw_EvQ__Get_ ## resource()

@@ -23,11 +23,12 @@
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
-#include "cwsw_clock.h"
+//#include "cwsw_clock.h"
 #if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC)
-#include "clock_if.h"
+//#include "clock_if.h"
 #endif
 #include "cwsw_eventsim.h"
+#include "cwsw_evqueue.h"
 
 // ----	Module Headers --------------------------
 #include "coinsensor.h"
@@ -36,6 +37,20 @@
 // ============================================================================
 // ----	Constants -------------------------------------------------------------
 // ============================================================================
+
+enum { kCoinSensorEventQueueSz = 5 };
+
+enum eRecognizedCoins {
+	kCs_GoodCoin = kEvQ_Ev_None + 1,
+	kCs_Nickel,
+	kCs_Dime,
+	kCs_Quarter,
+	kCs_Dollar,
+	kCs_FiveDollar,
+	kCs_Sawbuck,
+	kCs_DoubleSawbuck,
+};
+
 
 // ============================================================================
 // ----	Type Definitions ------------------------------------------------------
@@ -51,9 +66,15 @@
 static char const * const coinsensor_RevString = "$Revision: 0123 $";
 static bool initialized = false;
 static bool coindetected = false;
-#if (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC)
-static tCwswClockTics tmr;
+#if (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC)
+//static tCwswClockTics tmr;
 #endif
+
+//! Control structure for the event queue for the demo app's Coin Sensor.
+PRIVATE tEvQueueCtrl coinsnsr_evq_ctrl;
+
+//! Event queue for the demo app's Coin Sensor.
+PRIVATE tEvQ_Event	 coinsnsr_evq_evbuf[kCoinSensorEventQueueSz] = {0};
 
 
 // ============================================================================
@@ -87,53 +108,68 @@ EventHandler__evCoinInsertionSensed(tEventPayload EventData)
 uint16_t
 CoinSensor__Init(void)
 {
+	tEvQ_ErrorCodes rv;
 	UNUSED(coinsensor_RevString);
-	initialized = true;
 	coindetected = false;	// <<== this could be done as part of a separate 'reset' function.
-	#if( (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) )
+	#if( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC) )
 	{
-		Cwsw_SetTimerVal(&tmr, 50);	// 50 ms from now, do something ...
+//		Cwsw_SetTimerVal(&tmr, 50);	// 50 ms from now, do something ...
 	}
 	#endif
-	
+
+	if(!Get(Cwsw_EvQ, Initialized))	{ Init(Cwsw_EvQ); }
+	rv = Cwsw_EvQ__InitEvQ(&coinsnsr_evq_ctrl, coinsnsr_evq_evbuf, kCoinSensorEventQueueSz);
+	// you probably would not want to simply assert in a real app
+	cwsw_assert(!rv, "Event Queue Not Initialized Correctly");
+
+	// confirm queue is empty. be redundant because this is a dev/ut/demo app, showing what could be done
+	cwsw_assert(GetEvQ(&coinsnsr_evq_ctrl, NumEvents) == 0, "Event Queue Not Empty");
+	cwsw_assert(GetEvQ(&coinsnsr_evq_ctrl, Event) == kEvQ_Ev_None, "Valid Event Returned");
+
+	initialized = true;
 	return 0;
 }
+
 
 void
 CoinSensor__Task(void)
 {
 	tEventPayload ev = {evNoEvent, 0};
-
-	cwsw_assert(initialized);
+	cwsw_assert(initialized, "Coin Sensor Not Initialized");
 
 	// ----	read inputs -----------------------------------------------------------------
-	#if( (XPRJ_Debug_Win_MinGW) || (XPRJ_DEBUG_MSC) )
+	if( (XPRJ_Debug_Win_MinGW) || (XPRJ_Debug_MSC) )		/*{*/
 	{
 		// for now, we'll simulate our own coin insertion. we'll simulate a quarter.
-		if(TM(tmr))
-		{
-			// pretend to make the coin-insertion sensor to sense an object.
-			// Detach in this way, so that we can provide alternate "physical" interfaces
-			ev.evId = evCoinInsertionSensed;
-			ev.evInt = 25;
-			PostEvent(evCoinInsertionSensed, ev);
-
-			// reset for a really long time from now
-			Cwsw_SetTimerVal(&tmr, 100000);
-		}
+//		if(TM(tmr))
+//		{
+//			// pretend to make the coin-insertion sensor to sense an object.
+//			// Detach in this way, so that we can provide alternate "physical" interfaces
+//			ev.evId = evCoinInsertionSensed;
+//			ev.evInt = 25;
+//			PostEvent(evCoinInsertionSensed, ev);
+//
+//			// reset for a really long time from now
+//			Cwsw_SetTimerVal(&tmr, 100000);
+//		}
 	}
-	#endif
-
+//	#endif													/*}*/
 
 	// ----	process ---------------------------------------------------------------------
 
 	// ----	exert outputs ---------------------------------------------------------------
 	if(coindetected)
 	{
+		tEvQ_ErrorCodes er = PostEvQ(&coinsnsr_evq_ctrl, kCs_GoodCoin);
+		switch(er)
+		{
+		case kEvQ_Err_NoError:	break;	/* happy path */
+		default:
+			// tbd: notify caller out-of-band about problem
+			// send error code + denomination lost
+			break;
+		}
 		coindetected = false;
-		ev.evId = evCoinAccepted;
-		ev.evInt = 25;	// for now, hard-code for 25 cents
-		PostEvent(evCoinAccepted, ev);
 	}
 
 }

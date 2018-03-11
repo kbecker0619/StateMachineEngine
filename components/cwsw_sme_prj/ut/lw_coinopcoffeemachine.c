@@ -17,7 +17,7 @@ int main (int argc, char *argv[])
 		return -1;	/* out of memory */
 	if ((panelHandle = LoadPanel (0, "lw_coinopcoffeemachine.uir", PANEL)) < 0)
 		return -1;
-		
+
 	if(Init(Sme_Ut))
 	{
 
@@ -72,7 +72,7 @@ cbOnTimerTic (int panel, int control, int event, void *callbackData, int eventDa
 	switch (event)
 	{
 	case EVENT_TIMER_TICK:
-		Task(Csws_Sme_Ut);
+		Task(CoffeeMac);
 		break;
 	}
 	(void)ResumeTimerCallbacks();

@@ -228,7 +228,6 @@
 								<option id="gnu.c.compiler.option.warnings.pedantic.932085008" name="Pedantic (-pedantic)" superClass="gnu.c.compiler.option.warnings.pedantic" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1920196772" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="&quot;XPRJ_${ConfigName}=1&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;XPRJ_Debug_Win_MinGW=1 /* INTENDED ONLY FOR WITHIN-ECLIPSE DEV; NOT FOR PRODUCTION */&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.paths.57762077" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
@@ -247,11 +246,6 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1419317492" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="cdt.managedbuild.config.gnu.exe.debug.1402691241.1874887244.832177075" name="gpio.c" rcbsApplicability="disable" resourcePath="ut/io/gpio.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1871868254.1532203020">
-						<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1871868254.1532203020" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.1871868254">
-							<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1770443297" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
-						</tool>
-					</fileInfo>
 					<sourceEntries>
 						<entry excluding="ut/io/gpio.c|ut/gpio.c|ut/cwsw_arch_isrtbl_mcp5748g.c|cwsw_arch/MPC57xx|doxygen|firmware|cwsw_arch/pic32mz" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>

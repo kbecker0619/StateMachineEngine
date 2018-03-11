@@ -4,7 +4,7 @@ Pathname = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_smeng
 CVI Dir = "/e/_programs/national instruments/cvi71"
 IVI Standard Root Dir = "/C/Program Files (x86)/IVI"
 VXIplug&play Framework Dir = "/c/vxipnp/winnt"
-Number of Files = 18
+Number of Files = 20
 Target Type = "Executable"
 Flags = 16
 
@@ -16,7 +16,7 @@ Path Rel To = "Project"
 Path Rel Path = "ut/coinopcoffeemachine.c"
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/coinopcoffeemachine"
 Path Line0002 = ".c"
-Exclude = True
+Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
@@ -28,7 +28,7 @@ Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/coinsensor.c"
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/coinsensor.c"
-Exclude = True
+Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
@@ -72,9 +72,9 @@ File Type = "CSource"
 Res Id = 6
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "cwsw_lib/src/cwsw_lib.c"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_lib/src/cwsw_lib."
-Path Line0002 = "c"
+Path Rel Path = "cwsw_evqueue/src/cwsw_evqueue.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_evqueue/src/cwsw_"
+Path Line0002 = "evqueue.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
@@ -85,32 +85,33 @@ File Type = "Include"
 Res Id = 7
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "cwsw_lib/cwsw_lib.h"
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_lib/cwsw_lib.h"
+Path Rel Path = "../cwsw_evqueue_prj/cwsw_evqueue/cwsw_evqueue.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evqueue/cwsw_"
+Path Line0002 = "evqueue.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
 [File 0008]
-File Type = "Include"
+File Type = "CSource"
 Res Id = 8
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "cwsw_sme/cwsw_smengine.h"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_sme/cwsw_smengine"
-Path Line0002 = ".h"
+Path Rel Path = "cwsw_lib/src/cwsw_lib.c"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_lib/src/cwsw_lib."
+Path Line0002 = "c"
 Exclude = False
+Compile Into Object File = False
 Project Flags = 0
-Folder = "Include Files"
+Folder = "Source Files"
 
 [File 0009]
 File Type = "Include"
 Res Id = 9
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "cwsw_sme/src/cwsw_smengine_prv.h"
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_sme/src/cwsw_smen"
-Path Line0002 = "gine_prv.h"
+Path Rel Path = "cwsw_lib/cwsw_lib.h"
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_lib/cwsw_lib.h"
 Exclude = False
 Project Flags = 0
 Folder = "Include Files"
@@ -120,6 +121,30 @@ File Type = "Include"
 Res Id = 10
 Path Is Rel = True
 Path Rel To = "Project"
+Path Rel Path = "cwsw_sme/cwsw_smengine.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_sme/cwsw_smengine"
+Path Line0002 = ".h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0011]
+File Type = "Include"
+Res Id = 11
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "cwsw_sme/src/cwsw_smengine_prv.h"
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_sme/src/cwsw_smen"
+Path Line0002 = "gine_prv.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+
+[File 0012]
+File Type = "Include"
+Res Id = 12
+Path Is Rel = True
+Path Rel To = "Project"
 Path Rel Path = "cwsw_sme/include/fsm_extensions.h"
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_sme/include/fsm_e"
 Path Line0002 = "xtensions.h"
@@ -127,9 +152,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0011]
+[File 0013]
 File Type = "CSource"
-Res Id = 11
+Res Id = 13
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/lw_coinopcoffeemachine.c"
@@ -140,9 +165,9 @@ Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 
-[File 0012]
+[File 0014]
 File Type = "Include"
-Res Id = 12
+Res Id = 14
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/lw_coinopcoffeemachine.h"
@@ -152,9 +177,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0013]
+[File 0015]
 File Type = "User Interface Resource"
-Res Id = 13
+Res Id = 15
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/lw_coinopcoffeemachine.uir"
@@ -164,9 +189,9 @@ Exclude = False
 Project Flags = 0
 Folder = "User Interface Files"
 
-[File 0014]
+[File 0016]
 File Type = "Include"
-Res Id = 14
+Res Id = 16
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "cfg/projcfg.h"
@@ -175,9 +200,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0015]
+[File 0017]
 File Type = "Include"
-Res Id = 15
+Res Id = 17
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "cfg/projevtnames.h"
@@ -186,9 +211,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0016]
+[File 0018]
 File Type = "Include"
-Res Id = 16
+Res Id = 18
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "../cwsw_lib_prj/cwsw_lib/include/ptypes.h"
@@ -198,9 +223,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Include Files"
 
-[File 0017]
+[File 0019]
 File Type = "Unknown"
-Res Id = 17
+Res Id = 19
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/readme.md"
@@ -209,9 +234,9 @@ Exclude = False
 Project Flags = 0
 Folder = "Not In A Folder"
 
-[File 0018]
+[File 0020]
 File Type = "CSource"
-Res Id = 18
+Res Id = 20
 Path Is Rel = True
 Path Rel To = "Project"
 Path Rel Path = "ut/sme_test.c"
@@ -256,6 +281,8 @@ Include Path 3 Is Rel = True
 Include Path 3 Rel To = "Project"
 Include Path 3 Rel Path = "ut"
 Include Path 3 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut"
+Include Path 4 Is Rel = False
+Include Path 4 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evqueue"
 
 [Create Executable]
 Executable File_Debug Is Rel = True

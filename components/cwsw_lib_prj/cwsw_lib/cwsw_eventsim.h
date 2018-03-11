@@ -78,7 +78,7 @@ typedef void (*pEventHandler)(tEventPayload EventData);
  * 	the actual values, but for the names themselves. See the PostEvent
  * 	definition to see how that's done.
  */
-#if (USE_SIMULATED_EVENTS)
+#if (USE_NOTIFICATION_EVENTS)
 #include "projevtnames.h"
 typedef enum eProjectEvents tProjectEvents;
 
@@ -95,7 +95,7 @@ typedef enum eProjectEvents tProjectEvents;
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-/**	"Post" an event.
+/**	Directly notify interested parties of a significant event.
  * 	This mechanism is intended to provide a very simple mechanism to send a
  * 	message to an independent part of your software.
  *
@@ -112,7 +112,7 @@ typedef enum eProjectEvents tProjectEvents;
  * 	that must be defined; however, it could be a function that forwards the event
  * 	to other handlers, or a macro that iterates through an array, or ...
  */
-#if (USE_SIMULATED_EVENTS)
+#if (USE_NOTIFICATION_EVENTS)
 #define PostEvent(ev, evpayload)		_post_event(ev, evpayload)
 #define _post_event(ev, evpayload)		EventHandler__ ## ev(evpayload)
 

@@ -52,8 +52,8 @@ extern "C" {
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-extern uint16_t Cwsw_Sme_Ut__Init(void);
-extern void Csws_Sme_Ut__Task(void);
+extern uint16_t CoffeeMac__Init(void);
+extern void CoffeeMac__Task(void);
 
 
 #ifdef	__cplusplus

@@ -34,16 +34,16 @@ int main(int argc, char *argv[])
 
 	(void)puts("CWSW State Machine Engine Unit Test");
 
-	if(Init(Sme_Ut))
+	if(Init(Sme_Ut))	// Sme_Ut__Init()
 	{
 
 	}
-//	(void) Init(Cwsw_Clock);
+	Task(Sme_Ut);		// Sme_Ut__Task()
 
 	/* error handling check - execute task before initialized */
-//	Task(Csws_Sme_Ut);
+//	Task(CoffeeMac);
 //	(void) Init(Cwsw_Sme_Ut);
-//	while(!terminate_requested) { Task(Csws_Sme_Ut); }
+//	while(!terminate_requested) { Task(CoffeeMac); }
 //
 //	/* reset termination request, enter "normal" initialization task, working into normal tasking */
 //
@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
 //	} while(0);
 //
 //	#else
-//	terminate_requested = false;
-//	while(!terminate_requested) { Task(Csws_Sme_Ut); }
+	terminate_requested = false;
+	while(!terminate_requested) { Task(Sme_Ut); }
 //
 //	#endif
 	return EXIT_SUCCESS;

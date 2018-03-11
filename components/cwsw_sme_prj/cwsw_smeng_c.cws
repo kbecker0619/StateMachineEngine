@@ -25,7 +25,7 @@ Hide Windows = False
 Global Hot Key = False
 Break At First Statement = True
 Sort Type = "File Name"
-Number of Opened Files = 5
+Number of Opened Files = 9
 Window Confinement Region Enabled = True
 MainColumnWidth = 208
 FileDateColumnWidth = 70
@@ -43,23 +43,24 @@ Batch Build Debug = False
 [File 0001]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/coinsensor.c"
 File Type = "CSource"
-Disk Date = 3599082892
+Disk Date = 3603572674
 In Projects = "1,"
 Window Top = 56
 Window Left = 8
-Source Window State = "1,66,68,66,0,0,0,0,0,0,0,0,0,0,0,0,12,0,25,9,401,623,1,0,"
-Breakpoint 0001 = "117,0,enabled,"
+Window Z-Order = 3
+Source Window State = "1,66,68,66,0,0,0,0,0,80,0,0,0,0,0,25,100,0,115,4,401,623,1,0,"
+Breakpoint 0001 = "117,0,disabled,"
 Breakpoint 0002 = "133,0,enabled,"
 
 [File 0002]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/lw_coinopcoffeemach"
 Path Line0002 = "ine.c"
 File Type = "CSource"
-Disk Date = 3603481504
+Disk Date = 3603572674
 In Projects = "1,"
 Window Top = 114
 Window Left = 53
-Window Z-Order = 2
+Window Z-Order = 6
 Source Window State = "1,20,21,20,0,0,0,0,0,80,0,0,0,0,0,25,0,0,11,9,401,623,1,0,"
 Breakpoint 0001 = "42,0,enabled,"
 Breakpoint 0002 = "61,0,enabled,"
@@ -75,7 +76,7 @@ Window Top = 58
 Window Left = 23
 Window Height = 401
 Window Width = 623
-Window Z-Order = 5
+Window Z-Order = 9
 
 [File 0004]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/lw_coinopcoffeemach"
@@ -85,7 +86,7 @@ Disk Date = 3603403196
 In Projects = "1,"
 Window Top = 58
 Window Left = 23
-Window Z-Order = 3
+Window Z-Order = 7
 Source Window State = "1,32,32,32,17,29,29,0,0,80,0,0,0,0,0,13,26,0,32,17,221,623,1,0,"
 
 [File 0005]
@@ -96,29 +97,51 @@ Disk Date = 3603259042
 In Projects = "1,"
 Window Top = 142
 Window Left = 68
-Window Z-Order = 4
+Window Z-Order = 8
 Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,18,72,0,81,17,296,623,1,0,"
 
 [File 0006]
+Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/sme_test.c"
+File Type = "CSource"
+Disk Date = 3603483980
+In Projects = "1,"
+Window Top = 30
+Window Left = 8
+Window Z-Order = 5
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,25,117,0,132,17,401,623,1,0,"
+
+[File 0007]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/coinopcoffeemachine"
 Path Line0002 = ".c"
 File Type = "CSource"
-Disk Date = 3603236153
+Disk Date = 3603572674
 In Projects = "1,"
 Window Top = 86
 Window Left = 38
-Source Window State = "1,127,127,127,18,28,28,0,0,0,0,0,0,0,0,0,21,0,30,9,311,623,1,0,"
+Window Z-Order = 4
+Source Window State = "1,127,127,127,18,28,28,0,0,80,0,0,0,0,0,19,258,0,268,4,311,623,1,0,"
 
-[File 0007]
+[File 0008]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_lib/src/cwsw_lib."
+Path Line0002 = "c"
+File Type = "CSource"
+Disk Date = 3603235216
+In Projects = "1,"
+Window Top = 86
+Window Left = 38
+Window Z-Order = 1
+Source Window State = "1,0,0,0,0,0,0,0,0,135,0,0,0,0,0,16,94,0,103,0,311,595,1,0,"
+
+[File 0009]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/coinsensor.h"
 File Type = "Include"
-Disk Date = 3599082892
+Disk Date = 3603484699
 In Projects = "1,"
 Window Top = 58
 Window Left = 23
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,39,0,59,39,236,623,1,0,"
 
-[File 0008]
+[File 0010]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_lib/ctassert.h"
 File Type = "Include"
 Disk Date = 3603231598
@@ -127,17 +150,7 @@ Window Top = 114
 Window Left = 53
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,59,296,623,1,0,"
 
-[File 0009]
-Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_lib/src/cwsw_lib."
-Path Line0002 = "c"
-File Type = "CSource"
-Disk Date = 3603235216
-In Projects = "1,"
-Window Top = 86
-Window Left = 38
-Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,311,595,1,0,"
-
-[File 0010]
+[File 0011]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_lib/cwsw_lib.h"
 File Type = "Include"
 Disk Date = 3603235216
@@ -146,7 +159,7 @@ Window Top = 170
 Window Left = 83
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,296,623,1,0,"
 
-[File 0011]
+[File 0012]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_sme/cwsw_smengine"
 Path Line0002 = ".h"
 File Type = "Include"
@@ -154,7 +167,7 @@ Disk Date = 3599082887
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0012]
+[File 0013]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_sme/src/cwsw_smen"
 Path Line0002 = "gine_prv.h"
 File Type = "Include"
@@ -162,7 +175,7 @@ Disk Date = 3599082887
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0013]
+[File 0014]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_sme/include/fsm_e"
 Path Line0002 = "xtensions.h"
 File Type = "Include"
@@ -170,7 +183,7 @@ Disk Date = 3603236153
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0014]
+[File 0015]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cfg/projcfg.h"
 File Type = "Include"
 Disk Date = 3603395459
@@ -179,14 +192,14 @@ Window Top = 58
 Window Left = 23
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,40,296,623,1,0,"
 
-[File 0015]
+[File 0016]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cfg/projevtnames.h"
 File Type = "Include"
 Disk Date = 3603395596
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0016]
+[File 0017]
 Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_lib_prj/cwsw_lib/include/ptype"
 Path Line0002 = "s.h"
 File Type = "Include"
@@ -196,19 +209,30 @@ Window Top = 114
 Window Left = 53
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,311,623,1,0,"
 
-[File 0017]
+[File 0018]
 Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/readme.md"
 File Type = "Unknown"
 Disk Date = 3599082901
 In Projects = "1,"
 
-[File 0018]
-Path = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/ut/sme_test.c"
-File Type = "CSource"
-Disk Date = 3603481153
+[File 0019]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_evqueue_prj/cwsw_evqueue/cwsw_"
+Path Line0002 = "evqueue.h"
+File Type = "Include"
+Disk Date = 3603571661
 In Projects = "1,"
-Window Z-Order = 1
-Source Window State = "1,0,0,0,0,0,0,0,0,135,0,0,0,0,0,16,68,0,76,4,0,0,0,0,"
+Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+
+[File 0020]
+Path Line0001 = "/e/_Projects/PersonalDev/cwsw_lib/components/cwsw_sme_prj/cwsw_evqueue/src/cwsw_"
+Path Line0002 = "evqueue.c"
+File Type = "CSource"
+Disk Date = 3603571661
+In Projects = "1,"
+Window Top = 30
+Window Left = 8
+Window Z-Order = 2
+Source Window State = "1,0,0,0,0,0,0,0,0,80,0,0,0,0,0,18,213,0,226,0,296,623,1,0,"
 
 [Build Options 0001]
 Generate Browse Info = True

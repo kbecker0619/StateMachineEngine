@@ -183,7 +183,7 @@ extern "C" {
 #if (XPRJ_Debug_CVI)
 	#define pic32mz_ef_sk				(-1)	/* must make this mismatch the project def of the same name */
 	// use cwsw simulated events to achieve separation between UI panels
-	#define USE_SIMULATED_EVENTS		(1)
+	#define USE_NOTIFICATION_EVENTS		(1)
 	#define USE_SYS_CLK					(0)
 	#define USE_SYS_DEVCON				(0)
 	#define USE_SYS_PORTS				(0)
@@ -223,11 +223,11 @@ extern "C" {
 #endif
 
 
-/*	Allow for the possibility that USE_SIMULATED_EVENTS might be a command-line
+/*	Allow for the possibility that USE_NOTIFICATION_EVENTS might be a command-line
  *	define. Pick reasonable defaults if not defined.
  */
-#if !defined(USE_SIMULATED_EVENTS)
-#define USE_SIMULATED_EVENTS			(true)
+#if !defined(USE_NOTIFICATION_EVENTS)
+#define USE_NOTIFICATION_EVENTS			(true)
 
 #else
 #endif

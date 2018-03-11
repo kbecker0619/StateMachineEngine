@@ -210,7 +210,28 @@ Cwsw_EvQ__GetEvent(tEvQueueCtrl *pEvQueueCtrl, tEvQ_Event *pEv)
 	}
 
 	// return the event
+	*pEv =  ev;
+	return kEvQ_Err_NoError;
+}
+
+
+tEvQ_Event
+Cwsw_EvQ__Get_Event(tEvQueueCtrl *pEvQueueCtrl)
+{
+	tEvQ_Event ev;
+	tEvQ_ErrorCodes rv = Cwsw_EvQ__GetEvent(pEvQueueCtrl, &ev);
+	if(rv)
+	{
+		// tbd error handling. raise exception?
+	}
 	return ev;
+}
+
+
+size_t
+Cwsw_EvQ__Get_NumEvents(tEvQueueCtrl *pEvQueueCtrl)
+{
+	return pEvQueueCtrl->Queue_Count;
 }
 
 

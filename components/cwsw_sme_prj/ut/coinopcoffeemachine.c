@@ -21,18 +21,20 @@
 #include "projcfg.h"
 
 // ----	System Headers --------------------------
-#include <stdbool.h>
-#include <string.h>		/* memset() */
+//#include <stdbool.h>
+//#include <string.h>		/* memset() */
 #if (XPRJ_DEBUG_CVI)
 #include <userint.h>
 #endif
 
 // ----	Project Headers -------------------------
-#include "clock_if.h"	/* tCwswClockTics */
-#include "cwsw_eventsim.h"
+#include "cwsw_lib.h"
+//#include "clock_if.h"	/* tCwswClockTics */
+//#include "cwsw_eventsim.h"
 #if (XPRJ_DEBUG_CVI)
 #include "lw_coinopcoffeemachine.h"
 #endif
+#include "cwsw_evqueue.h"
 
 // ----	Module Headers --------------------------
 #include "coinopcoffeemachine.h"
@@ -54,10 +56,8 @@
 // ============================================================================
 // ----	Module-level Variables ------------------------------------------------
 // ============================================================================
-static char const * const coinvend_RevString = "$Revision: 0123 $";
-
 static bool initialized = false;
-static tCwswClockTics task_end_time = 0;
+//static tCwswClockTics task_end_time = 0;
 
 
 // ============================================================================
@@ -69,9 +69,9 @@ static tCwswClockTics task_end_time = 0;
 // ============================================================================
 
 void
-Csws_Sme_Ut__Task(void)
+CoffeeMac__Task(void)
 {
-	tEventPayload ev = {evNotInit, 0};
+//	tEventPayload ev = {evNotInit, 0};
 
 	/* This illustrates one method of confirming the module init function has been called before
 	 * 1st execution of functions that depend on that initialization. Another method is illustrated
@@ -80,33 +80,33 @@ Csws_Sme_Ut__Task(void)
 	 */
 	if(!initialized)
 	{
-		PostEvent(evNotInit, ev);
+//		PostEvent(evNotInit, ev);
 		return;
 	}
 
 	// process hardware / "MCAL" tasks
-	Task(CoinSensor);
+	Task(CoinSensor);		// CoinSensor__Task()
 
 	// chunk another tooth on the SME cogwheel
 
 	/* for now, we won't dedicate a task to updating the UI; we'll just notify the UI of time left */
-	do {
-		int32_t tmp = Cwsw_GetTimeLeft(task_end_time);
-		ev.evId = evUpdateUi;
-		ev.evInt = TO_U32(tmp);
-		PostEvent(evUpdateUi, ev);
-	} while(0);
-
-	if(TM(task_end_time))
-	{
-		ev.evId = evTerminateRequested;
-		PostEvent(evTerminateRequested, ev);
-	}
+//	do {
+//		int32_t tmp = Cwsw_GetTimeLeft(task_end_time);
+//		ev.evId = evUpdateUi;
+//		ev.evInt = TO_U32(tmp);
+//		PostEvent(evUpdateUi, ev);
+//	} while(0);
+//
+//	if(TM(task_end_time))
+//	{
+//		ev.evId = evTerminateRequested;
+//		PostEvent(evTerminateRequested, ev);
+//	}
 }
 
 
 // ====	STATE MACHINE STUFF (could be in a separate module) =======================================
-#include "../cwsw_sme/include/fsm_extensions.h"
+//#include "../cwsw_sme/include/fsm_extensions.h"
 
 
 // ============================================================================
@@ -123,27 +123,27 @@ enum { kCoffeeMachine_Sm_EventQueueSize = 5 };
  * The names of these elements should correlate directly to those found in the state chart diagram.
  */
 enum eCoffeeMachineOpStates {
-    kCoffeeMachineStateUninit,          //!< Uninitialized, doesn't actually exist and is not seen in design documents.
+	kCoffeeMachineStateUninit,          //!< Uninitialized, doesn't actually exist and is not seen in design documents.
 
-    kCoffeeMachineStateIdle,
-    kCoffeeMachineStateCoinInserted,
-    kCoffeeMachineStateOptionSelected,
+	kCoffeeMachineStateIdle,
+	kCoffeeMachineStateCoinInserted,
+	kCoffeeMachineStateOptionSelected,
 
-    kCoffeeMachineNumOpStates
+	kCoffeeMachineNumOpStates
 };
 
 
 /**	Events for the Position Sensor state machine.
  */
 enum eCoffeeMachineEvents {
-    evSmeCoffeeMachineNoEvent,			//!< "No Event" event, needed by the StateEngine
+	evSmeCoffeeMachineNoEvent,			//!< "No Event" event, needed by the StateEngine
 
-    evSmeCoffeeMachineCoinDropped,      //!< Transition-provoking event, we have recognized a valid coin and need to transition to Product Selection. The example culled from the inet had badly-named states, so beware.
-    evSmeCoffeeMachineSelectionMade,	//!< Transition-provoking event, we have a valid product selection and need to transition into the dispensing state. We repeat: The example culled from the inet had badly-named states, so beware.
-    evSmeCoffeeMachineProductDispensed,
+	evSmeCoffeeMachineCoinDropped,      //!< Transition-provoking event, we have recognized a valid coin and need to transition to Product Selection. The example culled from the inet had badly-named states, so beware.
+	evSmeCoffeeMachineSelectionMade,	//!< Transition-provoking event, we have a valid product selection and need to transition into the dispensing state. We repeat: The example culled from the inet had badly-named states, so beware.
+	evSmeCoffeeMachineProductDispensed,
 	evSmeCoffeeMachineExecuteDoAction,	//!< Special event, specific to this version of the StateEngine and our usage of it, designed to transition from a state's Entry action to the same state's Do action within the same instance of the background task.
 
-    kCVendSnsr_NumStateChartEvents		//!< Number of state chart events.
+	kCVendSnsr_NumStateChartEvents		//!< Number of state chart events.
 };
 
 
@@ -157,15 +157,15 @@ enum eCoffeeMachineEvents {
  *	concern about the State Engine's Post-Event functionality. We need data to
  *	prove or disprove the existence of a buffer-bounds violation.
  */
-typedef struct {
-#if (XPRJ_Debug_Win_MinGW)
-    unsigned short  lowguard;
-#endif
-    tFsmEvent      event_queue[kCoffeeMachine_Sm_EventQueueSize];
-#if (XPRJ_Debug_Win_MinGW)
-    unsigned short  higuard;
-#endif
-} tCoffeeMachine_Sm_EventQueue;
+//typedef struct {
+//#if (XPRJ_Debug_Win_MinGW)
+//    unsigned short  lowguard;
+//#endif
+//    tFsmEvent      event_queue[kCoffeeMachine_Sm_EventQueueSize];
+//#if (XPRJ_Debug_Win_MinGW)
+//    unsigned short  higuard;
+//#endif
+//} tCoffeeMachine_Sm_EventQueue;
 
 typedef enum eCoffeeMachineOpStates tCoffeeMachineOpStates;
 typedef enum eCoffeeMachineEvents tCoffeeMachineEvents;
@@ -176,21 +176,21 @@ typedef enum eCoffeeMachineEvents tCoffeeMachineEvents;
 // ============================================================================
 
 //! SME Event Queue.
-PRIVATE tCoffeeMachine_Sm_EventQueue CoffeeMachineSmEventQueue;
+//PRIVATE tCoffeeMachine_Sm_EventQueue CoffeeMachineSmEventQueue;
 
 //! SME Control structure.
-PRIVATE tFsmStateControl CoffeeMachineSmControl;
+//PRIVATE tFsmStateControl CoffeeMachineSmControl;
 
 
 // ============================================================================
 // ----	Private Prototypes ----------------------------------------------------
 // ============================================================================
-PRIVATE tFsmStateTable *GetSensorStateTable(void);
+//PRIVATE tFsmStateTable *GetSensorStateTable(void);
 
 // ====	State Idle ========================================
 //  --- state functions -----------------------------------
 PRIVATE void State_Idle_Entry(void);
-PRIVATE void State_Idle_Do(tFsmEvent ev);
+//PRIVATE void State_Idle_Do(tFsmEvent ev);
 PRIVATE void State_Idle_Exit(void);
 //  --- guard functions -----------------------------------
 //  --- transition actions --------------------------------
@@ -209,11 +209,11 @@ PRIVATE void State_Idle_Exit(void);
 /**
  * State transition table for the Idle state.
  */
-PRIVATE tFsmStateEvent tblStateIdleEvents[] =
-{   // exit event           			exit guard                  transition action           destination state
-    {evSmeCoffeeMachineSelectionMade,   NULL_GUARD_FUNC,            NULL_TRANSITION_ACTION,		kCoffeeMachineStateCoinInserted},
-    {evSmeCoffeeMachineNoEvent,        	NULL_GUARD_FUNC,            NULL_TRANSITION_ACTION,     kCoffeeMachineStateUninit}                    // End of list
-};
+//PRIVATE tFsmStateEvent tblStateIdleEvents[] =
+//{   // exit event           			exit guard                  transition action           destination state
+//    {evSmeCoffeeMachineSelectionMade,   NULL_GUARD_FUNC,            NULL_TRANSITION_ACTION,		kCoffeeMachineStateCoinInserted},
+//    {evSmeCoffeeMachineNoEvent,        	NULL_GUARD_FUNC,            NULL_TRANSITION_ACTION,     kCoffeeMachineStateUninit}                    // End of list
+//};
 
 
 /**	Main Position Sensor state machine state table.
@@ -222,24 +222,24 @@ PRIVATE tFsmStateEvent tblStateIdleEvents[] =
  *	reference (i.e., a prototype or declaration) to a const table; const tables
  *	(such as the Exit Event Arrays) must be initialized at point of definition.
  */
-PRIVATE tFsmStateTable CoffeeMachineStates[kCoffeeMachineNumOpStates] =
-{   //{State,                           {Entry,                             Do,                             Exit},                      Exit_Events_Array}
-    {kCoffeeMachineStateIdle,			{State_Idle_Entry,          	State_Idle_Do,          		State_Idle_Exit},       		tblStateIdleEvents},
-};
+//PRIVATE tFsmStateTable CoffeeMachineStates[kCoffeeMachineNumOpStates] =
+//{   //{State,                           {Entry,                             Do,                             Exit},                      Exit_Events_Array}
+//    {kCoffeeMachineStateIdle,			{State_Idle_Entry,          	State_Idle_Do,          		State_Idle_Exit},       		tblStateIdleEvents},
+//};
 
 
 /** Get a pointer to this object's State Machine table.
  *  This function is intended for use primarily by the State Machine Engine. Please, everyone else, avert your eyes.
  *  @return     The state machine table that contains each state, its entry, do and exit routines and its exit event array.
  */
-PRIVATE tFsmStateTable *GetSensorStateTable(void)
-{
-    return (CoffeeMachineStates);
-}
+//PRIVATE tFsmStateTable *GetSensorStateTable(void)
+//{
+//    return (CoffeeMachineStates);
+//}
 
-uint16_t Cwsw_Sme_Ut__Init(void)
+uint16_t CoffeeMac__Init(void)
 {
-	UNUSED(coinvend_RevString);
+//	UNUSED(coinvend_RevString);
 
 	/* Check for initialization of modules upon which we depend.
 	 * Note that in this simple demonstration / unit test, we don't actually depend upon the order
@@ -247,8 +247,8 @@ uint16_t Cwsw_Sme_Ut__Init(void)
 	 * modules to have already been initialized here; however, it's convenient in this environment
 	 * and shows a method to do an init check.
 	 */
-	cwsw_assert(Get(Cwsw_Lib, Initialized));
-	cwsw_assert(Get(Cwsw_Clock, Initialized));
+	cwsw_assert(Get(Cwsw_Lib, Initialized), "Failed Library Initialization");
+//	cwsw_assert(Get(Cwsw_Clock, Initialized));
 
 	if(XPRJ_Debug_Win_MinGW)
 	{
@@ -257,33 +257,36 @@ uint16_t Cwsw_Sme_Ut__Init(void)
 		#pragma GCC diagnostic ignored "-Wpedantic"
 		#endif
 
-		dprintf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, coinvend_RevString, __FUNCTION__);
+//		dbg_printf("\t%s %s\n" "\tEntering %s()\n\n", __FILE__, coinvend_RevString, __FUNCTION__);
 
 		#if defined(__GNUC__)	/* --- GNU Environment ------------------------------ */
 		#pragma GCC diagnostic pop
 		#endif
 	}
 
+	(void) Init(Cwsw_EvQ);
 	// init machinery outside of SM
 	Init(CoinSensor);
+	// associate queue for coin sensor
+
 
 	// init SME
-	if(TABLE_SIZE(CoffeeMachineSmEventQueue.event_queue) >= kCoffeeMachine_Sm_EventQueueSize)
-	{
-	    (void)memset(&CoffeeMachineSmEventQueue, 0, sizeof(CoffeeMachineSmEventQueue));
-
-	    CoffeeMachineSmControl.Last_State        = kCoffeeMachineStateUninit;
-	    CoffeeMachineSmControl.Cur_State         = kCoffeeMachineStateIdle;
-	    CoffeeMachineSmControl.Tables_Ptr        = (tFsmStateTable *)GetSensorStateTable();    // cast away const-ness for sake of StateEngine
-	    CoffeeMachineSmControl.Event_Queue_Ptr   = CoffeeMachineSmEventQueue.event_queue;
-	    CoffeeMachineSmControl.Queue_Size        = kCoffeeMachine_Sm_EventQueueSize;
-
-	    FSM_INIT(CoffeeMachineSmControl);                                    // Init the state machine
-
-	}
+//	if(TABLE_SIZE(CoffeeMachineSmEventQueue.event_queue) >= kCoffeeMachine_Sm_EventQueueSize)
+//	{
+//	    (void)memset(&CoffeeMachineSmEventQueue, 0, sizeof(CoffeeMachineSmEventQueue));
+//
+//	    CoffeeMachineSmControl.Last_State        = kCoffeeMachineStateUninit;
+//	    CoffeeMachineSmControl.Cur_State         = kCoffeeMachineStateIdle;
+//	    CoffeeMachineSmControl.Tables_Ptr        = (tFsmStateTable *)GetSensorStateTable();    // cast away const-ness for sake of StateEngine
+//	    CoffeeMachineSmControl.Event_Queue_Ptr   = CoffeeMachineSmEventQueue.event_queue;
+//	    CoffeeMachineSmControl.Queue_Size        = kCoffeeMachine_Sm_EventQueueSize;
+//
+//	    FSM_INIT(CoffeeMachineSmControl);                                    // Init the state machine
+//
+//	}
 
 	// after some time, just end.
-	Cwsw_SetTimerVal(&task_end_time, 30000);	/* after 30 s, just quit */
+//	Cwsw_SetTimerVal(&task_end_time, 30000);	/* after 30 s, just quit */
 	initialized = true;
 	return 0;
 }
@@ -293,11 +296,11 @@ State_Idle_Entry(void)
 {
 }
 
-PRIVATE void
-State_Idle_Do(tFsmEvent ev)
-{
-	UNUSED(ev);
-}
+//PRIVATE void
+//State_Idle_Do(tFsmEvent ev)
+//{
+//	UNUSED(ev);
+//}
 
 PRIVATE void
 State_Idle_Exit(void)

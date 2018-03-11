@@ -57,7 +57,8 @@ extern "C" {
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
-extern uint16_t Sme_Ut__Init(void);
+extern uint16_t	Sme_Ut__Init(void);
+extern void		Sme_Ut__Task(void);
 
 
 #ifdef	__cplusplus

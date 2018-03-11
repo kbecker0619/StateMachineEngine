@@ -170,6 +170,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_sme&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cfg&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_evqueue&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1261545186" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -184,6 +185,7 @@
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_sme&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cfg&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/cwsw_evqueue&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.dialect.std.542736835" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.dialect.flags.342118431" name="Other dialect flags" superClass="gnu.c.compiler.option.dialect.flags" useByScannerDiscovery="true" value="-std=gnu11" valueType="string"/>
@@ -209,7 +211,7 @@
 					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.878615293" name="lw_coinopcoffeemachine.h" rcbsApplicability="disable" resourcePath="ut/lw_coinopcoffeemachine.h" toolsToInvoke=""/>
 					<fileInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1843661941.1270098418.1701493765" name="lw_coinopcoffeemachine.uir" rcbsApplicability="disable" resourcePath="ut/lw_coinopcoffeemachine.uir" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="ut/coinsensor.c|ut/coinopcoffeemachine.c|ut/lw_coinopcoffeemachine.h|ut/lw_coinopcoffeemachine.c|include|ut/lw_coinopcoffeemachine.uir|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="ut/lw_coinopcoffeemachine.h|ut/lw_coinopcoffeemachine.c|include|ut/lw_coinopcoffeemachine.uir|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
