@@ -115,7 +115,7 @@ Heartbeat__Task(void)
  * 	Within this handler, all you should do is set the flags used by the "business logic" in the task function(s).
  */
 void
-EventHandler__evButtonCommit(tEventPayload EventData)
+EventHandler__evButtonCommit(tNotificationPayload EventData)
 {
 	/* simply to test it out, forward to the other event handler.
 	 */

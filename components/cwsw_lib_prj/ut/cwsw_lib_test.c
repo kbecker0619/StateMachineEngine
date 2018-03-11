@@ -15,7 +15,7 @@
 #include "cwsw_eventsim.h"
 
 void
-EventHandler__evTerminateRequested(tEventPayload EventData)
+EventHandler__evTerminateRequested(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 	(void)puts("Goodbye Cruel World!");
@@ -24,7 +24,7 @@ EventHandler__evTerminateRequested(tEventPayload EventData)
 
 int main(void)
 {
-	tEventPayload ev = {0};
+	tNotificationPayload ev = {0};
 	(void) Init(Cwsw_Lib);
 
 	PostEvent(evTerminateRequested, ev);

@@ -57,7 +57,7 @@ extern "C" {
 extern uint16_t	CoinSensor__Init(void);
 extern void		CoinSensor__Task(void);
 
-//extern void		EventHandler__evCoinInsertionSensed(tEventPayload EventData);
+//extern void		EventHandler__evCoinInsertionSensed(tNotificationPayload EventData);
 
 
 #ifdef	__cplusplus

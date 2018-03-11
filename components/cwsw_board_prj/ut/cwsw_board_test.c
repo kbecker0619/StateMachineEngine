@@ -90,7 +90,7 @@ static bool seteventseen = false;
 static struct sEventData {
 	uint8_t EventType;
 	union uEventData {
-		tEventPayload btn;
+		tNotificationPayload btn;
 		uint8_t nothing;
 	} event_data;
 } event_data;
@@ -125,7 +125,7 @@ static struct sEventData {
  *	- evInt contains the button state being communicated.
  */
 void
-EventHandler__evButtonPressed(tEventPayload ev)
+EventHandler__evButtonPressed(tNotificationPayload ev)
 {
 	event_data.EventType = kButtonPressEvent;
 	event_data.event_data.btn.evId = ev.evId;
@@ -144,7 +144,7 @@ EventHandler__evButtonPressed(tEventPayload ev)
 /** Event handler for application Termination Requested events (#evTerminateRequested).
  */
 void
-EventHandler__evTerminateRequested(tEventPayload ev)
+EventHandler__evTerminateRequested(tNotificationPayload ev)
 {
 	UNUSED(ev);
 	terminate_requested = true;
@@ -226,7 +226,7 @@ SimulateInputs__Task(void)
 			button_sample_idx[button_row] = strlen(button_samples[button_row]);			/* ... reset sample index */
 			if( (!button_row) && (!--loop_ct_until_terminate) )
 			{
-				tEventPayload ev = {0};
+				tNotificationPayload ev = {0};
 				PostEvent(evTerminateRequested, ev);
 			}
 		}
@@ -258,7 +258,7 @@ SimulateInputs__Task(void)
 			{
 				if((LSB_16(accumulator[button_row]) == 0xFFU) != last_switch_value[button_row])		/* detect change in state */
 				{
-					tEventPayload ev;
+					tNotificationPayload ev;
 					/* set last recognized value 1st, as convenience (so i can use it next) */
 					last_switch_value[button_row] = (LSB_16(accumulator[button_row]) == 0xFFU);
 
@@ -346,7 +346,7 @@ int main(void)
  *	@param EventData	Unused in this error handler.
  */
 void
-EventHandler__evNotInitialized(tEventPayload EventData)
+EventHandler__evNotInitialized(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 	terminate_requested = false;

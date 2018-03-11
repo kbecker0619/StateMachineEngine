@@ -33,7 +33,7 @@ int main (int argc, char *argv[])
 int CVICALLBACK
 cbOnCoinInserted (int panel, int control, int event, void *callbackData, int eventData1, int eventData2)
 {
-	tEventPayload ev = {evNoEvent, 0};
+	tNotificationPayload ev = {evNoEvent, 0};
 	switch (event)
 	{
 	case EVENT_COMMIT:

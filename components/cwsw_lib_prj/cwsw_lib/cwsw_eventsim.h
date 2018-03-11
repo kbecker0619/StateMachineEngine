@@ -60,13 +60,13 @@ extern "C" {
 typedef struct eEventPayload  {
 	uint16_t	evId;	// for unit test, i need to know the event id. this is super-simplistic pseudo-eventing system anyway, solely for purpose of illustrating possibilities
 	uint32_t	evInt;
-} tEventPayload;
+} tNotificationPayload;
 
 /**	In the absence of a real event system, this is the prototype for an event
  *	handler. Normal instantiation would be for an array of handlers, each of
  *	which "subscribes" to said event.
  */
-typedef void (*pEventHandler)(tEventPayload EventData);
+typedef void (*pEventHandler)(tNotificationPayload EventData);
 
 
 // -----------------------------------------------------------------------------

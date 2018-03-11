@@ -80,7 +80,7 @@ static tButtonEvent tbe = {0};
 // ============================================================================
 
 void
-EventHandler__evButtonPressed		(tEventPayload EventData)
+EventHandler__evButtonPressed		(tNotificationPayload EventData)
 {
 	cwsw_assert(!tbe.ButtonEventSeen, "Previous button event not yet purged");
 	tbe.ButtonEventSeen = true;
@@ -170,7 +170,7 @@ SimulateButtonInputs(void)
 			if( (!button_row) && (!--loop_ct_until_terminate) )
 			{
 				/* suggested: post an event here that says, "i'm out of inputs" */
-				tEventPayload ev = {0};
+				tNotificationPayload ev = {0};
 				PostEvent(evTerminateRequested, ev);
 			}
 		}
@@ -202,7 +202,7 @@ SimulateButtonInputs(void)
 			{
 				if((LSB_16(accumulator[button_row]) == 0xFFU) != last_switch_value[button_row])		/* detect change in state */
 				{
-					tEventPayload ev;
+					tNotificationPayload ev;
 
 					/* set last recognized value 1st, as convenience (so i can use it next) */
 					last_switch_value[button_row] = (LSB_16(accumulator[button_row]) == 0xFFU);

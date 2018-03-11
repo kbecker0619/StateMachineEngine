@@ -67,7 +67,7 @@ int main(void)
 }
 
 void
-EventHandler__evNotInitialized		(tEventPayload EventData)
+EventHandler__evNotInitialized		(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 }

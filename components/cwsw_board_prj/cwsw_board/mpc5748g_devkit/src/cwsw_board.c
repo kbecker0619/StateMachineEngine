@@ -63,7 +63,7 @@ static bool initialized = false;
 uint16_t
 Cwsw_Board__Init(void)
 {
-	tEventPayload ev = {0};
+	tNotificationPayload ev = {0};
 
 	if(!Get(Cwsw_Arch, Initialized))
 	{

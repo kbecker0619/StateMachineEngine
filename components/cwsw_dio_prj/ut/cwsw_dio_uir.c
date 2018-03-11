@@ -55,7 +55,7 @@ CVICALLBACK cbOnBtn (
 	void *callbackData,
 	int eventData1, int eventData2)
 {
-	tEventPayload ev = {0};
+	tNotificationPayload ev = {0};
 
 	UNUSED(panel);
 	UNUSED(callbackData);

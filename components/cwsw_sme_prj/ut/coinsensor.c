@@ -86,7 +86,7 @@ PRIVATE tEvQ_Event	 coinsnsr_evq_evbuf[kCoinSensorEventQueueSz] = {0};
  * @param EventData
  */
 void
-EventHandler__evCoinInsertionSensed(tEventPayload EventData)
+EventHandler__evCoinInsertionSensed(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 	coindetected = true;
@@ -134,7 +134,7 @@ CoinSensor__Init(void)
 void
 CoinSensor__Task(void)
 {
-	tEventPayload ev = {evNoEvent, 0};
+	tNotificationPayload ev = {evNoEvent, 0};
 	cwsw_assert(initialized, "Coin Sensor Not Initialized");
 
 	// ----	read inputs -----------------------------------------------------------------

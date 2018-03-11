@@ -71,7 +71,7 @@ static bool initialized = false;
 void
 CoffeeMac__Task(void)
 {
-//	tEventPayload ev = {evNotInit, 0};
+//	tNotificationPayload ev = {evNotInit, 0};
 
 	/* This illustrates one method of confirming the module init function has been called before
 	 * 1st execution of functions that depend on that initialization. Another method is illustrated

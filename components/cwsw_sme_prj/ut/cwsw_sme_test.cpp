@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 }
 
 void
-EventHandler__evNotInit(tEventPayload EventData)
+EventHandler__evNotInit(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 	dbg_printf("\t%s\n", "Application Not Initialized Correctly, Terminating");
@@ -74,7 +74,7 @@ EventHandler__evNotInit(tEventPayload EventData)
 }
 
 void
-EventHandler__evTerminateRequested	(tEventPayload EventData)
+EventHandler__evTerminateRequested	(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 	dbg_printf("\n\t%s\n", "End of demonstration\n");
@@ -92,13 +92,13 @@ EventHandler__evTerminateRequested	(tEventPayload EventData)
  * @param EventData
  */
 void
-EventHandler__evCoinAccepted(tEventPayload EventData)
+EventHandler__evCoinAccepted(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 }
 
 void
-EventHandler__evUpdateUi(tEventPayload EventData)
+EventHandler__evUpdateUi(tNotificationPayload EventData)
 {
 #if (XPRJ_DEBUG_CVI)
 	int stat = SetCtrlVal (PANEL, PANEL_indTIMELEFT, (float)((int32_t)EventData.evInt / 1000.0));
