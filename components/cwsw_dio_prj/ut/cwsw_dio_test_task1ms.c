@@ -80,7 +80,7 @@ static tButtonEvent tbe = {0};
 // ============================================================================
 
 void
-EventHandler__evButtonPressed		(tNotificationPayload EventData)
+NotificationHandler__evButtonPressed		(tNotificationPayload EventData)
 {
 	cwsw_assert(!tbe.ButtonEventSeen, "Previous button event not yet purged");
 	tbe.ButtonEventSeen = true;
@@ -171,7 +171,7 @@ SimulateButtonInputs(void)
 			{
 				/* suggested: post an event here that says, "i'm out of inputs" */
 				tNotificationPayload ev = {0};
-				PostEvent(evTerminateRequested, ev);
+				SendNotification(evTerminateRequested, ev);
 			}
 		}
 
@@ -210,7 +210,7 @@ SimulateButtonInputs(void)
 					/* post event */
 					ev.evId = TO_U16(button_row);				/* which button has the event? for common handler */
 					ev.evInt = last_switch_value[button_row];
-					PostEvent(evButtonPressed, ev);
+					SendNotification(evButtonPressed, ev);
 				}
 
 				/* always reset bit accum count for next button event, even if the current recognized

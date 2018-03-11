@@ -73,7 +73,7 @@ CVICALLBACK cbOnBtn (
 		case EVENT_LEFT_CLICK:
 			ev.evId = control;
 			(void)GetCtrlVal(panelHandle, control, &ev.evInt);
-			PostEvent(evButtonCommit, ev);
+			SendNotification(evButtonCommit, ev);
 
 			break;
 	}

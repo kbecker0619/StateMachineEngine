@@ -141,7 +141,7 @@ Cwsw_Board__Init(void)
 		return 0;
 	}
 
-	PostEvent(evNotInitialized, ev);
+	SendNotification(evNotInitialized, ev);
 	return 1;
 }
 

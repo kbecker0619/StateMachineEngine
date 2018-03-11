@@ -50,7 +50,7 @@ static bool terminate_requested = false;
 /** Event handler for application Termination Requested events (#evTerminateRequested).
  */
 void
-EventHandler__evTerminateRequested(tNotificationPayload ev)
+NotificationHandler__evTerminateRequested(tNotificationPayload ev)
 {
 	UNUSED(ev);
 	terminate_requested = true;
@@ -208,7 +208,7 @@ main(int argc, char *argv[])
 }
 
 void
-EventHandler__evNotInitialized(tNotificationPayload EventData)
+NotificationHandler__evNotInitialized(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 }

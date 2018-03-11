@@ -125,7 +125,7 @@ static struct sEventData {
  *	- evInt contains the button state being communicated.
  */
 void
-EventHandler__evButtonPressed(tNotificationPayload ev)
+NotificationHandler__evButtonPressed(tNotificationPayload ev)
 {
 	event_data.EventType = kButtonPressEvent;
 	event_data.event_data.btn.evId = ev.evId;
@@ -144,7 +144,7 @@ EventHandler__evButtonPressed(tNotificationPayload ev)
 /** Event handler for application Termination Requested events (#evTerminateRequested).
  */
 void
-EventHandler__evTerminateRequested(tNotificationPayload ev)
+NotificationHandler__evTerminateRequested(tNotificationPayload ev)
 {
 	UNUSED(ev);
 	terminate_requested = true;
@@ -227,7 +227,7 @@ SimulateInputs__Task(void)
 			if( (!button_row) && (!--loop_ct_until_terminate) )
 			{
 				tNotificationPayload ev = {0};
-				PostEvent(evTerminateRequested, ev);
+				SendNotification(evTerminateRequested, ev);
 			}
 		}
 
@@ -265,7 +265,7 @@ SimulateInputs__Task(void)
 					/* post event */
 					ev.evId = TO_U16(button_row);				/* which button has the event? for common handler */
 					ev.evInt = last_switch_value[button_row];
-					PostEvent(evButtonPressed, ev);
+					SendNotification(evButtonPressed, ev);
 				}
 
 				/* always reset bit accum count for next button event, even if the current recognized
@@ -346,7 +346,7 @@ int main(void)
  *	@param EventData	Unused in this error handler.
  */
 void
-EventHandler__evNotInitialized(tNotificationPayload EventData)
+NotificationHandler__evNotInitialized(tNotificationPayload EventData)
 {
 	UNUSED(EventData);
 	terminate_requested = false;

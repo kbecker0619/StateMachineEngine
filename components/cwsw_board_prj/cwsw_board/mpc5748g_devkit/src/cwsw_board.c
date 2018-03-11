@@ -67,7 +67,7 @@ Cwsw_Board__Init(void)
 
 	if(!Get(Cwsw_Arch, Initialized))
 	{
-		PostEvent(evNotInitialized, ev);
+		SendNotification(evNotInitialized, ev);
 		return 1;
 	}
 

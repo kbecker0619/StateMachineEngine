@@ -75,7 +75,7 @@ typedef void (*pEventHandler)(tNotificationPayload EventData);
 
 /**	List of supported events.
  * 	@note Even though this is an enumerated list, it is NOT meant to be used for
- * 	the actual values, but for the names themselves. See the PostEvent
+ * 	the actual values, but for the names themselves. See the SendNotification
  * 	definition to see how that's done.
  */
 #if (USE_NOTIFICATION_EVENTS)
@@ -113,11 +113,11 @@ typedef enum eProjectEvents tProjectEvents;
  * 	to other handlers, or a macro that iterates through an array, or ...
  */
 #if (USE_NOTIFICATION_EVENTS)
-#define PostEvent(ev, evpayload)		_post_event(ev, evpayload)
-#define _post_event(ev, evpayload)		EventHandler__ ## ev(evpayload)
+#define SendNotification(ev, evpayload)	_Notify(ev, evpayload)
+#define _Notify(ev, evpayload)			NotificationHandler__ ## ev(evpayload)
 
 #else
-#define PostEvent(ev, evpayload)		do {UNUSED(evpayload);} while(0)
+#define SendNotification(ev, evpayload)		do {UNUSED(evpayload);} while(0)
 
 #endif
 
