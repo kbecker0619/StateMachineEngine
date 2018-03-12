@@ -30,7 +30,7 @@
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
 //#include "clock_if.h"	/* tCwswClockTics */
-//#include "cwsw_eventsim.h"
+#include "cwsw_eventsim.h"
 #if (XPRJ_DEBUG_CVI)
 #include "lw_coinopcoffeemachine.h"
 #endif
@@ -57,7 +57,7 @@
 // ----	Module-level Variables ------------------------------------------------
 // ============================================================================
 static bool initialized = false;
-//static tCwswClockTics task_end_time = 0;
+static bool lostcoinevent = false;
 
 
 // ============================================================================
@@ -71,7 +71,7 @@ static bool initialized = false;
 void
 CoffeeMac__Task(void)
 {
-//	tNotificationPayload ev = {evNotInit, 0};
+	tNotificationPayload ev = {evNotInitialized, 0};
 
 	/* This illustrates one method of confirming the module init function has been called before
 	 * 1st execution of functions that depend on that initialization. Another method is illustrated
@@ -80,7 +80,7 @@ CoffeeMac__Task(void)
 	 */
 	if(!initialized)
 	{
-//		PostEvent(evNotInit, ev);
+		SendNotification(evNotInitialized, ev);
 		return;
 	}
 
@@ -88,7 +88,11 @@ CoffeeMac__Task(void)
 	Task(CoinSensor);		// CoinSensor__Task()
 
 	// chunk another tooth on the SME cogwheel
-
+	if(lostcoinevent)
+	{
+		tEvQ_Event coinev = GetEvQ(Get(CoinSnsr, EvQueue), Event);
+		//  repost lost coin
+	}
 	/* for now, we won't dedicate a task to updating the UI; we'll just notify the UI of time left */
 //	do {
 //		int32_t tmp = Cwsw_GetTimeLeft(task_end_time);
@@ -307,3 +311,19 @@ State_Idle_Exit(void)
 {
 }
 
+/** Notification event handler for evCoinLost. */
+void
+NotificationHandler__evCoinLost(tNotificationPayload EventData)
+{
+	if(EventData.evId == kEvQ_Err_QueueFull)
+	{
+		lostcoinevent = true;
+	}
+}
+
+void
+NotificationHandler__evNotInitialized(tNotificationPayload EventData)
+{
+	UNUSED(EventData);
+	cwsw_assert(0, "Coin Sensor Not Initialized");
+}

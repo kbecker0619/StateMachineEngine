@@ -47,7 +47,7 @@ extern "C" {
  */
 enum eProjectEvents {
 	evNoEvent,				//!< reserved value, used for initialization
-	evNotInit,              //!< evNotInit
+	evNotInitialized,       //!< evNotInit
 	evButtonPressed,
 	evButtonCommit,			//!< debounced press event
 	evButtonReleased,
@@ -69,11 +69,11 @@ enum eProjectEvents {
 // ============================================================================
 
 
-extern void EventHandler__evNotInitialized		(tNotificationPayload EventData);
+extern void NotificationHandler__evNotInitialized	(tNotificationPayload EventData);
 extern void EventHandler__evTerminateRequested	(tNotificationPayload EventData);
 extern void EventHandler__evButtonCommit		(tNotificationPayload EventData);
 extern void EventHandler__evButtonPressed		(tNotificationPayload EventData);
-extern void EventHandler__evButtonReleased		(tNotificationPayload EventData);
+extern void NotificationHandler__evCoinLost 		(tNotificationPayload EventData);
 
 #ifdef	__cplusplus
 }

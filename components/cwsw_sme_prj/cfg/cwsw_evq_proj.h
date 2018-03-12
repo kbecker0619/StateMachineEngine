@@ -62,7 +62,9 @@ extern "C" {
  *
  *	If you use a different base type, it should be an unsigned integral type.
  */
-typedef unsigned char tEvQ_Event;
+typedef struct sEvQ_Event {
+	unsigned char Event;
+} tEvQ_Event;
 
 
 // ============================================================================

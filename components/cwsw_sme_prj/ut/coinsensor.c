@@ -20,6 +20,7 @@
 
 // ----	System Headers --------------------------
 #include <stdbool.h>
+#include <stddef.h>		/* NULL */
 
 // ----	Project Headers -------------------------
 #include "cwsw_lib.h"
@@ -97,6 +98,18 @@ EventHandler__evCoinInsertionSensed(tNotificationPayload EventData)
 // ----	Public Functions ------------------------------------------------------
 // ============================================================================
 
+/** Return address of queue control structure.
+ *	This is required so that clients in another module can post & get events to our queue.
+ *	@returns	Unprotected (e.g., non-const) address if module has been initialized, or NULL if not.
+ */
+tEvQueueCtrl *
+CoinSnsr__Get_EvQueue(void)
+{
+	if(initialized)	return &coinsnsr_evq_ctrl;
+	return NULL;
+}
+
+
 /* this coin sensor is supremely simple. we are not trying go identify coinage, detect fraud, or
  * even differentiate between a wooden nickel and a paper clip and a coin.
  *
@@ -124,7 +137,7 @@ CoinSensor__Init(void)
 
 	// confirm queue is empty. be redundant because this is a dev/ut/demo app, showing what could be done
 	cwsw_assert(GetEvQ(&coinsnsr_evq_ctrl, NumEvents) == 0, "Event Queue Not Empty");
-	cwsw_assert(GetEvQ(&coinsnsr_evq_ctrl, Event) == kEvQ_Ev_None, "Valid Event Returned");
+	cwsw_assert(GetEvQ(&coinsnsr_evq_ctrl, Event).Event == kEvQ_Ev_None, "Valid Event Returned");
 
 	initialized = true;
 	return 0;
@@ -134,7 +147,7 @@ CoinSensor__Init(void)
 void
 CoinSensor__Task(void)
 {
-	tNotificationPayload ev = {evNoEvent, 0};
+	tNotificationPayload nep = {evNoEvent, 0};
 	cwsw_assert(initialized, "Coin Sensor Not Initialized");
 
 	// ----	read inputs -----------------------------------------------------------------
@@ -160,11 +173,15 @@ CoinSensor__Task(void)
 	// ----	exert outputs ---------------------------------------------------------------
 	if(coindetected)
 	{
-		tEvQ_ErrorCodes er = PostEvQ(&coinsnsr_evq_ctrl, kCs_GoodCoin);
+		tEvQ_Event ev = {kCs_GoodCoin};
+		tEvQ_ErrorCodes er = PostEvQ(&coinsnsr_evq_ctrl, ev);
 		switch(er)
 		{
 		case kEvQ_Err_NoError:	break;	/* happy path */
 		default:
+			nep.evId = er;
+			nep.evInt = ev.Event;
+			SendNotification(evCoinLost, nep);
 			// tbd: notify caller out-of-band about problem
 			// send error code + denomination lost
 			break;

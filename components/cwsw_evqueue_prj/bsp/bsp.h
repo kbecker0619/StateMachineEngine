@@ -107,27 +107,6 @@ extern bool activity3ind;
 extern bool seteventseen;
 
 
-/** Target symbol for Get(Cwsw_Board, Resource) interface */
-#define Cwsw_Bsp__Get(resource)				Cwsw_Bsp__Get_ ## resource()
-
-
-/** Target symbol for Set(Cwsw_Board, Resource, xxx) interface */
-#define Cwsw_Bsp__Set(resource, value)		Cwsw_Bsp__Set_ ## resource(value)
-
-
-/* Target for some of the expansions to the Set(Cwsw_Bsp, Resource, xxx) interface. */
-//extern void Cwsw_Bsp__Set_BspHeartbeatInd(tDO_LogicalValues onoff);
-//extern void Cwsw_Bsp__Set_BspActivity2(tDO_LogicalValues onoff);
-//extern void Cwsw_Bsp__Set_BspActivity3(tDO_LogicalValues onoff);
-
-
-/* Targets for expansion of SET(GlobalResource, Value) interface.
- * In this module, the LEDs are considered global resources, "owned" by the BSP,
- * which can be set (written to) by any application-layer module.
- */
-#define SET_BspHeartbeatInd(value)	Set(Cwsw_Bsp, BspHeartbeatInd, value)
-#define SET_BspActivity2(value)		Set(Cwsw_Bsp, BspActivity2, value)
-#define SET_BspActivity3(value)		Set(Cwsw_Bsp, BspActivity3, value)
 
 
 #ifdef	__cplusplus

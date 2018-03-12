@@ -48,7 +48,7 @@ enum eProjectEvents {
 	evButtonPressed,
 	evButtonCommit,			//!< debounced press event
 	evButtonReleased,
-	evUpdateUi,
+	evCoinLost,
 	evTerminateRequested
 };
 

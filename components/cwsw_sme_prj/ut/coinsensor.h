@@ -54,8 +54,17 @@ extern "C" {
 // ----	Public API ------------------------------------------------------------
 // ============================================================================
 
+// ==== Discrete Functions ================================================== {
 extern uint16_t	CoinSensor__Init(void);
 extern void		CoinSensor__Task(void);
+extern tEvQueueCtrl	*CoinSnsr__Get_EvQueue(void);
+
+// ==== /Discrete Functions ================================================= }
+
+// ==== Targets for Get/Set APIs ============================================ {
+#define CoinSnsr__Get(what)		CoinSnsr__Get_ ## what()
+
+// ==== /Targets for Get/Set APIs =========================================== }
 
 //extern void		EventHandler__evCoinInsertionSensed(tNotificationPayload EventData);
 
